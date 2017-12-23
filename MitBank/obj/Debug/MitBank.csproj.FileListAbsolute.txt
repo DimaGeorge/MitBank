@@ -1,0 +1,9 @@
+E:\a3s1\Baze de date\github\FormRepo\MitBank\MitBank\bin\Debug\MitBank.exe.config
+E:\a3s1\Baze de date\github\FormRepo\MitBank\MitBank\bin\Debug\MitBank.exe
+E:\a3s1\Baze de date\github\FormRepo\MitBank\MitBank\bin\Debug\MitBank.pdb
+E:\a3s1\Baze de date\github\FormRepo\MitBank\MitBank\obj\Debug\MitBank.csprojResolveAssemblyReference.cache
+E:\a3s1\Baze de date\github\FormRepo\MitBank\MitBank\obj\Debug\MitBank.LoginForm.resources
+E:\a3s1\Baze de date\github\FormRepo\MitBank\MitBank\obj\Debug\MitBank.Properties.Resources.resources
+E:\a3s1\Baze de date\github\FormRepo\MitBank\MitBank\obj\Debug\MitBank.csproj.GenerateResource.Cache
+E:\a3s1\Baze de date\github\FormRepo\MitBank\MitBank\obj\Debug\MitBank.exe
+E:\a3s1\Baze de date\github\FormRepo\MitBank\MitBank\obj\Debug\MitBank.pdb
