@@ -1,0 +1,10 @@
+C:\Users\Jder\documents\visual studio 2015\Projects\login\login\bin\Release\login.exe.config
+C:\Users\Jder\documents\visual studio 2015\Projects\login\login\bin\Release\login.exe
+C:\Users\Jder\documents\visual studio 2015\Projects\login\login\bin\Release\login.pdb
+C:\Users\Jder\documents\visual studio 2015\Projects\login\login\bin\Release\Bunifu_UI_v1.5.3.dll
+C:\Users\Jder\documents\visual studio 2015\Projects\login\login\obj\Release\login.Form1.resources
+C:\Users\Jder\documents\visual studio 2015\Projects\login\login\obj\Release\login.Form2.resources
+C:\Users\Jder\documents\visual studio 2015\Projects\login\login\obj\Release\login.Properties.Resources.resources
+C:\Users\Jder\documents\visual studio 2015\Projects\login\login\obj\Release\login.csproj.GenerateResource.Cache
+C:\Users\Jder\documents\visual studio 2015\Projects\login\login\obj\Release\login.exe
+C:\Users\Jder\documents\visual studio 2015\Projects\login\login\obj\Release\login.pdb
