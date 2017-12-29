@@ -60,6 +60,20 @@ namespace login2
         int okCode = 0;
         private void loginButon_Click(object sender, EventArgs e)
         {
+            if (DataManagement.updateConnectionString(usernameLoginTxtbox.Text, passwordLoginTxtbox.Text))
+            {
+                this.Visible = false;
+                this.Hide();
+                Form2 frm = new Form2();
+                frm.Show();
+            }
+            else
+            {
+                MessageBox.Show("Conexiunea nu se poate stabili!");
+            }
+
+
+            /*
             codeTxtbox.Visible = true;
             loginButon.Text = "Login after type code";
             if (codeTxtbox.Text != "" && okCode == 1)
@@ -90,7 +104,7 @@ namespace login2
             }
             okCode = 1;
 
-
+            */
 
 
         }
