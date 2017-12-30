@@ -1,7 +1,7 @@
 # MitBank
 ##### An internet banking  C# client for a RELATIONAL database
 ### 1. Baza de date
-    ![Diagrama](/Database.png)
+    ![Diagrama](https://github.com/DimaGeorge/MitBank/dimisor/Database.png)
 ### 2. Aplicatia (Clientul)
 
 ###### Referinte:
