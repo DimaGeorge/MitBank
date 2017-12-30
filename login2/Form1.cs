@@ -109,5 +109,9 @@ namespace login2
 
         }
 
+        private void label7_Click(object sender, EventArgs e)
+        {
+            this.WindowState = FormWindowState.Minimized;
+        }
     }
 }
