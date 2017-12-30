@@ -1,5 +1,5 @@
 # MitBank
-##### An internet banking  C# client for a RELATIONAL database
+### An internet banking  C# client for a RELATIONAL database
 Or just another application keeping trak of your **M**oney **i**n **t**he **Bank**.
 ### 1. Baza de date
 ![Diagrama](./Database.png)
