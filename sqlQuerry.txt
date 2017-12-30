@@ -1,0 +1,481 @@
+/*
+FOCUS:
+	-> Elaborarea aplicatiei de partea user-ului normal
+
+TO DO:
+	-> elaborat mecanism de introducere a tranzactiilor (triggere sau proceduri stocate)
+
+TO DO in a far away future
+	-> implementarea permisiunilor Adminului
+*/
+
+
+USE master
+
+IF db_id('MitBankDB') is not null
+	BEGIN
+		PRINT 'MitBankDB exista - va fi stearsa!'
+		DROP DATABASE MitBankDB
+	END
+ELSE
+	BEGIN
+		PRINT 'MitBankDB nu exista'
+	END
+
+CREATE DATABASE MitBankDB
+GO
+
+ALTER AUTHORIZATION ON DATABASE::MitBankDB TO sa;
+
+USE MitBankDB
+GO
+
+
+-- +++++++++++++++++++++++++++ CREATING TABLES ++++++++++++++++++++++++++++++++++++++++++++++++++++
+-- Login related tables
+CREATE TABLE CustomerTypes(
+	ID					int
+	,CustomerTypeName	nvarchar(50)
+	,CONSTRAINT PK_CustomerTypes
+		PRIMARY KEY (ID)
+);
+GO
+
+CREATE TABLE Customers(
+	ID					int			IDENTITY (1,1)	NOT NULL
+	,CustomerType		int							NOT NULL
+	,CONSTRAINT PK_Customers
+		PRIMARY KEY CLUSTERED (ID)
+	,CONSTRAINT FK_Customers_CustomerType
+		FOREIGN KEY (CustomerType) REFERENCES CustomerTypes(ID)
+);
+GO
+
+CREATE TABLE Individuals(
+	ID			int				IDENTITY (1,1)	NOT NULL
+	,FirstName	nvarchar(100)					NOT NULL
+	,LastName	nvarchar(100)					NOT NULL
+	,Email		nvarchar(200)					NOT NULL
+	,CNP		nvarchar(13)					NOT NULL
+	,Birthday	date							NOT NULL
+	,CONSTRAINT PK_Individuals
+		PRIMARY KEY CLUSTERED (ID)
+	,CONSTRAINT CHK_CNP
+		CHECK (ISNUMERIC(CNP) = 1 AND LEN(CNP) = 13)
+	-- additional checking for CNP - birthday
+	,CONSTRAINT UC_Individuals
+		UNIQUE (CNP)
+);
+GO
+
+CREATE TABLE Companies(
+	ID					int				IDENTITY(1,1)	NOT NULL
+	,CustomerID			int								NOT NULL
+	,IndividualID		int								NOT NULL
+	,CIF				int								NOT NULL
+	,Name				nvarchar(100)					NOT NULL
+	,Address			nvarchar(500)					NOT NULL
+	,CONSTRAINT PK_Companies
+		PRIMARY KEY CLUSTERED (ID)
+	,CONSTRAINT FK_Companies_Customers
+		FOREIGN KEY (CustomerID) REFERENCES Customers(ID)
+	,CONSTRAINT FK_Companies_Individuals
+		FOREIGN KEY (IndividualID) REFERENCES Individuals(ID)
+)
+GO
+
+CREATE TABLE IndividualCustomers(
+	IndividualID		int								NOT NULL
+	,CustomerID			int								NOT NULL
+	,CONSTRAINT PK_IndividualCustomers
+		PRIMARY KEY CLUSTERED (IndividualID, CustomerID)
+	,CONSTRAINT FK_IndividualCustomers_Individuals
+		FOREIGN KEY (IndividualID) REFERENCES Individuals(ID)
+	,CONSTRAINT FK_IndividualCustomers_Customers
+		FOREIGN KEY (IndividualID) REFERENCES Customers(ID)
+);
+GO
+
+CREATE TABLE Employees(
+	ID				int			IDENTITY(1,1)	NOT NULL
+	,IndividualID	int							NOT NULL
+	,CONSTRAINT PK_Employees
+		PRIMARY KEY CLUSTERED (ID) 
+	,CONSTRAINT FK_Employees_Individuals
+		FOREIGN KEY (IndividualID) REFERENCES Individuals(ID)
+)
+
+
+CREATE TABLE UserTypes(
+	ID			int							NOT NULL
+	,UserType	nvarchar(20)
+	,CONSTRAINT PK_UserTypes
+		PRIMARY KEY CLUSTERED (ID)
+)
+GO
+
+CREATE TABLE Usernames(
+	ID			int					IDENTITY(1,1)	NOT NULL
+	,UserType	int									NOT NULL
+	,Username	nvarchar(101)						NOT NULL
+	,CONSTRAINT PK_Usernames
+		PRIMARY KEY CLUSTERED (ID)
+	,CONSTRAINT FK_Usernames_UserTypes
+		FOREIGN KEY	(UserType) REFERENCES UserTypes(ID)	
+	,CONSTRAINT UC_Username
+		UNIQUE	(Username)
+);
+GO
+
+CREATE TABLE NormalUsers(
+	ID		int
+	,CustomerID  int
+	,CONSTRAINT PK_NormalUsers
+		PRIMARY KEY CLUSTERED (ID)
+	,CONSTRAINT FK_NormalUsers_Usernames
+		FOREIGN KEY (ID) REFERENCES Usernames(ID)
+	,CONSTRAINT FK_NormalUsers_Customers
+		FOREIGN KEY (CustomerID) REFERENCES Customers(ID)
+)
+GO
+
+CREATE TABLE BankAdmins(
+	ID		int
+	,EmployeeID  int
+	,CONSTRAINT PK_BankAdmins
+		PRIMARY KEY CLUSTERED (ID)
+	,CONSTRAINT FK_BankAdmins_Usernames
+		FOREIGN KEY (ID) REFERENCES Usernames(ID)
+	,CONSTRAINT FK_BankAdmins_Employees
+		FOREIGN KEY (EmployeeID) REFERENCES Employees(ID)
+)
+GO
+
+-- Banking related tables
+CREATE TABLE AccountTypes(
+	ID				int
+	,TypeOfAccount	nchar(20)
+	,CONSTRAINT PK_AccountType
+		PRIMARY KEY CLUSTERED (ID)
+)
+GO
+
+CREATE TABLE BankingPackets(
+	ID				int
+	,TypePacket	nchar(30)
+	,AccountType	int
+	,CONSTRAINT PK_BankingPackets
+		PRIMARY KEY CLUSTERED (ID)
+	,CONSTRAINT FK_BankingPackets_AccountType
+		FOREIGN KEY (AccountType) REFERENCES AccountTypes(ID)
+)
+GO
+
+CREATE TABLE ComisionStatus(
+	ID						int
+	,TypeTransaction		int
+	,TypePacket				int
+	,Comision				float
+	,CONSTRAINT PK_ComisionStatus
+		PRIMARY KEY CLUSTERED (ID)
+	,CONSTRAINT FK_ComisionStatus_BankingPackets
+		FOREIGN KEY (TypePacket) REFERENCES BankingPackets(ID)
+)	
+GO
+
+CREATE TABLE TypesTransaction(
+	ID					int
+	,TypeTransaction	nvarchar(50)
+	,CONSTRAINT PK_TypeTransactions
+		PRIMARY KEY CLUSTERED (ID)
+)
+GO
+
+CREATE TABLE UserAccounts(
+	ID					int					NOT NULL
+	,BankPacket			int
+	,AccountNumber		nchar(30)			NOT NULL
+	,ValabilityUntil	date				NOT NULL
+	,Currency			nvarchar(3)			NOT NULL
+	,Sold				float				NOT NULL				
+	,AccountCustomerID	int
+	,CONSTRAINT PK_UserAccounts
+		PRIMARY KEY CLUSTERED (ID)
+	,CONSTRAINT FK_UserAccounts_BankingPackets
+		FOREIGN KEY (BankPacket) REFERENCES BankingPackets(ID)
+	,CONSTRAINT FK_UserAccounts_Customers
+		FOREIGN KEY (AccountCustomerID) REFERENCES Customers(ID)			
+)
+GO
+
+CREATE TABLE HistoryTransaction(
+	ID					int
+	,CustomerID			int
+	,UserAccountID		int
+	,TypeTransaction	int
+	,DateTransaction	datetime
+	,CONSTRAINT PK_HistoryTransaction
+		PRIMARY KEY CLUSTERED (ID)
+	,CONSTRAINT FK_HistoryTransaction_TypeTransactions
+		FOREIGN KEY (TypeTransaction) REFERENCES TypesTransaction(ID)
+	,CONSTRAINT FK_HistoryTransaction_Customers
+		FOREIGN KEY (CustomerID) REFERENCES Customers(ID)
+	,CONSTRAINT FK_HistoryTransaction_UserAccounts
+		FOREIGN KEY (UserAccountID)	REFERENCES UserAccounts(ID)
+)	
+GO
+
+-- +++++++++++++++++++++++++++++++++++++++ CREATING VIEWS ++++++++++++++++++++++++++++++++++++++++
+
+CREATE VIEW UsernamesView
+AS
+SELECT *
+FROM Usernames
+WHERE Username = CURRENT_USER
+GO
+
+CREATE VIEW CustomersView
+AS
+SELECT 
+	c.ID
+	,c.CustomerType
+FROM Customers AS c
+	INNER JOIN	NormalUsers AS nu
+		ON c.ID = nu.CustomerID
+	INNER JOIN	Usernames As u
+		ON u.ID = nu.ID
+WHERE u.Username = CURRENT_USER
+GO
+
+CREATE VIEW CompaniesView
+AS
+SELECT
+	comp.ID
+	,comp.CustomerID
+	,comp.IndividualID
+	,comp.CIF
+	,comp.Name
+	,comp.Address
+FROM Companies AS comp
+	INNER JOIN CustomersView AS cw
+		ON cw.ID = comp.CustomerID
+GO
+
+CREATE VIEW IndividualsView
+AS
+SELECT
+	i.ID
+	,i.FirstName
+	,i.LastName
+	,i.Email
+	,i.CNP
+	,i.Birthday
+FROM Individuals	AS i
+	INNER JOIN IndividualCustomers AS ic
+		ON i.ID = ic.IndividualID
+	INNER JOIN CustomersView as cw
+		ON ic.CustomerID = cw.ID
+UNION
+SELECT
+	i.ID
+	,i.FirstName
+	,i.LastName
+	,i.Email
+	,i.CNP
+	,i.Birthday
+FROM Individuals	AS i
+	INNER JOIN CompaniesView AS cw
+		ON i.ID = cw.IndividualID
+GO
+
+CREATE VIEW HistoryTransactionView
+AS
+SELECT
+	ht.ID
+	,ht.CustomerID
+	,ht.UserAccountID
+	,ht.TypeTransaction
+	,ht.DateTransaction
+FROM HistoryTransaction as ht
+	INNER JOIN CustomersView as cw
+		ON ht.CustomerID = cw.ID
+GO
+
+CREATE VIEW UserAccountsView
+AS
+SELECT
+	ua.ID
+	,ua.BankPacket
+	,ua.AccountNumber
+	,ua.ValabilityUntil
+	,ua.Currency
+	,ua.Sold
+	,ua.AccountCustomerID
+FROM UserAccounts AS ua
+	INNER JOIN CustomersView AS cw
+		ON ua.AccountCustomerID = cw.ID
+GO
+
+
+--- Roles --------------------------------------------------------------------------------------------
+CREATE ROLE NormalUser
+
+-- views
+GRANT SELECT ON UsernamesView TO NormalUser
+GRANT SELECT ON CustomersView TO NormalUser
+GRANT SELECT ON CompaniesView TO NormalUser
+GRANT SELECT ON IndividualsView TO NormalUser -- oricum nu poate sa updateze view facut cu UNION
+GRANT CONTROL ON HistoryTransactionView TO NormalUser
+GRANT CONTROL ON UserAccountsView TO NormalUser
+
+-- tables
+GRANT SELECT ON BankingPackets TO NormalUser
+GRANT SELECT ON AccountTypes TO NormalUser
+GRANT SELECT ON ComisionStatus TO NormalUser
+GRANT SELECT ON TypesTransaction TO NormalUser
+GO
+
+CREATE ROLE BankAdmin
+GRANT CONTROL ON Usernames TO BankAdmin
+GRANT CONTROL ON Individuals TO BankAdmin
+GO
+
+--- Stored Procedures ---------------------------------------------------------------------------------
+
+CREATE PROCEDURE AddNormalUser(
+	@IDcustomer		int
+	,@Username		nvarchar(101)
+	,@Password		nvarchar(100)
+)
+AS
+BEGIN
+	BEGIN TRY
+		BEGIN TRANSACTION AddingNormalUser
+	
+			INSERT INTO Usernames(UserType, Username)
+			VALUES(1, @Username)
+			
+			INSERT INTO NormalUsers(ID, CustomerID)
+			VALUES (IDENT_CURRENT('Usernames'), @IDcustomer)
+
+			IF EXISTS (	SELECT * 
+						FROM master.dbo.syslogins
+						WHERE name = @Username
+						)
+			BEGIN
+				EXEC('DROP LOGIN ' + @Username)
+			END
+
+			EXEC(	'CREATE LOGIN ' + @Username + 
+					' WITH PASSWORD = ''' 
+						+ @Password + ''' '
+			)
+
+			EXEC(	'CREATE USER ' + @Username +
+					' FOR LOGIN ' + @Username 
+			)
+
+			EXEC(	'ALTER ROLE NormalUser
+					ADD MEMBER ' + @Username
+			)
+		COMMIT TRANSACTION AddingNormalUser
+	END TRY
+	
+	BEGIN CATCH
+		ROLLBACK TRANSACTION AddingNormalUser
+		PRINT 'AddNormalUser error'
+		SELECT 
+        ERROR_NUMBER() AS ErrorNumber,
+        ERROR_MESSAGE() AS ErrorMessage;
+	END CATCH
+
+END
+GO
+
+CREATE PROCEDURE AddBankAdmin(
+	@IDemployee		int
+	,@Username		nvarchar(101)
+	,@Password		nvarchar(100)
+)
+AS
+BEGIN
+	BEGIN TRY
+		BEGIN TRANSACTION AddingBankAdmin
+			INSERT INTO Usernames(UserType, Username)
+			VALUES(2, @Username)
+			
+			INSERT INTO BankAdmins(ID, EmployeeID)
+			VALUES (IDENT_CURRENT('Usernames'), @IDemployee)
+
+			IF EXISTS (	SELECT * 
+						FROM master.dbo.syslogins
+						WHERE name = @Username
+						)
+			BEGIN
+				EXEC('DROP LOGIN ' + @Username)
+			END
+
+			EXEC(	'CREATE LOGIN ' + @Username + 
+					' WITH PASSWORD = ''' 
+						+ @Password + ''' '
+			)
+
+			EXEC(	'CREATE USER ' + @Username +
+					' FOR LOGIN ' + @Username 
+			)
+
+			EXEC(	'ALTER ROLE BankAdmin
+					ADD MEMBER ' + @Username
+			)
+		COMMIT TRANSACTION AddingBankAdmin
+	END TRY
+	
+	BEGIN CATCH
+		ROLLBACK TRANSACTION AddingBankAdmin
+		PRINT 'AddBankAdmin error'
+		SELECT 
+        ERROR_NUMBER() AS ErrorNumber,
+        ERROR_MESSAGE() AS ErrorMessage;
+	END CATCH
+
+END
+GO
+
+-- Inserting values ------------------------------------------------------------------
+INSERT INTO CustomerTypes (ID, CustomerTypeName)
+VALUES (1, 'Individual'), (2, 'Company')
+
+INSERT INTO UserTypes (ID, UserType)
+VALUES (1, 'NormalUser'), (2, 'BankAdmin')
+
+-- Individual Normal User Example
+INSERT INTO Individuals (FirstName, LastName, Email, CNP, Birthday)
+VALUES ('Sergiu', 'Scriban', 'sergiuscriban@mail.com', '1234567890123', '1996-05-31')
+INSERT INTO Customers (CustomerType)
+VALUES (1)
+DECLARE @CurentIDCustomers int = IDENT_CURRENT('Customers') 
+INSERT INTO IndividualCustomers (IndividualID, CustomerID)
+VALUES (IDENT_CURRENT('Individuals'), @CurentIDCustomers)
+EXEC AddNormalUser @IDCustomer = @CurentIDCustomers, @Username = 'sscriban', @Password = 'sscriban' 
+--INSERT INTO Individuals (FirstName, LastName, Email, CNP, Birthday)
+--VALUES ('Stefan-Alexandru', 'Mudrag', 'stefanmudrag@mail.com', '1234567890125', '1996-05-31')
+
+-- Company Normal User Example
+INSERT INTO Individuals (FirstName, LastName, Email, CNP, Birthday)
+VALUES ('Adrian', 'Andriu', 'adrianandriu@mail.com', '1234567890126', '1996-05-31')
+INSERT INTO Customers (CustomerType)
+VALUES (2)
+SET @CurentIDCustomers = IDENT_CURRENT('Customers')
+INSERT INTO Companies(CustomerID, IndividualID, CIF, Name, Address)
+VALUES (@CurentIDCustomers, IDENT_CURRENT('Individuals'), 12345, 'Personal Development SRL', 'Bucuresti, Romania')
+EXEC AddNormalUser @IDCustomer = @CurentIDCustomers, @Username = 'personalDev', @Password = 'personalDev' 
+
+-- Individual Bank Admin Example
+INSERT INTO Individuals (FirstName, LastName, Email, CNP, Birthday)
+VALUES ('George-Andrei', 'Dima', 'andreidima@mail.com', '1234567890124', '1996-05-31')
+INSERT INTO Employees (IndividualID)
+VALUES (IDENT_CURRENT('Individuals'))
+DECLARE @CurentIDEmpl int = IDENT_CURRENT('Employees')
+EXEC AddBankAdmin @IDemployee = @CurentIDEmpl, @Username = 'adima', @Password = 'adima'
+
+SELECT * FROM Individuals
