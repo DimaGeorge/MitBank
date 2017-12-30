@@ -1,7 +1,7 @@
 # MitBank
 ##### An internet banking  C# client for a RELATIONAL database
 ### 1. Baza de date
-![Diagrama](./Diagrama.png)
+![Diagrama](./Database.png)
 ### 2. Aplicatia (Clientul)
 Aplicatia este gandita pe 2 layere, astfel:
 1. Layerul **User Interface**, cu clasele:
