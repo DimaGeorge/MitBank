@@ -31,6 +31,7 @@
             this.components = new System.ComponentModel.Container();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Form1));
             this.panel1 = new System.Windows.Forms.Panel();
+            this.label7 = new System.Windows.Forms.Label();
             this.label3 = new System.Windows.Forms.Label();
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
             this.registrationPanel = new System.Windows.Forms.Panel();
@@ -58,7 +59,6 @@
             this.passwordLoginTxtbox = new Bunifu.Framework.UI.BunifuMaterialTextbox();
             this.pictureBox2 = new System.Windows.Forms.PictureBox();
             this.usernameLoginTxtbox = new Bunifu.Framework.UI.BunifuMaterialTextbox();
-            this.label7 = new System.Windows.Forms.Label();
             this.panel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.registrationPanel.SuspendLayout();
@@ -75,19 +75,33 @@
             this.panel1.Controls.Add(this.label3);
             this.panel1.Dock = System.Windows.Forms.DockStyle.Top;
             this.panel1.Location = new System.Drawing.Point(0, 0);
-            this.panel1.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.panel1.Margin = new System.Windows.Forms.Padding(2);
             this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(757, 39);
+            this.panel1.Size = new System.Drawing.Size(568, 32);
             this.panel1.TabIndex = 0;
+            // 
+            // label7
+            // 
+            this.label7.AutoSize = true;
+            this.label7.Font = new System.Drawing.Font("Elephant", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label7.ForeColor = System.Drawing.Color.White;
+            this.label7.Location = new System.Drawing.Point(518, 7);
+            this.label7.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            this.label7.Name = "label7";
+            this.label7.Size = new System.Drawing.Size(18, 21);
+            this.label7.TabIndex = 13;
+            this.label7.Text = "_";
+            this.label7.Click += new System.EventHandler(this.label7_Click);
             // 
             // label3
             // 
             this.label3.AutoSize = true;
             this.label3.Font = new System.Drawing.Font("Elephant", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label3.ForeColor = System.Drawing.Color.White;
-            this.label3.Location = new System.Drawing.Point(719, 9);
+            this.label3.Location = new System.Drawing.Point(539, 7);
+            this.label3.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(27, 26);
+            this.label3.Size = new System.Drawing.Size(22, 21);
             this.label3.TabIndex = 10;
             this.label3.Text = "X";
             this.label3.Click += new System.EventHandler(this.label3_Click);
@@ -95,13 +109,14 @@
             // pictureBox1
             // 
             this.pictureBox1.Image = ((System.Drawing.Image)(resources.GetObject("pictureBox1.Image")));
-            this.pictureBox1.Location = new System.Drawing.Point(176, 2);
-            this.pictureBox1.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.pictureBox1.Location = new System.Drawing.Point(132, 2);
+            this.pictureBox1.Margin = new System.Windows.Forms.Padding(2);
             this.pictureBox1.Name = "pictureBox1";
-            this.pictureBox1.Size = new System.Drawing.Size(168, 148);
+            this.pictureBox1.Size = new System.Drawing.Size(126, 120);
             this.pictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
             this.pictureBox1.TabIndex = 1;
             this.pictureBox1.TabStop = false;
+            this.pictureBox1.Click += new System.EventHandler(this.pictureBox1_Click);
             // 
             // registrationPanel
             // 
@@ -120,10 +135,10 @@
             this.registrationPanel.Controls.Add(this.label4);
             this.registrationPanel.Controls.Add(this.acceptTermsCheckBox);
             this.registrationPanel.ForeColor = System.Drawing.Color.White;
-            this.registrationPanel.Location = new System.Drawing.Point(53, 50);
-            this.registrationPanel.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.registrationPanel.Location = new System.Drawing.Point(40, 41);
+            this.registrationPanel.Margin = new System.Windows.Forms.Padding(2);
             this.registrationPanel.Name = "registrationPanel";
-            this.registrationPanel.Size = new System.Drawing.Size(704, 729);
+            this.registrationPanel.Size = new System.Drawing.Size(528, 592);
             this.registrationPanel.TabIndex = 10;
             this.registrationPanel.Paint += new System.Windows.Forms.PaintEventHandler(this.panel2_Paint);
             // 
@@ -139,10 +154,10 @@
             this.birtdateTxt.LineIdleColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(125)))), ((int)(((byte)(0)))));
             this.birtdateTxt.LineMouseHoverColor = System.Drawing.Color.FromArgb(((int)(((byte)(205)))), ((int)(((byte)(81)))), ((int)(((byte)(0)))));
             this.birtdateTxt.LineThickness = 3;
-            this.birtdateTxt.Location = new System.Drawing.Point(413, 332);
-            this.birtdateTxt.Margin = new System.Windows.Forms.Padding(5, 5, 5, 5);
+            this.birtdateTxt.Location = new System.Drawing.Point(310, 270);
+            this.birtdateTxt.Margin = new System.Windows.Forms.Padding(4);
             this.birtdateTxt.Name = "birtdateTxt";
-            this.birtdateTxt.Size = new System.Drawing.Size(255, 33);
+            this.birtdateTxt.Size = new System.Drawing.Size(191, 27);
             this.birtdateTxt.TabIndex = 14;
             this.birtdateTxt.TextAlign = System.Windows.Forms.HorizontalAlignment.Left;
             // 
@@ -158,10 +173,10 @@
             this.adressTxtbox.LineIdleColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(125)))), ((int)(((byte)(0)))));
             this.adressTxtbox.LineMouseHoverColor = System.Drawing.Color.FromArgb(((int)(((byte)(205)))), ((int)(((byte)(81)))), ((int)(((byte)(0)))));
             this.adressTxtbox.LineThickness = 3;
-            this.adressTxtbox.Location = new System.Drawing.Point(4, 410);
-            this.adressTxtbox.Margin = new System.Windows.Forms.Padding(5, 5, 5, 5);
+            this.adressTxtbox.Location = new System.Drawing.Point(3, 333);
+            this.adressTxtbox.Margin = new System.Windows.Forms.Padding(4);
             this.adressTxtbox.Name = "adressTxtbox";
-            this.adressTxtbox.Size = new System.Drawing.Size(664, 33);
+            this.adressTxtbox.Size = new System.Drawing.Size(498, 27);
             this.adressTxtbox.TabIndex = 6;
             this.adressTxtbox.TextAlign = System.Windows.Forms.HorizontalAlignment.Left;
             // 
@@ -177,10 +192,10 @@
             this.numberphoneTxtBox.LineIdleColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(125)))), ((int)(((byte)(0)))));
             this.numberphoneTxtBox.LineMouseHoverColor = System.Drawing.Color.FromArgb(((int)(((byte)(205)))), ((int)(((byte)(81)))), ((int)(((byte)(0)))));
             this.numberphoneTxtBox.LineThickness = 3;
-            this.numberphoneTxtBox.Location = new System.Drawing.Point(4, 332);
-            this.numberphoneTxtBox.Margin = new System.Windows.Forms.Padding(5, 5, 5, 5);
+            this.numberphoneTxtBox.Location = new System.Drawing.Point(3, 270);
+            this.numberphoneTxtBox.Margin = new System.Windows.Forms.Padding(4);
             this.numberphoneTxtBox.Name = "numberphoneTxtBox";
-            this.numberphoneTxtBox.Size = new System.Drawing.Size(255, 33);
+            this.numberphoneTxtBox.Size = new System.Drawing.Size(191, 27);
             this.numberphoneTxtBox.TabIndex = 5;
             this.numberphoneTxtBox.TextAlign = System.Windows.Forms.HorizontalAlignment.Left;
             // 
@@ -196,10 +211,10 @@
             this.firstnameTxtbox.LineIdleColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(125)))), ((int)(((byte)(0)))));
             this.firstnameTxtbox.LineMouseHoverColor = System.Drawing.Color.FromArgb(((int)(((byte)(205)))), ((int)(((byte)(81)))), ((int)(((byte)(0)))));
             this.firstnameTxtbox.LineThickness = 3;
-            this.firstnameTxtbox.Location = new System.Drawing.Point(4, 92);
-            this.firstnameTxtbox.Margin = new System.Windows.Forms.Padding(5, 5, 5, 5);
+            this.firstnameTxtbox.Location = new System.Drawing.Point(3, 75);
+            this.firstnameTxtbox.Margin = new System.Windows.Forms.Padding(4);
             this.firstnameTxtbox.Name = "firstnameTxtbox";
-            this.firstnameTxtbox.Size = new System.Drawing.Size(255, 33);
+            this.firstnameTxtbox.Size = new System.Drawing.Size(191, 27);
             this.firstnameTxtbox.TabIndex = 0;
             this.firstnameTxtbox.TextAlign = System.Windows.Forms.HorizontalAlignment.Left;
             // 
@@ -215,10 +230,10 @@
             this.emailTxtbox.LineIdleColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(125)))), ((int)(((byte)(0)))));
             this.emailTxtbox.LineMouseHoverColor = System.Drawing.Color.FromArgb(((int)(((byte)(205)))), ((int)(((byte)(81)))), ((int)(((byte)(0)))));
             this.emailTxtbox.LineThickness = 3;
-            this.emailTxtbox.Location = new System.Drawing.Point(4, 260);
-            this.emailTxtbox.Margin = new System.Windows.Forms.Padding(5, 5, 5, 5);
+            this.emailTxtbox.Location = new System.Drawing.Point(3, 211);
+            this.emailTxtbox.Margin = new System.Windows.Forms.Padding(4);
             this.emailTxtbox.Name = "emailTxtbox";
-            this.emailTxtbox.Size = new System.Drawing.Size(664, 33);
+            this.emailTxtbox.Size = new System.Drawing.Size(498, 27);
             this.emailTxtbox.TabIndex = 4;
             this.emailTxtbox.TextAlign = System.Windows.Forms.HorizontalAlignment.Left;
             // 
@@ -234,10 +249,10 @@
             this.retypepasswordTxtbox.LineIdleColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(125)))), ((int)(((byte)(0)))));
             this.retypepasswordTxtbox.LineMouseHoverColor = System.Drawing.Color.FromArgb(((int)(((byte)(205)))), ((int)(((byte)(81)))), ((int)(((byte)(0)))));
             this.retypepasswordTxtbox.LineThickness = 3;
-            this.retypepasswordTxtbox.Location = new System.Drawing.Point(4, 204);
-            this.retypepasswordTxtbox.Margin = new System.Windows.Forms.Padding(5, 5, 5, 5);
+            this.retypepasswordTxtbox.Location = new System.Drawing.Point(3, 166);
+            this.retypepasswordTxtbox.Margin = new System.Windows.Forms.Padding(4);
             this.retypepasswordTxtbox.Name = "retypepasswordTxtbox";
-            this.retypepasswordTxtbox.Size = new System.Drawing.Size(664, 33);
+            this.retypepasswordTxtbox.Size = new System.Drawing.Size(498, 27);
             this.retypepasswordTxtbox.TabIndex = 3;
             this.retypepasswordTxtbox.Text = "Re-type password";
             this.retypepasswordTxtbox.TextAlign = System.Windows.Forms.HorizontalAlignment.Left;
@@ -254,10 +269,10 @@
             this.passwordTxtbox.LineIdleColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(125)))), ((int)(((byte)(0)))));
             this.passwordTxtbox.LineMouseHoverColor = System.Drawing.Color.FromArgb(((int)(((byte)(205)))), ((int)(((byte)(81)))), ((int)(((byte)(0)))));
             this.passwordTxtbox.LineThickness = 3;
-            this.passwordTxtbox.Location = new System.Drawing.Point(4, 148);
-            this.passwordTxtbox.Margin = new System.Windows.Forms.Padding(5, 5, 5, 5);
+            this.passwordTxtbox.Location = new System.Drawing.Point(3, 120);
+            this.passwordTxtbox.Margin = new System.Windows.Forms.Padding(4);
             this.passwordTxtbox.Name = "passwordTxtbox";
-            this.passwordTxtbox.Size = new System.Drawing.Size(664, 33);
+            this.passwordTxtbox.Size = new System.Drawing.Size(498, 27);
             this.passwordTxtbox.TabIndex = 2;
             this.passwordTxtbox.Text = "Password";
             this.passwordTxtbox.TextAlign = System.Windows.Forms.HorizontalAlignment.Left;
@@ -274,10 +289,10 @@
             this.lastnameTxtbox.LineIdleColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(125)))), ((int)(((byte)(0)))));
             this.lastnameTxtbox.LineMouseHoverColor = System.Drawing.Color.FromArgb(((int)(((byte)(205)))), ((int)(((byte)(81)))), ((int)(((byte)(0)))));
             this.lastnameTxtbox.LineThickness = 3;
-            this.lastnameTxtbox.Location = new System.Drawing.Point(413, 92);
-            this.lastnameTxtbox.Margin = new System.Windows.Forms.Padding(5, 5, 5, 5);
+            this.lastnameTxtbox.Location = new System.Drawing.Point(310, 75);
+            this.lastnameTxtbox.Margin = new System.Windows.Forms.Padding(4);
             this.lastnameTxtbox.Name = "lastnameTxtbox";
-            this.lastnameTxtbox.Size = new System.Drawing.Size(255, 33);
+            this.lastnameTxtbox.Size = new System.Drawing.Size(191, 27);
             this.lastnameTxtbox.TabIndex = 1;
             this.lastnameTxtbox.TextAlign = System.Windows.Forms.HorizontalAlignment.Left;
             // 
@@ -286,9 +301,10 @@
             this.label6.AutoSize = true;
             this.label6.Font = new System.Drawing.Font("Elephant", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label6.ForeColor = System.Drawing.Color.White;
-            this.label6.Location = new System.Drawing.Point(183, 677);
+            this.label6.Location = new System.Drawing.Point(137, 550);
+            this.label6.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.label6.Name = "label6";
-            this.label6.Size = new System.Drawing.Size(74, 26);
+            this.label6.Size = new System.Drawing.Size(60, 21);
             this.label6.TabIndex = 13;
             this.label6.Text = "LogIn";
             this.label6.Click += new System.EventHandler(this.label6_Click);
@@ -311,10 +327,10 @@
             this.registerButon.IdleFillColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(125)))), ((int)(((byte)(0)))));
             this.registerButon.IdleForecolor = System.Drawing.Color.White;
             this.registerButon.IdleLineColor = System.Drawing.Color.White;
-            this.registerButon.Location = new System.Drawing.Point(123, 606);
-            this.registerButon.Margin = new System.Windows.Forms.Padding(5, 5, 5, 5);
+            this.registerButon.Location = new System.Drawing.Point(92, 492);
+            this.registerButon.Margin = new System.Windows.Forms.Padding(4);
             this.registerButon.Name = "registerButon";
-            this.registerButon.Size = new System.Drawing.Size(221, 41);
+            this.registerButon.Size = new System.Drawing.Size(166, 33);
             this.registerButon.TabIndex = 12;
             this.registerButon.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
@@ -323,18 +339,19 @@
             this.label5.AutoSize = true;
             this.label5.Font = new System.Drawing.Font("Elephant", 19.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label5.ForeColor = System.Drawing.Color.White;
-            this.label5.Location = new System.Drawing.Point(109, 23);
+            this.label5.Location = new System.Drawing.Point(82, 19);
+            this.label5.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.label5.Name = "label5";
-            this.label5.Size = new System.Drawing.Size(248, 42);
+            this.label5.Size = new System.Drawing.Size(204, 35);
             this.label5.TabIndex = 11;
             this.label5.Text = "MIT Banking";
             // 
             // pictureBox4
             // 
-            this.pictureBox4.Location = new System.Drawing.Point(3, 0);
-            this.pictureBox4.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.pictureBox4.Location = new System.Drawing.Point(2, 0);
+            this.pictureBox4.Margin = new System.Windows.Forms.Padding(2);
             this.pictureBox4.Name = "pictureBox4";
-            this.pictureBox4.Size = new System.Drawing.Size(69, 65);
+            this.pictureBox4.Size = new System.Drawing.Size(52, 53);
             this.pictureBox4.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
             this.pictureBox4.TabIndex = 10;
             this.pictureBox4.TabStop = false;
@@ -344,9 +361,10 @@
             this.label4.AutoSize = true;
             this.label4.Font = new System.Drawing.Font("Century Gothic", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label4.ForeColor = System.Drawing.Color.White;
-            this.label4.Location = new System.Drawing.Point(95, 564);
+            this.label4.Location = new System.Drawing.Point(71, 458);
+            this.label4.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(306, 21);
+            this.label4.Size = new System.Drawing.Size(248, 19);
             this.label4.TabIndex = 9;
             this.label4.Text = "I Accept the Terms and Conditions ";
             // 
@@ -357,8 +375,8 @@
             this.acceptTermsCheckBox.Checked = true;
             this.acceptTermsCheckBox.CheckedOnColor = System.Drawing.Color.FromArgb(((int)(((byte)(51)))), ((int)(((byte)(205)))), ((int)(((byte)(117)))));
             this.acceptTermsCheckBox.ForeColor = System.Drawing.Color.White;
-            this.acceptTermsCheckBox.Location = new System.Drawing.Point(59, 567);
-            this.acceptTermsCheckBox.Margin = new System.Windows.Forms.Padding(5, 5, 5, 5);
+            this.acceptTermsCheckBox.Location = new System.Drawing.Point(44, 461);
+            this.acceptTermsCheckBox.Margin = new System.Windows.Forms.Padding(4);
             this.acceptTermsCheckBox.Name = "acceptTermsCheckBox";
             this.acceptTermsCheckBox.Size = new System.Drawing.Size(20, 20);
             this.acceptTermsCheckBox.TabIndex = 8;
@@ -381,10 +399,10 @@
             this.logInPanel.Controls.Add(this.pictureBox2);
             this.logInPanel.Controls.Add(this.usernameLoginTxtbox);
             this.logInPanel.Controls.Add(this.pictureBox1);
-            this.logInPanel.Location = new System.Drawing.Point(37, 50);
-            this.logInPanel.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.logInPanel.Location = new System.Drawing.Point(28, 41);
+            this.logInPanel.Margin = new System.Windows.Forms.Padding(2);
             this.logInPanel.Name = "logInPanel";
-            this.logInPanel.Size = new System.Drawing.Size(515, 750);
+            this.logInPanel.Size = new System.Drawing.Size(386, 609);
             this.logInPanel.TabIndex = 11;
             // 
             // codeTxtbox
@@ -397,10 +415,10 @@
             this.codeTxtbox.Font = new System.Drawing.Font("Century Gothic", 9.75F);
             this.codeTxtbox.ForeColor = System.Drawing.Color.White;
             this.codeTxtbox.isPassword = false;
-            this.codeTxtbox.Location = new System.Drawing.Point(153, 420);
-            this.codeTxtbox.Margin = new System.Windows.Forms.Padding(5, 5, 5, 5);
+            this.codeTxtbox.Location = new System.Drawing.Point(115, 341);
+            this.codeTxtbox.Margin = new System.Windows.Forms.Padding(4);
             this.codeTxtbox.Name = "codeTxtbox";
-            this.codeTxtbox.Size = new System.Drawing.Size(208, 38);
+            this.codeTxtbox.Size = new System.Drawing.Size(156, 31);
             this.codeTxtbox.TabIndex = 17;
             this.codeTxtbox.Text = "Code From SMS";
             this.codeTxtbox.TextAlign = System.Windows.Forms.HorizontalAlignment.Left;
@@ -410,9 +428,10 @@
             this.label2.AutoSize = true;
             this.label2.Font = new System.Drawing.Font("Elephant", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label2.ForeColor = System.Drawing.Color.White;
-            this.label2.Location = new System.Drawing.Point(208, 638);
+            this.label2.Location = new System.Drawing.Point(156, 518);
+            this.label2.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(86, 26);
+            this.label2.Size = new System.Drawing.Size(69, 21);
             this.label2.TabIndex = 16;
             this.label2.Text = "SignUp";
             this.label2.Click += new System.EventHandler(this.label2_Click_1);
@@ -422,9 +441,10 @@
             this.label1.AutoSize = true;
             this.label1.Font = new System.Drawing.Font("Century Gothic", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label1.ForeColor = System.Drawing.Color.White;
-            this.label1.Location = new System.Drawing.Point(159, 369);
+            this.label1.Location = new System.Drawing.Point(119, 300);
+            this.label1.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(185, 23);
+            this.label1.Size = new System.Drawing.Size(148, 21);
             this.label1.TabIndex = 15;
             this.label1.Text = "Forget password?";
             // 
@@ -450,14 +470,14 @@
             this.loginButon.IconVisible = true;
             this.loginButon.IconZoom = 90D;
             this.loginButon.IsTab = false;
-            this.loginButon.Location = new System.Drawing.Point(53, 574);
-            this.loginButon.Margin = new System.Windows.Forms.Padding(8, 6, 8, 6);
+            this.loginButon.Location = new System.Drawing.Point(40, 466);
+            this.loginButon.Margin = new System.Windows.Forms.Padding(6, 5, 6, 5);
             this.loginButon.Name = "loginButon";
             this.loginButon.Normalcolor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(125)))), ((int)(((byte)(0)))));
             this.loginButon.OnHovercolor = System.Drawing.Color.FromArgb(((int)(((byte)(205)))), ((int)(((byte)(81)))), ((int)(((byte)(0)))));
             this.loginButon.OnHoverTextColor = System.Drawing.Color.White;
             this.loginButon.selected = false;
-            this.loginButon.Size = new System.Drawing.Size(399, 36);
+            this.loginButon.Size = new System.Drawing.Size(299, 29);
             this.loginButon.TabIndex = 14;
             this.loginButon.Text = "Login";
             this.loginButon.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
@@ -467,10 +487,10 @@
             // 
             // pictureBox3
             // 
-            this.pictureBox3.Location = new System.Drawing.Point(53, 320);
-            this.pictureBox3.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.pictureBox3.Location = new System.Drawing.Point(40, 260);
+            this.pictureBox3.Margin = new System.Windows.Forms.Padding(2);
             this.pictureBox3.Name = "pictureBox3";
-            this.pictureBox3.Size = new System.Drawing.Size(37, 33);
+            this.pictureBox3.Size = new System.Drawing.Size(28, 27);
             this.pictureBox3.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
             this.pictureBox3.TabIndex = 13;
             this.pictureBox3.TabStop = false;
@@ -487,20 +507,20 @@
             this.passwordLoginTxtbox.LineIdleColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(125)))), ((int)(((byte)(0)))));
             this.passwordLoginTxtbox.LineMouseHoverColor = System.Drawing.Color.FromArgb(((int)(((byte)(205)))), ((int)(((byte)(81)))), ((int)(((byte)(0)))));
             this.passwordLoginTxtbox.LineThickness = 3;
-            this.passwordLoginTxtbox.Location = new System.Drawing.Point(88, 320);
-            this.passwordLoginTxtbox.Margin = new System.Windows.Forms.Padding(5, 5, 5, 5);
+            this.passwordLoginTxtbox.Location = new System.Drawing.Point(66, 260);
+            this.passwordLoginTxtbox.Margin = new System.Windows.Forms.Padding(4);
             this.passwordLoginTxtbox.Name = "passwordLoginTxtbox";
-            this.passwordLoginTxtbox.Size = new System.Drawing.Size(364, 33);
+            this.passwordLoginTxtbox.Size = new System.Drawing.Size(273, 27);
             this.passwordLoginTxtbox.TabIndex = 12;
             this.passwordLoginTxtbox.Text = "sscriban";
             this.passwordLoginTxtbox.TextAlign = System.Windows.Forms.HorizontalAlignment.Left;
             // 
             // pictureBox2
             // 
-            this.pictureBox2.Location = new System.Drawing.Point(53, 210);
-            this.pictureBox2.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.pictureBox2.Location = new System.Drawing.Point(40, 171);
+            this.pictureBox2.Margin = new System.Windows.Forms.Padding(2);
             this.pictureBox2.Name = "pictureBox2";
-            this.pictureBox2.Size = new System.Drawing.Size(37, 33);
+            this.pictureBox2.Size = new System.Drawing.Size(28, 27);
             this.pictureBox2.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
             this.pictureBox2.TabIndex = 11;
             this.pictureBox2.TabStop = false;
@@ -517,39 +537,27 @@
             this.usernameLoginTxtbox.LineIdleColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(125)))), ((int)(((byte)(0)))));
             this.usernameLoginTxtbox.LineMouseHoverColor = System.Drawing.Color.FromArgb(((int)(((byte)(205)))), ((int)(((byte)(81)))), ((int)(((byte)(0)))));
             this.usernameLoginTxtbox.LineThickness = 3;
-            this.usernameLoginTxtbox.Location = new System.Drawing.Point(88, 210);
-            this.usernameLoginTxtbox.Margin = new System.Windows.Forms.Padding(5, 5, 5, 5);
+            this.usernameLoginTxtbox.Location = new System.Drawing.Point(66, 171);
+            this.usernameLoginTxtbox.Margin = new System.Windows.Forms.Padding(4);
             this.usernameLoginTxtbox.Name = "usernameLoginTxtbox";
-            this.usernameLoginTxtbox.Size = new System.Drawing.Size(364, 33);
+            this.usernameLoginTxtbox.Size = new System.Drawing.Size(273, 27);
             this.usernameLoginTxtbox.TabIndex = 10;
             this.usernameLoginTxtbox.Text = "sscriban";
             this.usernameLoginTxtbox.TextAlign = System.Windows.Forms.HorizontalAlignment.Left;
             // 
-            // label7
-            // 
-            this.label7.AutoSize = true;
-            this.label7.Font = new System.Drawing.Font("Elephant", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label7.ForeColor = System.Drawing.Color.White;
-            this.label7.Location = new System.Drawing.Point(691, 9);
-            this.label7.Name = "label7";
-            this.label7.Size = new System.Drawing.Size(22, 26);
-            this.label7.TabIndex = 13;
-            this.label7.Text = "_";
-            this.label7.Click += new System.EventHandler(this.label7_Click);
-            // 
             // Form1
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.AutoSize = true;
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(30)))), ((int)(((byte)(28)))), ((int)(((byte)(38)))));
-            this.ClientSize = new System.Drawing.Size(757, 786);
+            this.ClientSize = new System.Drawing.Size(568, 639);
             this.Controls.Add(this.panel1);
             this.Controls.Add(this.logInPanel);
             this.Controls.Add(this.registrationPanel);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
             this.KeyPreview = true;
-            this.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.Margin = new System.Windows.Forms.Padding(2);
             this.Name = "Form1";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Form1";
