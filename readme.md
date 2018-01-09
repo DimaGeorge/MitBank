@@ -15,6 +15,7 @@ Clasa *DataManagement* contine metode statice ce vor fi apelate din clasele de n
 User Interface. Aceste metode statice se vor conecta la SQL Server, vor executa
 operatiunile prevazute si vor intoarce spre User Interface un obiect de tip *Page*,
 ce urmeaza a fi afisat utilizatorului prin grija interfetei grafice.
-
+### 3. Tehnologia ADO.NET utilizata: Entitiy Framewok
+De invatat!
 ###### Referinte:
 [Gid github](http://rogerdudler.github.io/git-guide/)
