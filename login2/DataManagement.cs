@@ -9,26 +9,24 @@ using System.Windows.Forms;
 
 namespace login2
 {
+
     public static class DataManagement
     {
-        static string csName = "login2.Properties.Settings.MitBankDBConnectionString";
-        private static bool tryConnection()
+        static string csName = "MitBankDBEntities";
+        
+        private static bool tryConnection(string cs)
         {
-            try
+            using (SqlConnection conn = new SqlConnection(cs))
             {
-                using (var puppetConnection = new SqlConnection(ConfigurationManager.ConnectionStrings[csName].ConnectionString))
+                try
                 {
-                    var querry = "SELECT 1";
-                    var command = new SqlCommand(querry, puppetConnection);
-                    puppetConnection.Open();
-                    command.ExecuteScalar();
+                    conn.Open();
+                }
+                catch
+                {
+                    return false;
                 }
             }
-            catch
-            {
-                return false;
-            }
-
             return true;
         }
 
@@ -36,13 +34,14 @@ namespace login2
         {
             var config = ConfigurationManager.OpenExeConfiguration(ConfigurationUserLevel.None);
             var connectionStringsSection = (ConnectionStringsSection)config.GetSection("connectionStrings");
-            string newCs = "Persist Security Info=False;User ID=" + username + ";Password=" + password + ";Initial Catalog=MitBankDB;Server=.";
-            connectionStringsSection.ConnectionStrings[csName].ConnectionString = newCs;
+            string newCs = "data source=.;initial catalog=MitBankDB;User ID=" + username + ";Password=" + password;
+            string completeCs = "metadata=res://*/MitBankModel.csdl|res://*/MitBankModel.ssdl|res://*/MitBankModel.msl;provider=System.Data.SqlClient;provider connection string=\"data source=.;initial catalog=MitBankDB;integrated security=false;MultipleActiveResultSets=true;User ID=" + username + ";Password=" + password + ";App=EntityFramework\"";
+            connectionStringsSection.ConnectionStrings[csName].ConnectionString = completeCs;
             config.Save();
             ConfigurationManager.RefreshSection("connectionStrings");
 
-            // trying connection to SQL Server
-            return tryConnection();
+            //trying connection to SQL Server 
+            return tryConnection(newCs);
         }
 
 
@@ -50,28 +49,25 @@ namespace login2
         public static Page getDashboardInfo()
         {
 
-            var context = new MitBankDBDataContext();
-            var userObj = (from user in context.IndividualsViews
-                           select user).FirstOrDefault();
-
+            using (var context = new MitBankDBEntities())
+            {
+                var rez = from c in context.IndividualsViews
+                          select c;
+                foreach (var c in rez)
+                {
+                    MessageBox.Show(c.FirstName);
+                }
+            }
             Page ret = new Page();
-
-            ret.Data = userObj.ID + "\n"
-                + userObj.FirstName + "\n"
-                + userObj.LastName + "\n"
-                + userObj.CNP + "\n"
-                + userObj.Email + "\n";
+            ret.Data = "sorry";
             return ret;
         }
+
         public static Page getLastName()
         {
-            var context = new MitBankDBDataContext();
-            var userObj = (from user in context.IndividualsViews
-                           select user).FirstOrDefault();
 
             Page ret = new Page();
-            ret.Data = userObj.LastName;
-                
+            ret.Data = "sorry";    
             return ret;
         }
 

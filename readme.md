@@ -3,6 +3,9 @@
 Or just another application keeping trak of your **M**oney **i**n **t**he **Bank**.
 ### 1. Baza de date
 ![Diagrama](./Database.png)
+#### AccountTypes
+> Tablea ce contine tipurile de conturi: credit, debit, depozit.
+#### -- to be continued.
 ### 2. Aplicatia (Clientul)
 Aplicatia este gandita pe 2 layere, astfel:
 1. Layerul **User Interface**, cu clasele:
