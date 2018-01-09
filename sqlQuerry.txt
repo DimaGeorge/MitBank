@@ -153,50 +153,61 @@ GO
 
 -- Banking related tables
 CREATE TABLE AccountTypes(
-	ID				int
+	ID				int IDENTITY(1,1)
 	,TypeOfAccount	nchar(20)
 	,CONSTRAINT PK_AccountType
 		PRIMARY KEY CLUSTERED (ID)
 )
 GO
 
+CREATE TABLE TypeBankingPackets(
+	ID int IDENTITY(1,1) PRIMARY KEY,
+	NameTypePacket nchar(100)
+
+)
+GO
+
 CREATE TABLE BankingPackets(
-	ID				int
-	,TypePacket	nchar(30)
+	ID				int IDENTITY(1,1)
+	,IDTypePacket	int
 	,AccountType	int
 	,CONSTRAINT PK_BankingPackets
 		PRIMARY KEY CLUSTERED (ID)
 	,CONSTRAINT FK_BankingPackets_AccountType
-		FOREIGN KEY (AccountType) REFERENCES AccountTypes(ID)
+		FOREIGN KEY (AccountType) REFERENCES AccountTypes(ID),
+		CONSTRAINT FK_BankPackets_Nm FOREIGN KEY (IDTypePacket)
+		 REFERENCES TypeBankingPackets(ID)
 )
 GO
-
-CREATE TABLE ComisionStatus(
-	ID						int
-	,TypeTransaction		int
-	,TypePacket				int
-	,Comision				float
-	,CONSTRAINT PK_ComisionStatus
-		PRIMARY KEY CLUSTERED (ID)
-	,CONSTRAINT FK_ComisionStatus_BankingPackets
-		FOREIGN KEY (TypePacket) REFERENCES BankingPackets(ID)
-)	
-GO
-
 CREATE TABLE TypesTransaction(
-	ID					int
+	ID					int IDENTITY(1,1)
 	,TypeTransaction	nvarchar(50)
 	,CONSTRAINT PK_TypeTransactions
 		PRIMARY KEY CLUSTERED (ID)
 )
 GO
+CREATE TABLE ComisionStatus(
+	ID						int IDENTITY(1,1)
+	,IDTypeTransaction		int
+	,IDBankPacket				int
+	,Comision				float
+	,CONSTRAINT PK_ComisionStatus
+		PRIMARY KEY CLUSTERED (ID)
+	,CONSTRAINT FK_ComisionStatus_BankingPackets
+		FOREIGN KEY (IDBankPacket) REFERENCES BankingPackets(ID)
+	,CONSTRAINT FK_TypeTransaction_fromComisionToTrans
+		FOREIGN KEY (IDTypeTransaction) REFERENCES TypesTransaction(ID)
+)	
+GO
+
+
 
 CREATE TABLE UserAccounts(
-	ID					int					NOT NULL
+	ID					int		IDENTITY(1,1)			NOT NULL
 	,BankPacket			int
 	,AccountNumber		nchar(30)			NOT NULL
 	,ValabilityUntil	date				NOT NULL
-	,Currency			nvarchar(3)			NOT NULL
+	,Currency			nvarchar(10)			NOT NULL
 	,Sold				float				NOT NULL				
 	,AccountCustomerID	int
 	,CONSTRAINT PK_UserAccounts
@@ -209,7 +220,7 @@ CREATE TABLE UserAccounts(
 GO
 
 CREATE TABLE HistoryTransaction(
-	ID					int
+	ID					int IDENTITY(1,1)
 	,CustomerID			int
 	,UserAccountID		int
 	,TypeTransaction	int
@@ -486,7 +497,6 @@ INSERT INTO IndividualCustomers (IndividualID, CustomerID)
 VALUES ((SELECT TOP 1 ID FROM Individuals WHERE CNP = '1234567890126'), @CurentIDCustomers)
 EXEC AddNormalUser @IDCustomer = @CurentIDCustomers, @Username = 'mcandrei', @Password = 'mcandrei' 
 
-
 -- Individual Bank Admin Example
 INSERT INTO Individuals (FirstName, LastName, Email, CNP, Birthday)
 VALUES ('George-Andrei', 'Dima', 'andreidima@mail.com', '1234567890124', '1996-05-31')
@@ -510,6 +520,48 @@ INSERT INTO IndividualCustomers (IndividualID, CustomerID)
 VALUES (IDENT_CURRENT('Individuals'), @CurentIDCustomers)
 EXEC AddNormalUser @IDCustomer = @CurentIDCustomers, @Username = 'samudrag', @Password = 'samudrag' 
 
+--Insert informations abount account---
+use MitBankDB
+INSERT INTO AccountTypes(TypeOfAccount)
+VALUES('credit')
+INSERT INTO AccountTypes(TypeOfAccount)
+VALUES('debit')
+INSERT INTO AccountTypes(TypeOfAccount)
+VALUES('deposit')
+
+INSERT INTO TypeBankingPackets(NameTypePacket)
+VALUES('STUDENT PE+');
+INSERT INTO TypeBankingPackets(NameTypePacket)
+VALUES('GOLD PE+');
+INSERT INTO TypeBankingPackets(NameTypePacket)
+VALUES('PLATINUM PE+');
+INSERT INTO TypeBankingPackets(NameTypePacket)
+VALUES('SPRINT +');
+INSERT INTO TypeBankingPackets(NameTypePacket)
+VALUES('SENIOR +');
+INSERT INTO TypeBankingPackets(NameTypePacket)
+VALUES('CLASSIC PE');
+
+INSERT INTO BankingPackets(IDTypePacket,AccountType)
+VALUES(1,2)
+INSERT INTO BankingPackets(IDTypePacket,AccountType)
+VALUES(2,3)
+
+INSERT INTO TypesTransaction(TypeTransaction)
+VALUES('deposit')
+INSERT INTO TypesTransaction(TypeTransaction)
+VALUES('pay bill')
+INSERT INTO TypesTransaction(TypeTransaction)
+VALUES('withdraw')
+
+INSERT INTO ComisionStatus(IDTypeTransaction,IDBankPacket,Comision)
+VALUES(1,1,5.3)
+INSERT INTO ComisionStatus(IDTypeTransaction,IDBankPacket,Comision)
+VALUES(2,1,1.2)
+
+
+INSERT INTO UserAccounts(BankPacket,AccountNumber,ValabilityUntil,Currency,Sold,AccountCustomerId)
+VALUES (1,'RO93MITB0410120579132411','2019-1-1','RON',554.15,1)
+
 
 SELECT * FROM Usernames
-
