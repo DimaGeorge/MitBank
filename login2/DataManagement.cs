@@ -49,11 +49,13 @@ namespace login2
 
         public static Page getDashboardInfo()
         {
+
             var context = new MitBankDBDataContext();
             var userObj = (from user in context.IndividualsViews
                            select user).FirstOrDefault();
 
             Page ret = new Page();
+
             ret.Data = userObj.ID + "\n"
                 + userObj.FirstName + "\n"
                 + userObj.LastName + "\n"
@@ -61,6 +63,18 @@ namespace login2
                 + userObj.Email + "\n";
             return ret;
         }
+        public static Page getLastName()
+        {
+            var context = new MitBankDBDataContext();
+            var userObj = (from user in context.IndividualsViews
+                           select user).FirstOrDefault();
+
+            Page ret = new Page();
+            ret.Data = userObj.LastName;
+                
+            return ret;
+        }
+
 
     }
 }

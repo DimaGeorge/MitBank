@@ -457,18 +457,35 @@ DECLARE @CurentIDCustomers int = IDENT_CURRENT('Customers')
 INSERT INTO IndividualCustomers (IndividualID, CustomerID)
 VALUES (IDENT_CURRENT('Individuals'), @CurentIDCustomers)
 EXEC AddNormalUser @IDCustomer = @CurentIDCustomers, @Username = 'sscriban', @Password = 'sscriban' 
---INSERT INTO Individuals (FirstName, LastName, Email, CNP, Birthday)
---VALUES ('Stefan-Alexandru', 'Mudrag', 'stefanmudrag@mail.com', '1234567890125', '1996-05-31')
 
--- Company Normal User Example
+-- Company Normal User Example 1
 INSERT INTO Individuals (FirstName, LastName, Email, CNP, Birthday)
-VALUES ('Adrian', 'Andriu', 'adrianandriu@mail.com', '1234567890126', '1996-05-31')
+VALUES ('Adrian', 'Andriu', 'adrianandriu@mail.com', '1234567890127', '1996-05-31')
 INSERT INTO Customers (CustomerType)
 VALUES (2)
 SET @CurentIDCustomers = IDENT_CURRENT('Customers')
 INSERT INTO Companies(CustomerID, IndividualID, CIF, Name, Address)
 VALUES (@CurentIDCustomers, IDENT_CURRENT('Individuals'), 12345, 'Personal Development SRL', 'Bucuresti, Romania')
-EXEC AddNormalUser @IDCustomer = @CurentIDCustomers, @Username = 'personalDev', @Password = 'personalDev' 
+EXEC AddNormalUser @IDCustomer = @CurentIDCustomers, @Username = 'personalDev', @Password = 'personalDev'
+
+-- Company Normal User Example 1
+INSERT INTO Individuals (FirstName, LastName, Email, CNP, Birthday)
+VALUES ('Marius-Cristian', 'Andrei', 'mcandrei@mail.com', '1234567890126', '1996-05-31')
+INSERT INTO Customers (CustomerType)
+VALUES (2)
+SET @CurentIDCustomers = IDENT_CURRENT('Customers')
+INSERT INTO Companies(CustomerID, IndividualID, CIF, Name, Address) 
+VALUES (@CurentIDCustomers, IDENT_CURRENT('Individuals'), 12346, 'Compania a 3-a SA', 'Bucuresti, Romania')
+EXEC AddNormalUser @IDCustomer = @CurentIDCustomers, @Username = 'compania3', @Password = 'compania3' 
+
+-- IndividualCustomer and reprezentative for company
+INSERT INTO Customers (CustomerType)
+VALUES (1)
+SET @CurentIDCustomers = IDENT_CURRENT('Customers') 
+INSERT INTO IndividualCustomers (IndividualID, CustomerID)
+VALUES ((SELECT TOP 1 ID FROM Individuals WHERE CNP = '1234567890126'), @CurentIDCustomers)
+EXEC AddNormalUser @IDCustomer = @CurentIDCustomers, @Username = 'mcandrei', @Password = 'mcandrei' 
+
 
 -- Individual Bank Admin Example
 INSERT INTO Individuals (FirstName, LastName, Email, CNP, Birthday)
@@ -478,4 +495,21 @@ VALUES (IDENT_CURRENT('Individuals'))
 DECLARE @CurentIDEmpl int = IDENT_CURRENT('Employees')
 EXEC AddBankAdmin @IDemployee = @CurentIDEmpl, @Username = 'adima', @Password = 'adima'
 
-SELECT * FROM Individuals
+-- Individual Bank Admin Example 2 - also employee
+INSERT INTO Individuals (FirstName, LastName, Email, CNP, Birthday)
+VALUES ('Stefan-Alexandru', 'Mudrag', 'samudrag@mail.com', '1234567890128', '1996-05-31')
+INSERT INTO Employees (IndividualID)
+VALUES (IDENT_CURRENT('Individuals'))
+SET @CurentIDEmpl = IDENT_CURRENT('Employees')
+EXEC AddBankAdmin @IDemployee = @CurentIDEmpl, @Username = 'samud', @Password = 'samud'
+
+INSERT INTO Customers (CustomerType)
+VALUES (1)
+SET @CurentIDCustomers = IDENT_CURRENT('Customers') 
+INSERT INTO IndividualCustomers (IndividualID, CustomerID)
+VALUES (IDENT_CURRENT('Individuals'), @CurentIDCustomers)
+EXEC AddNormalUser @IDCustomer = @CurentIDCustomers, @Username = 'samudrag', @Password = 'samudrag' 
+
+
+SELECT * FROM Usernames
+

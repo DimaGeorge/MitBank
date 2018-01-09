@@ -31,6 +31,7 @@
             this.components = new System.ComponentModel.Container();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Form1));
             this.panel1 = new System.Windows.Forms.Panel();
+            this.label7 = new System.Windows.Forms.Label();
             this.label3 = new System.Windows.Forms.Label();
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
             this.registrationPanel = new System.Windows.Forms.Panel();
@@ -69,13 +70,28 @@
             // 
             // panel1
             // 
+            this.panel1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(30)))), ((int)(((byte)(32)))), ((int)(((byte)(32)))));
+            this.panel1.Controls.Add(this.label7);
             this.panel1.Controls.Add(this.label3);
             this.panel1.Dock = System.Windows.Forms.DockStyle.Top;
             this.panel1.Location = new System.Drawing.Point(0, 0);
-            this.panel1.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.panel1.Margin = new System.Windows.Forms.Padding(2);
             this.panel1.Name = "panel1";
             this.panel1.Size = new System.Drawing.Size(568, 32);
             this.panel1.TabIndex = 0;
+            // 
+            // label7
+            // 
+            this.label7.AutoSize = true;
+            this.label7.Font = new System.Drawing.Font("Elephant", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label7.ForeColor = System.Drawing.Color.White;
+            this.label7.Location = new System.Drawing.Point(518, 7);
+            this.label7.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            this.label7.Name = "label7";
+            this.label7.Size = new System.Drawing.Size(18, 21);
+            this.label7.TabIndex = 13;
+            this.label7.Text = "_";
+            this.label7.Click += new System.EventHandler(this.label7_Click);
             // 
             // label3
             // 
@@ -94,12 +110,13 @@
             // 
             this.pictureBox1.Image = ((System.Drawing.Image)(resources.GetObject("pictureBox1.Image")));
             this.pictureBox1.Location = new System.Drawing.Point(132, 2);
-            this.pictureBox1.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.pictureBox1.Margin = new System.Windows.Forms.Padding(2);
             this.pictureBox1.Name = "pictureBox1";
             this.pictureBox1.Size = new System.Drawing.Size(126, 120);
             this.pictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
             this.pictureBox1.TabIndex = 1;
             this.pictureBox1.TabStop = false;
+            this.pictureBox1.Click += new System.EventHandler(this.pictureBox1_Click);
             // 
             // registrationPanel
             // 
@@ -119,7 +136,7 @@
             this.registrationPanel.Controls.Add(this.acceptTermsCheckBox);
             this.registrationPanel.ForeColor = System.Drawing.Color.White;
             this.registrationPanel.Location = new System.Drawing.Point(40, 41);
-            this.registrationPanel.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.registrationPanel.Margin = new System.Windows.Forms.Padding(2);
             this.registrationPanel.Name = "registrationPanel";
             this.registrationPanel.Size = new System.Drawing.Size(528, 592);
             this.registrationPanel.TabIndex = 10;
@@ -138,6 +155,7 @@
             this.birtdateTxt.LineMouseHoverColor = System.Drawing.Color.FromArgb(((int)(((byte)(205)))), ((int)(((byte)(81)))), ((int)(((byte)(0)))));
             this.birtdateTxt.LineThickness = 3;
             this.birtdateTxt.Location = new System.Drawing.Point(310, 270);
+            this.birtdateTxt.Margin = new System.Windows.Forms.Padding(4);
             this.birtdateTxt.Name = "birtdateTxt";
             this.birtdateTxt.Size = new System.Drawing.Size(191, 27);
             this.birtdateTxt.TabIndex = 14;
@@ -156,6 +174,7 @@
             this.adressTxtbox.LineMouseHoverColor = System.Drawing.Color.FromArgb(((int)(((byte)(205)))), ((int)(((byte)(81)))), ((int)(((byte)(0)))));
             this.adressTxtbox.LineThickness = 3;
             this.adressTxtbox.Location = new System.Drawing.Point(3, 333);
+            this.adressTxtbox.Margin = new System.Windows.Forms.Padding(4);
             this.adressTxtbox.Name = "adressTxtbox";
             this.adressTxtbox.Size = new System.Drawing.Size(498, 27);
             this.adressTxtbox.TabIndex = 6;
@@ -174,6 +193,7 @@
             this.numberphoneTxtBox.LineMouseHoverColor = System.Drawing.Color.FromArgb(((int)(((byte)(205)))), ((int)(((byte)(81)))), ((int)(((byte)(0)))));
             this.numberphoneTxtBox.LineThickness = 3;
             this.numberphoneTxtBox.Location = new System.Drawing.Point(3, 270);
+            this.numberphoneTxtBox.Margin = new System.Windows.Forms.Padding(4);
             this.numberphoneTxtBox.Name = "numberphoneTxtBox";
             this.numberphoneTxtBox.Size = new System.Drawing.Size(191, 27);
             this.numberphoneTxtBox.TabIndex = 5;
@@ -192,6 +212,7 @@
             this.firstnameTxtbox.LineMouseHoverColor = System.Drawing.Color.FromArgb(((int)(((byte)(205)))), ((int)(((byte)(81)))), ((int)(((byte)(0)))));
             this.firstnameTxtbox.LineThickness = 3;
             this.firstnameTxtbox.Location = new System.Drawing.Point(3, 75);
+            this.firstnameTxtbox.Margin = new System.Windows.Forms.Padding(4);
             this.firstnameTxtbox.Name = "firstnameTxtbox";
             this.firstnameTxtbox.Size = new System.Drawing.Size(191, 27);
             this.firstnameTxtbox.TabIndex = 0;
@@ -210,6 +231,7 @@
             this.emailTxtbox.LineMouseHoverColor = System.Drawing.Color.FromArgb(((int)(((byte)(205)))), ((int)(((byte)(81)))), ((int)(((byte)(0)))));
             this.emailTxtbox.LineThickness = 3;
             this.emailTxtbox.Location = new System.Drawing.Point(3, 211);
+            this.emailTxtbox.Margin = new System.Windows.Forms.Padding(4);
             this.emailTxtbox.Name = "emailTxtbox";
             this.emailTxtbox.Size = new System.Drawing.Size(498, 27);
             this.emailTxtbox.TabIndex = 4;
@@ -228,6 +250,7 @@
             this.retypepasswordTxtbox.LineMouseHoverColor = System.Drawing.Color.FromArgb(((int)(((byte)(205)))), ((int)(((byte)(81)))), ((int)(((byte)(0)))));
             this.retypepasswordTxtbox.LineThickness = 3;
             this.retypepasswordTxtbox.Location = new System.Drawing.Point(3, 166);
+            this.retypepasswordTxtbox.Margin = new System.Windows.Forms.Padding(4);
             this.retypepasswordTxtbox.Name = "retypepasswordTxtbox";
             this.retypepasswordTxtbox.Size = new System.Drawing.Size(498, 27);
             this.retypepasswordTxtbox.TabIndex = 3;
@@ -247,6 +270,7 @@
             this.passwordTxtbox.LineMouseHoverColor = System.Drawing.Color.FromArgb(((int)(((byte)(205)))), ((int)(((byte)(81)))), ((int)(((byte)(0)))));
             this.passwordTxtbox.LineThickness = 3;
             this.passwordTxtbox.Location = new System.Drawing.Point(3, 120);
+            this.passwordTxtbox.Margin = new System.Windows.Forms.Padding(4);
             this.passwordTxtbox.Name = "passwordTxtbox";
             this.passwordTxtbox.Size = new System.Drawing.Size(498, 27);
             this.passwordTxtbox.TabIndex = 2;
@@ -266,6 +290,7 @@
             this.lastnameTxtbox.LineMouseHoverColor = System.Drawing.Color.FromArgb(((int)(((byte)(205)))), ((int)(((byte)(81)))), ((int)(((byte)(0)))));
             this.lastnameTxtbox.LineThickness = 3;
             this.lastnameTxtbox.Location = new System.Drawing.Point(310, 75);
+            this.lastnameTxtbox.Margin = new System.Windows.Forms.Padding(4);
             this.lastnameTxtbox.Name = "lastnameTxtbox";
             this.lastnameTxtbox.Size = new System.Drawing.Size(191, 27);
             this.lastnameTxtbox.TabIndex = 1;
@@ -303,7 +328,7 @@
             this.registerButon.IdleForecolor = System.Drawing.Color.White;
             this.registerButon.IdleLineColor = System.Drawing.Color.White;
             this.registerButon.Location = new System.Drawing.Point(92, 492);
-            this.registerButon.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.registerButon.Margin = new System.Windows.Forms.Padding(4);
             this.registerButon.Name = "registerButon";
             this.registerButon.Size = new System.Drawing.Size(166, 33);
             this.registerButon.TabIndex = 12;
@@ -324,7 +349,7 @@
             // pictureBox4
             // 
             this.pictureBox4.Location = new System.Drawing.Point(2, 0);
-            this.pictureBox4.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.pictureBox4.Margin = new System.Windows.Forms.Padding(2);
             this.pictureBox4.Name = "pictureBox4";
             this.pictureBox4.Size = new System.Drawing.Size(52, 53);
             this.pictureBox4.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
@@ -351,6 +376,7 @@
             this.acceptTermsCheckBox.CheckedOnColor = System.Drawing.Color.FromArgb(((int)(((byte)(51)))), ((int)(((byte)(205)))), ((int)(((byte)(117)))));
             this.acceptTermsCheckBox.ForeColor = System.Drawing.Color.White;
             this.acceptTermsCheckBox.Location = new System.Drawing.Point(44, 461);
+            this.acceptTermsCheckBox.Margin = new System.Windows.Forms.Padding(4);
             this.acceptTermsCheckBox.Name = "acceptTermsCheckBox";
             this.acceptTermsCheckBox.Size = new System.Drawing.Size(20, 20);
             this.acceptTermsCheckBox.TabIndex = 8;
@@ -374,7 +400,7 @@
             this.logInPanel.Controls.Add(this.usernameLoginTxtbox);
             this.logInPanel.Controls.Add(this.pictureBox1);
             this.logInPanel.Location = new System.Drawing.Point(28, 41);
-            this.logInPanel.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.logInPanel.Margin = new System.Windows.Forms.Padding(2);
             this.logInPanel.Name = "logInPanel";
             this.logInPanel.Size = new System.Drawing.Size(386, 609);
             this.logInPanel.TabIndex = 11;
@@ -390,6 +416,7 @@
             this.codeTxtbox.ForeColor = System.Drawing.Color.White;
             this.codeTxtbox.isPassword = false;
             this.codeTxtbox.Location = new System.Drawing.Point(115, 341);
+            this.codeTxtbox.Margin = new System.Windows.Forms.Padding(4);
             this.codeTxtbox.Name = "codeTxtbox";
             this.codeTxtbox.Size = new System.Drawing.Size(156, 31);
             this.codeTxtbox.TabIndex = 17;
@@ -444,6 +471,7 @@
             this.loginButon.IconZoom = 90D;
             this.loginButon.IsTab = false;
             this.loginButon.Location = new System.Drawing.Point(40, 466);
+            this.loginButon.Margin = new System.Windows.Forms.Padding(6, 5, 6, 5);
             this.loginButon.Name = "loginButon";
             this.loginButon.Normalcolor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(125)))), ((int)(((byte)(0)))));
             this.loginButon.OnHovercolor = System.Drawing.Color.FromArgb(((int)(((byte)(205)))), ((int)(((byte)(81)))), ((int)(((byte)(0)))));
@@ -460,7 +488,7 @@
             // pictureBox3
             // 
             this.pictureBox3.Location = new System.Drawing.Point(40, 260);
-            this.pictureBox3.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.pictureBox3.Margin = new System.Windows.Forms.Padding(2);
             this.pictureBox3.Name = "pictureBox3";
             this.pictureBox3.Size = new System.Drawing.Size(28, 27);
             this.pictureBox3.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
@@ -480,6 +508,7 @@
             this.passwordLoginTxtbox.LineMouseHoverColor = System.Drawing.Color.FromArgb(((int)(((byte)(205)))), ((int)(((byte)(81)))), ((int)(((byte)(0)))));
             this.passwordLoginTxtbox.LineThickness = 3;
             this.passwordLoginTxtbox.Location = new System.Drawing.Point(66, 260);
+            this.passwordLoginTxtbox.Margin = new System.Windows.Forms.Padding(4);
             this.passwordLoginTxtbox.Name = "passwordLoginTxtbox";
             this.passwordLoginTxtbox.Size = new System.Drawing.Size(273, 27);
             this.passwordLoginTxtbox.TabIndex = 12;
@@ -489,7 +518,7 @@
             // pictureBox2
             // 
             this.pictureBox2.Location = new System.Drawing.Point(40, 171);
-            this.pictureBox2.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.pictureBox2.Margin = new System.Windows.Forms.Padding(2);
             this.pictureBox2.Name = "pictureBox2";
             this.pictureBox2.Size = new System.Drawing.Size(28, 27);
             this.pictureBox2.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
@@ -509,6 +538,7 @@
             this.usernameLoginTxtbox.LineMouseHoverColor = System.Drawing.Color.FromArgb(((int)(((byte)(205)))), ((int)(((byte)(81)))), ((int)(((byte)(0)))));
             this.usernameLoginTxtbox.LineThickness = 3;
             this.usernameLoginTxtbox.Location = new System.Drawing.Point(66, 171);
+            this.usernameLoginTxtbox.Margin = new System.Windows.Forms.Padding(4);
             this.usernameLoginTxtbox.Name = "usernameLoginTxtbox";
             this.usernameLoginTxtbox.Size = new System.Drawing.Size(273, 27);
             this.usernameLoginTxtbox.TabIndex = 10;
@@ -527,7 +557,7 @@
             this.Controls.Add(this.registrationPanel);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
             this.KeyPreview = true;
-            this.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.Margin = new System.Windows.Forms.Padding(2);
             this.Name = "Form1";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Form1";
@@ -576,6 +606,7 @@
         private Bunifu.Framework.UI.BunifuMaterialTextbox numberphoneTxtBox;
         private Bunifu.Framework.UI.BunifuMaterialTextbox adressTxtbox;
         private Bunifu.Framework.UI.BunifuMaterialTextbox birtdateTxt;
+        private System.Windows.Forms.Label label7;
     }
 }
 

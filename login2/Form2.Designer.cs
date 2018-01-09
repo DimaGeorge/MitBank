@@ -43,6 +43,8 @@
             this.bunifuFlatButton3 = new Bunifu.Framework.UI.BunifuFlatButton();
             this.bunifuFlatButton4 = new Bunifu.Framework.UI.BunifuFlatButton();
             this.bunifuFlatButton5 = new Bunifu.Framework.UI.BunifuFlatButton();
+            this.label3 = new System.Windows.Forms.Label();
+            this.label4LastName = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox4)).BeginInit();
             this.panelMainDashboard.SuspendLayout();
             this.header.SuspendLayout();
@@ -54,10 +56,11 @@
             this.pictureBox4.Location = new System.Drawing.Point(0, 0);
             this.pictureBox4.Margin = new System.Windows.Forms.Padding(2);
             this.pictureBox4.Name = "pictureBox4";
-            this.pictureBox4.Size = new System.Drawing.Size(32, 29);
+            this.pictureBox4.Size = new System.Drawing.Size(49, 54);
             this.pictureBox4.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
             this.pictureBox4.TabIndex = 11;
             this.pictureBox4.TabStop = false;
+            this.pictureBox4.Click += new System.EventHandler(this.pictureBox4_Click);
             // 
             // label11
             // 
@@ -75,7 +78,7 @@
             // panelMainDashboard
             // 
             this.panelMainDashboard.Controls.Add(this.label2);
-            this.panelMainDashboard.Location = new System.Drawing.Point(174, 36);
+            this.panelMainDashboard.Location = new System.Drawing.Point(166, 36);
             this.panelMainDashboard.Margin = new System.Windows.Forms.Padding(2);
             this.panelMainDashboard.Name = "panelMainDashboard";
             this.panelMainDashboard.Size = new System.Drawing.Size(726, 599);
@@ -94,7 +97,7 @@
             // header
             // 
             this.header.AutoSize = true;
-            this.header.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(30)))), ((int)(((byte)(32)))), ((int)(((byte)(32)))));
+            this.header.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(30)))), ((int)(((byte)(35)))), ((int)(((byte)(35)))));
             this.header.Controls.Add(this.label5);
             this.header.Controls.Add(this.label1);
             this.header.Controls.Add(this.label11);
@@ -103,7 +106,7 @@
             this.header.Location = new System.Drawing.Point(0, 0);
             this.header.Margin = new System.Windows.Forms.Padding(2);
             this.header.Name = "header";
-            this.header.Size = new System.Drawing.Size(900, 32);
+            this.header.Size = new System.Drawing.Size(900, 56);
             this.header.TabIndex = 18;
             // 
             // label5
@@ -111,7 +114,7 @@
             this.label5.AutoSize = true;
             this.label5.Font = new System.Drawing.Font("Elephant", 18F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label5.ForeColor = System.Drawing.Color.White;
-            this.label5.Location = new System.Drawing.Point(36, 1);
+            this.label5.Location = new System.Drawing.Point(53, 9);
             this.label5.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.label5.Name = "label5";
             this.label5.Size = new System.Drawing.Size(181, 31);
@@ -160,6 +163,7 @@
             this.Dashboard.IconZoom = 90D;
             this.Dashboard.IsTab = true;
             this.Dashboard.Location = new System.Drawing.Point(0, 110);
+            this.Dashboard.Margin = new System.Windows.Forms.Padding(4);
             this.Dashboard.Name = "Dashboard";
             this.Dashboard.Normalcolor = System.Drawing.Color.FromArgb(((int)(((byte)(30)))), ((int)(((byte)(28)))), ((int)(((byte)(38)))));
             this.Dashboard.OnHovercolor = System.Drawing.Color.FromArgb(((int)(((byte)(30)))), ((int)(((byte)(32)))), ((int)(((byte)(32)))));
@@ -195,6 +199,7 @@
             this.bunifuFlatButton2.IconZoom = 90D;
             this.bunifuFlatButton2.IsTab = true;
             this.bunifuFlatButton2.Location = new System.Drawing.Point(0, 186);
+            this.bunifuFlatButton2.Margin = new System.Windows.Forms.Padding(4);
             this.bunifuFlatButton2.Name = "bunifuFlatButton2";
             this.bunifuFlatButton2.Normalcolor = System.Drawing.Color.FromArgb(((int)(((byte)(30)))), ((int)(((byte)(28)))), ((int)(((byte)(38)))));
             this.bunifuFlatButton2.OnHovercolor = System.Drawing.Color.FromArgb(((int)(((byte)(30)))), ((int)(((byte)(32)))), ((int)(((byte)(32)))));
@@ -230,6 +235,7 @@
             this.bunifuFlatButton3.IconZoom = 90D;
             this.bunifuFlatButton3.IsTab = true;
             this.bunifuFlatButton3.Location = new System.Drawing.Point(0, 260);
+            this.bunifuFlatButton3.Margin = new System.Windows.Forms.Padding(4);
             this.bunifuFlatButton3.Name = "bunifuFlatButton3";
             this.bunifuFlatButton3.Normalcolor = System.Drawing.Color.FromArgb(((int)(((byte)(30)))), ((int)(((byte)(28)))), ((int)(((byte)(38)))));
             this.bunifuFlatButton3.OnHovercolor = System.Drawing.Color.FromArgb(((int)(((byte)(30)))), ((int)(((byte)(32)))), ((int)(((byte)(32)))));
@@ -265,6 +271,7 @@
             this.bunifuFlatButton4.IconZoom = 90D;
             this.bunifuFlatButton4.IsTab = true;
             this.bunifuFlatButton4.Location = new System.Drawing.Point(0, 332);
+            this.bunifuFlatButton4.Margin = new System.Windows.Forms.Padding(4);
             this.bunifuFlatButton4.Name = "bunifuFlatButton4";
             this.bunifuFlatButton4.Normalcolor = System.Drawing.Color.FromArgb(((int)(((byte)(30)))), ((int)(((byte)(28)))), ((int)(((byte)(38)))));
             this.bunifuFlatButton4.OnHovercolor = System.Drawing.Color.FromArgb(((int)(((byte)(30)))), ((int)(((byte)(32)))), ((int)(((byte)(32)))));
@@ -300,6 +307,7 @@
             this.bunifuFlatButton5.IconZoom = 90D;
             this.bunifuFlatButton5.IsTab = true;
             this.bunifuFlatButton5.Location = new System.Drawing.Point(0, 412);
+            this.bunifuFlatButton5.Margin = new System.Windows.Forms.Padding(4);
             this.bunifuFlatButton5.Name = "bunifuFlatButton5";
             this.bunifuFlatButton5.Normalcolor = System.Drawing.Color.FromArgb(((int)(((byte)(30)))), ((int)(((byte)(28)))), ((int)(((byte)(38)))));
             this.bunifuFlatButton5.OnHovercolor = System.Drawing.Color.FromArgb(((int)(((byte)(30)))), ((int)(((byte)(32)))), ((int)(((byte)(32)))));
@@ -313,12 +321,37 @@
             this.bunifuFlatButton5.TextFont = new System.Drawing.Font("Segoe UI Emoji", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.bunifuFlatButton5.Click += new System.EventHandler(this.bunifuFlatButton5_Click);
             // 
+            // label3
+            // 
+            this.label3.AutoSize = true;
+            this.label3.Font = new System.Drawing.Font("Palatino Linotype", 10.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label3.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(125)))), ((int)(((byte)(0)))));
+            this.label3.Location = new System.Drawing.Point(1, 56);
+            this.label3.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            this.label3.Name = "label3";
+            this.label3.Size = new System.Drawing.Size(78, 20);
+            this.label3.TabIndex = 1;
+            this.label3.Text = "Welcome, ";
+            // 
+            // label4LastName
+            // 
+            this.label4LastName.AutoSize = true;
+            this.label4LastName.Font = new System.Drawing.Font("Palatino Linotype", 10.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label4LastName.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(125)))), ((int)(((byte)(0)))));
+            this.label4LastName.Location = new System.Drawing.Point(74, 56);
+            this.label4LastName.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            this.label4LastName.Name = "label4LastName";
+            this.label4LastName.Size = new System.Drawing.Size(0, 20);
+            this.label4LastName.TabIndex = 20;
+            // 
             // Form2
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(30)))), ((int)(((byte)(28)))), ((int)(((byte)(38)))));
             this.ClientSize = new System.Drawing.Size(900, 639);
+            this.Controls.Add(this.label3);
+            this.Controls.Add(this.label4LastName);
             this.Controls.Add(this.bunifuFlatButton5);
             this.Controls.Add(this.header);
             this.Controls.Add(this.bunifuFlatButton4);
@@ -359,5 +392,7 @@
         private Bunifu.Framework.UI.BunifuFlatButton bunifuFlatButton5;
         private System.Windows.Forms.Label label5;
         private System.Windows.Forms.Label label2;
+        private System.Windows.Forms.Label label4LastName;
+        private System.Windows.Forms.Label label3;
     }
 }

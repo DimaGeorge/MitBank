@@ -30,6 +30,12 @@ namespace login2
           //  panelMainSettings.Visible = false;
 
             lastMenupanel = panelMainDashboard;
+
+
+            Page pg = DataManagement.getDashboardInfo();
+            label2.Text = pg.Data;
+            Page pg2 = DataManagement.getLastName();
+            label4LastName.Text = pg2.Data;
         }
 
         private void label11_Click(object sender, EventArgs e)
@@ -49,8 +55,9 @@ namespace login2
             lastMenupanel.SendToBack();
             lastMenupanel = panelMainDashboard;
 
-            Page pg = DataManagement.getDashboardInfo();
-            label2.Text = pg.Data;
+            
+
+
         }
 
         private void bunifuFlatButton2_Click(object sender, EventArgs e)
@@ -95,6 +102,11 @@ namespace login2
         }
 
         private void panelMainTransfer_Paint(object sender, PaintEventArgs e)
+        {
+
+        }
+
+        private void pictureBox4_Click(object sender, EventArgs e)
         {
 
         }
