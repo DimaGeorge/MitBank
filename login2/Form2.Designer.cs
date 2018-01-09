@@ -78,7 +78,7 @@
             // panelMainDashboard
             // 
             this.panelMainDashboard.Controls.Add(this.label2);
-            this.panelMainDashboard.Location = new System.Drawing.Point(174, 36);
+            this.panelMainDashboard.Location = new System.Drawing.Point(166, 36);
             this.panelMainDashboard.Margin = new System.Windows.Forms.Padding(2);
             this.panelMainDashboard.Name = "panelMainDashboard";
             this.panelMainDashboard.Size = new System.Drawing.Size(726, 599);
@@ -97,7 +97,7 @@
             // header
             // 
             this.header.AutoSize = true;
-            this.header.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(30)))), ((int)(((byte)(32)))), ((int)(((byte)(32)))));
+            this.header.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(30)))), ((int)(((byte)(35)))), ((int)(((byte)(35)))));
             this.header.Controls.Add(this.label5);
             this.header.Controls.Add(this.label1);
             this.header.Controls.Add(this.label11);
