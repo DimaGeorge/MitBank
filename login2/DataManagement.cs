@@ -21,9 +21,7 @@ namespace login2
             {
                 
 
-                int id = context.getUandPProcedure.SqlQuery(
-                                            "getUandPProcedure @Username, @Password", username, password
-                                          );
+               //aici procedura stocata
             }
 
 
