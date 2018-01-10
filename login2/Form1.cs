@@ -64,7 +64,7 @@ namespace login2
             Properties.Settings.Default.Reload();
             
             
-            if (DataManagement.updateConnectionString(usernameLoginTxtbox.Text, passwordLoginTxtbox.Text))
+            if (DataManagement.tryConnection(usernameLoginTxtbox.Text, passwordLoginTxtbox.Text))
             {
                 this.Visible = false;
                 this.Hide();
