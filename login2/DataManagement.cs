@@ -34,7 +34,7 @@ namespace login2
         {
             Page ret = new Page();
             ret.Data = "-";
-           /* using (var context = new MitBankDBEntities())
+            using (var context = new MitBankDBEntities2())
             {
                 
                 var rez = from c in context.Usernames
@@ -48,7 +48,7 @@ namespace login2
                 }
                 
             }
-            */
+            
             return ret;
         }
 

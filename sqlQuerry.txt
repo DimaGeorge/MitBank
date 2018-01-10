@@ -603,27 +603,20 @@ GO
 
 
 --- Roles --------------------------------------------------------------------------------------------
-CREATE ROLE NormalUser
+CREATE ROLE ApplicationRole
+GRANT EXEC ON getUandPProcedure		TO ApplicationRole
+GRANT EXEC ON AddNormalUser			TO ApplicationRole
+GRANT EXEC ON getIDCustomer			TO ApplicationRole
+GRANT EXEC ON isAdmin				TO ApplicationRole
+GRANT EXEC ON putMoneyOnAccount		TO ApplicationRole
+GRANT EXEC ON selectOnINdividuals	TO ApplicationRole
+GRANT EXEC ON showAllMyAccounts		TO ApplicationRole
+GRANT EXEC ON transferMoney			TO ApplicationRole
 
--- views
-GRANT SELECT ON UsernamesView TO NormalUser
-GRANT SELECT ON CustomersView TO NormalUser
-GRANT SELECT ON CompaniesView TO NormalUser
-GRANT SELECT ON IndividualsView TO NormalUser -- oricum nu poate sa updateze view facut cu UNION
-GRANT CONTROL ON HistoryTransactionView TO NormalUser
-GRANT CONTROL ON UserAccountsView TO NormalUser
-
--- tables
-GRANT SELECT ON BankingPackets TO NormalUser
-GRANT SELECT ON AccountTypes TO NormalUser
-GRANT SELECT ON ComisionStatus TO NormalUser
-GRANT SELECT ON TypesTransaction TO NormalUser
-GO
-
-CREATE ROLE BankAdmin
-GRANT CONTROL ON Usernames TO BankAdmin
-GRANT CONTROL ON Individuals TO BankAdmin
-GRANT EXEC ON getUandPProcedure TO BankAdmin
+GRANT SELECT ON CurrentCurrency		TO ApplicationRole
+GRANT SELECT ON ComisionStatus		TO ApplicationRole
+GRANT SELECT ON TypeBankingPackets	TO ApplicationRole
+ 
 GO
 
 CREATE LOGIN MitBankApp WITH PASSWORD='pass'
@@ -632,7 +625,7 @@ GO
 CREATE USER MitBankApp FOR LOGIN MitBankApp
 GO
 
-ALTER ROLE BankAdmin
+ALTER ROLE ApplicationRole
 ADD MEMBER MitBankApp
 GO
 
