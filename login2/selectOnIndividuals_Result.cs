@@ -10,9 +10,8 @@
 namespace login2
 {
     using System;
-    using System.Collections.Generic;
     
-    public partial class Individual
+    public partial class selectOnIndividuals_Result
     {
         public int ID { get; set; }
         public string FirstName { get; set; }

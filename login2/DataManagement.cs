@@ -37,16 +37,6 @@ namespace login2
             using (var context = new MitBankDBEntities2())
             {
                 
-                var rez = from c in context.Usernames
-                          select c;
-                
-                foreach (var c in rez)
-                {
-                    MessageBox.Show(c.Username1);
-                    ret.Data = c.Pass;
-
-                }
-                
             }
             
             return ret;

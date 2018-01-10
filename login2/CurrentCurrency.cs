@@ -12,11 +12,11 @@ namespace login2
     using System;
     using System.Collections.Generic;
     
-    public partial class Username
+    public partial class CurrentCurrency
     {
         public int ID { get; set; }
-        public int UserType { get; set; }
-        public string Username1 { get; set; }
-        public string Pass { get; set; }
+        public string CurrencyName { get; set; }
+        public double ValueBuy { get; set; }
+        public double ValueSel { get; set; }
     }
 }
