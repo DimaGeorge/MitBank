@@ -400,25 +400,53 @@ BEGIN
 END
 GO
 
+CREATE PROCEDURE getIdCustomer
+	@userID		int						-- poate evoula intr-o cheie	
+	,@idClient	int OUTPUT
+AS
+BEGIN
+	SET @idClient = (
+		SELECT TOP 1
+			Customers.ID
+		FROM 
+			Usernames
+			INNER JOIN NormalUsers
+				ON Usernames.ID = NormalUsers.ID
+			INNER JOIN Customers
+				ON Customers.ID = NormalUsers.CustomerID
+		WHERE Usernames.ID = @userID
+	)
 
---- Roles --------------------------------------------------------------------------------------------
-CREATE ROLE NormalUser
-
--- views
-GRANT SELECT ON UsernamesView TO NormalUser
-GRANT SELECT ON CustomersView TO NormalUser
-GRANT SELECT ON CompaniesView TO NormalUser
-GRANT SELECT ON IndividualsView TO NormalUser -- oricum nu poate sa updateze view facut cu UNION
-GRANT CONTROL ON HistoryTransactionView TO NormalUser
-GRANT CONTROL ON UserAccountsView TO NormalUser
-
--- tables
-GRANT SELECT ON BankingPackets TO NormalUser
-GRANT SELECT ON AccountTypes TO NormalUser
-GRANT SELECT ON ComisionStatus TO NormalUser
-GRANT SELECT ON TypesTransaction TO NormalUser
+	IF (@idClient is null)
+	BEGIN
+		SET @idClient = -1
+	END
+END
 GO
 
+CREATE PROCEDURE IsAdmin
+	@UserID int
+	,@Result	bit OUTPUT
+AS
+BEGIN
+	DECLARE @UserType int = (
+		SELECT TOP 1
+			Usernames.UserType
+		FROM Usernames
+		WHERE Usernames.ID = @UserID
+	)
+	IF @UserType = 2
+	BEGIN
+		SET @Result = 1
+	END
+	ELSE
+	BEGIN
+		SET @Result = 0
+	END
+
+END
+
+--- Roles --------------------------------------------------------------------------------------------
 CREATE ROLE BankAdmin
 GRANT CONTROL ON Usernames TO BankAdmin
 GRANT CONTROL ON Individuals TO BankAdmin
@@ -554,3 +582,11 @@ VALUES (1,'RO93MITB0410120579132411','2019-1-1','RON',554.15,1)
 SELECT * FROM Usernames
 
 EXEC getUandPProcedure 'adima','adima'
+
+DECLARE @ex1 int
+EXEC getIdCustomer @userID = 7, @idClient = @ex1 OUTPUT
+PRINT @ex1	
+
+DECLARE @ex2 bit
+EXEC IsAdmin @userID = 6, @Result = @ex2 OUTPUT
+PRINT @ex2 
