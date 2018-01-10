@@ -334,10 +334,10 @@ CREATE PROCEDURE getUandPProcedure
     @Password nvarchar(50)  
 AS   
 BEGIN
-    DECLARE @ID int;
-	SELECT @ID=ID FROM Usernames
+    
+	SELECT ID FROM Usernames
 		WHERE @Username=Username and @Password=Pass
-	RETURN @ID
+	
 END
 GO
 
@@ -552,6 +552,5 @@ VALUES (1,'RO93MITB0410120579132411','2019-1-1','RON',554.15,1)
 
 
 SELECT * FROM Usernames
-DECLARE @oo int;
-EXEC @oo= getUandPProcedure 'adima','adima'
-PRINT @oo; 
+
+EXEC getUandPProcedure 'adima','adima'
