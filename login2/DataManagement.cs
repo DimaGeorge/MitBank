@@ -16,14 +16,21 @@ namespace login2
         
         private static bool tryConnection(string username,string password)
         {
+            using (var context = new MitBankDBEntities2()){
 
-            using (var context = new MitBankDBEntities1())
-            {
-                
+                var rez= from c in context.Usernames
+                                select c;
+                foreach (var c in rez){
+                    MessageBox.Show(c.Username1);
+                }
 
-               //aici procedura stocata
             }
-
+            using (var context = new MitBankDBEntities2())
+            {
+                var x = context.getUandPProcedure(username, password);
+                foreach (int item in x)
+                    MessageBox.Show(item.ToString());
+            }
 
             return true;
         }
@@ -50,7 +57,7 @@ namespace login2
         {
             Page ret = new Page();
             ret.Data = "-";
-            using (var context = new MitBankDBEntities1())
+           /* using (var context = new MitBankDBEntities())
             {
                 
                 var rez = from c in context.Usernames
@@ -64,7 +71,7 @@ namespace login2
                 }
                 
             }
-            
+            */
             return ret;
         }
 
@@ -73,7 +80,8 @@ namespace login2
 
             Page ret = new Page();
             ret.DataLastName = "Guest";
-            using (var context = new MitBankDBEntities1())
+            /*
+            using (var context = new MitBankDBEntities())
             {
                 var rez = from c in context.IndividualsViews
                           select c;
@@ -83,7 +91,7 @@ namespace login2
 
                     ret.DataLastName = c.LastName;
                 }
-            }
+            }*/
             return ret;
         }
 

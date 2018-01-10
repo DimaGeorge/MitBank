@@ -14,22 +14,11 @@ namespace login2
     
     public partial class Individual
     {
-        public Individual()
-        {
-            this.Companies = new HashSet<Company>();
-            this.Employees = new HashSet<Employee>();
-            this.IndividualCustomers = new HashSet<IndividualCustomer>();
-        }
-    
         public int ID { get; set; }
         public string FirstName { get; set; }
         public string LastName { get; set; }
         public string Email { get; set; }
         public string CNP { get; set; }
         public System.DateTime Birthday { get; set; }
-    
-        public virtual ICollection<Company> Companies { get; set; }
-        public virtual ICollection<Employee> Employees { get; set; }
-        public virtual ICollection<IndividualCustomer> IndividualCustomers { get; set; }
     }
 }
