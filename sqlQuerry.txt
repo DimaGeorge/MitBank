@@ -427,7 +427,12 @@ BEGIN
 END
 
 GO
+CREATE PROCEDURE transferMoney
+	@fromIBAN nvarchar(100)
+	,@toIBAN nvarchar(100)
 	,@valueToTransfer float
+AS
+BEGIN
 	DECLARE @idCustForVerify int;
 	DECLARE @exists int;
 	DECLARE @fromSold float;
@@ -460,7 +465,7 @@ GO
 			WHERE UserAccounts.AccountNumber = @toIBAN;
 		END
 	END
-
+END
 
 GO
 CREATE PROCEDURE getUandPProcedure  
