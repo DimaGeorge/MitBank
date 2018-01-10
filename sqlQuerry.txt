@@ -198,10 +198,10 @@ CREATE TABLE ComisionStatus(
 		FOREIGN KEY (IDBankPacket) REFERENCES BankingPackets(ID)
 	,CONSTRAINT FK_TypeTransaction_fromComisionToTrans
 		FOREIGN KEY (IDTypeTransaction) REFERENCES TypesTransaction(ID)
-)	
-GO
+)
 
-drop table CurrentCurrency
+	
+GO
 CREATE TABLE CurrentCurrency(
 	ID int NOT NULL IDENTITY(1,1)
 	,CurrencyName nvarchar(10) NOT NULL
@@ -389,7 +389,6 @@ END
 
 
 GO
-drop procedure putMoneyOnAccount
 CREATE PROCEDURE putMoneyOnAccount
 	@IBAN nvarchar(100)
 	,@idAdmin int
@@ -485,7 +484,7 @@ BEGIN
 	
 END
 GO
-drop procedure selectOnIndividuals
+
 CREATE PROCEDURE selectOnIndividuals
 	@id int 
 AS
@@ -503,7 +502,7 @@ END
 GO
 EXEC selectOnIndividuals 5
 
-
+GO
 CREATE PROCEDURE AddNormalUser(
 	@IDcustomer		int
 	,@Username		nvarchar(101)
