@@ -201,7 +201,6 @@ CREATE TABLE ComisionStatus(
 )	
 GO
 
-drop table CurrentCurrency
 CREATE TABLE CurrentCurrency(
 	ID int NOT NULL IDENTITY(1,1)
 	,CurrencyName nvarchar(10) NOT NULL
@@ -389,7 +388,6 @@ END
 
 
 GO
-drop procedure putMoneyOnAccount
 CREATE PROCEDURE putMoneyOnAccount
 	@IBAN nvarchar(100)
 	,@idAdmin int
@@ -413,17 +411,6 @@ BEGIN
 END
 
 GO
-CREATE PROCEDURE transferMoney
-	@fromIBAN nvarchar(100)
-	,@toIBAN nvarchar(100)
-	,@fromIdUser int
-AS
-BEGIN
-
-
-
-END
-
 
 
 CREATE PROCEDURE getUandPProcedure  
@@ -437,24 +424,68 @@ BEGIN
 	
 END
 GO
-drop procedure selectOnIndividuals
+
 CREATE PROCEDURE selectOnIndividuals
 	@id int 
 AS
 BEGIN
-	SELECT * FROM Individuals
+	DECLARE @isAdmin bit
+	EXEC IsAdmin @id, @isAdmin OUTPUT
+
+	IF @isAdmin = 1
+	BEGIN
+	SELECT 
+		i.ID
+		,i.FirstName
+		,i.LastName
+		,i.Email
+		,i.CNP
+		,i.Birthday
+	FROM Individuals AS i
 		INNER JOIN Employees
-			ON Individuals.ID=Employees.IndividualID
+			ON i.ID = Employees.IndividualID
 		INNER JOIN BankAdmins
 			ON BankAdmins.EmployeeID=Employees.ID
 		INNER JOIN Usernames
 			ON Usernames.ID=BankAdmins.ID
 		WHERE Usernames.ID=@id
-
+	END
+	ELSE
+	BEGIN
+		DECLARE @idClient int
+		EXEC getIdCustomer @id, @idClient OUTPUT
+		SELECT
+			i.ID
+			,i.FirstName
+			,i.LastName
+			,i.Email
+			,i.CNP
+			,i.Birthday
+		FROM Individuals	AS i
+			INNER JOIN IndividualCustomers AS ic
+				ON i.ID = ic.IndividualID
+			INNER JOIN Customers as c
+				ON ic.CustomerID = c.ID
+		WHERE
+			c.ID = @idClient
+		UNION
+		SELECT
+			i.ID
+			,i.FirstName
+			,i.LastName
+			,i.Email
+			,i.CNP
+			,i.Birthday
+		FROM Individuals	AS i
+			INNER JOIN Companies AS c
+				ON i.ID = c.IndividualID
+			INNER JOIN Customers AS cs
+				ON cs.ID = c.CustomerID
+		WHERE
+			cs.ID = @idClient
+	END
 END
 GO
-EXEC selectOnIndividuals 5
-
 
 CREATE PROCEDURE AddNormalUser(
 	@IDcustomer		int
@@ -683,3 +714,4 @@ EXEC putMoneyOnAccount 'RO93MITB0410120579132411' , 1 , 100
 
 select * from UserAccounts 
 
+EXEC selectOnIndividuals 8
