@@ -19,7 +19,11 @@ namespace login2
 
             using (var context = new MitBankDBEntities1())
             {
-                ////aici procedura stocata
+                
+
+                int id = context.getUandPProcedure.SqlQuery(
+                                            "getUandPProcedure @Username, @Password", username, password
+                                          );
             }
 
 
