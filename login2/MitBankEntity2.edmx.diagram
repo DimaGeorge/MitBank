@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+ <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <!-- Diagram content (shape and connector positions) -->
+    <edmx:Diagrams>
+      <Diagram DiagramId="cb14bff2a10b4fa98b57cff73d73d75d" Name="Diagram1" >
+        <EntityTypeShape EntityType="MitBankDBModel.Individual" Width="1.5" PointX="2.4668420713706136" PointY="23.848660942096572" />
+        <EntityTypeShape EntityType="MitBankDBModel.Username" Width="1.5" PointX="9.0063352589524968" PointY="19.259058856991611" />
+      </Diagram>
+    </edmx:Diagrams>
+  </edmx:Designer>
+</edmx:Edmx>

@@ -18,9 +18,5 @@ namespace login2
         public int UserType { get; set; }
         public string Username1 { get; set; }
         public string Pass { get; set; }
-    
-        public virtual BankAdmin BankAdmin { get; set; }
-        public virtual NormalUser NormalUser { get; set; }
-        public virtual UserType UserType1 { get; set; }
     }
 }
