@@ -12,11 +12,16 @@ namespace login2
     using System;
     using System.Collections.Generic;
     
-    public partial class UsernamesView
+    public partial class Company
     {
         public int ID { get; set; }
-        public int UserType { get; set; }
-        public string Username { get; set; }
-        public string Pass { get; set; }
+        public int CustomerID { get; set; }
+        public int IndividualID { get; set; }
+        public int CIF { get; set; }
+        public string Name { get; set; }
+        public string Address { get; set; }
+    
+        public virtual Customer Customer { get; set; }
+        public virtual Individual Individual { get; set; }
     }
 }

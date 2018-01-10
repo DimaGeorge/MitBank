@@ -9,6 +9,7 @@ using System.Threading.Tasks;
 using System.Windows.Forms;
 using System.Drawing;
 using System.Data.SqlClient;
+using System.Runtime.Remoting.Contexts;
 
 namespace login2
 {
@@ -60,6 +61,9 @@ namespace login2
         int okCode = 0;
         private void loginButon_Click(object sender, EventArgs e)
         {
+            Properties.Settings.Default.Reload();
+            
+            
             if (DataManagement.updateConnectionString(usernameLoginTxtbox.Text, passwordLoginTxtbox.Text))
             {
                 this.Visible = false;

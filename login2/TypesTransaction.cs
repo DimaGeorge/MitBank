@@ -12,11 +12,18 @@ namespace login2
     using System;
     using System.Collections.Generic;
     
-    public partial class UsernamesView
+    public partial class TypesTransaction
     {
+        public TypesTransaction()
+        {
+            this.ComisionStatus = new HashSet<ComisionStatu>();
+            this.HistoryTransactions = new HashSet<HistoryTransaction>();
+        }
+    
         public int ID { get; set; }
-        public int UserType { get; set; }
-        public string Username { get; set; }
-        public string Pass { get; set; }
+        public string TypeTransaction { get; set; }
+    
+        public virtual ICollection<ComisionStatu> ComisionStatus { get; set; }
+        public virtual ICollection<HistoryTransaction> HistoryTransactions { get; set; }
     }
 }

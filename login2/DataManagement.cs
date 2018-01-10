@@ -12,54 +12,57 @@ namespace login2
 
     public static class DataManagement
     {
-        static string csName = "MitBankDBEntities";
+        static string csName = "MitBankDBEntities1";
         
-        private static bool tryConnection(string cs)
+        private static bool tryConnection(string username,string password)
         {
-            using (SqlConnection conn = new SqlConnection(cs))
+
+            using (var context = new MitBankDBEntities1())
             {
-                try
-                {
-                    conn.Open();
-                }
-                catch
-                {
-                    return false;
-                }
+                ////aici procedura stocata
             }
+
+
             return true;
         }
 
         public static bool updateConnectionString(string username, string password)
         {
-            var config = ConfigurationManager.OpenExeConfiguration(ConfigurationUserLevel.None);
-            var connectionStringsSection = (ConnectionStringsSection)config.GetSection("connectionStrings");
-            string newCs = "data source=.;initial catalog=MitBankDB;User ID=" + username + ";Password=" + password;
-            string completeCs = "metadata=res://*/MitBankModel.csdl|res://*/MitBankModel.ssdl|res://*/MitBankModel.msl;provider=System.Data.SqlClient;provider connection string=\"data source=.;initial catalog=MitBankDB;integrated security=false;MultipleActiveResultSets=true;User ID=" + username + ";Password=" + password + ";App=EntityFramework\"";
-            connectionStringsSection.ConnectionStrings[csName].ConnectionString = completeCs;
-            config.Save();
-            ConfigurationManager.RefreshSection("connectionStrings");
+            //var config = ConfigurationManager.OpenExeConfiguration(ConfigurationUserLevel.None);
+            //var connectionStringsSection = (ConnectionStringsSection)config.GetSection("connectionStrings");
 
-            //trying connection to SQL Server 
-            return tryConnection(newCs);
+            //string newCs = "data source=.;initial catalog=MitBankDB;User ID=dbo" + ";Password=";
+            //string completeCs = "metadata=res://*/MitBankModel.csdl|res://*/MitBankModel.ssdl|res://*/MitBankModel.msl;provider=System.Data.SqlClient;provider connection string=\"data source=.;initial catalog=MitBankDB;integrated security=false;MultipleActiveResultSets=true;User ID=" + username + ";Password=" + password + ";App=EntityFramework\"";
+
+            //connectionStringsSection.ConnectionStrings[csName].ConnectionString = completeCs;
+            //config.Save();
+            //ConfigurationManager.RefreshSection("connectionStrings");
+
+            //trying connection to SQL Server
+            return tryConnection(username, password);
         }
 
 
 
         public static Page getDashboardInfo()
         {
-
-            using (var context = new MitBankDBEntities())
+            Page ret = new Page();
+            ret.Data = "-";
+            using (var context = new MitBankDBEntities1())
             {
-                var rez = from c in context.IndividualsViews
+                
+                var rez = from c in context.Usernames
                           select c;
+                
                 foreach (var c in rez)
                 {
-                    MessageBox.Show(c.FirstName);
+                    MessageBox.Show(c.Username1);
+                    ret.Data = c.Pass;
+
                 }
+                
             }
-            Page ret = new Page();
-            ret.Data = "sorry";
+            
             return ret;
         }
 
@@ -67,7 +70,18 @@ namespace login2
         {
 
             Page ret = new Page();
-            ret.Data = "sorry";    
+            ret.DataLastName = "Guest";
+            using (var context = new MitBankDBEntities1())
+            {
+                var rez = from c in context.IndividualsViews
+                          select c;
+
+                foreach (var c in rez)
+                {
+
+                    ret.DataLastName = c.LastName;
+                }
+            }
             return ret;
         }
 

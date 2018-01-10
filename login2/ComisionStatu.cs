@@ -12,11 +12,14 @@ namespace login2
     using System;
     using System.Collections.Generic;
     
-    public partial class UsernamesView
+    public partial class ComisionStatu
     {
         public int ID { get; set; }
-        public int UserType { get; set; }
-        public string Username { get; set; }
-        public string Pass { get; set; }
+        public Nullable<int> IDTypeTransaction { get; set; }
+        public Nullable<int> IDBankPacket { get; set; }
+        public Nullable<double> Comision { get; set; }
+    
+        public virtual BankingPacket BankingPacket { get; set; }
+        public virtual TypesTransaction TypesTransaction { get; set; }
     }
 }

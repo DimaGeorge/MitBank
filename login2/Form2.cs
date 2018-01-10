@@ -35,7 +35,7 @@ namespace login2
             Page pg = DataManagement.getDashboardInfo();
             label2.Text = pg.Data;
             Page pg2 = DataManagement.getLastName();
-            label4LastName.Text = pg2.Data;
+            label4LastName.Text = pg2.DataLastName;
         }
 
         private void label11_Click(object sender, EventArgs e)
@@ -111,5 +111,23 @@ namespace login2
 
         }
 
+        private void logoutButton_Click(object sender, EventArgs e)
+        {
+            
+            var result = MessageBox.Show("Are you sure?","Info",
+                                 MessageBoxButtons.YesNo,
+                                 MessageBoxIcon.Question);
+            if (result == DialogResult.Yes)
+            {
+                this.Hide();
+                Form1 frm = new Form1();
+                this.Refresh();
+                this.Invalidate();
+                frm.Refresh();
+                frm.Invalidate();
+                frm.Show();
+            }
+
+        }
     }
 }

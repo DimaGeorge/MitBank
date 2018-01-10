@@ -12,11 +12,17 @@ namespace login2
     using System;
     using System.Collections.Generic;
     
-    public partial class UsernamesView
+    public partial class Employee
     {
+        public Employee()
+        {
+            this.BankAdmins = new HashSet<BankAdmin>();
+        }
+    
         public int ID { get; set; }
-        public int UserType { get; set; }
-        public string Username { get; set; }
-        public string Pass { get; set; }
+        public int IndividualID { get; set; }
+    
+        public virtual ICollection<BankAdmin> BankAdmins { get; set; }
+        public virtual Individual Individual { get; set; }
     }
 }

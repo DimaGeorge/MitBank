@@ -12,11 +12,16 @@ namespace login2
     using System;
     using System.Collections.Generic;
     
-    public partial class UsernamesView
+    public partial class TypeBankingPacket
     {
+        public TypeBankingPacket()
+        {
+            this.BankingPackets = new HashSet<BankingPacket>();
+        }
+    
         public int ID { get; set; }
-        public int UserType { get; set; }
-        public string Username { get; set; }
-        public string Pass { get; set; }
+        public string NameTypePacket { get; set; }
+    
+        public virtual ICollection<BankingPacket> BankingPackets { get; set; }
     }
 }
