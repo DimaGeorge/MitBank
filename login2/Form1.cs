@@ -77,38 +77,7 @@ namespace login2
             }
 
 
-            /*
-            codeTxtbox.Visible = true;
-            loginButon.Text = "Login after type code";
-            if (codeTxtbox.Text != "" && okCode == 1)
-            {
-                string username = usernameLoginTxtbox.Text;
-                string password = passwordLoginTxtbox.Text;
-                string connetionString = null;
-                SqlConnection cnn;
-                connetionString = "Data Source=25.48.252.237;Initial Catalog=mitbankdb;User ID=" + username + ";Password=" + password;
-                cnn = new SqlConnection(connetionString);
-                try
-                {
-                    cnn.Open();
-                    MessageBox.Show("Connection Open ! ");
-                    
-                    cnn.Close();
-                }
-                catch (Exception ex)
-                {
-                    MessageBox.Show("Can not open connection ! ");
-                }
-                this.Visible = false;
-                this.Hide();
-                Form2 frm = new Form2();
-                frm.Show();
-
-
-            }
-            okCode = 1;
-
-            */
+           
 
 
         }

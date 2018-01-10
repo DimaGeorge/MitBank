@@ -22,7 +22,10 @@ namespace login2
                                 select c;
                 foreach (var c in rez){
                     MessageBox.Show(c.Username1);
+                    if (c.ID != 0)
+                        return true;
                 }
+                
 
             }
             using (var context = new MitBankDBEntities2())
@@ -32,7 +35,7 @@ namespace login2
                     MessageBox.Show(item.ToString());
             }
 
-            return true;
+            return false;
         }
 
         public static bool updateConnectionString(string username, string password)
