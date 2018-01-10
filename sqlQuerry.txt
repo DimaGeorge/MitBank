@@ -201,7 +201,16 @@ CREATE TABLE ComisionStatus(
 )	
 GO
 
+drop table CurrentCurrency
+CREATE TABLE CurrentCurrency(
+	ID int NOT NULL IDENTITY(1,1)
+	,CurrencyName nvarchar(10) NOT NULL
+	,ValueBuy	float			NOT NULL
+	,ValueSel	float			NOT NULL
 
+	CONSTRAINT Pk_CurrentCurrency PRIMARY KEY CLUSTERED (CurrencyName)
+)
+GO
 
 CREATE TABLE UserAccounts(
 	ID					int		IDENTITY(1,1)			NOT NULL
@@ -329,6 +338,94 @@ FROM UserAccounts AS ua
 GO
 
 --- Stored Procedures ---------------------------------------------------------------------------------
+
+-------almost done
+
+CREATE PROCEDURE getIdCustomer
+	@userID		int						-- poate evoula intr-o cheie	
+	,@idClient	int OUTPUT
+AS
+BEGIN
+	SET @idClient = (
+		SELECT TOP 1
+			Customers.ID
+		FROM 
+			Usernames
+			INNER JOIN NormalUsers
+				ON Usernames.ID = NormalUsers.ID
+			INNER JOIN Customers
+				ON Customers.ID = NormalUsers.CustomerID
+		WHERE Usernames.ID = @userID
+	)
+
+	IF (@idClient is null)
+	BEGIN
+		SET @idClient = -1
+	END
+END
+GO
+
+CREATE PROCEDURE IsAdmin
+	@UserID int
+	,@Result	bit OUTPUT
+AS
+BEGIN
+	DECLARE @UserType int = (
+		SELECT TOP 1
+			Usernames.UserType
+		FROM Usernames
+		WHERE Usernames.ID = @UserID
+	)
+	IF @UserType = 2
+	BEGIN
+		SET @Result = 1
+	END
+	ELSE
+	BEGIN
+		SET @Result = 0
+	END
+
+END
+
+
+GO
+drop procedure putMoneyOnAccount
+CREATE PROCEDURE putMoneyOnAccount
+	@IBAN nvarchar(100)
+	,@idAdmin int
+	,@valueMoney float
+AS
+BEGIN
+	DECLARE @idCustomer int;
+	DECLARE @isAdmin BIT;
+
+	
+	EXEC IsAdmin @userID =@idAdmin , @Result = @isAdmin OUTPUT
+
+	IF @isAdmin = 1
+	BEGIN
+			BEGIN
+				UPDATE UserAccounts
+					SET UserAccounts.Sold=UserAccounts.Sold+@valueMoney
+					WHERE UserAccounts.AccountNumber = @IBAN;
+			END
+	END
+END
+
+GO
+CREATE PROCEDURE transferMoney
+	@fromIBAN nvarchar(100)
+	,@toIBAN nvarchar(100)
+	,@fromIdUser int
+AS
+BEGIN
+
+
+
+END
+
+
+
 CREATE PROCEDURE getUandPProcedure  
     @Username nvarchar(50),   
     @Password nvarchar(50)  
@@ -340,6 +437,24 @@ BEGIN
 	
 END
 GO
+drop procedure selectOnIndividuals
+CREATE PROCEDURE selectOnIndividuals
+	@id int 
+AS
+BEGIN
+	SELECT * FROM Individuals
+		INNER JOIN Employees
+			ON Individuals.ID=Employees.IndividualID
+		INNER JOIN BankAdmins
+			ON BankAdmins.EmployeeID=Employees.ID
+		INNER JOIN Usernames
+			ON Usernames.ID=BankAdmins.ID
+		WHERE Usernames.ID=@id
+
+END
+GO
+EXEC selectOnIndividuals 5
+
 
 CREATE PROCEDURE AddNormalUser(
 	@IDcustomer		int
@@ -400,53 +515,25 @@ BEGIN
 END
 GO
 
-CREATE PROCEDURE getIdCustomer
-	@userID		int						-- poate evoula intr-o cheie	
-	,@idClient	int OUTPUT
-AS
-BEGIN
-	SET @idClient = (
-		SELECT TOP 1
-			Customers.ID
-		FROM 
-			Usernames
-			INNER JOIN NormalUsers
-				ON Usernames.ID = NormalUsers.ID
-			INNER JOIN Customers
-				ON Customers.ID = NormalUsers.CustomerID
-		WHERE Usernames.ID = @userID
-	)
-
-	IF (@idClient is null)
-	BEGIN
-		SET @idClient = -1
-	END
-END
-GO
-
-CREATE PROCEDURE IsAdmin
-	@UserID int
-	,@Result	bit OUTPUT
-AS
-BEGIN
-	DECLARE @UserType int = (
-		SELECT TOP 1
-			Usernames.UserType
-		FROM Usernames
-		WHERE Usernames.ID = @UserID
-	)
-	IF @UserType = 2
-	BEGIN
-		SET @Result = 1
-	END
-	ELSE
-	BEGIN
-		SET @Result = 0
-	END
-
-END
 
 --- Roles --------------------------------------------------------------------------------------------
+CREATE ROLE NormalUser
+
+-- views
+GRANT SELECT ON UsernamesView TO NormalUser
+GRANT SELECT ON CustomersView TO NormalUser
+GRANT SELECT ON CompaniesView TO NormalUser
+GRANT SELECT ON IndividualsView TO NormalUser -- oricum nu poate sa updateze view facut cu UNION
+GRANT CONTROL ON HistoryTransactionView TO NormalUser
+GRANT CONTROL ON UserAccountsView TO NormalUser
+
+-- tables
+GRANT SELECT ON BankingPackets TO NormalUser
+GRANT SELECT ON AccountTypes TO NormalUser
+GRANT SELECT ON ComisionStatus TO NormalUser
+GRANT SELECT ON TypesTransaction TO NormalUser
+GO
+
 CREATE ROLE BankAdmin
 GRANT CONTROL ON Usernames TO BankAdmin
 GRANT CONTROL ON Individuals TO BankAdmin
@@ -578,15 +665,21 @@ VALUES(2,1,1.2)
 INSERT INTO UserAccounts(BankPacket,AccountNumber,ValabilityUntil,Currency,Sold,AccountCustomerId)
 VALUES (1,'RO93MITB0410120579132411','2019-1-1','RON',554.15,1)
 
+INSERT INTO CurrentCurrency(CurrencyName,ValueBuy,ValueSel)
+VALUES('EUR',4.6464,4.6133)
 
+INSERT INTO CurrentCurrency(CurrencyName,ValueBuy,ValueSel)
+VALUES('USD',3.87,4.83)
+
+INSERT INTO CurrentCurrency(CurrencyName,ValueBuy,ValueSel)
+VALUES('GBH',5.245,5.16)
 SELECT * FROM Usernames
 
 EXEC getUandPProcedure 'adima','adima'
 
-DECLARE @ex1 int
-EXEC getIdCustomer @userID = 7, @idClient = @ex1 OUTPUT
-PRINT @ex1	
+SELECT * FROM CurrentCurrency
 
-DECLARE @ex2 bit
-EXEC IsAdmin @userID = 6, @Result = @ex2 OUTPUT
-PRINT @ex2 
+EXEC putMoneyOnAccount 'RO93MITB0410120579132411' , 1 , 100    
+
+select * from UserAccounts 
+
