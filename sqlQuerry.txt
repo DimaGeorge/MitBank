@@ -328,45 +328,18 @@ FROM UserAccounts AS ua
 		ON ua.AccountCustomerID = cw.ID
 GO
 
-IF OBJECT_ID ( 'getUandPProcedure', 'P' ) IS NOT NULL   
-    DROP PROCEDURE getUandPProcedure;  
-GO  
+--- Stored Procedures ---------------------------------------------------------------------------------
 CREATE PROCEDURE getUandPProcedure  
     @Username nvarchar(50),   
     @Password nvarchar(50)  
 AS   
+BEGIN
     DECLARE @ID int;
 	SELECT @ID=ID FROM Usernames
 		WHERE @Username=Username and @Password=Pass
 	RETURN @ID
-
-DECLARE @oo int;
- EXEC @oo= getUandPProcedure 'adima','sscriban'
-PRINT @oo;
---- Roles --------------------------------------------------------------------------------------------
-CREATE ROLE NormalUser
-
--- views
-GRANT SELECT ON UsernamesView TO NormalUser
-GRANT SELECT ON CustomersView TO NormalUser
-GRANT SELECT ON CompaniesView TO NormalUser
-GRANT SELECT ON IndividualsView TO NormalUser -- oricum nu poate sa updateze view facut cu UNION
-GRANT CONTROL ON HistoryTransactionView TO NormalUser
-GRANT CONTROL ON UserAccountsView TO NormalUser
-
--- tables
-GRANT SELECT ON BankingPackets TO NormalUser
-GRANT SELECT ON AccountTypes TO NormalUser
-GRANT SELECT ON ComisionStatus TO NormalUser
-GRANT SELECT ON TypesTransaction TO NormalUser
+END
 GO
-
-CREATE ROLE BankAdmin
-GRANT CONTROL ON Usernames TO BankAdmin
-GRANT CONTROL ON Individuals TO BankAdmin
-GO
-
---- Stored Procedures ---------------------------------------------------------------------------------
 
 CREATE PROCEDURE AddNormalUser(
 	@IDcustomer		int
@@ -378,33 +351,13 @@ BEGIN
 	BEGIN TRY
 		BEGIN TRANSACTION AddingNormalUser
 	
-			INSERT INTO Usernames(UserType, Username)
-			VALUES(1, @Username)
+			INSERT INTO Usernames(UserType, Username, Pass)
+			VALUES(1, @Username, @Password)
 			
 			INSERT INTO NormalUsers(ID, CustomerID)
 			VALUES (IDENT_CURRENT('Usernames'), @IDcustomer)
 
-			IF EXISTS (	SELECT * 
-						FROM master.dbo.syslogins
-						WHERE name = @Username
-						)
-			BEGIN
-				EXEC('DROP LOGIN ' + @Username)
-			END
-
-			EXEC(	'CREATE LOGIN ' + @Username + 
-					' WITH PASSWORD = ''' 
-						+ @Password + ''' '
-			)
-
-			EXEC(	'CREATE USER ' + @Username +
-					' FOR LOGIN ' + @Username 
-			)
-
-			EXEC(	'ALTER ROLE NormalUser
-					ADD MEMBER ' + @Username
-			)
-		COMMIT TRANSACTION AddingNormalUser
+			COMMIT TRANSACTION AddingNormalUser
 	END TRY
 	
 	BEGIN CATCH
@@ -433,26 +386,6 @@ BEGIN
 			INSERT INTO BankAdmins(ID, EmployeeID)
 			VALUES (IDENT_CURRENT('Usernames'), @IDemployee)
 
-			IF EXISTS (	SELECT * 
-						FROM master.dbo.syslogins
-						WHERE name = @Username
-						)
-			BEGIN
-				EXEC('DROP LOGIN ' + @Username)
-			END
-
-			EXEC(	'CREATE LOGIN ' + @Username + 
-					' WITH PASSWORD = ''' 
-						+ @Password + ''' '
-			)
-
-			EXEC(	'CREATE USER ' + @Username +
-					' FOR LOGIN ' + @Username 
-			)
-
-			EXEC(	'ALTER ROLE BankAdmin
-					ADD MEMBER ' + @Username
-			)
 		COMMIT TRANSACTION AddingBankAdmin
 	END TRY
 	
@@ -466,6 +399,45 @@ BEGIN
 
 END
 GO
+
+
+--- Roles --------------------------------------------------------------------------------------------
+CREATE ROLE NormalUser
+
+-- views
+GRANT SELECT ON UsernamesView TO NormalUser
+GRANT SELECT ON CustomersView TO NormalUser
+GRANT SELECT ON CompaniesView TO NormalUser
+GRANT SELECT ON IndividualsView TO NormalUser -- oricum nu poate sa updateze view facut cu UNION
+GRANT CONTROL ON HistoryTransactionView TO NormalUser
+GRANT CONTROL ON UserAccountsView TO NormalUser
+
+-- tables
+GRANT SELECT ON BankingPackets TO NormalUser
+GRANT SELECT ON AccountTypes TO NormalUser
+GRANT SELECT ON ComisionStatus TO NormalUser
+GRANT SELECT ON TypesTransaction TO NormalUser
+GO
+
+CREATE ROLE BankAdmin
+GRANT CONTROL ON Usernames TO BankAdmin
+GRANT CONTROL ON Individuals TO BankAdmin
+GRANT EXEC ON getUandPProcedure TO BankAdmin
+GO
+
+CREATE LOGIN MitBankApp WITH PASSWORD='pass'
+GO
+
+CREATE USER MitBankApp FOR LOGIN MitBankApp
+GO
+
+ALTER ROLE BankAdmin
+ADD MEMBER MitBankApp
+GO
+
+
+
+
 
 -- Inserting values ------------------------------------------------------------------
 INSERT INTO CustomerTypes (ID, CustomerTypeName)
@@ -580,3 +552,6 @@ VALUES (1,'RO93MITB0410120579132411','2019-1-1','RON',554.15,1)
 
 
 SELECT * FROM Usernames
+DECLARE @oo int;
+EXEC @oo= getUandPProcedure 'adima','adima'
+PRINT @oo; 
