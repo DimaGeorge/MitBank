@@ -413,6 +413,21 @@ BEGIN
 END
 
 GO
+CREATE PROCEDURE showAllMyAccounts
+	@idUsername int
+AS
+BEGIN
+	DECLARE @idCustomer int;
+	EXEC getIdCustomer @userID =@idUsername , @idClient = @idCustomer OUTPUT
+
+	SELECT UserAccounts.AccountNumber
+		FROM UserAccounts
+			INNER JOIN Customers
+			ON Customers.ID = UserAccounts.AccountCustomerID
+			WHERE Customers.ID = @idCustomer
+END
+
+GO
 CREATE PROCEDURE transferMoney
 	@fromIBAN nvarchar(100)
 	,@toIBAN nvarchar(100)
@@ -681,5 +696,8 @@ SELECT * FROM CurrentCurrency
 
 EXEC putMoneyOnAccount 'RO93MITB0410120579132411' , 1 , 100    
 
+EXEC showAllMyAccounts 2
+
 select * from UserAccounts 
 
+select * from Customers
