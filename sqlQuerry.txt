@@ -198,9 +198,10 @@ CREATE TABLE ComisionStatus(
 		FOREIGN KEY (IDBankPacket) REFERENCES BankingPackets(ID)
 	,CONSTRAINT FK_TypeTransaction_fromComisionToTrans
 		FOREIGN KEY (IDTypeTransaction) REFERENCES TypesTransaction(ID)
-)	
-GO
+)
 
+	
+GO
 CREATE TABLE CurrentCurrency(
 	ID int NOT NULL IDENTITY(1,1)
 	,CurrencyName nvarchar(10) NOT NULL
@@ -411,8 +412,57 @@ BEGIN
 END
 
 GO
+CREATE PROCEDURE showAllMyAccounts
+	@idUsername int
+AS
+BEGIN
+	DECLARE @idCustomer int;
+	EXEC getIdCustomer @userID =@idUsername , @idClient = @idCustomer OUTPUT
+
+	SELECT UserAccounts.AccountNumber
+		FROM UserAccounts
+			INNER JOIN Customers
+			ON Customers.ID = UserAccounts.AccountCustomerID
+			WHERE Customers.ID = @idCustomer
+END
+
+GO
+	,@valueToTransfer float
+	DECLARE @idCustForVerify int;
+	DECLARE @exists int;
+	DECLARE @fromSold float;
+	DECLARE @toSold float;
+
+	SET @exists = 0;
+
+	SELECT @idCustForVerify=UserAccounts.AccountCustomerID
+		FROM UserAccounts
+		WHERE @toIBAN = UserAccounts.AccountNumber
+
+	SELECT @exists = Customers.ID
+		FROM Customers
+		WHERE Customers.ID = @idCustForVerify
+	IF @exists != 0
+	BEGIN
+		SELECT @fromSold = UserAccounts.Sold
+			FROM UserAccounts
+			WHERE UserAccounts.AccountNumber = @fromIBAN
+		SELECT @toSold = UserAccounts.Sold
+			FROM UserAccounts
+			WHERE UserAccounts.AccountNumber = @toIBAN
+		IF @fromSold > @valueToTransfer
+		BEGIN
+			UPDATE UserAccounts
+			SET UserAccounts.Sold = UserAccounts.Sold - @valueToTransfer
+			WHERE UserAccounts.AccountNumber = @fromIBAN;
+			UPDATE UserAccounts
+			SET UserAccounts.Sold = UserAccounts.Sold + @valueToTransfer
+			WHERE UserAccounts.AccountNumber = @toIBAN;
+		END
+	END
 
 
+GO
 CREATE PROCEDURE getUandPProcedure  
     @Username nvarchar(50),   
     @Password nvarchar(50)  
@@ -486,7 +536,7 @@ BEGIN
 	END
 END
 GO
-
+GO
 CREATE PROCEDURE AddNormalUser(
 	@IDcustomer		int
 	,@Username		nvarchar(101)
@@ -686,6 +736,8 @@ INSERT INTO TypesTransaction(TypeTransaction)
 VALUES('pay bill')
 INSERT INTO TypesTransaction(TypeTransaction)
 VALUES('withdraw')
+INSERT INTO TypesTransaction(TypeTransaction)
+VALUES('transfer')
 
 INSERT INTO ComisionStatus(IDTypeTransaction,IDBankPacket,Comision)
 VALUES(1,1,5.3)
@@ -696,6 +748,9 @@ VALUES(2,1,1.2)
 INSERT INTO UserAccounts(BankPacket,AccountNumber,ValabilityUntil,Currency,Sold,AccountCustomerId)
 VALUES (1,'RO93MITB0410120579132411','2019-1-1','RON',554.15,1)
 
+INSERT INTO UserAccounts(BankPacket,AccountNumber,ValabilityUntil,Currency,Sold,AccountCustomerId)
+VALUES (2,'RO93MITB0410120579132422','2029-1-1','RON',100.15,1)
+
 INSERT INTO CurrentCurrency(CurrencyName,ValueBuy,ValueSel)
 VALUES('EUR',4.6464,4.6133)
 
@@ -704,6 +759,8 @@ VALUES('USD',3.87,4.83)
 
 INSERT INTO CurrentCurrency(CurrencyName,ValueBuy,ValueSel)
 VALUES('GBH',5.245,5.16)
+
+
 SELECT * FROM Usernames
 
 EXEC getUandPProcedure 'adima','adima'
@@ -712,6 +769,11 @@ SELECT * FROM CurrentCurrency
 
 EXEC putMoneyOnAccount 'RO93MITB0410120579132411' , 1 , 100    
 
+EXEC showAllMyAccounts 2
+
 select * from UserAccounts 
 
-EXEC selectOnIndividuals 8
+
+
+
+exec transferMoney 'RO93MITB0410120579132422','RO93MITB0410120579132411',200
