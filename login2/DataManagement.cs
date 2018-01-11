@@ -28,7 +28,10 @@ namespace login2
                 }
             }
         }
-
+        public static int getIdUsername()
+        {
+            return IDSession;
+        }
 
         public static Page getDashboardInfo()
         {

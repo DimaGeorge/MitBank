@@ -13,29 +13,32 @@ namespace login2
     public partial class Form2 : Form
     {
         static Panel lastMenupanel = new Panel();
-
+        static int idSession = DataManagement.getIdUsername();
         public Form2()
         {
             InitializeComponent();
             panelMainDashboard.BackColor = Color.FromArgb(100, 100, 40);
-           /* panelMainPaySomething.BackColor = Color.FromArgb(100, 100, 40);
+            panelMainPaySomething.BackColor = Color.FromArgb(100, 100, 40);
             panelMainSendMail.BackColor = Color.FromArgb(100, 100, 40);
             panelMainSettings.BackColor = Color.FromArgb(100, 100, 40);
             panelMainTransfer.BackColor = Color.FromArgb(100, 100, 40);
-            */
+            
             panelMainDashboard.Visible = true;
-           // panelMainPaySomething.Visible = false;
-          //  panelMainSendMail.Visible = false;
-          //  panelMainTransfer.Visible = false;
-          //  panelMainSettings.Visible = false;
+            panelMainPaySomething.Visible = false;
+            panelMainSendMail.Visible = false;
+            panelMainTransfer.Visible = false;
+            panelMainSettings.Visible = false;
 
             lastMenupanel = panelMainDashboard;
 
 
             Page pg = DataManagement.getDashboardInfo();
-            label2.Text = pg.Data;
+            //label2.Text = pg.Data;
             Page pg2 = DataManagement.getLastName();
             label4LastName.Text = pg2.DataLastName;
+
+
+
         }
 
         private void label11_Click(object sender, EventArgs e)
@@ -63,36 +66,53 @@ namespace login2
         private void bunifuFlatButton2_Click(object sender, EventArgs e)
         {
             lastMenupanel.Visible = false;
-            //panelMainPaySomething.Visible = true;
+            panelMainPaySomething.Visible = true;
             lastMenupanel.SendToBack();
-            //lastMenupanel = panelMainPaySomething;
+            lastMenupanel = panelMainPaySomething;
 
         }
 
         private void bunifuFlatButton3_Click(object sender, EventArgs e)
         {
             lastMenupanel.Visible = false;
-           // panelMainTransfer.Visible = true;
+            panelMainTransfer.Visible = true;
             lastMenupanel.SendToBack();
-           // lastMenupanel = panelMainTransfer;
+            lastMenupanel = panelMainTransfer;
+
+
+            using (var context =new MitBankDBEntities2())
+            {
+                if (idSession != 0)
+                {
+                    var result = context.showAllMyAccounts(idSession).ToArray();
+                        foreach (var item in result)
+                        {
+                            comboBoxIBAN.Items.Add(item.ToString());
+                        }
+                    }
+                
+            }
+
+
+
 
         }
 
         private void bunifuFlatButton4_Click(object sender, EventArgs e)
         {
             lastMenupanel.Visible = false;
-           // panelMainSendMail.Visible = true;
+            panelMainSendMail.Visible = true;
             lastMenupanel.SendToBack();
-         //   lastMenupanel = panelMainSendMail;
+            lastMenupanel = panelMainSendMail;
 
         }
 
         private void bunifuFlatButton5_Click(object sender, EventArgs e)
         {
             lastMenupanel.Visible = false;
-          //  panelMainSettings.Visible = true;
+            panelMainSettings.Visible = true;
             lastMenupanel.SendToBack();
-         //   lastMenupanel = panelMainSettings;
+            lastMenupanel = panelMainSettings;
 
         }
 
@@ -127,6 +147,11 @@ namespace login2
                 frm.Invalidate();
                 frm.Show();
             }
+
+        }
+
+        private void label6_Click(object sender, EventArgs e)
+        {
 
         }
     }
