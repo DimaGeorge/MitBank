@@ -30,6 +30,23 @@ namespace login2
             panelMainSettings.Visible = false;
 
             lastMenupanel = panelMainDashboard;
+            ibanList.Clear();
+            int i = 0;
+            List<string> list = DataManagement.getDashboardInfo();
+            foreach (string iban in list)
+            {
+                var context = new MitBankDBEntities2();
+     
+                Label lb = UIDashboardAccountFrame.createFrame(iban, i);
+                i++;
+                ibanList.Add(lb);
+            }
+
+            foreach (Label lb in ibanList)
+            {
+                panelMainDashboard.Controls.Add(lb);
+                lb.BringToFront();
+            }
 
         }
 
@@ -43,27 +60,14 @@ namespace login2
             this.WindowState = FormWindowState.Minimized;
         }
 
+
         private void Dashboard_Click(object sender, EventArgs e)
         {
             lastMenupanel.Visible = false;
             panelMainDashboard.Visible = true;
             lastMenupanel.SendToBack();
             lastMenupanel = panelMainDashboard;
-            ibanList.Clear();
-            int i = 0;
-            List<string> list = DataManagement.getDashboardInfo();
-            foreach (string iban in list)
-            {
-                Label lb = UIDashboardAccountFrame.createFrame(iban, i);
-                i++;
-                ibanList.Add(lb);
-            }
-
-            foreach (Label lb in ibanList)
-            {
-                this.Controls.Add(lb);
-                lb.BringToFront();
-            }
+            
         }
 
         private void bunifuFlatButton2_Click(object sender, EventArgs e)
