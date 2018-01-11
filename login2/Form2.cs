@@ -14,6 +14,8 @@ namespace login2
     {
         static Panel lastMenupanel = new Panel();
         List<Label> ibanList = new List<Label>();
+        Label exchangeLabel;
+
         public Form2()
         {
             InitializeComponent();
@@ -48,6 +50,7 @@ namespace login2
                 lb.BringToFront();
             }
 
+            panelMainDashboard.Controls.Add(UIDashboardAccountFrame.getExchangeTable());
         }
 
         private void label11_Click(object sender, EventArgs e)

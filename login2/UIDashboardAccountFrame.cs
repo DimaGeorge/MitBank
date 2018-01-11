@@ -20,7 +20,7 @@ namespace login2
         private static int top = 20;
         private static int left = 20;
         private static int height = 100;
-        private static int width = 620;
+        private static int width = 500;
 
         private static Label getPacketLabel(string iban)
         {
@@ -82,9 +82,9 @@ namespace login2
 
             //position
             sold.Top = 47;
-            sold.Left = 320;
+            sold.Left = 250;
             sold.AutoSize = false;
-            sold.Size = new Size(200, 50);
+            sold.Size = new Size(150, 50);
 
             return sold;
         }
@@ -98,7 +98,7 @@ namespace login2
 
             //position
             currency.Top = 40;
-            currency.Left = 520;
+            currency.Left = 400;
             currency.AutoSize = false;
             currency.Size = new Size(200, 50);
 
@@ -130,5 +130,79 @@ namespace login2
             return lb;
         }
 
+        private static Label getLabelInTable(int top, int left, string txt)
+        {
+            Label lb = new Label();
+            // text
+            lb.Text = txt;
+
+            switch (txt)
+            {
+                case "BUY":
+                    lb.ForeColor = Color.LightGreen;
+                    break;
+                case "SELL":
+                    lb.ForeColor = Color.LightPink;
+                    break;
+                case "EUR":
+                    lb.ForeColor = Color.Yellow;
+                    break;
+                case "GBH":
+                    lb.ForeColor = Color.Yellow;
+                    break;
+                case "USD":
+                    lb.ForeColor = Color.Yellow;
+                    break;
+                default:
+                    lb.ForeColor = Color.FromArgb(255, 255, 240);
+                    break;
+            }
+
+            
+            lb.Font = new Font("Century Ghotic", 10, FontStyle.Regular);
+            //position
+            int width = 44;
+            int height = 30;
+            int space = 10;
+
+            lb.Top = space * top + height *(top - 1);
+            lb.Left = space * left + width * (left - 1);
+            lb.AutoSize = false;
+            lb.Size = new Size(width, height);
+            lb.BackColor = Color.FromArgb(30, 35, 35);
+
+            return lb;
+        }
+
+        public static Label getExchangeTable()
+        {
+            Label lb = new Label();
+            // text
+            lb.ForeColor = Color.FromArgb(255, 255, 240);
+            lb.Font = new Font("Century Ghotic", 15, FontStyle.Bold);
+
+            //position
+            lb.Top = 20;
+            lb.Left = 540;
+            lb.AutoSize = false;
+            lb.Size = new Size(170, 170);
+            lb.BackColor = Color.FromArgb(30, 35, 35);
+
+            List<string> list = DataManagement.getExchange().Split(' ').ToList();
+            lb.Controls.Add(getLabelInTable(1, 2, "BUY"));
+            lb.Controls.Add(getLabelInTable(1, 3, "SELL"));
+            int top = 2, left = 1;
+            foreach (string str in list)
+            {
+                lb.Controls.Add(getLabelInTable(top, left, str));
+                left++;
+                if (left > 3)
+                {
+                    left = 1;
+                    top++;
+                }
+            }
+            return lb;
+        }
     }
 }
