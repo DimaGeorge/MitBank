@@ -13,7 +13,7 @@ namespace login2
     public partial class Form2 : Form
     {
         static Panel lastMenupanel = new Panel();
-        
+        List<Label> ibanList = new List<Label>();
         public Form2()
         {
             InitializeComponent();
@@ -30,11 +30,6 @@ namespace login2
             panelMainSettings.Visible = false;
 
             lastMenupanel = panelMainDashboard;
-
-
-           
-            
-
 
         }
 
@@ -54,8 +49,21 @@ namespace login2
             panelMainDashboard.Visible = true;
             lastMenupanel.SendToBack();
             lastMenupanel = panelMainDashboard;
+            ibanList.Clear();
+            int i = 0;
+            List<string> list = DataManagement.getDashboardInfo();
+            foreach (string iban in list)
+            {
+                Label lb = UIDashboardAccountFrame.createFrame(iban, i);
+                i++;
+                ibanList.Add(lb);
+            }
 
-
+            foreach (Label lb in ibanList)
+            {
+                this.Controls.Add(lb);
+                lb.BringToFront();
+            }
         }
 
         private void bunifuFlatButton2_Click(object sender, EventArgs e)
@@ -88,10 +96,6 @@ namespace login2
                         }
                 }
 
-                Page pg = DataManagement.getDashboardInfo();
-                Label lb = UIDashboardAccountFrame.createFrame(pg);
-                this.Controls.Add(lb);
-                lb.BringToFront();
             }
 
 

@@ -33,22 +33,18 @@ namespace login2
             return IDSession;
         }
 
-        public static Page getDashboardInfo()
+        public static List<string> getDashboardInfo()
         {
-            Page ret = new Page();
-            ret.Data = "";
+            List<string> list = new List<string>();
             using (var context = new MitBankDBEntities2())
             {
                 var conturi = context.showAllMyAccounts(IDSession).ToArray();
                 foreach (var item in conturi)
                 {
-                    ret.Data += item.ToString();
-                    ret.Data += "\n";
+                    list.Add(item.ToString());
                 }
-
             }
-            
-            return ret;
+            return list;
         }
 
         public static Page getLastName()
