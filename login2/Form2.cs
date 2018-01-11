@@ -24,7 +24,7 @@ namespace login2
             panelMainSendMail.BackColor = Color.FromArgb(100, 100, 40);
             panelMainSettings.BackColor = Color.FromArgb(100, 100, 40);
             panelMainTransfer.BackColor = Color.FromArgb(100, 100, 40);
-            
+
             panelMainDashboard.Visible = true;
             panelMainPaySomething.Visible = false;
             panelMainSendMail.Visible = false;
@@ -38,7 +38,7 @@ namespace login2
             foreach (string iban in list)
             {
                 var context = new MitBankDBEntities2();
-     
+
                 Label lb = UIDashboardAccountFrame.createFrame(iban, i);
                 i++;
                 ibanList.Add(lb);
@@ -70,7 +70,7 @@ namespace login2
             panelMainDashboard.Visible = true;
             lastMenupanel.SendToBack();
             lastMenupanel = panelMainDashboard;
-            
+
         }
 
         private void bunifuFlatButton2_Click(object sender, EventArgs e)
@@ -90,7 +90,7 @@ namespace login2
             lastMenupanel = panelMainTransfer;
 
 
-            using (var context =new MitBankDBEntities2())
+            using (var context = new MitBankDBEntities2())
             {
 
 
@@ -101,20 +101,20 @@ namespace login2
                     int index = -1;
                     index = comboBoxIBAN.FindString(item.Data.ToString());
 
-                    if (index==-1)
+                    if (index == -1)
                     {
                         comboBoxIBAN.Items.Add(item.Data.ToString());
                     }
-                    
+
                 }
-                if(listIban.Count()!=0)
+                if (listIban.Count() != 0)
                 {
                     comboBoxIBAN.SelectedIndex = 0;
                     comboBoxSelectTransfer.SelectedIndex = 0;
                 }
-                
-                
-                 
+
+
+
             }
 
 
@@ -157,8 +157,8 @@ namespace login2
 
         private void logoutButton_Click(object sender, EventArgs e)
         {
-            
-            var result = MessageBox.Show("Are you sure?","Info",
+
+            var result = MessageBox.Show("Are you sure?", "Info",
                                  MessageBoxButtons.YesNo,
                                  MessageBoxIcon.Question);
             if (result == DialogResult.Yes)
@@ -184,6 +184,10 @@ namespace login2
 
             comboBoxToTransferMyIBAN.Refresh();
             comboBoxSelectTransfer.SelectedIndex = -1;
+
+
+
+
         }
 
         private void comboBoxSelectTransfer_SelectedIndexChanged(object sender, EventArgs e)
@@ -193,6 +197,7 @@ namespace login2
             if (comboBoxSelectTransfer.Text.ToString() == "My another account")
             {
                 label12.Visible = false;
+                radioButtonCheckIBAN.Visible = false;
                 textBoxWriteIBAN.Visible = false;
                 comboBoxToTransferMyIBAN.Visible = true;
 
@@ -204,13 +209,13 @@ namespace login2
                     int index = -1;
                     index = comboBoxToTransferMyIBAN.FindString(item.Data.ToString());
 
-                    if (index ==-1 && item.Data.ToString()!=comboBoxIBAN.Text.ToString())
+                    if (index == -1 && item.Data.ToString() != comboBoxIBAN.Text.ToString())
                     {
                         comboBoxToTransferMyIBAN.Items.Add(item.Data.ToString());
                     }
 
                 }
-                
+
 
 
 
@@ -220,6 +225,9 @@ namespace login2
                 label12.Visible = true;
                 comboBoxToTransferMyIBAN.Visible = false;
                 textBoxWriteIBAN.Visible = true;
+                labelcurrencyToIban.Text = "-";
+                radioButtonCheckIBAN.Visible = true;
+
             }
 
         }
@@ -236,15 +244,19 @@ namespace login2
             int parsedValue;
             if (!int.TryParse(textoxValueToTransfer.Text, out parsedValue))
             {
-                MessageBox.Show("Ups! Only numbers");
-                textoxValueToTransfer.Text = "0";
+                if (textoxValueToTransfer.Text != "")
+                {
+                    MessageBox.Show("Ups! Only numbers");
+                    textoxValueToTransfer.Text = "0";
+                }
+                
             }
 
             if (pg.Data != "" && comboBoxIBAN.SelectedIndex != -1)
             {
                 pg = DataManagement.getComision(fromIBAN.ToString());
             }
-            
+
 
             double Val = 0;
             if (textoxValueToTransfer.Text != "" && comboBoxIBAN.SelectedIndex != -1)
@@ -256,12 +268,65 @@ namespace login2
                 comVal = double.Parse(pg.Data);
 
                 labelComisionValue.Text = (Val * comVal / 100).ToString();
-            }else
+            } else
             {
                 labelComisionValue.Text = "-";
             }
-            
 
+
+
+
+        }
+
+        private void comboBoxToTransferMyIBAN_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            string currencyFromIBAN = "-";
+            string currencyToIBAN = "-";
+
+            using (var context = new MitBankDBEntities2())
+            {
+
+                if (comboBoxToTransferMyIBAN.SelectedIndex != -1)
+                {
+                    var result = context.getAnyoneCurrency(comboBoxToTransferMyIBAN.Text).ToArray();
+                    foreach (var item in result)
+                    {
+                        currencyToIBAN = item.ToString();
+                    }
+                    labelcurrencyToIban.Text = currencyToIBAN;
+                }
+                
+
+
+            }
+        }
+
+        private void radioButtonCheckIBAN_CheckedChanged(object sender, EventArgs e)
+        {
+            string getIBANfromTextBox = textBoxWriteIBAN.Text;
+            Page pg = new Page();
+            int ok = 0;
+            using (var context = new MitBankDBEntities2())
+            {
+
+                    var result = context.getAnyoneCurrency(getIBANfromTextBox).ToArray();
+                    if (result.Length != 0)
+                    {
+                        MessageBox.Show("ok");
+
+                    }
+                    else
+                    {
+                        MessageBox.Show("eee pl");
+                        ok = 1;  
+                    }
+            if (ok == 1)
+            {
+                radioButtonCheckIBAN.Checked = false;
+            }
+                
+                
+            }
 
         }
     }

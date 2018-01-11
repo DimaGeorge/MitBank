@@ -153,5 +153,14 @@ namespace login2
     
             return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<Nullable<double>>("takeComision", tiptranzactionParameter, accountNRParameter);
         }
+    
+        public virtual ObjectResult<string> getAnyoneCurrency(string ibanNR)
+        {
+            var ibanNRParameter = ibanNR != null ?
+                new ObjectParameter("ibanNR", ibanNR) :
+                new ObjectParameter("ibanNR", typeof(string));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<string>("getAnyoneCurrency", ibanNRParameter);
+        }
     }
 }

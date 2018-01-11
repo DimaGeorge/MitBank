@@ -139,6 +139,28 @@ namespace login2
         }
 
 
+        public static Page getCurrencyAnyone(string iban)
+        {
+
+            using (var context = new MitBankDBEntities2())
+            {
+                Page pg = new Page();
+                if (IDSession != 0)
+                {
+
+                    var result = context.getAnyoneCurrency(iban);
+                    foreach (var item in result)
+                    {
+
+                        pg.Data = item.ToString();
+
+                    }
+                }
+                return pg;
+            }
+        }
+
+
         public static Page getLastName()
         {
 

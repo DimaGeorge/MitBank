@@ -225,7 +225,9 @@ CREATE TABLE UserAccounts(
 	,CONSTRAINT FK_UserAccounts_BankingPackets
 		FOREIGN KEY (BankPacket) REFERENCES BankingPackets(ID)
 	,CONSTRAINT FK_UserAccounts_Customers
-		FOREIGN KEY (AccountCustomerID) REFERENCES Customers(ID)			
+		FOREIGN KEY (AccountCustomerID) REFERENCES Customers(ID)
+		,CONSTRAINT UC_UserAccount
+		UNIQUE (AccountNumber)			
 )
 GO
 
@@ -506,7 +508,7 @@ BEGIN
 		AND ComisionStatus.IDTypeTransaction = @tiptranzaction
 
 END
-GO
+
 
 
 
@@ -602,6 +604,17 @@ BEGIN
 END
 GO
 
+CREATE PROCEDURE getAnyoneCurrency
+	@ibanNR nvarchar(100)
+AS
+BEGIN
+	SELECT Currency FROM UserAccounts
+		WHERE AccountNumber = @ibanNR
+
+
+END
+
+GO
 CREATE PROCEDURE AddBankAdmin(
 	@IDemployee		int
 	,@Username		nvarchar(101)
@@ -644,7 +657,7 @@ GRANT EXEC ON showAllMyAccounts		TO ApplicationRole
 GRANT EXEC ON transferMoney			TO ApplicationRole
 GRANT EXEC ON showIBANInformations	TO ApplicationRole
 GRANT EXEC ON takeComision			TO ApplicationRole
-
+GRANT EXEC ON getAnyoneCurrency		TO ApplicationRole
 
 GRANT SELECT ON CurrentCurrency		TO ApplicationRole
 GRANT SELECT ON ComisionStatus		TO ApplicationRole
@@ -785,6 +798,13 @@ VALUES (1,'RO93MITB0410120579132411','2019-1-1','RON',554.15,1)
 INSERT INTO UserAccounts(BankPacket,AccountNumber,ValabilityUntil,Currency,Sold,AccountCustomerId)
 VALUES (2,'RO93MITB0410120579132422','2029-1-1','RON',100.15,1)
 
+INSERT INTO UserAccounts(BankPacket,AccountNumber,ValabilityUntil,Currency,Sold,AccountCustomerId)
+VALUES (2,'RO93MITB0410120579132555','2029-1-1','EUR',200.15,2)
+
+INSERT INTO UserAccounts(BankPacket,AccountNumber,ValabilityUntil,Currency,Sold,AccountCustomerId)
+VALUES (1,'RO93MITB0410120579133333','2029-1-1','EUR',500.15,1)
+
+
 INSERT INTO CurrentCurrency(CurrencyName,ValueBuy,ValueSel)
 VALUES('EUR',4.6464,4.6133)
 
@@ -808,7 +828,7 @@ EXEC showAllMyAccounts 1
 select * from UserAccounts 
 
 
-
+select * from CurrentCurrency
 
 
 
