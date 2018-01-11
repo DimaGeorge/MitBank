@@ -209,5 +209,40 @@ namespace login2
             }
 
         }
+
+        private void textoxValueToTransfer_OnValueChanged(object sender, EventArgs e)
+        {
+            //labelComisionValue.Visible = true;
+            //labelComisionValue.Text = "-";
+
+            string fromIBAN = comboBoxIBAN.Text;
+            Page pg = new Page();
+
+          
+
+            if (pg.Data != "" && comboBoxIBAN.SelectedIndex != -1)
+            {
+                pg = DataManagement.getComision(fromIBAN.ToString());
+            }
+            
+
+            double Val = 0;
+            if (textoxValueToTransfer.Text != "" && comboBoxIBAN.SelectedIndex != -1)
+            {
+                Val = double.Parse(textoxValueToTransfer.Text);
+
+                double comVal = 0;
+
+                comVal = double.Parse(pg.Data);
+
+                labelComisionValue.Text = (Val * comVal / 100).ToString();
+            }else
+            {
+                labelComisionValue.Text = "-";
+            }
+            
+
+
+        }
     }
 }

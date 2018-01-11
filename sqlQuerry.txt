@@ -490,6 +490,26 @@ BEGIN
 END
 GO
 
+GO
+CREATE PROCEDURE takeComision
+	@tiptranzaction int
+	,@accountNR nvarchar(100)
+AS
+BEGIN
+
+	DECLARE @custID int;
+
+	SELECT Comision FROM ComisionStatus
+		INNER JOIN UserAccounts
+		ON ComisionStatus.IDBankPacket = UserAccounts.BankPacket
+		WHERE UserAccounts.AccountNumber=@accountNR
+		AND ComisionStatus.IDTypeTransaction = @tiptranzaction
+
+END
+
+
+
+
 CREATE PROCEDURE selectOnIndividuals
 	@id int 
 AS
@@ -623,6 +643,8 @@ GRANT EXEC ON selectOnINdividuals	TO ApplicationRole
 GRANT EXEC ON showAllMyAccounts		TO ApplicationRole
 GRANT EXEC ON transferMoney			TO ApplicationRole
 GRANT EXEC ON showIBANInformations	TO ApplicationRole
+GRANT EXEC ON takeComision			TO ApplicationRole
+
 
 GRANT SELECT ON CurrentCurrency		TO ApplicationRole
 GRANT SELECT ON ComisionStatus		TO ApplicationRole
@@ -754,6 +776,8 @@ INSERT INTO ComisionStatus(IDTypeTransaction,IDBankPacket,Comision)
 VALUES(2,1,1.2)
 INSERT INTO ComisionStatus(IDTypeTransaction,IDBankPacket,Comision)
 VALUES(4,1,0.8)
+INSERT INTO ComisionStatus(IDTypeTransaction,IDBankPacket,Comision)
+VALUES(4,2,1.9)
 
 INSERT INTO UserAccounts(BankPacket,AccountNumber,ValabilityUntil,Currency,Sold,AccountCustomerId)
 VALUES (1,'RO93MITB0410120579132411','2019-1-1','RON',554.15,1)
@@ -779,11 +803,16 @@ SELECT * FROM CurrentCurrency
 
 EXEC putMoneyOnAccount 'RO93MITB0410120579132411' , 1 , 100    
 
-EXEC showAllMyAccounts 2
+EXEC showAllMyAccounts 1
 
 select * from UserAccounts 
 
 
+
+
+
+
+EXEC takeComision 2,'RO93MITB0410120579132411'
 
 select * from ComisionStatus
 select * from TypesTransaction

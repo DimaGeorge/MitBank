@@ -50,20 +50,24 @@
             this.panelMainPaySomething = new System.Windows.Forms.Panel();
             this.label4 = new System.Windows.Forms.Label();
             this.panelMainTransfer = new System.Windows.Forms.Panel();
+            this.label13 = new System.Windows.Forms.Label();
+            this.label12 = new System.Windows.Forms.Label();
+            this.textBoxWriteIBAN = new Bunifu.Framework.UI.BunifuMetroTextbox();
+            this.comboBoxToTransferMyIBAN = new System.Windows.Forms.ComboBox();
+            this.comboBoxSelectTransfer = new System.Windows.Forms.ComboBox();
+            this.label10 = new System.Windows.Forms.Label();
+            this.label9 = new System.Windows.Forms.Label();
+            this.labelshowcurrency = new Bunifu.Framework.UI.BunifuCustomLabel();
+            this.labelshowsold = new Bunifu.Framework.UI.BunifuCustomLabel();
             this.label6 = new System.Windows.Forms.Label();
             this.comboBoxIBAN = new System.Windows.Forms.ComboBox();
             this.panelMainSendMail = new System.Windows.Forms.Panel();
             this.label7 = new System.Windows.Forms.Label();
             this.panelMainSettings = new System.Windows.Forms.Panel();
             this.label8 = new System.Windows.Forms.Label();
-            this.labelshowsold = new Bunifu.Framework.UI.BunifuCustomLabel();
-            this.labelshowcurrency = new Bunifu.Framework.UI.BunifuCustomLabel();
-            this.label9 = new System.Windows.Forms.Label();
-            this.label10 = new System.Windows.Forms.Label();
-            this.comboBoxSelectTransfer = new System.Windows.Forms.ComboBox();
-            this.comboBoxToTransferMyIBAN = new System.Windows.Forms.ComboBox();
-            this.textBoxWriteIBAN = new Bunifu.Framework.UI.BunifuMetroTextbox();
-            this.label12 = new System.Windows.Forms.Label();
+            this.labelComisionValue = new System.Windows.Forms.Label();
+            this.label14 = new System.Windows.Forms.Label();
+            this.textoxValueToTransfer = new Bunifu.Framework.UI.BunifuMetroTextbox();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox4)).BeginInit();
             this.header.SuspendLayout();
             this.panelMainDashboard.SuspendLayout();
@@ -394,10 +398,10 @@
             // 
             this.panelMainDashboard.Controls.Add(this.LabelShowAccounts);
             this.panelMainDashboard.Controls.Add(this.label2);
-            this.panelMainDashboard.Location = new System.Drawing.Point(297, 85);
+            this.panelMainDashboard.Location = new System.Drawing.Point(222, 85);
             this.panelMainDashboard.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.panelMainDashboard.Name = "panelMainDashboard";
-            this.panelMainDashboard.Size = new System.Drawing.Size(1303, 868);
+            this.panelMainDashboard.Size = new System.Drawing.Size(1378, 868);
             this.panelMainDashboard.TabIndex = 22;
             // 
             // label2
@@ -412,10 +416,10 @@
             // panelMainPaySomething
             // 
             this.panelMainPaySomething.Controls.Add(this.label4);
-            this.panelMainPaySomething.Location = new System.Drawing.Point(297, 85);
+            this.panelMainPaySomething.Location = new System.Drawing.Point(222, 85);
             this.panelMainPaySomething.Margin = new System.Windows.Forms.Padding(4);
             this.panelMainPaySomething.Name = "panelMainPaySomething";
-            this.panelMainPaySomething.Size = new System.Drawing.Size(1303, 868);
+            this.panelMainPaySomething.Size = new System.Drawing.Size(1378, 868);
             this.panelMainPaySomething.TabIndex = 23;
             // 
             // label4
@@ -430,6 +434,10 @@
             // 
             // panelMainTransfer
             // 
+            this.panelMainTransfer.Controls.Add(this.textoxValueToTransfer);
+            this.panelMainTransfer.Controls.Add(this.label14);
+            this.panelMainTransfer.Controls.Add(this.labelComisionValue);
+            this.panelMainTransfer.Controls.Add(this.label13);
             this.panelMainTransfer.Controls.Add(this.label12);
             this.panelMainTransfer.Controls.Add(this.textBoxWriteIBAN);
             this.panelMainTransfer.Controls.Add(this.comboBoxToTransferMyIBAN);
@@ -440,18 +448,130 @@
             this.panelMainTransfer.Controls.Add(this.labelshowsold);
             this.panelMainTransfer.Controls.Add(this.label6);
             this.panelMainTransfer.Controls.Add(this.comboBoxIBAN);
-            this.panelMainTransfer.Location = new System.Drawing.Point(297, 85);
+            this.panelMainTransfer.Location = new System.Drawing.Point(222, 85);
             this.panelMainTransfer.Margin = new System.Windows.Forms.Padding(4);
             this.panelMainTransfer.Name = "panelMainTransfer";
-            this.panelMainTransfer.Size = new System.Drawing.Size(1303, 868);
+            this.panelMainTransfer.Size = new System.Drawing.Size(1378, 868);
             this.panelMainTransfer.TabIndex = 24;
+            // 
+            // label13
+            // 
+            this.label13.AutoSize = true;
+            this.label13.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label13.ForeColor = System.Drawing.Color.Snow;
+            this.label13.Location = new System.Drawing.Point(31, 355);
+            this.label13.Name = "label13";
+            this.label13.Size = new System.Drawing.Size(94, 25);
+            this.label13.TabIndex = 12;
+            this.label13.Text = "Comision";
+            // 
+            // label12
+            // 
+            this.label12.AutoSize = true;
+            this.label12.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label12.ForeColor = System.Drawing.Color.Snow;
+            this.label12.Location = new System.Drawing.Point(35, 226);
+            this.label12.Name = "label12";
+            this.label12.Size = new System.Drawing.Size(109, 25);
+            this.label12.TabIndex = 11;
+            this.label12.Text = "Write IBAN";
+            // 
+            // textBoxWriteIBAN
+            // 
+            this.textBoxWriteIBAN.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(30)))), ((int)(((byte)(35)))), ((int)(((byte)(35)))));
+            this.textBoxWriteIBAN.BorderColorFocused = System.Drawing.Color.FromArgb(((int)(((byte)(30)))), ((int)(((byte)(35)))), ((int)(((byte)(35)))));
+            this.textBoxWriteIBAN.BorderColorIdle = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
+            this.textBoxWriteIBAN.BorderColorMouseHover = System.Drawing.Color.FromArgb(((int)(((byte)(100)))), ((int)(((byte)(100)))), ((int)(((byte)(40)))));
+            this.textBoxWriteIBAN.BorderThickness = 3;
+            this.textBoxWriteIBAN.Cursor = System.Windows.Forms.Cursors.IBeam;
+            this.textBoxWriteIBAN.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.textBoxWriteIBAN.ForeColor = System.Drawing.Color.White;
+            this.textBoxWriteIBAN.isPassword = false;
+            this.textBoxWriteIBAN.Location = new System.Drawing.Point(28, 255);
+            this.textBoxWriteIBAN.Margin = new System.Windows.Forms.Padding(4);
+            this.textBoxWriteIBAN.Name = "textBoxWriteIBAN";
+            this.textBoxWriteIBAN.Size = new System.Drawing.Size(528, 30);
+            this.textBoxWriteIBAN.TabIndex = 10;
+            this.textBoxWriteIBAN.TextAlign = System.Windows.Forms.HorizontalAlignment.Left;
+            // 
+            // comboBoxToTransferMyIBAN
+            // 
+            this.comboBoxToTransferMyIBAN.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(30)))), ((int)(((byte)(35)))), ((int)(((byte)(35)))));
+            this.comboBoxToTransferMyIBAN.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.comboBoxToTransferMyIBAN.ForeColor = System.Drawing.Color.White;
+            this.comboBoxToTransferMyIBAN.FormattingEnabled = true;
+            this.comboBoxToTransferMyIBAN.Location = new System.Drawing.Point(28, 259);
+            this.comboBoxToTransferMyIBAN.Margin = new System.Windows.Forms.Padding(4);
+            this.comboBoxToTransferMyIBAN.Name = "comboBoxToTransferMyIBAN";
+            this.comboBoxToTransferMyIBAN.Size = new System.Drawing.Size(528, 26);
+            this.comboBoxToTransferMyIBAN.TabIndex = 8;
+            // 
+            // comboBoxSelectTransfer
+            // 
+            this.comboBoxSelectTransfer.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(30)))), ((int)(((byte)(35)))), ((int)(((byte)(35)))));
+            this.comboBoxSelectTransfer.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.comboBoxSelectTransfer.ForeColor = System.Drawing.Color.White;
+            this.comboBoxSelectTransfer.FormattingEnabled = true;
+            this.comboBoxSelectTransfer.Items.AddRange(new object[] {
+            "My another account",
+            "Anyone else account"});
+            this.comboBoxSelectTransfer.Location = new System.Drawing.Point(28, 188);
+            this.comboBoxSelectTransfer.Margin = new System.Windows.Forms.Padding(4);
+            this.comboBoxSelectTransfer.Name = "comboBoxSelectTransfer";
+            this.comboBoxSelectTransfer.Size = new System.Drawing.Size(528, 26);
+            this.comboBoxSelectTransfer.TabIndex = 7;
+            this.comboBoxSelectTransfer.SelectedIndexChanged += new System.EventHandler(this.comboBoxSelectTransfer_SelectedIndexChanged);
+            // 
+            // label10
+            // 
+            this.label10.AutoSize = true;
+            this.label10.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label10.ForeColor = System.Drawing.Color.Snow;
+            this.label10.Location = new System.Drawing.Point(31, 144);
+            this.label10.Name = "label10";
+            this.label10.Size = new System.Drawing.Size(36, 25);
+            this.label10.TabIndex = 6;
+            this.label10.Text = "To";
+            // 
+            // label9
+            // 
+            this.label9.AutoSize = true;
+            this.label9.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label9.ForeColor = System.Drawing.Color.Snow;
+            this.label9.Location = new System.Drawing.Point(31, 25);
+            this.label9.Name = "label9";
+            this.label9.Size = new System.Drawing.Size(174, 25);
+            this.label9.TabIndex = 5;
+            this.label9.Text = "From your account";
+            // 
+            // labelshowcurrency
+            // 
+            this.labelshowcurrency.AutoSize = true;
+            this.labelshowcurrency.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.labelshowcurrency.ForeColor = System.Drawing.SystemColors.HighlightText;
+            this.labelshowcurrency.Location = new System.Drawing.Point(231, 107);
+            this.labelshowcurrency.Name = "labelshowcurrency";
+            this.labelshowcurrency.Size = new System.Drawing.Size(16, 24);
+            this.labelshowcurrency.TabIndex = 4;
+            this.labelshowcurrency.Text = "-";
+            // 
+            // labelshowsold
+            // 
+            this.labelshowsold.AutoSize = true;
+            this.labelshowsold.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.labelshowsold.ForeColor = System.Drawing.Color.Snow;
+            this.labelshowsold.Location = new System.Drawing.Point(127, 107);
+            this.labelshowsold.Name = "labelshowsold";
+            this.labelshowsold.Size = new System.Drawing.Size(16, 24);
+            this.labelshowsold.TabIndex = 3;
+            this.labelshowsold.Text = "-";
             // 
             // label6
             // 
             this.label6.AutoSize = true;
             this.label6.Font = new System.Drawing.Font("Modern No. 20", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label6.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
-            this.label6.Location = new System.Drawing.Point(36, 107);
+            this.label6.Location = new System.Drawing.Point(32, 107);
             this.label6.Name = "label6";
             this.label6.Size = new System.Drawing.Size(85, 22);
             this.label6.TabIndex = 2;
@@ -473,10 +593,10 @@
             // panelMainSendMail
             // 
             this.panelMainSendMail.Controls.Add(this.label7);
-            this.panelMainSendMail.Location = new System.Drawing.Point(297, 85);
+            this.panelMainSendMail.Location = new System.Drawing.Point(222, 85);
             this.panelMainSendMail.Margin = new System.Windows.Forms.Padding(4);
             this.panelMainSendMail.Name = "panelMainSendMail";
-            this.panelMainSendMail.Size = new System.Drawing.Size(1303, 868);
+            this.panelMainSendMail.Size = new System.Drawing.Size(1378, 868);
             this.panelMainSendMail.TabIndex = 25;
             // 
             // label7
@@ -492,10 +612,10 @@
             // panelMainSettings
             // 
             this.panelMainSettings.Controls.Add(this.label8);
-            this.panelMainSettings.Location = new System.Drawing.Point(297, 85);
+            this.panelMainSettings.Location = new System.Drawing.Point(222, 85);
             this.panelMainSettings.Margin = new System.Windows.Forms.Padding(4);
             this.panelMainSettings.Name = "panelMainSettings";
-            this.panelMainSettings.Size = new System.Drawing.Size(1303, 868);
+            this.panelMainSettings.Size = new System.Drawing.Size(1378, 868);
             this.panelMainSettings.TabIndex = 26;
             // 
             // label8
@@ -508,106 +628,46 @@
             this.label8.TabIndex = 0;
             this.label8.Text = "label8";
             // 
-            // labelshowsold
+            // labelComisionValue
             // 
-            this.labelshowsold.AutoSize = true;
-            this.labelshowsold.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.labelshowsold.ForeColor = System.Drawing.Color.Snow;
-            this.labelshowsold.Location = new System.Drawing.Point(127, 107);
-            this.labelshowsold.Name = "labelshowsold";
-            this.labelshowsold.Size = new System.Drawing.Size(16, 24);
-            this.labelshowsold.TabIndex = 3;
-            this.labelshowsold.Text = "-";
+            this.labelComisionValue.AutoSize = true;
+            this.labelComisionValue.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.labelComisionValue.ForeColor = System.Drawing.Color.Snow;
+            this.labelComisionValue.Location = new System.Drawing.Point(153, 355);
+            this.labelComisionValue.Name = "labelComisionValue";
+            this.labelComisionValue.Size = new System.Drawing.Size(19, 25);
+            this.labelComisionValue.TabIndex = 13;
+            this.labelComisionValue.Text = "-";
             // 
-            // labelshowcurrency
+            // label14
             // 
-            this.labelshowcurrency.AutoSize = true;
-            this.labelshowcurrency.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.labelshowcurrency.ForeColor = System.Drawing.SystemColors.HighlightText;
-            this.labelshowcurrency.Location = new System.Drawing.Point(231, 107);
-            this.labelshowcurrency.Name = "labelshowcurrency";
-            this.labelshowcurrency.Size = new System.Drawing.Size(16, 24);
-            this.labelshowcurrency.TabIndex = 4;
-            this.labelshowcurrency.Text = "-";
+            this.label14.AutoSize = true;
+            this.label14.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label14.ForeColor = System.Drawing.Color.Snow;
+            this.label14.Location = new System.Drawing.Point(31, 306);
+            this.label14.Name = "label14";
+            this.label14.Size = new System.Drawing.Size(63, 25);
+            this.label14.TabIndex = 14;
+            this.label14.Text = "Value";
             // 
-            // label9
+            // textoxValueToTransfer
             // 
-            this.label9.AutoSize = true;
-            this.label9.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label9.ForeColor = System.Drawing.Color.Snow;
-            this.label9.Location = new System.Drawing.Point(31, 25);
-            this.label9.Name = "label9";
-            this.label9.Size = new System.Drawing.Size(174, 25);
-            this.label9.TabIndex = 5;
-            this.label9.Text = "From your account";
-            // 
-            // label10
-            // 
-            this.label10.AutoSize = true;
-            this.label10.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label10.ForeColor = System.Drawing.Color.Snow;
-            this.label10.Location = new System.Drawing.Point(35, 156);
-            this.label10.Name = "label10";
-            this.label10.Size = new System.Drawing.Size(36, 25);
-            this.label10.TabIndex = 6;
-            this.label10.Text = "To";
-            // 
-            // comboBoxSelectTransfer
-            // 
-            this.comboBoxSelectTransfer.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(30)))), ((int)(((byte)(35)))), ((int)(((byte)(35)))));
-            this.comboBoxSelectTransfer.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.comboBoxSelectTransfer.ForeColor = System.Drawing.Color.White;
-            this.comboBoxSelectTransfer.FormattingEnabled = true;
-            this.comboBoxSelectTransfer.Items.AddRange(new object[] {
-            "My another account",
-            "Anyone else account"});
-            this.comboBoxSelectTransfer.Location = new System.Drawing.Point(28, 188);
-            this.comboBoxSelectTransfer.Margin = new System.Windows.Forms.Padding(4);
-            this.comboBoxSelectTransfer.Name = "comboBoxSelectTransfer";
-            this.comboBoxSelectTransfer.Size = new System.Drawing.Size(528, 26);
-            this.comboBoxSelectTransfer.TabIndex = 7;
-            this.comboBoxSelectTransfer.SelectedIndexChanged += new System.EventHandler(this.comboBoxSelectTransfer_SelectedIndexChanged);
-            // 
-            // comboBoxToTransferMyIBAN
-            // 
-            this.comboBoxToTransferMyIBAN.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(30)))), ((int)(((byte)(35)))), ((int)(((byte)(35)))));
-            this.comboBoxToTransferMyIBAN.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.comboBoxToTransferMyIBAN.ForeColor = System.Drawing.Color.White;
-            this.comboBoxToTransferMyIBAN.FormattingEnabled = true;
-            this.comboBoxToTransferMyIBAN.Location = new System.Drawing.Point(28, 259);
-            this.comboBoxToTransferMyIBAN.Margin = new System.Windows.Forms.Padding(4);
-            this.comboBoxToTransferMyIBAN.Name = "comboBoxToTransferMyIBAN";
-            this.comboBoxToTransferMyIBAN.Size = new System.Drawing.Size(528, 26);
-            this.comboBoxToTransferMyIBAN.TabIndex = 8;
-            // 
-            // textBoxWriteIBAN
-            // 
-            this.textBoxWriteIBAN.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(30)))), ((int)(((byte)(35)))), ((int)(((byte)(35)))));
-            this.textBoxWriteIBAN.BorderColorFocused = System.Drawing.Color.FromArgb(((int)(((byte)(30)))), ((int)(((byte)(35)))), ((int)(((byte)(35)))));
-            this.textBoxWriteIBAN.BorderColorIdle = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
-            this.textBoxWriteIBAN.BorderColorMouseHover = System.Drawing.Color.FromArgb(((int)(((byte)(100)))), ((int)(((byte)(100)))), ((int)(((byte)(40)))));
-            this.textBoxWriteIBAN.BorderThickness = 3;
-            this.textBoxWriteIBAN.Cursor = System.Windows.Forms.Cursors.IBeam;
-            this.textBoxWriteIBAN.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.textBoxWriteIBAN.ForeColor = System.Drawing.Color.White;
-            this.textBoxWriteIBAN.isPassword = false;
-            this.textBoxWriteIBAN.Location = new System.Drawing.Point(28, 255);
-            this.textBoxWriteIBAN.Margin = new System.Windows.Forms.Padding(4);
-            this.textBoxWriteIBAN.Name = "textBoxWriteIBAN";
-            this.textBoxWriteIBAN.Size = new System.Drawing.Size(528, 30);
-            this.textBoxWriteIBAN.TabIndex = 10;
-            this.textBoxWriteIBAN.TextAlign = System.Windows.Forms.HorizontalAlignment.Left;
-            // 
-            // label12
-            // 
-            this.label12.AutoSize = true;
-            this.label12.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label12.ForeColor = System.Drawing.Color.Snow;
-            this.label12.Location = new System.Drawing.Point(35, 226);
-            this.label12.Name = "label12";
-            this.label12.Size = new System.Drawing.Size(109, 25);
-            this.label12.TabIndex = 11;
-            this.label12.Text = "Write IBAN";
+            this.textoxValueToTransfer.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(30)))), ((int)(((byte)(35)))), ((int)(((byte)(35)))));
+            this.textoxValueToTransfer.BorderColorFocused = System.Drawing.Color.FromArgb(((int)(((byte)(30)))), ((int)(((byte)(35)))), ((int)(((byte)(35)))));
+            this.textoxValueToTransfer.BorderColorIdle = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
+            this.textoxValueToTransfer.BorderColorMouseHover = System.Drawing.Color.FromArgb(((int)(((byte)(100)))), ((int)(((byte)(100)))), ((int)(((byte)(40)))));
+            this.textoxValueToTransfer.BorderThickness = 3;
+            this.textoxValueToTransfer.Cursor = System.Windows.Forms.Cursors.IBeam;
+            this.textoxValueToTransfer.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.textoxValueToTransfer.ForeColor = System.Drawing.Color.White;
+            this.textoxValueToTransfer.isPassword = false;
+            this.textoxValueToTransfer.Location = new System.Drawing.Point(101, 306);
+            this.textoxValueToTransfer.Margin = new System.Windows.Forms.Padding(4);
+            this.textoxValueToTransfer.Name = "textoxValueToTransfer";
+            this.textoxValueToTransfer.Size = new System.Drawing.Size(167, 30);
+            this.textoxValueToTransfer.TabIndex = 15;
+            this.textoxValueToTransfer.TextAlign = System.Windows.Forms.HorizontalAlignment.Left;
+            this.textoxValueToTransfer.OnValueChanged += new System.EventHandler(this.textoxValueToTransfer_OnValueChanged);
             // 
             // Form2
             // 
@@ -692,5 +752,9 @@
         private System.Windows.Forms.ComboBox comboBoxToTransferMyIBAN;
         private Bunifu.Framework.UI.BunifuMetroTextbox textBoxWriteIBAN;
         private System.Windows.Forms.Label label12;
+        private System.Windows.Forms.Label label13;
+        private System.Windows.Forms.Label labelComisionValue;
+        private Bunifu.Framework.UI.BunifuMetroTextbox textoxValueToTransfer;
+        private System.Windows.Forms.Label label14;
     }
 }
