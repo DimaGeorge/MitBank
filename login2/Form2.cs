@@ -77,21 +77,29 @@ namespace login2
 
             using (var context =new MitBankDBEntities2())
             {
-              int idSession = DataManagement.getIdUsername();
-                if (idSession != 0)
-                {
-                    
-                    var result = context.showAllMyAccounts(idSession).ToArray();
-                        foreach (var item in result)
-                        {
-                            comboBoxIBAN.Items.Add(item.ToString());
-                        }
-                }
 
-                Page pg = DataManagement.getDashboardInfo();
-                Label lb = UIDashboardAccountFrame.createFrame(pg);
-                this.Controls.Add(lb);
-                lb.BringToFront();
+
+                List<Page> listIban = new List<Page>();
+                listIban = DataManagement.getIbanList();
+                foreach (var item in listIban)
+                {
+                    int index = -1;
+                    index = comboBoxIBAN.FindString(item.Data.ToString());
+
+                    if (index==-1)
+                    {
+                        comboBoxIBAN.Items.Add(item.Data.ToString());
+                    }
+                    
+                }
+                if(listIban.Count()!=0)
+                {
+                    comboBoxIBAN.SelectedIndex = 0;
+                    comboBoxSelectTransfer.SelectedIndex = 0;
+                }
+                   
+                
+                 
             }
 
 
@@ -148,8 +156,16 @@ namespace login2
                 frm.Invalidate();
                 frm.Show();
             }
-           // idSession = -1;
         }
 
+        private void comboBoxIBAN_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            Page pg = DataManagement.getSold(comboBoxIBAN.SelectedItem.ToString());
+            labelshowsold.Text = pg.Data;
+
+
+            Page pg2 = DataManagement.getCurrency(comboBoxIBAN.SelectedItem.ToString());
+            labelshowcurrency.Text = pg2.Data;
+        }
     }
 }

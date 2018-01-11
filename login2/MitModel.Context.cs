@@ -131,5 +131,14 @@ namespace login2
     
             return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("transferMoney", fromIBANParameter, toIBANParameter, valueToTransferParameter);
         }
+    
+        public virtual ObjectResult<showIBANInformations_Result> showIBANInformations(string iban)
+        {
+            var ibanParameter = iban != null ?
+                new ObjectParameter("iban", iban) :
+                new ObjectParameter("iban", typeof(string));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<showIBANInformations_Result>("showIBANInformations", ibanParameter);
+        }
     }
 }

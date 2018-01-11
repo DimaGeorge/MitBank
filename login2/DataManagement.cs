@@ -51,6 +51,74 @@ namespace login2
             return ret;
         }
 
+
+        public static List<Page> getIbanList()
+        {
+            List<Page> listIban = new List<Page>();
+
+            using (var context = new MitBankDBEntities2())
+            {
+                if (IDSession != 0)
+                {
+
+                    var result = context.showAllMyAccounts(IDSession).ToArray();
+                    foreach (var item in result)
+                    {
+                        Page pg = new Page();
+                        pg.Data = item.ToString();
+                        listIban.Add(pg);
+                    }
+                }
+            }
+            
+            return listIban;
+
+        }
+
+        public static Page getSold(string iban)
+        {
+
+            using (var context = new MitBankDBEntities2())
+            {
+                Page pg = new Page();
+                if (IDSession != 0)
+                {
+
+                    var result = context.showIBANInformations(iban).ToArray();
+                    foreach (var item in result)
+                    {
+
+                        pg.Data = item.Sold.ToString();
+
+                    }
+                }
+                return pg;
+            }
+        }
+
+
+        public static Page getCurrency(string iban)
+        {
+
+            using (var context = new MitBankDBEntities2())
+            {
+                Page pg = new Page();
+                if (IDSession != 0)
+                {
+
+                    var result = context.showIBANInformations(iban).ToArray();
+                    foreach (var item in result)
+                    {
+
+                        pg.Data = item.Currency.ToString();
+
+                    }
+                }
+                return pg;
+            }
+        }
+
+
         public static Page getLastName()
         {
 

@@ -4,17 +4,12 @@
   <edmx:Runtime>
     <!-- SSDL content -->
     <edmx:StorageModels>
-      <Schema Namespace="MitBankDBModel.Store" Alias="Self" Provider="System.Data.SqlClient" ProviderManifestToken="2008" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
-        <EntityContainer Name="MitBankDBModelStoreContainer">
-          <EntitySet Name="ComisionStatus" EntityType="MitBankDBModel.Store.ComisionStatus" store:Type="Tables" Schema="dbo" />
-          <EntitySet Name="CurrentCurrency" EntityType="MitBankDBModel.Store.CurrentCurrency" store:Type="Tables" Schema="dbo" />
-          <EntitySet Name="TypeBankingPackets" EntityType="MitBankDBModel.Store.TypeBankingPackets" store:Type="Tables" Schema="dbo" />
-        </EntityContainer>
+    <Schema Namespace="MitBankDBModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2008" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
         <EntityType Name="ComisionStatus">
           <Key>
             <PropertyRef Name="ID" />
           </Key>
-          <Property Name="ID" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+          <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
           <Property Name="IDTypeTransaction" Type="int" />
           <Property Name="IDBankPacket" Type="int" />
           <Property Name="Comision" Type="float" />
@@ -23,8 +18,8 @@
           <Key>
             <PropertyRef Name="CurrencyName" />
           </Key>
-          <Property Name="ID" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
-          <Property Name="CurrencyName" Type="nvarchar" Nullable="false" MaxLength="10" />
+          <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="CurrencyName" Type="nvarchar" MaxLength="10" Nullable="false" />
           <Property Name="ValueBuy" Type="float" Nullable="false" />
           <Property Name="ValueSel" Type="float" Nullable="false" />
         </EntityType>
@@ -32,7 +27,7 @@
           <Key>
             <PropertyRef Name="ID" />
           </Key>
-          <Property Name="ID" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+          <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
           <Property Name="NameTypePacket" Type="nchar" MaxLength="100" />
         </EntityType>
         <Function Name="AddNormalUser" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
@@ -63,13 +58,20 @@
         <Function Name="showAllMyAccounts" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
           <Parameter Name="idUsername" Type="int" Mode="In" />
         </Function>
+        <Function Name="showIBANInformations" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="iban" Type="nvarchar" Mode="In" />
+        </Function>
         <Function Name="transferMoney" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
           <Parameter Name="fromIBAN" Type="nvarchar" Mode="In" />
           <Parameter Name="toIBAN" Type="nvarchar" Mode="In" />
           <Parameter Name="valueToTransfer" Type="float" Mode="In" />
         </Function>
-      </Schema>
-    </edmx:StorageModels>
+        <EntityContainer Name="MitBankDBModelStoreContainer">
+          <EntitySet Name="ComisionStatus" EntityType="Self.ComisionStatus" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="CurrentCurrency" EntityType="Self.CurrentCurrency" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="TypeBankingPackets" EntityType="Self.TypeBankingPackets" Schema="dbo" store:Type="Tables" />
+        </EntityContainer>
+      </Schema></edmx:StorageModels>
     <!-- CSDL content -->
     <edmx:ConceptualModels>
       <Schema Namespace="MitBankDBModel" Alias="Self" p1:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:p1="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
@@ -100,15 +102,18 @@
             <Parameter Name="valueMoney" Mode="In" Type="Double" />
           </FunctionImport>
           <FunctionImport Name="selectOnIndividuals" ReturnType="Collection(MitBankDBModel.selectOnIndividuals_Result)">
-            <Parameter Name="id" Mode="In" Type="Int32" />
+          <Parameter Name="id" Mode="In" Type="Int32" />
           </FunctionImport>
           <FunctionImport Name="showAllMyAccounts" ReturnType="Collection(String)">
-            <Parameter Name="idUsername" Mode="In" Type="Int32" />
+          <Parameter Name="idUsername" Mode="In" Type="Int32" />
           </FunctionImport>
           <FunctionImport Name="transferMoney">
             <Parameter Name="fromIBAN" Mode="In" Type="String" />
             <Parameter Name="toIBAN" Mode="In" Type="String" />
             <Parameter Name="valueToTransfer" Mode="In" Type="Double" />
+          </FunctionImport>
+          <FunctionImport Name="showIBANInformations" ReturnType="Collection(MitBankDBModel.showIBANInformations_Result)">
+            <Parameter Name="iban" Mode="In" Type="String" />
           </FunctionImport>
         </EntityContainer>
         <EntityType Name="ComisionStatu">
@@ -147,6 +152,15 @@
           <Property Type="String" Name="Email" Nullable="false" MaxLength="200" />
           <Property Type="String" Name="CNP" Nullable="false" MaxLength="13" />
           <Property Type="DateTime" Name="Birthday" Nullable="false" />
+        </ComplexType>
+        <ComplexType Name="showIBANInformations_Result">
+          <Property Type="Int32" Name="ID" Nullable="false" />
+          <Property Type="Int32" Name="BankPacket" Nullable="true" />
+          <Property Type="String" Name="AccountNumber" Nullable="false" MaxLength="30" />
+          <Property Type="DateTime" Name="ValabilityUntil" Nullable="false" />
+          <Property Type="String" Name="Currency" Nullable="false" MaxLength="10" />
+          <Property Type="Double" Name="Sold" Nullable="false" />
+          <Property Type="Int32" Name="AccountCustomerID" Nullable="true" />
         </ComplexType>
       </Schema>
     </edmx:ConceptualModels>
@@ -208,6 +222,19 @@
           </FunctionImportMapping>
           <FunctionImportMapping FunctionImportName="showAllMyAccounts" FunctionName="MitBankDBModel.Store.showAllMyAccounts" />
           <FunctionImportMapping FunctionImportName="transferMoney" FunctionName="MitBankDBModel.Store.transferMoney" />
+          <FunctionImportMapping FunctionImportName="showIBANInformations" FunctionName="MitBankDBModel.Store.showIBANInformations">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="MitBankDBModel.showIBANInformations_Result">
+                <ScalarProperty Name="ID" ColumnName="ID" />
+                <ScalarProperty Name="BankPacket" ColumnName="BankPacket" />
+                <ScalarProperty Name="AccountNumber" ColumnName="AccountNumber" />
+                <ScalarProperty Name="ValabilityUntil" ColumnName="ValabilityUntil" />
+                <ScalarProperty Name="Currency" ColumnName="Currency" />
+                <ScalarProperty Name="Sold" ColumnName="Sold" />
+                <ScalarProperty Name="AccountCustomerID" ColumnName="AccountCustomerID" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
         </EntityContainerMapping>
       </Mapping>
     </edmx:Mappings>
@@ -225,6 +252,7 @@
         <DesignerProperty Name="EnablePluralization" Value="True" />
         <DesignerProperty Name="IncludeForeignKeysInModel" Value="True" />
         <DesignerProperty Name="CodeGenerationStrategy" Value="None" />
+        <DesignerProperty Name="UseLegacyProvider" Value="True" />
       </DesignerInfoPropertySet>
     </Options>
     <!-- Diagram content (shape and connector positions) -->

@@ -105,6 +105,9 @@
     <Compile Include="selectOnIndividuals_Result.cs">
       <DependentUpon>MitModel.tt</DependentUpon>
     </Compile>
+    <Compile Include="showIBANInformations_Result.cs">
+      <DependentUpon>MitModel.tt</DependentUpon>
+    </Compile>
     <Compile Include="TypeBankingPacket.cs">
       <DependentUpon>MitModel.tt</DependentUpon>
     </Compile>
