@@ -46,7 +46,31 @@ namespace login2
             }
             return list;
         }
+        public static Page getComision(string accNr)
+        {
 
+            Page pg = new Page();
+            using (var context = new MitBankDBEntities2())
+            {
+                if (IDSession != 0&&accNr!="")
+                {
+
+                    var result = context.takeComision(4, accNr).ToArray();
+                    
+                    foreach (var item in result)
+                    {
+                        if (item.HasValue==true)
+                            pg.Data = item.ToString();
+                        else
+                            pg.Data = ""; 
+                    }
+                }
+            }
+
+
+
+            return pg;
+        }
 
         public static List<Page> getIbanList()
         {

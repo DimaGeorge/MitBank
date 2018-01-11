@@ -140,5 +140,18 @@ namespace login2
     
             return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<showIBANInformations_Result>("showIBANInformations", ibanParameter);
         }
+    
+        public virtual ObjectResult<Nullable<double>> takeComision(Nullable<int> tiptranzaction, string accountNR)
+        {
+            var tiptranzactionParameter = tiptranzaction.HasValue ?
+                new ObjectParameter("tiptranzaction", tiptranzaction) :
+                new ObjectParameter("tiptranzaction", typeof(int));
+    
+            var accountNRParameter = accountNR != null ?
+                new ObjectParameter("accountNR", accountNR) :
+                new ObjectParameter("accountNR", typeof(string));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<Nullable<double>>("takeComision", tiptranzactionParameter, accountNRParameter);
+        }
     }
 }

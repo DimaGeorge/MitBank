@@ -61,6 +61,10 @@
         <Function Name="showIBANInformations" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
           <Parameter Name="iban" Type="nvarchar" Mode="In" />
         </Function>
+        <Function Name="takeComision" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="tiptranzaction" Type="int" Mode="In" />
+          <Parameter Name="accountNR" Type="nvarchar" Mode="In" />
+        </Function>
         <Function Name="transferMoney" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
           <Parameter Name="fromIBAN" Type="nvarchar" Mode="In" />
           <Parameter Name="toIBAN" Type="nvarchar" Mode="In" />
@@ -113,7 +117,11 @@
             <Parameter Name="valueToTransfer" Mode="In" Type="Double" />
           </FunctionImport>
           <FunctionImport Name="showIBANInformations" ReturnType="Collection(MitBankDBModel.showIBANInformations_Result)">
-            <Parameter Name="iban" Mode="In" Type="String" />
+          <Parameter Name="iban" Mode="In" Type="String" />
+          </FunctionImport>
+          <FunctionImport Name="takeComision" ReturnType="Collection(Double)">
+            <Parameter Name="tiptranzaction" Mode="In" Type="Int32" />
+            <Parameter Name="accountNR" Mode="In" Type="String" />
           </FunctionImport>
         </EntityContainer>
         <EntityType Name="ComisionStatu">
@@ -235,6 +243,7 @@
               </ComplexTypeMapping>
             </ResultMapping>
           </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="takeComision" FunctionName="MitBankDBModel.Store.takeComision" />
         </EntityContainerMapping>
       </Mapping>
     </edmx:Mappings>
