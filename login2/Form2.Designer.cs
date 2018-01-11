@@ -61,6 +61,9 @@
             this.label9 = new System.Windows.Forms.Label();
             this.label10 = new System.Windows.Forms.Label();
             this.comboBoxSelectTransfer = new System.Windows.Forms.ComboBox();
+            this.comboBoxToTransferMyIBAN = new System.Windows.Forms.ComboBox();
+            this.textBoxWriteIBAN = new Bunifu.Framework.UI.BunifuMetroTextbox();
+            this.label12 = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox4)).BeginInit();
             this.header.SuspendLayout();
             this.panelMainDashboard.SuspendLayout();
@@ -427,6 +430,9 @@
             // 
             // panelMainTransfer
             // 
+            this.panelMainTransfer.Controls.Add(this.label12);
+            this.panelMainTransfer.Controls.Add(this.textBoxWriteIBAN);
+            this.panelMainTransfer.Controls.Add(this.comboBoxToTransferMyIBAN);
             this.panelMainTransfer.Controls.Add(this.comboBoxSelectTransfer);
             this.panelMainTransfer.Controls.Add(this.label10);
             this.panelMainTransfer.Controls.Add(this.label9);
@@ -454,12 +460,13 @@
             // comboBoxIBAN
             // 
             this.comboBoxIBAN.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(30)))), ((int)(((byte)(35)))), ((int)(((byte)(35)))));
+            this.comboBoxIBAN.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.comboBoxIBAN.ForeColor = System.Drawing.Color.White;
             this.comboBoxIBAN.FormattingEnabled = true;
             this.comboBoxIBAN.Location = new System.Drawing.Point(28, 64);
             this.comboBoxIBAN.Margin = new System.Windows.Forms.Padding(4);
             this.comboBoxIBAN.Name = "comboBoxIBAN";
-            this.comboBoxIBAN.Size = new System.Drawing.Size(528, 24);
+            this.comboBoxIBAN.Size = new System.Drawing.Size(528, 26);
             this.comboBoxIBAN.TabIndex = 1;
             this.comboBoxIBAN.SelectedIndexChanged += new System.EventHandler(this.comboBoxIBAN_SelectedIndexChanged);
             // 
@@ -539,7 +546,7 @@
             this.label10.AutoSize = true;
             this.label10.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label10.ForeColor = System.Drawing.Color.Snow;
-            this.label10.Location = new System.Drawing.Point(35, 144);
+            this.label10.Location = new System.Drawing.Point(35, 156);
             this.label10.Name = "label10";
             this.label10.Size = new System.Drawing.Size(36, 25);
             this.label10.TabIndex = 6;
@@ -548,6 +555,7 @@
             // comboBoxSelectTransfer
             // 
             this.comboBoxSelectTransfer.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(30)))), ((int)(((byte)(35)))), ((int)(((byte)(35)))));
+            this.comboBoxSelectTransfer.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.comboBoxSelectTransfer.ForeColor = System.Drawing.Color.White;
             this.comboBoxSelectTransfer.FormattingEnabled = true;
             this.comboBoxSelectTransfer.Items.AddRange(new object[] {
@@ -556,8 +564,50 @@
             this.comboBoxSelectTransfer.Location = new System.Drawing.Point(28, 188);
             this.comboBoxSelectTransfer.Margin = new System.Windows.Forms.Padding(4);
             this.comboBoxSelectTransfer.Name = "comboBoxSelectTransfer";
-            this.comboBoxSelectTransfer.Size = new System.Drawing.Size(528, 24);
+            this.comboBoxSelectTransfer.Size = new System.Drawing.Size(528, 26);
             this.comboBoxSelectTransfer.TabIndex = 7;
+            this.comboBoxSelectTransfer.SelectedIndexChanged += new System.EventHandler(this.comboBoxSelectTransfer_SelectedIndexChanged);
+            // 
+            // comboBoxToTransferMyIBAN
+            // 
+            this.comboBoxToTransferMyIBAN.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(30)))), ((int)(((byte)(35)))), ((int)(((byte)(35)))));
+            this.comboBoxToTransferMyIBAN.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.comboBoxToTransferMyIBAN.ForeColor = System.Drawing.Color.White;
+            this.comboBoxToTransferMyIBAN.FormattingEnabled = true;
+            this.comboBoxToTransferMyIBAN.Location = new System.Drawing.Point(28, 259);
+            this.comboBoxToTransferMyIBAN.Margin = new System.Windows.Forms.Padding(4);
+            this.comboBoxToTransferMyIBAN.Name = "comboBoxToTransferMyIBAN";
+            this.comboBoxToTransferMyIBAN.Size = new System.Drawing.Size(528, 26);
+            this.comboBoxToTransferMyIBAN.TabIndex = 8;
+            // 
+            // textBoxWriteIBAN
+            // 
+            this.textBoxWriteIBAN.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(30)))), ((int)(((byte)(35)))), ((int)(((byte)(35)))));
+            this.textBoxWriteIBAN.BorderColorFocused = System.Drawing.Color.FromArgb(((int)(((byte)(30)))), ((int)(((byte)(35)))), ((int)(((byte)(35)))));
+            this.textBoxWriteIBAN.BorderColorIdle = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
+            this.textBoxWriteIBAN.BorderColorMouseHover = System.Drawing.Color.FromArgb(((int)(((byte)(100)))), ((int)(((byte)(100)))), ((int)(((byte)(40)))));
+            this.textBoxWriteIBAN.BorderThickness = 3;
+            this.textBoxWriteIBAN.Cursor = System.Windows.Forms.Cursors.IBeam;
+            this.textBoxWriteIBAN.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.textBoxWriteIBAN.ForeColor = System.Drawing.Color.White;
+            this.textBoxWriteIBAN.isPassword = false;
+            this.textBoxWriteIBAN.Location = new System.Drawing.Point(28, 255);
+            this.textBoxWriteIBAN.Margin = new System.Windows.Forms.Padding(4);
+            this.textBoxWriteIBAN.Name = "textBoxWriteIBAN";
+            this.textBoxWriteIBAN.Size = new System.Drawing.Size(528, 30);
+            this.textBoxWriteIBAN.TabIndex = 10;
+            this.textBoxWriteIBAN.TextAlign = System.Windows.Forms.HorizontalAlignment.Left;
+            // 
+            // label12
+            // 
+            this.label12.AutoSize = true;
+            this.label12.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label12.ForeColor = System.Drawing.Color.Snow;
+            this.label12.Location = new System.Drawing.Point(35, 226);
+            this.label12.Name = "label12";
+            this.label12.Size = new System.Drawing.Size(109, 25);
+            this.label12.TabIndex = 11;
+            this.label12.Text = "Write IBAN";
             // 
             // Form2
             // 
@@ -639,5 +689,8 @@
         private System.Windows.Forms.ComboBox comboBoxSelectTransfer;
         private System.Windows.Forms.Label label10;
         private System.Windows.Forms.Label label9;
+        private System.Windows.Forms.ComboBox comboBoxToTransferMyIBAN;
+        private Bunifu.Framework.UI.BunifuMetroTextbox textBoxWriteIBAN;
+        private System.Windows.Forms.Label label12;
     }
 }

@@ -32,8 +32,9 @@ namespace login2
             lastMenupanel = panelMainDashboard;
 
 
-           
-            
+            comboBoxToTransferMyIBAN.Visible = false;
+            textBoxWriteIBAN.Visible = false;
+
 
 
         }
@@ -97,7 +98,7 @@ namespace login2
                     comboBoxIBAN.SelectedIndex = 0;
                     comboBoxSelectTransfer.SelectedIndex = 0;
                 }
-                   
+                
                 
                  
             }
@@ -166,6 +167,47 @@ namespace login2
 
             Page pg2 = DataManagement.getCurrency(comboBoxIBAN.SelectedItem.ToString());
             labelshowcurrency.Text = pg2.Data;
+
+            comboBoxToTransferMyIBAN.Refresh();
+            comboBoxSelectTransfer.SelectedIndex = -1;
+        }
+
+        private void comboBoxSelectTransfer_SelectedIndexChanged(object sender, EventArgs e)
+        {
+
+            comboBoxToTransferMyIBAN.Items.Clear();
+            if (comboBoxSelectTransfer.Text.ToString() == "My another account")
+            {
+                label12.Visible = false;
+                textBoxWriteIBAN.Visible = false;
+                comboBoxToTransferMyIBAN.Visible = true;
+
+                List<Page> lp = new List<Page>();
+                lp = DataManagement.getIbanList();
+
+                foreach (var item in lp)
+                {
+                    int index = -1;
+                    index = comboBoxToTransferMyIBAN.FindString(item.Data.ToString());
+
+                    if (index ==-1 && item.Data.ToString()!=comboBoxIBAN.Text.ToString())
+                    {
+                        comboBoxToTransferMyIBAN.Items.Add(item.Data.ToString());
+                    }
+
+                }
+                
+
+
+
+            }
+            else
+            {
+                label12.Visible = true;
+                comboBoxToTransferMyIBAN.Visible = false;
+                textBoxWriteIBAN.Visible = true;
+            }
+
         }
     }
 }
