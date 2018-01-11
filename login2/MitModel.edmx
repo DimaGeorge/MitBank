@@ -35,6 +35,9 @@
           <Parameter Name="Username" Type="nvarchar" Mode="In" />
           <Parameter Name="Password" Type="nvarchar" Mode="In" />
         </Function>
+        <Function Name="getAnyoneCurrency" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="ibanNR" Type="nvarchar" Mode="In" />
+        </Function>
         <Function Name="getIdCustomer" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
           <Parameter Name="userID" Type="int" Mode="In" />
           <Parameter Name="idClient" Type="int" Mode="InOut" />
@@ -122,6 +125,9 @@
           <FunctionImport Name="takeComision" ReturnType="Collection(Double)">
             <Parameter Name="tiptranzaction" Mode="In" Type="Int32" />
             <Parameter Name="accountNR" Mode="In" Type="String" />
+          </FunctionImport>
+          <FunctionImport Name="getAnyoneCurrency" ReturnType="Collection(String)">
+            <Parameter Name="ibanNR" Mode="In" Type="String" />
           </FunctionImport>
         </EntityContainer>
         <EntityType Name="ComisionStatu">
@@ -244,6 +250,7 @@
             </ResultMapping>
           </FunctionImportMapping>
           <FunctionImportMapping FunctionImportName="takeComision" FunctionName="MitBankDBModel.Store.takeComision" />
+          <FunctionImportMapping FunctionImportName="getAnyoneCurrency" FunctionName="MitBankDBModel.Store.getAnyoneCurrency" />
         </EntityContainerMapping>
       </Mapping>
     </edmx:Mappings>
