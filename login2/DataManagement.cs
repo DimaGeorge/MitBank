@@ -10,7 +10,7 @@ using System.Windows.Forms;
 namespace login2
 {
 
-    public static class DataManagement
+    public static partial class DataManagement
     {
         static int IDSession;   
         public static bool tryConnection(string username,string password)
