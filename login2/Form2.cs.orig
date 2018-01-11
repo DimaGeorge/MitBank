@@ -33,12 +33,19 @@ namespace login2
 
 
             Page pg = DataManagement.getDashboardInfo();
+<<<<<<< HEAD
             Label lb = UIDashboardAccountFrame.createFrame(pg);
             this.Controls.Add(lb);
             lb.BringToFront();
             
+=======
+            //label2.Text = pg.Data;
+            Page pg2 = DataManagement.getLastName();
+            label4LastName.Text = pg2.DataLastName;
 
 
+
+>>>>>>> dima_br
         }
 
         private void label11_Click(object sender, EventArgs e)
@@ -150,6 +157,11 @@ namespace login2
 
         }
 
+<<<<<<< HEAD
+        private void label4_Click(object sender, EventArgs e)
+=======
+        private void label6_Click(object sender, EventArgs e)
+>>>>>>> dima_br
         {
 
         }
