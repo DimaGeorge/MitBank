@@ -218,7 +218,7 @@ namespace login2
             string fromIBAN = comboBoxIBAN.Text;
             Page pg = new Page();
 
-          
+            ///////verify is digit
 
             if (pg.Data != "" && comboBoxIBAN.SelectedIndex != -1)
             {
