@@ -104,7 +104,6 @@
             this.LabelShowAccounts.Size = new System.Drawing.Size(78, 20);
             this.LabelShowAccounts.TabIndex = 2;
             this.LabelShowAccounts.Text = "Welcome, ";
-            this.LabelShowAccounts.Click += new System.EventHandler(this.label4_Click);
             // 
             this.label2.Location = new System.Drawing.Point(50, 25);
             this.label2.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
@@ -544,6 +543,8 @@
         private Bunifu.Framework.UI.BunifuFlatButton logoutButton;
         private System.Windows.Forms.Panel panelMainDashboard;
         private System.Windows.Forms.Label label2;
+        private System.Windows.Forms.Label label4_Click;
+        private System.Windows.Forms.Label LabelShowAccounts;
         private System.Windows.Forms.Panel panelMainPaySomething;
         private System.Windows.Forms.Label label4;
         private System.Windows.Forms.Panel panelMainTransfer;

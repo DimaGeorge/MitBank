@@ -13,7 +13,7 @@ namespace login2
     public partial class Form2 : Form
     {
         static Panel lastMenupanel = new Panel();
-        static int idSession = DataManagement.getIdUsername();
+        
         public Form2()
         {
             InitializeComponent();
@@ -32,10 +32,7 @@ namespace login2
             lastMenupanel = panelMainDashboard;
 
 
-            Page pg = DataManagement.getDashboardInfo();
-            Label lb = UIDashboardAccountFrame.createFrame(pg);
-            this.Controls.Add(lb);
-            lb.BringToFront();
+           
             
 
 
@@ -57,8 +54,6 @@ namespace login2
             panelMainDashboard.Visible = true;
             lastMenupanel.SendToBack();
             lastMenupanel = panelMainDashboard;
-
-            
 
 
         }
@@ -82,15 +77,21 @@ namespace login2
 
             using (var context =new MitBankDBEntities2())
             {
+              int idSession = DataManagement.getIdUsername();
                 if (idSession != 0)
                 {
+                    
                     var result = context.showAllMyAccounts(idSession).ToArray();
                         foreach (var item in result)
                         {
                             comboBoxIBAN.Items.Add(item.ToString());
                         }
-                    }
-                
+                }
+
+                Page pg = DataManagement.getDashboardInfo();
+                Label lb = UIDashboardAccountFrame.createFrame(pg);
+                this.Controls.Add(lb);
+                lb.BringToFront();
             }
 
 
@@ -147,11 +148,8 @@ namespace login2
                 frm.Invalidate();
                 frm.Show();
             }
-
+           // idSession = -1;
         }
 
-        {
-
-        }
     }
 }
