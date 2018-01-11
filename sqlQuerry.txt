@@ -506,7 +506,7 @@ BEGIN
 		AND ComisionStatus.IDTypeTransaction = @tiptranzaction
 
 END
-
+GO
 
 
 
