@@ -229,7 +229,13 @@ namespace login2
             string fromIBAN = comboBoxIBAN.Text;
             Page pg = new Page();
 
-          
+            ///////////////////make txt for numberrs
+            int parsedValue;
+            if (!int.TryParse(textoxValueToTransfer.Text, out parsedValue))
+            {
+                MessageBox.Show("Ups! Only numbers");
+                textoxValueToTransfer.Text = "0";
+            }
 
             if (pg.Data != "" && comboBoxIBAN.SelectedIndex != -1)
             {
