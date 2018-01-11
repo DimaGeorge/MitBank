@@ -33,10 +33,16 @@ namespace login2
         public static Page getDashboardInfo()
         {
             Page ret = new Page();
-            ret.Data = "-";
+            ret.Data = "";
             using (var context = new MitBankDBEntities2())
             {
-                
+                var conturi = context.showAllMyAccounts(IDSession).ToArray();
+                foreach (var item in conturi)
+                {
+                    ret.Data += item.ToString();
+                    ret.Data += "\n";
+                }
+
             }
             
             return ret;

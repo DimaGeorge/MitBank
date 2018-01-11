@@ -33,9 +33,10 @@ namespace login2
 
 
             Page pg = DataManagement.getDashboardInfo();
-            label2.Text = pg.Data;
-            Page pg2 = DataManagement.getLastName();
-            label4LastName.Text = pg2.DataLastName;
+            Label lb = UIDashboardAccountFrame.createFrame(pg);
+            this.Controls.Add(lb);
+            lb.BringToFront();
+            
         }
 
         private void label11_Click(object sender, EventArgs e)
@@ -127,6 +128,11 @@ namespace login2
                 frm.Invalidate();
                 frm.Show();
             }
+
+        }
+
+        private void label4_Click(object sender, EventArgs e)
+        {
 
         }
     }
