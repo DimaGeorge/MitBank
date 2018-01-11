@@ -89,17 +89,29 @@ namespace login2
 
             using (var context =new MitBankDBEntities2())
             {
-              int idSession = DataManagement.getIdUsername();
-                if (idSession != 0)
-                {
-                    
-                    var result = context.showAllMyAccounts(idSession).ToArray();
-                        foreach (var item in result)
-                        {
-                            comboBoxIBAN.Items.Add(item.ToString());
-                        }
-                }
 
+
+                List<Page> listIban = new List<Page>();
+                listIban = DataManagement.getIbanList();
+                foreach (var item in listIban)
+                {
+                    int index = -1;
+                    index = comboBoxIBAN.FindString(item.Data.ToString());
+
+                    if (index==-1)
+                    {
+                        comboBoxIBAN.Items.Add(item.Data.ToString());
+                    }
+                    
+                }
+                if(listIban.Count()!=0)
+                {
+                    comboBoxIBAN.SelectedIndex = 0;
+                    comboBoxSelectTransfer.SelectedIndex = 0;
+                }
+                
+                
+                 
             }
 
 
@@ -156,8 +168,57 @@ namespace login2
                 frm.Invalidate();
                 frm.Show();
             }
-           // idSession = -1;
         }
 
+        private void comboBoxIBAN_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            Page pg = DataManagement.getSold(comboBoxIBAN.SelectedItem.ToString());
+            labelshowsold.Text = pg.Data;
+
+
+            Page pg2 = DataManagement.getCurrency(comboBoxIBAN.SelectedItem.ToString());
+            labelshowcurrency.Text = pg2.Data;
+
+            comboBoxToTransferMyIBAN.Refresh();
+            comboBoxSelectTransfer.SelectedIndex = -1;
+        }
+
+        private void comboBoxSelectTransfer_SelectedIndexChanged(object sender, EventArgs e)
+        {
+
+            comboBoxToTransferMyIBAN.Items.Clear();
+            if (comboBoxSelectTransfer.Text.ToString() == "My another account")
+            {
+                label12.Visible = false;
+                textBoxWriteIBAN.Visible = false;
+                comboBoxToTransferMyIBAN.Visible = true;
+
+                List<Page> lp = new List<Page>();
+                lp = DataManagement.getIbanList();
+
+                foreach (var item in lp)
+                {
+                    int index = -1;
+                    index = comboBoxToTransferMyIBAN.FindString(item.Data.ToString());
+
+                    if (index ==-1 && item.Data.ToString()!=comboBoxIBAN.Text.ToString())
+                    {
+                        comboBoxToTransferMyIBAN.Items.Add(item.Data.ToString());
+                    }
+
+                }
+                
+
+
+
+            }
+            else
+            {
+                label12.Visible = true;
+                comboBoxToTransferMyIBAN.Visible = false;
+                textBoxWriteIBAN.Visible = true;
+            }
+
+        }
     }
 }

@@ -387,6 +387,16 @@ BEGIN
 
 END
 
+GO
+CREATE PROCEDURE showIBANInformations
+	@iban nvarchar(100)
+AS
+BEGIN
+	SELECT * FROM UserAccounts
+		WHERE UserAccounts.AccountNumber = @iban
+END
+
+
 
 GO
 CREATE PROCEDURE putMoneyOnAccount
@@ -612,6 +622,7 @@ GRANT EXEC ON putMoneyOnAccount		TO ApplicationRole
 GRANT EXEC ON selectOnINdividuals	TO ApplicationRole
 GRANT EXEC ON showAllMyAccounts		TO ApplicationRole
 GRANT EXEC ON transferMoney			TO ApplicationRole
+GRANT EXEC ON showIBANInformations	TO ApplicationRole
 
 GRANT SELECT ON CurrentCurrency		TO ApplicationRole
 GRANT SELECT ON ComisionStatus		TO ApplicationRole
@@ -741,7 +752,8 @@ INSERT INTO ComisionStatus(IDTypeTransaction,IDBankPacket,Comision)
 VALUES(1,1,5.3)
 INSERT INTO ComisionStatus(IDTypeTransaction,IDBankPacket,Comision)
 VALUES(2,1,1.2)
-
+INSERT INTO ComisionStatus(IDTypeTransaction,IDBankPacket,Comision)
+VALUES(4,1,0.8)
 
 INSERT INTO UserAccounts(BankPacket,AccountNumber,ValabilityUntil,Currency,Sold,AccountCustomerId)
 VALUES (1,'RO93MITB0410120579132411','2019-1-1','RON',554.15,1)
@@ -773,5 +785,7 @@ select * from UserAccounts
 
 
 
-
+select * from ComisionStatus
+select * from TypesTransaction
+select * from TypeBankingPackets
 exec transferMoney 'RO93MITB0410120579132422','RO93MITB0410120579132411',200
