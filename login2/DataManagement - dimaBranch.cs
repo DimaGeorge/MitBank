@@ -51,5 +51,23 @@ namespace login2
             }
         }
 
+        public static string getExchange()
+        {
+            string data = "";
+            using (var context = new MitBankDBEntities2())
+            {
+                var exchInfo = from c in context.CurrentCurrencies
+                                select c;
+                foreach (var item in exchInfo)
+                {
+                    data += item.CurrencyName.ToString() + " ";
+                    data += item.ValueBuy + " ";
+                    data += item.ValueSel + " ";
+                }
+            }
+            return data;
+        }
+
+
     }
 }
