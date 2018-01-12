@@ -256,7 +256,8 @@ namespace login2
                 {
                     double getToConvert = DataManagement.getCurrencyValueBuy(labelcurrencyToIban.Text);
                     Val = double.Parse(textoxValueToTransfer.Text);
-                    labelExchangeValue.Text = (Val / getToConvert).ToString();
+                    double exch = Math.Round(Val / getToConvert, 4);
+                    labelExchangeValue.Text = exch.ToString();
 
                     labelshowToCurrency.Text = labelcurrencyToIban.Text;
                     labelshowFromCurrency.Text = labelshowcurrency.Text;
@@ -276,7 +277,8 @@ namespace login2
                     double getToConvertTo = DataManagement.getCurrencyValueBuy(labelcurrencyToIban.Text);
 
                     Val = double.Parse(textoxValueToTransfer.Text);
-                    labelExchangeValue.Text = (Val * getToConvertFrom / getToConvertTo).ToString();
+                    double exch = Math.Round(Val * getToConvertFrom / getToConvertTo, 2);
+                    labelExchangeValue.Text = exch.ToString();
 
                     labelshowToCurrency.Text = labelcurrencyToIban.Text;
                     labelshowFromCurrency.Text = labelshowcurrency.Text;
@@ -407,6 +409,7 @@ namespace login2
                             {
                                 if (comboBoxSelectTransfer.SelectedItem.ToString() == "My another account")
                                 {
+                                    
                                     var result = context.transferMoney(comboBoxIBAN.SelectedItem.ToString(),
                                         comboBoxToTransferMyIBAN.SelectedItem.ToString(), ((ValWithouComiss + comiss)),
                                         valToTransfer);
