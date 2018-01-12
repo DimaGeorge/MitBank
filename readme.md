@@ -4,15 +4,10 @@ Or just another application keeping trak of your **M**oney **i**n **t**he **Bank
 ### 1. Baza de date
 ![Diagrama](./Database.png)
 #### Proceduri Stocate
-
-	> procedura de verificare daca un id este admin (IsAdmin)
-	> procedura de intoarcere al id_ului Client (getIdClient())	 
-	> procedura depunere in cont a unei sume de bani (id admin)	depunereNumerar()
-	> procedura de transfer al banilor dintr-un cont propriu intr-un alt cont propriu (aceeasi moneda) transferMineMineSame()
-	> -------------------------------------------------------------------------------- moneda diferita	transferMineMineDif()
-	> ----------------------------------------------------------------------- al carui IBAN il stiu (aceeasi moneda) transferMineYourSame()
-	> -------------------------------------------------------------------------------- moneda diferita	transferMineYourDif()
-	> 
+1. AddBankAdmin (IDEmployee, Username, Password)
+	* Creeaza un cont-utilizator de Admin (adauga perechea username + password in Usernames, tip admin).
+1. AddNormalUser (IDCustomer, Username, Password)
+	* Creeaza un cont-utilizator pentru un client al bancii.
 #### -- to be continued.
 ### 2. Aplicatia (Clientul)
 Aplicatia este gandita pe 2 layere, astfel:
