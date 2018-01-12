@@ -70,8 +70,8 @@
             this.labelshowsold = new Bunifu.Framework.UI.BunifuCustomLabel();
             this.label6 = new System.Windows.Forms.Label();
             this.comboBoxIBAN = new System.Windows.Forms.ComboBox();
-            this.comboBoxToTransferMyIBAN = new System.Windows.Forms.ComboBox();
             this.textBoxWriteIBAN = new Bunifu.Framework.UI.BunifuMetroTextbox();
+            this.comboBoxToTransferMyIBAN = new System.Windows.Forms.ComboBox();
             this.panelMainSendMail = new System.Windows.Forms.Panel();
             this.label7 = new System.Windows.Forms.Label();
             this.panelMainSettings = new System.Windows.Forms.Panel();
@@ -709,19 +709,6 @@
             this.comboBoxIBAN.TabIndex = 1;
             this.comboBoxIBAN.SelectedIndexChanged += new System.EventHandler(this.comboBoxIBAN_SelectedIndexChanged);
             // 
-            // comboBoxToTransferMyIBAN
-            // 
-            this.comboBoxToTransferMyIBAN.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(30)))), ((int)(((byte)(35)))), ((int)(((byte)(35)))));
-            this.comboBoxToTransferMyIBAN.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.comboBoxToTransferMyIBAN.ForeColor = System.Drawing.Color.White;
-            this.comboBoxToTransferMyIBAN.FormattingEnabled = true;
-            this.comboBoxToTransferMyIBAN.Location = new System.Drawing.Point(28, 268);
-            this.comboBoxToTransferMyIBAN.Margin = new System.Windows.Forms.Padding(4);
-            this.comboBoxToTransferMyIBAN.Name = "comboBoxToTransferMyIBAN";
-            this.comboBoxToTransferMyIBAN.Size = new System.Drawing.Size(528, 26);
-            this.comboBoxToTransferMyIBAN.TabIndex = 8;
-            this.comboBoxToTransferMyIBAN.SelectedIndexChanged += new System.EventHandler(this.comboBoxToTransferMyIBAN_SelectedIndexChanged);
-            // 
             // textBoxWriteIBAN
             // 
             this.textBoxWriteIBAN.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(30)))), ((int)(((byte)(35)))), ((int)(((byte)(35)))));
@@ -740,6 +727,19 @@
             this.textBoxWriteIBAN.TabIndex = 10;
             this.textBoxWriteIBAN.TextAlign = System.Windows.Forms.HorizontalAlignment.Left;
             this.textBoxWriteIBAN.OnValueChanged += new System.EventHandler(this.textBoxWriteIBAN_OnValueChanged);
+            // 
+            // comboBoxToTransferMyIBAN
+            // 
+            this.comboBoxToTransferMyIBAN.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(30)))), ((int)(((byte)(35)))), ((int)(((byte)(35)))));
+            this.comboBoxToTransferMyIBAN.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.comboBoxToTransferMyIBAN.ForeColor = System.Drawing.Color.White;
+            this.comboBoxToTransferMyIBAN.FormattingEnabled = true;
+            this.comboBoxToTransferMyIBAN.Location = new System.Drawing.Point(28, 268);
+            this.comboBoxToTransferMyIBAN.Margin = new System.Windows.Forms.Padding(4);
+            this.comboBoxToTransferMyIBAN.Name = "comboBoxToTransferMyIBAN";
+            this.comboBoxToTransferMyIBAN.Size = new System.Drawing.Size(528, 26);
+            this.comboBoxToTransferMyIBAN.TabIndex = 8;
+            this.comboBoxToTransferMyIBAN.SelectedIndexChanged += new System.EventHandler(this.comboBoxToTransferMyIBAN_SelectedIndexChanged);
             // 
             // panelMainSendMail
             // 
@@ -794,11 +794,11 @@
             this.Controls.Add(this.bunifuFlatButton3);
             this.Controls.Add(this.Dashboard);
             this.Controls.Add(this.bunifuFlatButton2);
-            this.Controls.Add(this.panelMainTransfer);
-            this.Controls.Add(this.panelMainPaySomething);
             this.Controls.Add(this.panelMainDashboard);
             this.Controls.Add(this.panelMainSettings);
             this.Controls.Add(this.panelMainSendMail);
+            this.Controls.Add(this.panelMainTransfer);
+            this.Controls.Add(this.panelMainPaySomething);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
             this.KeyPreview = true;
             this.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);

@@ -62,6 +62,15 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="addHistoryTransaction1_Result.cs">
+      <DependentUpon>MitModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="addHistoryTransaction1_Result1.cs">
+      <DependentUpon>MitModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="addHistoryTransaction_Result.cs">
+      <DependentUpon>MitModel.tt</DependentUpon>
+    </Compile>
     <Compile Include="AddNormalUser_Result.cs">
       <DependentUpon>MitModel.tt</DependentUpon>
     </Compile>

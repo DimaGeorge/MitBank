@@ -400,6 +400,8 @@ namespace login2
                                     var result = context.transferMoney(comboBoxIBAN.SelectedItem.ToString(),
                                         comboBoxToTransferMyIBAN.SelectedItem.ToString(), ((ValWithouComiss + comiss)),
                                         valToTransfer);
+                                    DataManagement.addOnHistory(comboBoxIBAN.SelectedItem.ToString(),
+                                        comboBoxToTransferMyIBAN.SelectedItem.ToString(), 4, -(ValWithouComiss + comiss));
 
                                 }
                                 else if (comboBoxSelectTransfer.SelectedItem.ToString() == "Anyone else account")
@@ -407,6 +409,10 @@ namespace login2
                                     var result = context.transferMoney(comboBoxIBAN.SelectedItem.ToString(),
                                         textBoxWriteIBAN.Text, ((ValWithouComiss + comiss)),
                                         valToTransfer);
+
+                                    DataManagement.addOnHistory(comboBoxIBAN.SelectedItem.ToString(),
+                                      textBoxWriteIBAN.Text, 4, -(ValWithouComiss + comiss));
+
                                 }
                                 labelComisionValue.Text = "-";
                                 labelExchangeValue.Text = "-";
@@ -423,7 +429,7 @@ namespace login2
                 }
             }catch (Exception )
             {
-                MessageBox.Show("Put all informations!");
+                MessageBox.Show("Put all informations or something wrong!");
             }
             
                 
