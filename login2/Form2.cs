@@ -32,7 +32,7 @@ namespace login2
 
             pictureFailed.Visible = false;
             pictureValid.Visible = false;
-
+            panelShowHistory.Visible = false;
             lastMenupanel = panelMainDashboard;
 
             UIDashboardAccountFrame.generateDashboard(ibanList, panelMainDashboard, exchangeTbl);
@@ -240,7 +240,8 @@ namespace login2
                 {
                     double getToConvert = DataManagement.getCurrencyValueBuy(labelcurrencyToIban.Text);
                     Val = double.Parse(textoxValueToTransfer.Text);
-                    labelExchangeValue.Text = (Val / getToConvert).ToString();
+                    double exch = Math.Round(Val / getToConvert, 4);
+                    labelExchangeValue.Text = exch.ToString();
 
                     labelshowToCurrency.Text = labelcurrencyToIban.Text;
                     labelshowFromCurrency.Text = labelshowcurrency.Text;
@@ -260,7 +261,8 @@ namespace login2
                     double getToConvertTo = DataManagement.getCurrencyValueBuy(labelcurrencyToIban.Text);
 
                     Val = double.Parse(textoxValueToTransfer.Text);
-                    labelExchangeValue.Text = (Val * getToConvertFrom / getToConvertTo).ToString();
+                    double exch = Math.Round(Val * getToConvertFrom / getToConvertTo, 2);
+                    labelExchangeValue.Text = exch.ToString();
 
                     labelshowToCurrency.Text = labelcurrencyToIban.Text;
                     labelshowFromCurrency.Text = labelshowcurrency.Text;
@@ -372,9 +374,12 @@ namespace login2
 
                     comiss = double.Parse(labelComisionValue.Text);
 
-                    double valToTransfer = 0;
-
-                    valToTransfer = double.Parse(labelExchangeValue.Text);
+                    double valToTransfer = 1;
+                    if (labelExchangeValue.Text != "-")
+                    {
+                        valToTransfer = double.Parse(labelExchangeValue.Text);
+                    }
+                    
                     double getsold = 0;
                     if (labelComisionValue.Text != "-")
                     {
@@ -391,9 +396,12 @@ namespace login2
                             {
                                 if (comboBoxSelectTransfer.SelectedItem.ToString() == "My another account")
                                 {
+                                    
                                     var result = context.transferMoney(comboBoxIBAN.SelectedItem.ToString(),
                                         comboBoxToTransferMyIBAN.SelectedItem.ToString(), ((ValWithouComiss + comiss)),
                                         valToTransfer);
+                                    DataManagement.addOnHistory(comboBoxIBAN.SelectedItem.ToString(),
+                                        comboBoxToTransferMyIBAN.SelectedItem.ToString(), 4, (ValWithouComiss + comiss));
 
                                 }
                                 else if (comboBoxSelectTransfer.SelectedItem.ToString() == "Anyone else account")
@@ -401,6 +409,10 @@ namespace login2
                                     var result = context.transferMoney(comboBoxIBAN.SelectedItem.ToString(),
                                         textBoxWriteIBAN.Text, ((ValWithouComiss + comiss)),
                                         valToTransfer);
+
+                                    DataManagement.addOnHistory(comboBoxIBAN.SelectedItem.ToString(),
+                                      textBoxWriteIBAN.Text, 4, (ValWithouComiss + comiss));
+
                                 }
                                 labelComisionValue.Text = "-";
                                 labelExchangeValue.Text = "-";
@@ -417,7 +429,7 @@ namespace login2
                 }
             }catch (Exception )
             {
-                MessageBox.Show("Put all informations!");
+                MessageBox.Show("Put all informations or something wrong!");
             }
             
                 
@@ -425,6 +437,20 @@ namespace login2
 
 
             }
+
+        private void buttonHistoryTransaction_Click(object sender, EventArgs e)
+        {
+            this.Width = 1200;
+            panelShowHistory.Visible = true;
+            panelShowHistory.BringToFront();
+            textBoxAddHisory.Multiline = true;
+            textBoxAddHisory.Height = 600;
+            textBoxAddHisory.Width = 300;
+            textBoxAddHisory.ScrollBars = ScrollBars.Vertical;
+            textBoxAddHisory.WordWrap = false;
+
+
         }
+    }
 }
 

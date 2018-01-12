@@ -30,6 +30,14 @@
           <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
           <Property Name="NameTypePacket" Type="nchar" MaxLength="100" />
         </EntityType>
+        <Function Name="addHistoryTransaction" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="userId" Type="int" Mode="In" />
+          <Parameter Name="UserAccountIban" Type="nvarchar" Mode="In" />
+          <Parameter Name="toWichAccount" Type="nvarchar" Mode="In" />
+          <Parameter Name="typeTransaction" Type="int" Mode="In" />
+          <Parameter Name="value" Type="float" Mode="In" />
+          <Parameter Name="date" Type="nvarchar" Mode="In" />
+        </Function>
         <Function Name="AddNormalUser" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
           <Parameter Name="IDcustomer" Type="int" Mode="In" />
           <Parameter Name="Username" Type="nvarchar" Mode="In" />
@@ -131,6 +139,14 @@
             <Parameter Name="valueToTransfer" Mode="In" Type="Double" />
             <Parameter Name="valueToRecieve" Mode="In" Type="Double" />
           </FunctionImport>
+          <FunctionImport Name="addHistoryTransaction">
+            <Parameter Name="userId" Mode="In" Type="Int32" />
+            <Parameter Name="UserAccountIban" Mode="In" Type="String" />
+            <Parameter Name="toWichAccount" Mode="In" Type="String" />
+            <Parameter Name="typeTransaction" Mode="In" Type="Int32" />
+            <Parameter Name="value" Mode="In" Type="Double" />
+            <Parameter Name="date" Mode="In" Type="String" />
+          </FunctionImport>
         </EntityContainer>
         <EntityType Name="ComisionStatu">
           <Key>
@@ -177,6 +193,36 @@
           <Property Type="String" Name="Currency" Nullable="false" MaxLength="10" />
           <Property Type="Double" Name="Sold" Nullable="false" />
           <Property Type="Int32" Name="AccountCustomerID" Nullable="true" />
+        </ComplexType>
+        <ComplexType Name="addHistoryTransaction1_Result">
+          <Property Type="Int32" Name="ID" Nullable="false" />
+          <Property Type="Int32" Name="CustomerID" Nullable="true" />
+          <Property Type="Int32" Name="UserAccountID" Nullable="true" />
+          <Property Type="String" Name="fromAccount" Nullable="true" MaxLength="100" />
+          <Property Type="String" Name="toWichAccount" Nullable="true" MaxLength="100" />
+          <Property Type="Int32" Name="TypeTransaction" Nullable="true" />
+          <Property Type="Double" Name="Value" Nullable="true" />
+          <Property Type="DateTime" Name="DateTransaction" Nullable="true" Precision="23" />
+        </ComplexType>
+        <ComplexType Name="addHistoryTransaction1_Result1">
+          <Property Type="Int32" Name="ID" Nullable="false" />
+          <Property Type="Int32" Name="CustomerID" Nullable="true" />
+          <Property Type="Int32" Name="UserAccountID" Nullable="true" />
+          <Property Type="String" Name="fromAccount" Nullable="true" MaxLength="100" />
+          <Property Type="String" Name="toWichAccount" Nullable="true" MaxLength="100" />
+          <Property Type="Int32" Name="TypeTransaction" Nullable="true" />
+          <Property Type="Double" Name="Value" Nullable="true" />
+          <Property Type="DateTime" Name="DateTransaction" Nullable="true" Precision="23" />
+        </ComplexType>
+        <ComplexType Name="addHistoryTransaction_Result">
+          <Property Type="Int32" Name="ID" Nullable="false" />
+          <Property Type="Int32" Name="CustomerID" Nullable="true" />
+          <Property Type="Int32" Name="UserAccountID" Nullable="true" />
+          <Property Type="String" Name="fromAccount" Nullable="true" MaxLength="100" />
+          <Property Type="String" Name="toWichAccount" Nullable="true" MaxLength="100" />
+          <Property Type="Int32" Name="TypeTransaction" Nullable="true" />
+          <Property Type="Double" Name="Value" Nullable="true" />
+          <Property Type="DateTime" Name="DateTransaction" Nullable="true" Precision="23" />
         </ComplexType>
       </Schema>
     </edmx:ConceptualModels>
@@ -253,6 +299,7 @@
           <FunctionImportMapping FunctionImportName="takeComision" FunctionName="MitBankDBModel.Store.takeComision" />
           <FunctionImportMapping FunctionImportName="getAnyoneCurrency" FunctionName="MitBankDBModel.Store.getAnyoneCurrency" />
           <FunctionImportMapping FunctionImportName="transferMoney" FunctionName="MitBankDBModel.Store.transferMoney" />
+          <FunctionImportMapping FunctionImportName="addHistoryTransaction" FunctionName="MitBankDBModel.Store.addHistoryTransaction" />
         </EntityContainerMapping>
       </Mapping>
     </edmx:Mappings>

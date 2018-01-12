@@ -215,6 +215,19 @@ namespace login2
             }
             return 0;
         }
+        public static void addOnHistory(string userAccountIban,
+                    string toWichAccount,int TypeTransaction,double val)
+        {
+            using (var context= new MitBankDBEntities2())
+            {
+                var result = context.addHistoryTransaction(IDSession, userAccountIban
+                    , toWichAccount, TypeTransaction, -val, DateTime.Now.ToString());
+
+                var result2 = context.addHistoryTransaction(IDSession, toWichAccount, userAccountIban
+                    ,TypeTransaction, +val, DateTime.Now.ToString());
+            }
+
+        }
 
 
     }
