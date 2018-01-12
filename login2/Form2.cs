@@ -14,8 +14,7 @@ namespace login2
     {
         static Panel lastMenupanel = new Panel();
         List<Label> ibanList = new List<Label>();
-        Label exchangeLabel;
-
+        Label exchangeTbl;
         public Form2()
         {
             InitializeComponent();
@@ -35,25 +34,8 @@ namespace login2
             pictureValid.Visible = false;
 
             lastMenupanel = panelMainDashboard;
-            ibanList.Clear();
-            int i = 0;
-            List<string> list = DataManagement.getDashboardInfo();
-            foreach (string iban in list)
-            {
-                var context = new MitBankDBEntities2();
 
-                Label lb = UIDashboardAccountFrame.createFrame(iban, i);
-                i++;
-                ibanList.Add(lb);
-            }
-
-            foreach (Label lb in ibanList)
-            {
-                panelMainDashboard.Controls.Add(lb);
-                lb.BringToFront();
-            }
-
-            panelMainDashboard.Controls.Add(UIDashboardAccountFrame.getExchangeTable());
+            UIDashboardAccountFrame.generateDashboard(ibanList, panelMainDashboard, exchangeTbl);
         }
 
         private void label11_Click(object sender, EventArgs e)
@@ -73,6 +55,8 @@ namespace login2
             panelMainDashboard.Visible = true;
             lastMenupanel.SendToBack();
             lastMenupanel = panelMainDashboard;
+
+            UIDashboardAccountFrame.generateDashboard(ibanList, panelMainDashboard, exchangeTbl);
 
         }
 
