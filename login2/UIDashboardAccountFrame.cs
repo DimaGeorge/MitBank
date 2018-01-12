@@ -204,5 +204,29 @@ namespace login2
             }
             return lb;
         }
+
+        public static void generateDashboard(List<Label> ibanList, Panel panelMainDashboard, Label exchangeTbl)
+        {
+            ibanList.Clear();
+            int i = 0;
+            List<string> list = DataManagement.getDashboardInfo();
+            foreach (string iban in list)
+            {
+                var context = new MitBankDBEntities2();
+
+                Label lb = UIDashboardAccountFrame.createFrame(iban, i);
+                i++;
+                ibanList.Add(lb);
+            }
+
+            foreach (Label lb in ibanList)
+            {
+                panelMainDashboard.Controls.Add(lb);
+                lb.BringToFront();
+            }
+
+            exchangeTbl = UIDashboardAccountFrame.getExchangeTable();
+            panelMainDashboard.Controls.Add(exchangeTbl);
+        }
     }
 }
