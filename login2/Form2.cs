@@ -374,9 +374,12 @@ namespace login2
 
                     comiss = double.Parse(labelComisionValue.Text);
 
-                    double valToTransfer = 0;
-
-                    valToTransfer = double.Parse(labelExchangeValue.Text);
+                    double valToTransfer = 1;
+                    if (labelExchangeValue.Text != "-")
+                    {
+                        valToTransfer = double.Parse(labelExchangeValue.Text);
+                    }
+                    
                     double getsold = 0;
                     if (labelComisionValue.Text != "-")
                     {
