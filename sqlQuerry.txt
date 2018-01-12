@@ -438,11 +438,13 @@ BEGIN
 			WHERE Customers.ID = @idCustomer
 END
 
+
 GO
 CREATE PROCEDURE transferMoney
 	@fromIBAN nvarchar(100)
 	,@toIBAN nvarchar(100)
 	,@valueToTransfer float
+	,@valueToRecieve float
 AS
 BEGIN
 	DECLARE @idCustForVerify int;
@@ -473,7 +475,7 @@ BEGIN
 			SET UserAccounts.Sold = UserAccounts.Sold - @valueToTransfer
 			WHERE UserAccounts.AccountNumber = @fromIBAN;
 			UPDATE UserAccounts
-			SET UserAccounts.Sold = UserAccounts.Sold + @valueToTransfer
+			SET UserAccounts.Sold = UserAccounts.Sold + @valueToRecieve
 			WHERE UserAccounts.AccountNumber = @toIBAN;
 		END
 	END
@@ -511,7 +513,7 @@ END
 
 
 
-
+go
 CREATE PROCEDURE selectOnIndividuals
 	@id int 
 AS
@@ -803,6 +805,9 @@ VALUES (2,'RO93MITB0410120579132555','2029-1-1','EUR',200.15,2)
 
 INSERT INTO UserAccounts(BankPacket,AccountNumber,ValabilityUntil,Currency,Sold,AccountCustomerId)
 VALUES (1,'RO93MITB0410120579133333','2029-1-1','EUR',500.15,1)
+
+INSERT INTO UserAccounts(BankPacket,AccountNumber,ValabilityUntil,Currency,Sold,AccountCustomerId)
+VALUES (1,'RO93MITB0410120579155555','2029-2-1','GBH',100.15,1)
 
 
 INSERT INTO CurrentCurrency(CurrencyName,ValueBuy,ValueSel)

@@ -72,6 +72,7 @@
           <Parameter Name="fromIBAN" Type="nvarchar" Mode="In" />
           <Parameter Name="toIBAN" Type="nvarchar" Mode="In" />
           <Parameter Name="valueToTransfer" Type="float" Mode="In" />
+          <Parameter Name="valueToRecieve" Type="float" Mode="In" />
         </Function>
         <EntityContainer Name="MitBankDBModelStoreContainer">
           <EntitySet Name="ComisionStatus" EntityType="Self.ComisionStatus" Schema="dbo" store:Type="Tables" />
@@ -114,11 +115,6 @@
           <FunctionImport Name="showAllMyAccounts" ReturnType="Collection(String)">
           <Parameter Name="idUsername" Mode="In" Type="Int32" />
           </FunctionImport>
-          <FunctionImport Name="transferMoney">
-            <Parameter Name="fromIBAN" Mode="In" Type="String" />
-            <Parameter Name="toIBAN" Mode="In" Type="String" />
-            <Parameter Name="valueToTransfer" Mode="In" Type="Double" />
-          </FunctionImport>
           <FunctionImport Name="showIBANInformations" ReturnType="Collection(MitBankDBModel.showIBANInformations_Result)">
           <Parameter Name="iban" Mode="In" Type="String" />
           </FunctionImport>
@@ -127,7 +123,13 @@
             <Parameter Name="accountNR" Mode="In" Type="String" />
           </FunctionImport>
           <FunctionImport Name="getAnyoneCurrency" ReturnType="Collection(String)">
-            <Parameter Name="ibanNR" Mode="In" Type="String" />
+          <Parameter Name="ibanNR" Mode="In" Type="String" />
+          </FunctionImport>
+          <FunctionImport Name="transferMoney">
+            <Parameter Name="fromIBAN" Mode="In" Type="String" />
+            <Parameter Name="toIBAN" Mode="In" Type="String" />
+            <Parameter Name="valueToTransfer" Mode="In" Type="Double" />
+            <Parameter Name="valueToRecieve" Mode="In" Type="Double" />
           </FunctionImport>
         </EntityContainer>
         <EntityType Name="ComisionStatu">
@@ -235,7 +237,6 @@
             </ResultMapping>
           </FunctionImportMapping>
           <FunctionImportMapping FunctionImportName="showAllMyAccounts" FunctionName="MitBankDBModel.Store.showAllMyAccounts" />
-          <FunctionImportMapping FunctionImportName="transferMoney" FunctionName="MitBankDBModel.Store.transferMoney" />
           <FunctionImportMapping FunctionImportName="showIBANInformations" FunctionName="MitBankDBModel.Store.showIBANInformations">
             <ResultMapping>
               <ComplexTypeMapping TypeName="MitBankDBModel.showIBANInformations_Result">
@@ -251,6 +252,7 @@
           </FunctionImportMapping>
           <FunctionImportMapping FunctionImportName="takeComision" FunctionName="MitBankDBModel.Store.takeComision" />
           <FunctionImportMapping FunctionImportName="getAnyoneCurrency" FunctionName="MitBankDBModel.Store.getAnyoneCurrency" />
+          <FunctionImportMapping FunctionImportName="transferMoney" FunctionName="MitBankDBModel.Store.transferMoney" />
         </EntityContainerMapping>
       </Mapping>
     </edmx:Mappings>

@@ -181,6 +181,41 @@ namespace login2
             return ret;
         }
 
+        public static double getCurrencyValueBuy(string curr)
+        {
+            
+            using (var context = new MitBankDBEntities2())
+            {
+                var exchInfo = from c in context.CurrentCurrencies
+                               select c;
+                foreach (var item in exchInfo)
+                {
+                    if (item.CurrencyName == curr)
+                    {
+                        return item.ValueBuy;
+                    }
+                }
+            }
+            return 0;
+        }
+        public static double getCurrencyValueSell(string curr)
+        {
+         
+            using (var context = new MitBankDBEntities2())
+            {
+                var exchInfo = from c in context.CurrentCurrencies
+                               select c;
+                foreach (var item in exchInfo)
+                {
+                    if (item.CurrencyName == curr)
+                    {
+                        return item.ValueSel;
+                    }
+                }
+            }
+            return 0;
+        }
+
 
     }
 }

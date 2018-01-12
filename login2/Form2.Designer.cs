@@ -50,6 +50,13 @@
             this.panelMainPaySomething = new System.Windows.Forms.Panel();
             this.label4 = new System.Windows.Forms.Label();
             this.panelMainTransfer = new System.Windows.Forms.Panel();
+            this.buttonSubmitTransfer = new System.Windows.Forms.Button();
+            this.labelshowToCurrency = new Bunifu.Framework.UI.BunifuCustomLabel();
+            this.labelshowFromCurrency = new Bunifu.Framework.UI.BunifuCustomLabel();
+            this.labelExchangeValue = new System.Windows.Forms.Label();
+            this.label15 = new System.Windows.Forms.Label();
+            this.pictureFailed = new System.Windows.Forms.PictureBox();
+            this.pictureValid = new System.Windows.Forms.PictureBox();
             this.labelcurrencyToIban = new System.Windows.Forms.Label();
             this.textoxValueToTransfer = new Bunifu.Framework.UI.BunifuMetroTextbox();
             this.label14 = new System.Windows.Forms.Label();
@@ -69,12 +76,13 @@
             this.label7 = new System.Windows.Forms.Label();
             this.panelMainSettings = new System.Windows.Forms.Panel();
             this.label8 = new System.Windows.Forms.Label();
-            this.radioButtonCheckIBAN = new System.Windows.Forms.RadioButton();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox4)).BeginInit();
             this.header.SuspendLayout();
             this.panelMainDashboard.SuspendLayout();
             this.panelMainPaySomething.SuspendLayout();
             this.panelMainTransfer.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureFailed)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureValid)).BeginInit();
             this.panelMainSendMail.SuspendLayout();
             this.panelMainSettings.SuspendLayout();
             this.SuspendLayout();
@@ -436,7 +444,13 @@
             // 
             // panelMainTransfer
             // 
-            this.panelMainTransfer.Controls.Add(this.radioButtonCheckIBAN);
+            this.panelMainTransfer.Controls.Add(this.buttonSubmitTransfer);
+            this.panelMainTransfer.Controls.Add(this.labelshowToCurrency);
+            this.panelMainTransfer.Controls.Add(this.labelshowFromCurrency);
+            this.panelMainTransfer.Controls.Add(this.labelExchangeValue);
+            this.panelMainTransfer.Controls.Add(this.label15);
+            this.panelMainTransfer.Controls.Add(this.pictureFailed);
+            this.panelMainTransfer.Controls.Add(this.pictureValid);
             this.panelMainTransfer.Controls.Add(this.labelcurrencyToIban);
             this.panelMainTransfer.Controls.Add(this.textoxValueToTransfer);
             this.panelMainTransfer.Controls.Add(this.label14);
@@ -457,6 +471,85 @@
             this.panelMainTransfer.Name = "panelMainTransfer";
             this.panelMainTransfer.Size = new System.Drawing.Size(1378, 868);
             this.panelMainTransfer.TabIndex = 24;
+            // 
+            // buttonSubmitTransfer
+            // 
+            this.buttonSubmitTransfer.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(30)))), ((int)(((byte)(35)))), ((int)(((byte)(35)))));
+            this.buttonSubmitTransfer.BackgroundImageLayout = System.Windows.Forms.ImageLayout.None;
+            this.buttonSubmitTransfer.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.buttonSubmitTransfer.Font = new System.Drawing.Font("MS Reference Sans Serif", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.buttonSubmitTransfer.ForeColor = System.Drawing.SystemColors.ControlLightLight;
+            this.buttonSubmitTransfer.Location = new System.Drawing.Point(314, 501);
+            this.buttonSubmitTransfer.Name = "buttonSubmitTransfer";
+            this.buttonSubmitTransfer.Size = new System.Drawing.Size(242, 36);
+            this.buttonSubmitTransfer.TabIndex = 26;
+            this.buttonSubmitTransfer.Text = "Transfer money";
+            this.buttonSubmitTransfer.UseVisualStyleBackColor = false;
+            this.buttonSubmitTransfer.Click += new System.EventHandler(this.buttonSubmitTransfer_Click);
+            // 
+            // labelshowToCurrency
+            // 
+            this.labelshowToCurrency.AutoSize = true;
+            this.labelshowToCurrency.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.labelshowToCurrency.ForeColor = System.Drawing.Color.Snow;
+            this.labelshowToCurrency.Location = new System.Drawing.Point(335, 424);
+            this.labelshowToCurrency.Name = "labelshowToCurrency";
+            this.labelshowToCurrency.Size = new System.Drawing.Size(16, 24);
+            this.labelshowToCurrency.TabIndex = 25;
+            this.labelshowToCurrency.Text = "-";
+            // 
+            // labelshowFromCurrency
+            // 
+            this.labelshowFromCurrency.AutoSize = true;
+            this.labelshowFromCurrency.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.labelshowFromCurrency.ForeColor = System.Drawing.Color.Snow;
+            this.labelshowFromCurrency.Location = new System.Drawing.Point(335, 388);
+            this.labelshowFromCurrency.Name = "labelshowFromCurrency";
+            this.labelshowFromCurrency.Size = new System.Drawing.Size(16, 24);
+            this.labelshowFromCurrency.TabIndex = 24;
+            this.labelshowFromCurrency.Text = "-";
+            // 
+            // labelExchangeValue
+            // 
+            this.labelExchangeValue.AutoSize = true;
+            this.labelExchangeValue.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.labelExchangeValue.ForeColor = System.Drawing.Color.Snow;
+            this.labelExchangeValue.Location = new System.Drawing.Point(153, 422);
+            this.labelExchangeValue.Name = "labelExchangeValue";
+            this.labelExchangeValue.Size = new System.Drawing.Size(19, 25);
+            this.labelExchangeValue.TabIndex = 23;
+            this.labelExchangeValue.Text = "-";
+            // 
+            // label15
+            // 
+            this.label15.AutoSize = true;
+            this.label15.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label15.ForeColor = System.Drawing.Color.Snow;
+            this.label15.Location = new System.Drawing.Point(31, 422);
+            this.label15.Name = "label15";
+            this.label15.Size = new System.Drawing.Size(105, 25);
+            this.label15.TabIndex = 22;
+            this.label15.Text = "Exchange ";
+            // 
+            // pictureFailed
+            // 
+            this.pictureFailed.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("pictureFailed.BackgroundImage")));
+            this.pictureFailed.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.pictureFailed.Location = new System.Drawing.Point(563, 262);
+            this.pictureFailed.Name = "pictureFailed";
+            this.pictureFailed.Size = new System.Drawing.Size(39, 36);
+            this.pictureFailed.TabIndex = 21;
+            this.pictureFailed.TabStop = false;
+            // 
+            // pictureValid
+            // 
+            this.pictureValid.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("pictureValid.BackgroundImage")));
+            this.pictureValid.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.pictureValid.Location = new System.Drawing.Point(563, 259);
+            this.pictureValid.Name = "pictureValid";
+            this.pictureValid.Size = new System.Drawing.Size(39, 43);
+            this.pictureValid.TabIndex = 20;
+            this.pictureValid.TabStop = false;
             // 
             // labelcurrencyToIban
             // 
@@ -646,6 +739,7 @@
             this.textBoxWriteIBAN.Size = new System.Drawing.Size(528, 30);
             this.textBoxWriteIBAN.TabIndex = 10;
             this.textBoxWriteIBAN.TextAlign = System.Windows.Forms.HorizontalAlignment.Left;
+            this.textBoxWriteIBAN.OnValueChanged += new System.EventHandler(this.textBoxWriteIBAN_OnValueChanged);
             // 
             // panelMainSendMail
             // 
@@ -685,19 +779,6 @@
             this.label8.TabIndex = 0;
             this.label8.Text = "label8";
             // 
-            // radioButtonCheckIBAN
-            // 
-            this.radioButtonCheckIBAN.AutoSize = true;
-            this.radioButtonCheckIBAN.ForeColor = System.Drawing.SystemColors.ControlLightLight;
-            this.radioButtonCheckIBAN.Location = new System.Drawing.Point(101, 302);
-            this.radioButtonCheckIBAN.Name = "radioButtonCheckIBAN";
-            this.radioButtonCheckIBAN.Size = new System.Drawing.Size(163, 21);
-            this.radioButtonCheckIBAN.TabIndex = 18;
-            this.radioButtonCheckIBAN.TabStop = true;
-            this.radioButtonCheckIBAN.Text = "Check if IBAN is Valid";
-            this.radioButtonCheckIBAN.UseVisualStyleBackColor = true;
-            this.radioButtonCheckIBAN.CheckedChanged += new System.EventHandler(this.radioButtonCheckIBAN_CheckedChanged);
-            // 
             // Form2
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
@@ -733,6 +814,8 @@
             this.panelMainPaySomething.PerformLayout();
             this.panelMainTransfer.ResumeLayout(false);
             this.panelMainTransfer.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureFailed)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureValid)).EndInit();
             this.panelMainSendMail.ResumeLayout(false);
             this.panelMainSendMail.PerformLayout();
             this.panelMainSettings.ResumeLayout(false);
@@ -786,6 +869,12 @@
         private Bunifu.Framework.UI.BunifuMetroTextbox textoxValueToTransfer;
         private System.Windows.Forms.Label label14;
         private System.Windows.Forms.Label labelcurrencyToIban;
-        private System.Windows.Forms.RadioButton radioButtonCheckIBAN;
+        private System.Windows.Forms.PictureBox pictureValid;
+        private System.Windows.Forms.PictureBox pictureFailed;
+        private System.Windows.Forms.Label labelExchangeValue;
+        private System.Windows.Forms.Label label15;
+        private Bunifu.Framework.UI.BunifuCustomLabel labelshowToCurrency;
+        private Bunifu.Framework.UI.BunifuCustomLabel labelshowFromCurrency;
+        private System.Windows.Forms.Button buttonSubmitTransfer;
     }
 }

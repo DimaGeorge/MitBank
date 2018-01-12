@@ -115,23 +115,6 @@ namespace login2
             return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<string>("showAllMyAccounts", idUsernameParameter);
         }
     
-        public virtual int transferMoney(string fromIBAN, string toIBAN, Nullable<double> valueToTransfer)
-        {
-            var fromIBANParameter = fromIBAN != null ?
-                new ObjectParameter("fromIBAN", fromIBAN) :
-                new ObjectParameter("fromIBAN", typeof(string));
-    
-            var toIBANParameter = toIBAN != null ?
-                new ObjectParameter("toIBAN", toIBAN) :
-                new ObjectParameter("toIBAN", typeof(string));
-    
-            var valueToTransferParameter = valueToTransfer.HasValue ?
-                new ObjectParameter("valueToTransfer", valueToTransfer) :
-                new ObjectParameter("valueToTransfer", typeof(double));
-    
-            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("transferMoney", fromIBANParameter, toIBANParameter, valueToTransferParameter);
-        }
-    
         public virtual ObjectResult<showIBANInformations_Result> showIBANInformations(string iban)
         {
             var ibanParameter = iban != null ?
@@ -161,6 +144,27 @@ namespace login2
                 new ObjectParameter("ibanNR", typeof(string));
     
             return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<string>("getAnyoneCurrency", ibanNRParameter);
+        }
+    
+        public virtual int transferMoney(string fromIBAN, string toIBAN, Nullable<double> valueToTransfer, Nullable<double> valueToRecieve)
+        {
+            var fromIBANParameter = fromIBAN != null ?
+                new ObjectParameter("fromIBAN", fromIBAN) :
+                new ObjectParameter("fromIBAN", typeof(string));
+    
+            var toIBANParameter = toIBAN != null ?
+                new ObjectParameter("toIBAN", toIBAN) :
+                new ObjectParameter("toIBAN", typeof(string));
+    
+            var valueToTransferParameter = valueToTransfer.HasValue ?
+                new ObjectParameter("valueToTransfer", valueToTransfer) :
+                new ObjectParameter("valueToTransfer", typeof(double));
+    
+            var valueToRecieveParameter = valueToRecieve.HasValue ?
+                new ObjectParameter("valueToRecieve", valueToRecieve) :
+                new ObjectParameter("valueToRecieve", typeof(double));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("transferMoney", fromIBANParameter, toIBANParameter, valueToTransferParameter, valueToRecieveParameter);
         }
     }
 }
