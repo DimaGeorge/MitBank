@@ -41,6 +41,7 @@ namespace login2
             lastMenupanel = panelMainDashboard;
 
             UIDashboardAccountFrame.generateDashboard(ibanList, panelMainDashboard, exchangeTbl);
+            labelLastName.Text = DataManagement.getLastName();
         }
 
         private void label11_Click(object sender, EventArgs e)
@@ -474,30 +475,30 @@ namespace login2
             string text5 = "Conturi curente ";
 
             gfx.DrawString(infoBank, font, XBrushes.Black,
-              new XRect(0, 0, page.Width, page.Height),
+              new XRect(10, 0, page.Width, page.Height),
               XStringFormats.TopLeft);
 
             gfx.DrawString(infoBank2, font, XBrushes.Black,
-              new XRect(0, 12, page.Width, page.Height),
+              new XRect(10, 12, page.Width, page.Height),
               XStringFormats.TopLeft);
 
             gfx.DrawString(text1, font, XBrushes.Black,
-              new XRect(0, 32, page.Width, page.Height),
+              new XRect(10, 32, page.Width, page.Height),
               XStringFormats.TopCenter);
 
             gfx.DrawString(text2, font, XBrushes.Black,
-              new XRect(0, 60, page.Width, page.Height),
+              new XRect(10, 60, page.Width, page.Height),
               XStringFormats.TopLeft);
 
             gfx.DrawString(text3, font, XBrushes.Black,
-              new XRect(0, 72, page.Width, page.Height),
+              new XRect(10, 72, page.Width, page.Height),
               XStringFormats.TopLeft);
 
             gfx.DrawString(text4, font, XBrushes.Black,
-              new XRect(0, 84, page.Width, page.Height),
+              new XRect(10, 84, page.Width, page.Height),
               XStringFormats.TopLeft);
             gfx.DrawString(text5, font, XBrushes.Black,
-              new XRect(0, 100, page.Width, page.Height),
+              new XRect(10, 100, page.Width, page.Height),
               XStringFormats.TopCenter);
 
 
@@ -505,9 +506,9 @@ namespace login2
             List<string> lc= new List<string>();
             lc = DataManagement.getAllInfoAccunts();
             
-
+            
             string text11 = "ID" + "       " + "IBAN" + "                                       "
-                + "Bank Packet" + "              " + "VALABILITY" + "                    " + "SOLD" + "       " + "CURRENCY";
+                + "Bank Packet" + "              " + "VALABILITY" + "              " + "SOLD" + "       " + "CURRENCY";
             gfx.DrawString(text11, font, XBrushes.Black,
                 new XRect(30, 130, page.Width, page.Height),
                 XStringFormats.TopLeft);
@@ -523,8 +524,14 @@ namespace login2
                 x += 20;
             }
 
+            string text12 = "Pentru mai multe informatii, contactati-ne la 0722222222, director adjunct SSSSSSS  SSS";
+
+            gfx.DrawString(text12, font, XBrushes.Black,
+                new XRect(30, 300, page.Width, page.Height),
+                XStringFormats.TopLeft);
+
             // Save the document...
-            const string filename = "HelloWorld.pdf";
+            string filename = "Account request " + DataManagement.getLastName() ;
             document.Save(filename);
             // ...and start a viewer.
             Process.Start(filename);

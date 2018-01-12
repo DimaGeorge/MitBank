@@ -45,6 +45,7 @@
             this.label4LastName = new System.Windows.Forms.Label();
             this.logoutButton = new Bunifu.Framework.UI.BunifuFlatButton();
             this.panelMainDashboard = new System.Windows.Forms.Panel();
+            this.buttonHistoryTransaction = new System.Windows.Forms.Button();
             this.label2 = new System.Windows.Forms.Label();
             this.panelMainPaySomething = new System.Windows.Forms.Panel();
             this.label4 = new System.Windows.Forms.Label();
@@ -72,10 +73,11 @@
             this.textBoxWriteIBAN = new Bunifu.Framework.UI.BunifuMetroTextbox();
             this.comboBoxToTransferMyIBAN = new System.Windows.Forms.ComboBox();
             this.panelMainSendMail = new System.Windows.Forms.Panel();
+            this.button1 = new System.Windows.Forms.Button();
             this.panelMainSettings = new System.Windows.Forms.Panel();
             this.label8 = new System.Windows.Forms.Label();
-            this.buttonHistoryTransaction = new System.Windows.Forms.Button();
-            this.button1 = new System.Windows.Forms.Button();
+            this.labelLastName = new System.Windows.Forms.Label();
+            this.label7 = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox4)).BeginInit();
             this.header.SuspendLayout();
             this.panelMainDashboard.SuspendLayout();
@@ -402,6 +404,20 @@
             this.panelMainDashboard.Name = "panelMainDashboard";
             this.panelMainDashboard.Size = new System.Drawing.Size(1378, 881);
             this.panelMainDashboard.TabIndex = 22;
+            // 
+            // buttonHistoryTransaction
+            // 
+            this.buttonHistoryTransaction.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(30)))), ((int)(((byte)(35)))), ((int)(((byte)(35)))));
+            this.buttonHistoryTransaction.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.buttonHistoryTransaction.Font = new System.Drawing.Font("MS Reference Sans Serif", 10.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.buttonHistoryTransaction.ForeColor = System.Drawing.SystemColors.ControlLightLight;
+            this.buttonHistoryTransaction.Location = new System.Drawing.Point(28, 631);
+            this.buttonHistoryTransaction.Name = "buttonHistoryTransaction";
+            this.buttonHistoryTransaction.Size = new System.Drawing.Size(150, 42);
+            this.buttonHistoryTransaction.TabIndex = 3;
+            this.buttonHistoryTransaction.Text = "See history transaction";
+            this.buttonHistoryTransaction.UseVisualStyleBackColor = false;
+            this.buttonHistoryTransaction.Click += new System.EventHandler(this.buttonHistoryTransaction_Click);
             // 
             // label2
             // 
@@ -732,12 +748,27 @@
             // 
             // panelMainSendMail
             // 
+            this.panelMainSendMail.Controls.Add(this.label7);
             this.panelMainSendMail.Controls.Add(this.button1);
             this.panelMainSendMail.Location = new System.Drawing.Point(222, 74);
             this.panelMainSendMail.Margin = new System.Windows.Forms.Padding(4);
             this.panelMainSendMail.Name = "panelMainSendMail";
             this.panelMainSendMail.Size = new System.Drawing.Size(1378, 868);
             this.panelMainSendMail.TabIndex = 25;
+            // 
+            // button1
+            // 
+            this.button1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(30)))), ((int)(((byte)(35)))), ((int)(((byte)(35)))));
+            this.button1.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.button1.Font = new System.Drawing.Font("MS Reference Sans Serif", 10.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.button1.ForeColor = System.Drawing.SystemColors.ControlLightLight;
+            this.button1.Location = new System.Drawing.Point(52, 612);
+            this.button1.Name = "button1";
+            this.button1.Size = new System.Drawing.Size(386, 42);
+            this.button1.TabIndex = 4;
+            this.button1.Text = "Application account request";
+            this.button1.UseVisualStyleBackColor = false;
+            this.button1.Click += new System.EventHandler(this.button1_Click);
             // 
             // panelMainSettings
             // 
@@ -758,33 +789,27 @@
             this.label8.TabIndex = 0;
             this.label8.Text = "label8";
             // 
-            // buttonHistoryTransaction
+            // labelLastName
             // 
-            this.buttonHistoryTransaction.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(30)))), ((int)(((byte)(35)))), ((int)(((byte)(35)))));
-            this.buttonHistoryTransaction.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.buttonHistoryTransaction.Font = new System.Drawing.Font("MS Reference Sans Serif", 10.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.buttonHistoryTransaction.ForeColor = System.Drawing.SystemColors.ControlLightLight;
-            this.buttonHistoryTransaction.Location = new System.Drawing.Point(28, 631);
-            this.buttonHistoryTransaction.Name = "buttonHistoryTransaction";
-            this.buttonHistoryTransaction.Size = new System.Drawing.Size(150, 42);
-            this.buttonHistoryTransaction.TabIndex = 3;
-            this.buttonHistoryTransaction.Text = "See history transaction";
-            this.buttonHistoryTransaction.UseVisualStyleBackColor = false;
-            this.buttonHistoryTransaction.Click += new System.EventHandler(this.buttonHistoryTransaction_Click);
+            this.labelLastName.AutoSize = true;
+            this.labelLastName.Font = new System.Drawing.Font("Palatino Linotype", 10.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.labelLastName.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(125)))), ((int)(((byte)(0)))));
+            this.labelLastName.Location = new System.Drawing.Point(99, 70);
+            this.labelLastName.Name = "labelLastName";
+            this.labelLastName.Size = new System.Drawing.Size(60, 26);
+            this.labelLastName.TabIndex = 27;
+            this.labelLastName.Text = "Guest";
             // 
-            // button1
+            // label7
             // 
-            this.button1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(30)))), ((int)(((byte)(35)))), ((int)(((byte)(35)))));
-            this.button1.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.button1.Font = new System.Drawing.Font("MS Reference Sans Serif", 10.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.button1.ForeColor = System.Drawing.SystemColors.ControlLightLight;
-            this.button1.Location = new System.Drawing.Point(40, 612);
-            this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(386, 42);
-            this.button1.TabIndex = 4;
-            this.button1.Text = "Application account request";
-            this.button1.UseVisualStyleBackColor = false;
-            this.button1.Click += new System.EventHandler(this.button1_Click);
+            this.label7.AutoSize = true;
+            this.label7.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label7.ForeColor = System.Drawing.Color.Snow;
+            this.label7.Location = new System.Drawing.Point(54, 565);
+            this.label7.Name = "label7";
+            this.label7.Size = new System.Drawing.Size(318, 25);
+            this.label7.TabIndex = 15;
+            this.label7.Text = "Press button to get account request";
             // 
             // Form2
             // 
@@ -792,6 +817,7 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(30)))), ((int)(((byte)(28)))), ((int)(((byte)(38)))));
             this.ClientSize = new System.Drawing.Size(1200, 786);
+            this.Controls.Add(this.labelLastName);
             this.Controls.Add(this.logoutButton);
             this.Controls.Add(this.label3);
             this.Controls.Add(this.label4LastName);
@@ -824,6 +850,7 @@
             ((System.ComponentModel.ISupportInitialize)(this.pictureFailed)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureValid)).EndInit();
             this.panelMainSendMail.ResumeLayout(false);
+            this.panelMainSendMail.PerformLayout();
             this.panelMainSettings.ResumeLayout(false);
             this.panelMainSettings.PerformLayout();
             this.ResumeLayout(false);
@@ -882,5 +909,7 @@
         private System.Windows.Forms.Button buttonSubmitTransfer;
         private System.Windows.Forms.Button buttonHistoryTransaction;
         private System.Windows.Forms.Button button1;
+        private System.Windows.Forms.Label labelLastName;
+        private System.Windows.Forms.Label label7;
     }
 }

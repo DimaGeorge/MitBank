@@ -161,24 +161,24 @@ namespace login2
         }
 
 
-        public static Page getLastName()
+        public static string getLastName()
         {
+            string lastName="Guest";
 
-            Page ret = new Page();
-            ret.DataLastName = "Guest";
-            /*
-            using (var context = new MitBankDBEntities())
+
+            using (var context = new MitBankDBEntities2())
             {
-                var rez = from c in context.IndividualsViews
-                          select c;
 
-                foreach (var c in rez)
+                var result = context.selectOnIndividuals(IDSession);
+
+                foreach ( var item in result)
                 {
-
-                    ret.DataLastName = c.LastName;
+                    lastName = item.LastName.ToString();
                 }
-            }*/
-            return ret;
+
+            }
+            return lastName;
+            
         }
 
         public static double getCurrencyValueBuy(string curr)
