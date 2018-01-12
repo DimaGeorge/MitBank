@@ -250,94 +250,19 @@ GO
 
 -- +++++++++++++++++++++++++++++++++++++++ CREATING VIEWS ++++++++++++++++++++++++++++++++++++++++
 
-CREATE VIEW UsernamesView
-AS
-SELECT *
-FROM Usernames
-WHERE Username = CURRENT_USER
-GO
-
-CREATE VIEW CustomersView
+CREATE VIEW ComisionOffert
 AS
 SELECT 
-	c.ID
-	,c.CustomerType
-FROM Customers AS c
-	INNER JOIN	NormalUsers AS nu
-		ON c.ID = nu.CustomerID
-	INNER JOIN	Usernames As u
-		ON u.ID = nu.ID
-WHERE u.Username = CURRENT_USER
-GO
+	tp.NameTypePacket
+	,tt.TypeTransaction
+	,cs.Comision
+FROM
+	ComisionStatus	as cs
+	INNER JOIN TypesTransaction as tt
+		ON tt.ID = cs.IDTypeTransaction
+	INNER JOIN TypeBankingPackets as tp
+		ON tp.ID = cs.IDBankPacket
 
-CREATE VIEW CompaniesView
-AS
-SELECT
-	comp.ID
-	,comp.CustomerID
-	,comp.IndividualID
-	,comp.CIF
-	,comp.Name
-	,comp.Address
-FROM Companies AS comp
-	INNER JOIN CustomersView AS cw
-		ON cw.ID = comp.CustomerID
-GO
-
-CREATE VIEW IndividualsView
-AS
-SELECT
-	i.ID
-	,i.FirstName
-	,i.LastName
-	,i.Email
-	,i.CNP
-	,i.Birthday
-FROM Individuals	AS i
-	INNER JOIN IndividualCustomers AS ic
-		ON i.ID = ic.IndividualID
-	INNER JOIN CustomersView as cw
-		ON ic.CustomerID = cw.ID
-UNION
-SELECT
-	i.ID
-	,i.FirstName
-	,i.LastName
-	,i.Email
-	,i.CNP
-	,i.Birthday
-FROM Individuals	AS i
-	INNER JOIN CompaniesView AS cw
-		ON i.ID = cw.IndividualID
-GO
-
-CREATE VIEW HistoryTransactionView
-AS
-SELECT
-	ht.ID
-	,ht.CustomerID
-	,ht.UserAccountID
-	,ht.TypeTransaction
-	,ht.DateTransaction
-FROM HistoryTransaction as ht
-	INNER JOIN CustomersView as cw
-		ON ht.CustomerID = cw.ID
-GO
-
-CREATE VIEW UserAccountsView
-AS
-SELECT
-	ua.ID
-	,ua.BankPacket
-	,ua.AccountNumber
-	,ua.ValabilityUntil
-	,ua.Currency
-	,ua.Sold
-	,ua.AccountCustomerID
-FROM UserAccounts AS ua
-	INNER JOIN CustomersView AS cw
-		ON ua.AccountCustomerID = cw.ID
-GO
 
 --- Stored Procedures ---------------------------------------------------------------------------------
 
@@ -843,3 +768,5 @@ select * from ComisionStatus
 select * from TypesTransaction
 select * from TypeBankingPackets
 exec transferMoney 'RO93MITB0410120579132422','RO93MITB0410120579132411',200
+
+

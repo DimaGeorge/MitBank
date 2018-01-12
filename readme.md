@@ -29,6 +29,9 @@ Or just another application keeping trak of your **M**oney **i**n **t**he **Bank
 	* Face *SELECT* dupa Comisionul pus tranzactiei *tiptranzaction* pentru pachetul caruia ii este alocat contul cu IBANul *accountNR*.
 1. transferMoney (fromIBAN, toIBAN, valueToTransfer, valueToReceive)
 	* Face ce trebuie.
+	
+#### View-uri:
+1. ComisionOffert
 ### 2. Aplicatia (Clientul)
 Aplicatia este gandita pe 2 layere, astfel:
 1. Layerul **User Interface**, cu clasele:
@@ -44,4 +47,4 @@ ce urmeaza a fi afisat utilizatorului prin grija interfetei grafice.
 ### 3. Tehnologia ADO.NET utilizata: Entitiy Framewok
 De invatat!
 ###### Referinte:
-[Gid github](http://rogerdudler.github.io/git-guide/)
+[Ghid github](http://rogerdudler.github.io/git-guide/)
