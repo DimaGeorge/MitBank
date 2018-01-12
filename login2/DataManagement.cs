@@ -229,6 +229,34 @@ namespace login2
 
         }
 
+        public static List<string> getAllInfoAccunts()
+        {
+            List<string> lc = new List<string>();
+
+            using (var context = new MitBankDBEntities2())
+            {
+                var result = context.showAllMyAccounts(IDSession);
+
+                foreach (var item in result)
+                {
+                    
+                    var result2 = context.showIBANInformations(item.ToString()).ToArray();
+                    
+                    foreach(var item2 in result2)
+                    {
+                        string info = item.ToString();
+
+                        info = item2.ID + "       "+info + "       " + "       " + item2.BankPacket + "       " + item2.ValabilityUntil +
+                            "       " + item2.Sold + "       " + item2.Currency;
+                        lc.Add(info);
+
+                    }
+                }
+            }
+
+
+            return lc;
+        }
 
     }
 }

@@ -72,10 +72,10 @@
             this.textBoxWriteIBAN = new Bunifu.Framework.UI.BunifuMetroTextbox();
             this.comboBoxToTransferMyIBAN = new System.Windows.Forms.ComboBox();
             this.panelMainSendMail = new System.Windows.Forms.Panel();
-            this.label7 = new System.Windows.Forms.Label();
             this.panelMainSettings = new System.Windows.Forms.Panel();
             this.label8 = new System.Windows.Forms.Label();
             this.buttonHistoryTransaction = new System.Windows.Forms.Button();
+            this.button1 = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox4)).BeginInit();
             this.header.SuspendLayout();
             this.panelMainDashboard.SuspendLayout();
@@ -270,7 +270,7 @@
             this.bunifuFlatButton4.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(30)))), ((int)(((byte)(28)))), ((int)(((byte)(38)))));
             this.bunifuFlatButton4.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
             this.bunifuFlatButton4.BorderRadius = 0;
-            this.bunifuFlatButton4.ButtonText = "  Send mail";
+            this.bunifuFlatButton4.ButtonText = "Tools";
             this.bunifuFlatButton4.Cursor = System.Windows.Forms.Cursors.Hand;
             this.bunifuFlatButton4.DisabledColor = System.Drawing.Color.Gray;
             this.bunifuFlatButton4.Iconcolor = System.Drawing.Color.Transparent;
@@ -294,7 +294,7 @@
             this.bunifuFlatButton4.selected = false;
             this.bunifuFlatButton4.Size = new System.Drawing.Size(221, 59);
             this.bunifuFlatButton4.TabIndex = 3;
-            this.bunifuFlatButton4.Text = "  Send mail";
+            this.bunifuFlatButton4.Text = "Tools";
             this.bunifuFlatButton4.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             this.bunifuFlatButton4.Textcolor = System.Drawing.Color.White;
             this.bunifuFlatButton4.TextFont = new System.Drawing.Font("Segoe UI Emoji", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
@@ -732,27 +732,17 @@
             // 
             // panelMainSendMail
             // 
-            this.panelMainSendMail.Controls.Add(this.label7);
-            this.panelMainSendMail.Location = new System.Drawing.Point(222, 85);
+            this.panelMainSendMail.Controls.Add(this.button1);
+            this.panelMainSendMail.Location = new System.Drawing.Point(222, 74);
             this.panelMainSendMail.Margin = new System.Windows.Forms.Padding(4);
             this.panelMainSendMail.Name = "panelMainSendMail";
             this.panelMainSendMail.Size = new System.Drawing.Size(1378, 868);
             this.panelMainSendMail.TabIndex = 25;
             // 
-            // label7
-            // 
-            this.label7.AutoSize = true;
-            this.label7.Location = new System.Drawing.Point(37, 50);
-            this.label7.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
-            this.label7.Name = "label7";
-            this.label7.Size = new System.Drawing.Size(46, 17);
-            this.label7.TabIndex = 0;
-            this.label7.Text = "label7";
-            // 
             // panelMainSettings
             // 
             this.panelMainSettings.Controls.Add(this.label8);
-            this.panelMainSettings.Location = new System.Drawing.Point(222, 85);
+            this.panelMainSettings.Location = new System.Drawing.Point(222, 75);
             this.panelMainSettings.Margin = new System.Windows.Forms.Padding(4);
             this.panelMainSettings.Name = "panelMainSettings";
             this.panelMainSettings.Size = new System.Drawing.Size(1378, 868);
@@ -782,6 +772,20 @@
             this.buttonHistoryTransaction.UseVisualStyleBackColor = false;
             this.buttonHistoryTransaction.Click += new System.EventHandler(this.buttonHistoryTransaction_Click);
             // 
+            // button1
+            // 
+            this.button1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(30)))), ((int)(((byte)(35)))), ((int)(((byte)(35)))));
+            this.button1.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.button1.Font = new System.Drawing.Font("MS Reference Sans Serif", 10.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.button1.ForeColor = System.Drawing.SystemColors.ControlLightLight;
+            this.button1.Location = new System.Drawing.Point(40, 612);
+            this.button1.Name = "button1";
+            this.button1.Size = new System.Drawing.Size(386, 42);
+            this.button1.TabIndex = 4;
+            this.button1.Text = "Application account request";
+            this.button1.UseVisualStyleBackColor = false;
+            this.button1.Click += new System.EventHandler(this.button1_Click);
+            // 
             // Form2
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
@@ -797,11 +801,11 @@
             this.Controls.Add(this.bunifuFlatButton3);
             this.Controls.Add(this.Dashboard);
             this.Controls.Add(this.bunifuFlatButton2);
-            this.Controls.Add(this.panelMainDashboard);
-            this.Controls.Add(this.panelMainSettings);
             this.Controls.Add(this.panelMainSendMail);
             this.Controls.Add(this.panelMainTransfer);
             this.Controls.Add(this.panelMainPaySomething);
+            this.Controls.Add(this.panelMainDashboard);
+            this.Controls.Add(this.panelMainSettings);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
             this.KeyPreview = true;
             this.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
@@ -820,7 +824,6 @@
             ((System.ComponentModel.ISupportInitialize)(this.pictureFailed)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureValid)).EndInit();
             this.panelMainSendMail.ResumeLayout(false);
-            this.panelMainSendMail.PerformLayout();
             this.panelMainSettings.ResumeLayout(false);
             this.panelMainSettings.PerformLayout();
             this.ResumeLayout(false);
@@ -853,7 +856,6 @@
         private System.Windows.Forms.Label label4;
         private System.Windows.Forms.Panel panelMainTransfer;
         private System.Windows.Forms.Panel panelMainSendMail;
-        private System.Windows.Forms.Label label7;
         private System.Windows.Forms.Panel panelMainSettings;
         private System.Windows.Forms.Label label8;
         private System.Windows.Forms.ComboBox comboBoxIBAN;
@@ -879,5 +881,6 @@
         private Bunifu.Framework.UI.BunifuCustomLabel labelshowFromCurrency;
         private System.Windows.Forms.Button buttonSubmitTransfer;
         private System.Windows.Forms.Button buttonHistoryTransaction;
+        private System.Windows.Forms.Button button1;
     }
 }

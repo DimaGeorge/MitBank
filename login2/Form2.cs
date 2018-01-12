@@ -1,4 +1,5 @@
-﻿using System;
+﻿using PdfSharp.Pdf;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -7,6 +8,11 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using PdfSharp;
+using PdfSharp.Drawing;
+using PdfSharp.Pdf;
+using MigraDoc.DocumentObjectModel;
+using System.Diagnostics;
 
 namespace login2
 {
@@ -18,11 +24,11 @@ namespace login2
         public Form2()
         {
             InitializeComponent();
-            panelMainDashboard.BackColor = Color.FromArgb(100, 100, 40);
-            panelMainPaySomething.BackColor = Color.FromArgb(100, 100, 40);
-            panelMainSendMail.BackColor = Color.FromArgb(100, 100, 40);
-            panelMainSettings.BackColor = Color.FromArgb(100, 100, 40);
-            panelMainTransfer.BackColor = Color.FromArgb(100, 100, 40);
+            panelMainDashboard.BackColor = System.Drawing.Color.FromArgb(100, 100, 40);
+            panelMainPaySomething.BackColor = System.Drawing.Color.FromArgb(100, 100, 40);
+            panelMainSendMail.BackColor = System.Drawing.Color.FromArgb(100, 100, 40);
+            panelMainSettings.BackColor = System.Drawing.Color.FromArgb(100, 100, 40);
+            panelMainTransfer.BackColor = System.Drawing.Color.FromArgb(100, 100, 40);
 
             panelMainDashboard.Visible = true;
             panelMainPaySomething.Visible = false;
@@ -32,7 +38,6 @@ namespace login2
 
             pictureFailed.Visible = false;
             pictureValid.Visible = false;
-            panelShowHistory.Visible = false;
             lastMenupanel = panelMainDashboard;
 
             UIDashboardAccountFrame.generateDashboard(ibanList, panelMainDashboard, exchangeTbl);
@@ -440,14 +445,89 @@ namespace login2
 
         private void buttonHistoryTransaction_Click(object sender, EventArgs e)
         {
-            this.Width = 1200;
-            panelShowHistory.Visible = true;
-            panelShowHistory.BringToFront();
-            textBoxAddHisory.Multiline = true;
-            textBoxAddHisory.Height = 600;
-            textBoxAddHisory.Width = 300;
-            textBoxAddHisory.ScrollBars = ScrollBars.Vertical;
-            textBoxAddHisory.WordWrap = false;
+
+
+
+        }
+
+        private void button1_Click(object sender, EventArgs e)
+        {
+            PdfDocument document = new PdfDocument();
+            document.Info.Title = "Account request informations";
+
+            // Create an empty page
+            PdfPage page = document.AddPage();
+
+            // Get an XGraphics object for drawing
+            XGraphics gfx = XGraphics.FromPdfPage(page);
+
+            // Create a font
+            XFont font = new XFont("Verdana", 11, XFontStyle.Regular);
+
+            // Draw the text
+            string infoBank = "MITBank Society, Military Technical Academy";
+            string infoBank2 = "Sucursala Bucuresti, Sector 4";
+            string text1 = "Extras de cont din "+ DateTime.Now.ToString() ;
+            string text2 = "      Conform dispozitiilor in vigoare, va instiintăm ca, in evidenţele";
+            string text3 = "noastre contabile, la data de ............., unitatea dvs. figurează";
+            string text4 = "cu următoarele conturi................................................";
+            string text5 = "Conturi curente ";
+
+            gfx.DrawString(infoBank, font, XBrushes.Black,
+              new XRect(0, 0, page.Width, page.Height),
+              XStringFormats.TopLeft);
+
+            gfx.DrawString(infoBank2, font, XBrushes.Black,
+              new XRect(0, 12, page.Width, page.Height),
+              XStringFormats.TopLeft);
+
+            gfx.DrawString(text1, font, XBrushes.Black,
+              new XRect(0, 32, page.Width, page.Height),
+              XStringFormats.TopCenter);
+
+            gfx.DrawString(text2, font, XBrushes.Black,
+              new XRect(0, 60, page.Width, page.Height),
+              XStringFormats.TopLeft);
+
+            gfx.DrawString(text3, font, XBrushes.Black,
+              new XRect(0, 72, page.Width, page.Height),
+              XStringFormats.TopLeft);
+
+            gfx.DrawString(text4, font, XBrushes.Black,
+              new XRect(0, 84, page.Width, page.Height),
+              XStringFormats.TopLeft);
+            gfx.DrawString(text5, font, XBrushes.Black,
+              new XRect(0, 100, page.Width, page.Height),
+              XStringFormats.TopCenter);
+
+
+
+            List<string> lc= new List<string>();
+            lc = DataManagement.getAllInfoAccunts();
+            
+
+            string text11 = "ID" + "       " + "IBAN" + "                                       "
+                + "Bank Packet" + "              " + "VALABILITY" + "                    " + "SOLD" + "       " + "CURRENCY";
+            gfx.DrawString(text11, font, XBrushes.Black,
+                new XRect(30, 130, page.Width, page.Height),
+                XStringFormats.TopLeft);
+
+            int x = 160;
+            foreach (string c in lc)
+            {
+                string text0 = c.ToString();
+                
+                gfx.DrawString(text0, font, XBrushes.Black,
+                new XRect(30, x, page.Width, page.Height),
+                XStringFormats.TopLeft);
+                x += 20;
+            }
+
+            // Save the document...
+            const string filename = "HelloWorld.pdf";
+            document.Save(filename);
+            // ...and start a viewer.
+            Process.Start(filename);
 
 
         }
