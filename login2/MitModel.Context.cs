@@ -166,5 +166,34 @@ namespace login2
     
             return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("transferMoney", fromIBANParameter, toIBANParameter, valueToTransferParameter, valueToRecieveParameter);
         }
+    
+        public virtual int addHistoryTransaction(Nullable<int> userId, string userAccountIban, string toWichAccount, Nullable<int> typeTransaction, Nullable<double> value, string date)
+        {
+            var userIdParameter = userId.HasValue ?
+                new ObjectParameter("userId", userId) :
+                new ObjectParameter("userId", typeof(int));
+    
+            var userAccountIbanParameter = userAccountIban != null ?
+                new ObjectParameter("UserAccountIban", userAccountIban) :
+                new ObjectParameter("UserAccountIban", typeof(string));
+    
+            var toWichAccountParameter = toWichAccount != null ?
+                new ObjectParameter("toWichAccount", toWichAccount) :
+                new ObjectParameter("toWichAccount", typeof(string));
+    
+            var typeTransactionParameter = typeTransaction.HasValue ?
+                new ObjectParameter("typeTransaction", typeTransaction) :
+                new ObjectParameter("typeTransaction", typeof(int));
+    
+            var valueParameter = value.HasValue ?
+                new ObjectParameter("value", value) :
+                new ObjectParameter("value", typeof(double));
+    
+            var dateParameter = date != null ?
+                new ObjectParameter("date", date) :
+                new ObjectParameter("date", typeof(string));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("addHistoryTransaction", userIdParameter, userAccountIbanParameter, toWichAccountParameter, typeTransactionParameter, valueParameter, dateParameter);
+        }
     }
 }
