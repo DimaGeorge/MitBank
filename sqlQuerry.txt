@@ -239,7 +239,7 @@ CREATE TABLE HistoryTransaction(
 	,toWichAccount		nvarchar(100)
 	,TypeTransaction	int
 	,Value				float
-	,DateTransaction	datetime
+	,DateTransaction	nvarchar(100)
 	,CONSTRAINT PK_HistoryTransaction
 		PRIMARY KEY CLUSTERED (ID)
 	,CONSTRAINT FK_HistoryTransaction_TypeTransactions
@@ -615,19 +615,22 @@ CREATE PROCEDURE addHistoryTransaction
 	,@toWichAccount nvarchar(100)
 	,@typeTransaction int
 	,@value float
+	,@date nvarchar(100)
 	
 AS
 BEGIN
 	DECLARE @idCustomer int;
-	DECLARE @date date;
+
+
 	EXEC getIdCustomer @userID =@userId , @idClient = @idCustomer OUTPUT
-	set @date= SYSDATETIME();
+
 
 	INSERT INTO HistoryTransaction(CustomerID,UserAccountID,fromAccount,toWichAccount,TypeTransaction,Value,DateTransaction)
 	VALUES (@idCustomer,@userId,@UserAccountIban,@toWichAccount,@typeTransaction,@value,@date)
 
 
 END
+
 select * from HistoryTransaction
 
 GO
