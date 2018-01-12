@@ -32,7 +32,6 @@ namespace login2
 
             pictureFailed.Visible = false;
             pictureValid.Visible = false;
-            panelShowHistory.Visible = false;
             lastMenupanel = panelMainDashboard;
 
             UIDashboardAccountFrame.generateDashboard(ibanList, panelMainDashboard, exchangeTbl);
@@ -441,13 +440,6 @@ namespace login2
         private void buttonHistoryTransaction_Click(object sender, EventArgs e)
         {
             this.Width = 1200;
-            panelShowHistory.Visible = true;
-            panelShowHistory.BringToFront();
-            textBoxAddHisory.Multiline = true;
-            textBoxAddHisory.Height = 600;
-            textBoxAddHisory.Width = 300;
-            textBoxAddHisory.ScrollBars = ScrollBars.Vertical;
-            textBoxAddHisory.WordWrap = false;
 
 
         }
