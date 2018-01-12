@@ -32,7 +32,6 @@
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Form2));
             this.pictureBox4 = new System.Windows.Forms.PictureBox();
             this.label11 = new System.Windows.Forms.Label();
-            this.LabelShowAccounts = new System.Windows.Forms.Label();
             this.header = new System.Windows.Forms.Panel();
             this.label5 = new System.Windows.Forms.Label();
             this.label1 = new System.Windows.Forms.Label();
@@ -76,6 +75,7 @@
             this.label7 = new System.Windows.Forms.Label();
             this.panelMainSettings = new System.Windows.Forms.Panel();
             this.label8 = new System.Windows.Forms.Label();
+            this.buttonHistoryTransaction = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox4)).BeginInit();
             this.header.SuspendLayout();
             this.panelMainDashboard.SuspendLayout();
@@ -110,17 +110,6 @@
             this.label11.TabIndex = 10;
             this.label11.Text = "X";
             this.label11.Click += new System.EventHandler(this.label11_Click);
-            // 
-            // LabelShowAccounts
-            // 
-            this.LabelShowAccounts.AutoSize = true;
-            this.LabelShowAccounts.Font = new System.Drawing.Font("Palatino Linotype", 10.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.LabelShowAccounts.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(125)))), ((int)(((byte)(0)))));
-            this.LabelShowAccounts.Location = new System.Drawing.Point(432, 356);
-            this.LabelShowAccounts.Name = "LabelShowAccounts";
-            this.LabelShowAccounts.Size = new System.Drawing.Size(98, 26);
-            this.LabelShowAccounts.TabIndex = 2;
-            this.LabelShowAccounts.Text = "Welcome, ";
             // 
             // header
             // 
@@ -406,12 +395,12 @@
             // 
             // panelMainDashboard
             // 
-            this.panelMainDashboard.Controls.Add(this.LabelShowAccounts);
+            this.panelMainDashboard.Controls.Add(this.buttonHistoryTransaction);
             this.panelMainDashboard.Controls.Add(this.label2);
-            this.panelMainDashboard.Location = new System.Drawing.Point(222, 85);
+            this.panelMainDashboard.Location = new System.Drawing.Point(222, 72);
             this.panelMainDashboard.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.panelMainDashboard.Name = "panelMainDashboard";
-            this.panelMainDashboard.Size = new System.Drawing.Size(1378, 868);
+            this.panelMainDashboard.Size = new System.Drawing.Size(1378, 881);
             this.panelMainDashboard.TabIndex = 22;
             // 
             // label2
@@ -779,6 +768,20 @@
             this.label8.TabIndex = 0;
             this.label8.Text = "label8";
             // 
+            // buttonHistoryTransaction
+            // 
+            this.buttonHistoryTransaction.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(30)))), ((int)(((byte)(35)))), ((int)(((byte)(35)))));
+            this.buttonHistoryTransaction.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.buttonHistoryTransaction.Font = new System.Drawing.Font("MS Reference Sans Serif", 10.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.buttonHistoryTransaction.ForeColor = System.Drawing.SystemColors.ControlLightLight;
+            this.buttonHistoryTransaction.Location = new System.Drawing.Point(28, 631);
+            this.buttonHistoryTransaction.Name = "buttonHistoryTransaction";
+            this.buttonHistoryTransaction.Size = new System.Drawing.Size(150, 42);
+            this.buttonHistoryTransaction.TabIndex = 3;
+            this.buttonHistoryTransaction.Text = "See history transaction";
+            this.buttonHistoryTransaction.UseVisualStyleBackColor = false;
+            this.buttonHistoryTransaction.Click += new System.EventHandler(this.buttonHistoryTransaction_Click);
+            // 
             // Form2
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
@@ -846,7 +849,6 @@
         private System.Windows.Forms.Panel panelMainDashboard;
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.Label label4_Click;
-        private System.Windows.Forms.Label LabelShowAccounts;
         private System.Windows.Forms.Panel panelMainPaySomething;
         private System.Windows.Forms.Label label4;
         private System.Windows.Forms.Panel panelMainTransfer;
@@ -876,5 +878,6 @@
         private Bunifu.Framework.UI.BunifuCustomLabel labelshowToCurrency;
         private Bunifu.Framework.UI.BunifuCustomLabel labelshowFromCurrency;
         private System.Windows.Forms.Button buttonSubmitTransfer;
+        private System.Windows.Forms.Button buttonHistoryTransaction;
     }
 }

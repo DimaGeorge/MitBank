@@ -32,7 +32,7 @@ namespace login2
 
             pictureFailed.Visible = false;
             pictureValid.Visible = false;
-
+            panelShowHistory.Visible = false;
             lastMenupanel = panelMainDashboard;
 
             UIDashboardAccountFrame.generateDashboard(ibanList, panelMainDashboard, exchangeTbl);
@@ -401,7 +401,7 @@ namespace login2
                                         comboBoxToTransferMyIBAN.SelectedItem.ToString(), ((ValWithouComiss + comiss)),
                                         valToTransfer);
                                     DataManagement.addOnHistory(comboBoxIBAN.SelectedItem.ToString(),
-                                        comboBoxToTransferMyIBAN.SelectedItem.ToString(), 4, -(ValWithouComiss + comiss));
+                                        comboBoxToTransferMyIBAN.SelectedItem.ToString(), 4, (ValWithouComiss + comiss));
 
                                 }
                                 else if (comboBoxSelectTransfer.SelectedItem.ToString() == "Anyone else account")
@@ -411,7 +411,7 @@ namespace login2
                                         valToTransfer);
 
                                     DataManagement.addOnHistory(comboBoxIBAN.SelectedItem.ToString(),
-                                      textBoxWriteIBAN.Text, 4, -(ValWithouComiss + comiss));
+                                      textBoxWriteIBAN.Text, 4, (ValWithouComiss + comiss));
 
                                 }
                                 labelComisionValue.Text = "-";
@@ -437,6 +437,20 @@ namespace login2
 
 
             }
+
+        private void buttonHistoryTransaction_Click(object sender, EventArgs e)
+        {
+            this.Width = 1200;
+            panelShowHistory.Visible = true;
+            panelShowHistory.BringToFront();
+            textBoxAddHisory.Multiline = true;
+            textBoxAddHisory.Height = 600;
+            textBoxAddHisory.Width = 300;
+            textBoxAddHisory.ScrollBars = ScrollBars.Vertical;
+            textBoxAddHisory.WordWrap = false;
+
+
         }
+    }
 }
 

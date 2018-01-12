@@ -221,7 +221,10 @@ namespace login2
             using (var context= new MitBankDBEntities2())
             {
                 var result = context.addHistoryTransaction(IDSession, userAccountIban
-                    , toWichAccount, TypeTransaction, val, DateTime.Now.ToString());
+                    , toWichAccount, TypeTransaction, -val, DateTime.Now.ToString());
+
+                var result2 = context.addHistoryTransaction(IDSession, toWichAccount, userAccountIban
+                    ,TypeTransaction, +val, DateTime.Now.ToString());
             }
 
         }
