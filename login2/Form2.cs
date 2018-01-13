@@ -42,10 +42,24 @@ namespace login2
 
             UIDashboardAccountFrame.generateDashboard(ibanList, panelMainDashboard, exchangeTbl);
             labelLastName.Text = DataManagement.getLastName();
+            using (var context = new MitBankDBEntities2())
+            {
+                var result2 = context.getLastLogin(DataManagement.getIdUsername());
+                foreach ( var item in result2)
+                {
+                    labelLastLogin.Text = item.ToString();
+                }
+            }
+
         }
 
         private void label11_Click(object sender, EventArgs e)
         {
+            using (var context = new MitBankDBEntities2())
+            {
+                var result = context.insertLastLogin(DataManagement.getIdUsername(), DateTime.Now.ToString());
+
+            }
             Application.Exit();
         }
 
@@ -156,6 +170,11 @@ namespace login2
                                  MessageBoxIcon.Question);
             if (result == DialogResult.Yes)
             {
+                using (var context = new MitBankDBEntities2())
+                {
+                    var result2 = context.insertLastLogin(DataManagement.getIdUsername(), DateTime.Now.ToString());
+
+                }
                 this.Hide();
                 Form1 frm = new Form1();
                 this.Refresh();
@@ -163,6 +182,7 @@ namespace login2
                 frm.Refresh();
                 frm.Invalidate();
                 frm.Show();
+                
             }
         }
 

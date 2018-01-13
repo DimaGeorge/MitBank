@@ -50,9 +50,16 @@
           <Parameter Name="userID" Type="int" Mode="In" />
           <Parameter Name="idClient" Type="int" Mode="InOut" />
         </Function>
+        <Function Name="getLastLogin" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="idusername" Type="int" Mode="In" />
+        </Function>
         <Function Name="getUandPProcedure" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
           <Parameter Name="Username" Type="nvarchar" Mode="In" />
           <Parameter Name="Password" Type="nvarchar" Mode="In" />
+        </Function>
+        <Function Name="insertLastLogin" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="idusername" Type="int" Mode="In" />
+          <Parameter Name="date" Type="nvarchar" Mode="In" />
         </Function>
         <Function Name="IsAdmin" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
           <Parameter Name="UserID" Type="int" Mode="In" />
@@ -146,6 +153,13 @@
             <Parameter Name="typeTransaction" Mode="In" Type="Int32" />
             <Parameter Name="value" Mode="In" Type="Double" />
             <Parameter Name="date" Mode="In" Type="String" />
+          </FunctionImport>
+          <FunctionImport Name="insertLastLogin">
+            <Parameter Name="idusername" Mode="In" Type="Int32" />
+            <Parameter Name="date" Mode="In" Type="String" />
+          </FunctionImport>
+          <FunctionImport Name="getLastLogin" ReturnType="Collection(String)">
+            <Parameter Name="idusername" Mode="In" Type="Int32" />
           </FunctionImport>
         </EntityContainer>
         <EntityType Name="ComisionStatu">
@@ -300,6 +314,8 @@
           <FunctionImportMapping FunctionImportName="getAnyoneCurrency" FunctionName="MitBankDBModel.Store.getAnyoneCurrency" />
           <FunctionImportMapping FunctionImportName="transferMoney" FunctionName="MitBankDBModel.Store.transferMoney" />
           <FunctionImportMapping FunctionImportName="addHistoryTransaction" FunctionName="MitBankDBModel.Store.addHistoryTransaction" />
+          <FunctionImportMapping FunctionImportName="insertLastLogin" FunctionName="MitBankDBModel.Store.insertLastLogin" />
+          <FunctionImportMapping FunctionImportName="getLastLogin" FunctionName="MitBankDBModel.Store.getLastLogin" />
         </EntityContainerMapping>
       </Mapping>
     </edmx:Mappings>
