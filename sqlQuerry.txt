@@ -50,6 +50,16 @@ CREATE TABLE Customers(
 		FOREIGN KEY (CustomerType) REFERENCES CustomerTypes(ID)
 );
 GO
+CREATE TABLE LastLogin(
+	ID int IDENTITY(1,1) NOT NULL
+	,IDCustomer int	NOT NULL
+	,date	nvarchar(100) NOT NULL DEFAULT 'NULL'
+	,CONSTRAINT PK_LastLogin
+		PRIMARY KEY CLUSTERED (ID)
+	,CONSTRAINT FK_Lasogin
+		FOREIGN KEY (IDCustomer) REFERENCES Customers(ID)
+)
+GO
 
 CREATE TABLE Individuals(
 	ID			int				IDENTITY (1,1)	NOT NULL
@@ -260,6 +270,9 @@ FROM Usernames
 WHERE Username = CURRENT_USER
 GO
 
+
+
+
 CREATE VIEW CustomersView
 AS
 SELECT 
@@ -366,6 +379,44 @@ BEGIN
 	IF (@idClient is null)
 	BEGIN
 		SET @idClient = -1
+	END
+END
+GO
+
+CREATE PROCEDURE getLastLogin
+	@idusername int
+AS
+BEGIN
+	DECLARE @idcustomer int;
+	EXEC getIdCustomer @userID =@idusername , @idClient = @idcustomer OUTPUT
+
+	SELECT date FROM LastLogin
+		WHERE IDCustomer=@idcustomer
+END	
+
+GO
+CREATE PROCEDURE insertLastLogin
+	@idusername int
+	,@date nvarchar(100)
+AS
+BEGIN
+	DECLARE @idcustomer int;
+	EXEC getIdCustomer @userID =@idusername , @idClient = @idcustomer OUTPUT
+
+	DECLARE @ifexist int;
+	SET @ifexist = 0;
+	SELECT @ifexist = LastLogin.IDCustomer FROM LastLogin
+		WHERE LastLogin.IDCustomer = @idcustomer
+
+	IF @ifexist = 0
+	BEGIN
+		INSERT INTO LastLogin (IDCustomer, LastLogin.date)
+		VALUES (@idcustomer,@date)
+	END
+	ELSE
+	BEGIN
+		UPDATE LastLogin
+		SET LastLogin.date = @date
 	END
 END
 GO
@@ -689,6 +740,9 @@ GRANT EXEC ON showIBANInformations	TO ApplicationRole
 GRANT EXEC ON takeComision			TO ApplicationRole
 GRANT EXEC ON getAnyoneCurrency		TO ApplicationRole
 GRANT EXEC ON addHistoryTransaction	TO ApplicationRole
+GRANT EXEC ON insertLastLogin		TO ApplicationRole
+GRANT EXEC ON getLastLogin			TO ApplicationRole
+
 
 GRANT SELECT ON CurrentCurrency		TO ApplicationRole
 GRANT SELECT ON ComisionStatus		TO ApplicationRole

@@ -195,5 +195,27 @@ namespace login2
     
             return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("addHistoryTransaction", userIdParameter, userAccountIbanParameter, toWichAccountParameter, typeTransactionParameter, valueParameter, dateParameter);
         }
+    
+        public virtual int insertLastLogin(Nullable<int> idusername, string date)
+        {
+            var idusernameParameter = idusername.HasValue ?
+                new ObjectParameter("idusername", idusername) :
+                new ObjectParameter("idusername", typeof(int));
+    
+            var dateParameter = date != null ?
+                new ObjectParameter("date", date) :
+                new ObjectParameter("date", typeof(string));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("insertLastLogin", idusernameParameter, dateParameter);
+        }
+    
+        public virtual ObjectResult<string> getLastLogin(Nullable<int> idusername)
+        {
+            var idusernameParameter = idusername.HasValue ?
+                new ObjectParameter("idusername", idusername) :
+                new ObjectParameter("idusername", typeof(int));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<string>("getLastLogin", idusernameParameter);
+        }
     }
 }

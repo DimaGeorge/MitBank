@@ -45,7 +45,6 @@
             this.label4LastName = new System.Windows.Forms.Label();
             this.logoutButton = new Bunifu.Framework.UI.BunifuFlatButton();
             this.panelMainDashboard = new System.Windows.Forms.Panel();
-            this.label2 = new System.Windows.Forms.Label();
             this.panelMainPaySomething = new System.Windows.Forms.Panel();
             this.label4 = new System.Windows.Forms.Label();
             this.panelMainTransfer = new System.Windows.Forms.Panel();
@@ -73,12 +72,14 @@
             this.comboBoxToTransferMyIBAN = new System.Windows.Forms.ComboBox();
             this.panelMainSendMail = new System.Windows.Forms.Panel();
             this.label7 = new System.Windows.Forms.Label();
+            this.button1 = new System.Windows.Forms.Button();
             this.panelMainSettings = new System.Windows.Forms.Panel();
             this.label8 = new System.Windows.Forms.Label();
-            this.buttonHistoryTransaction = new System.Windows.Forms.Button();
+            this.labelLastName = new System.Windows.Forms.Label();
+            this.label2 = new System.Windows.Forms.Label();
+            this.labelLastLogin = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox4)).BeginInit();
             this.header.SuspendLayout();
-            this.panelMainDashboard.SuspendLayout();
             this.panelMainPaySomething.SuspendLayout();
             this.panelMainTransfer.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureFailed)).BeginInit();
@@ -270,7 +271,7 @@
             this.bunifuFlatButton4.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(30)))), ((int)(((byte)(28)))), ((int)(((byte)(38)))));
             this.bunifuFlatButton4.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
             this.bunifuFlatButton4.BorderRadius = 0;
-            this.bunifuFlatButton4.ButtonText = "  Send mail";
+            this.bunifuFlatButton4.ButtonText = "Tools";
             this.bunifuFlatButton4.Cursor = System.Windows.Forms.Cursors.Hand;
             this.bunifuFlatButton4.DisabledColor = System.Drawing.Color.Gray;
             this.bunifuFlatButton4.Iconcolor = System.Drawing.Color.Transparent;
@@ -294,7 +295,7 @@
             this.bunifuFlatButton4.selected = false;
             this.bunifuFlatButton4.Size = new System.Drawing.Size(221, 59);
             this.bunifuFlatButton4.TabIndex = 3;
-            this.bunifuFlatButton4.Text = "  Send mail";
+            this.bunifuFlatButton4.Text = "Tools";
             this.bunifuFlatButton4.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             this.bunifuFlatButton4.Textcolor = System.Drawing.Color.White;
             this.bunifuFlatButton4.TextFont = new System.Drawing.Font("Segoe UI Emoji", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
@@ -395,22 +396,11 @@
             // 
             // panelMainDashboard
             // 
-            this.panelMainDashboard.Controls.Add(this.buttonHistoryTransaction);
-            this.panelMainDashboard.Controls.Add(this.label2);
             this.panelMainDashboard.Location = new System.Drawing.Point(222, 72);
             this.panelMainDashboard.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.panelMainDashboard.Name = "panelMainDashboard";
             this.panelMainDashboard.Size = new System.Drawing.Size(1378, 881);
             this.panelMainDashboard.TabIndex = 22;
-            // 
-            // label2
-            // 
-            this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(37, 50);
-            this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(46, 17);
-            this.label2.TabIndex = 0;
-            this.label2.Text = "label2";
             // 
             // panelMainPaySomething
             // 
@@ -733,7 +723,8 @@
             // panelMainSendMail
             // 
             this.panelMainSendMail.Controls.Add(this.label7);
-            this.panelMainSendMail.Location = new System.Drawing.Point(222, 85);
+            this.panelMainSendMail.Controls.Add(this.button1);
+            this.panelMainSendMail.Location = new System.Drawing.Point(222, 74);
             this.panelMainSendMail.Margin = new System.Windows.Forms.Padding(4);
             this.panelMainSendMail.Name = "panelMainSendMail";
             this.panelMainSendMail.Size = new System.Drawing.Size(1378, 868);
@@ -742,17 +733,32 @@
             // label7
             // 
             this.label7.AutoSize = true;
-            this.label7.Location = new System.Drawing.Point(37, 50);
-            this.label7.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.label7.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label7.ForeColor = System.Drawing.Color.Snow;
+            this.label7.Location = new System.Drawing.Point(54, 565);
             this.label7.Name = "label7";
-            this.label7.Size = new System.Drawing.Size(46, 17);
-            this.label7.TabIndex = 0;
-            this.label7.Text = "label7";
+            this.label7.Size = new System.Drawing.Size(318, 25);
+            this.label7.TabIndex = 15;
+            this.label7.Text = "Press button to get account request";
+            // 
+            // button1
+            // 
+            this.button1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(30)))), ((int)(((byte)(35)))), ((int)(((byte)(35)))));
+            this.button1.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.button1.Font = new System.Drawing.Font("MS Reference Sans Serif", 10.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.button1.ForeColor = System.Drawing.SystemColors.ControlLightLight;
+            this.button1.Location = new System.Drawing.Point(52, 612);
+            this.button1.Name = "button1";
+            this.button1.Size = new System.Drawing.Size(386, 42);
+            this.button1.TabIndex = 4;
+            this.button1.Text = "Application account request";
+            this.button1.UseVisualStyleBackColor = false;
+            this.button1.Click += new System.EventHandler(this.button1_Click);
             // 
             // panelMainSettings
             // 
             this.panelMainSettings.Controls.Add(this.label8);
-            this.panelMainSettings.Location = new System.Drawing.Point(222, 85);
+            this.panelMainSettings.Location = new System.Drawing.Point(222, 75);
             this.panelMainSettings.Margin = new System.Windows.Forms.Padding(4);
             this.panelMainSettings.Name = "panelMainSettings";
             this.panelMainSettings.Size = new System.Drawing.Size(1378, 868);
@@ -768,19 +774,37 @@
             this.label8.TabIndex = 0;
             this.label8.Text = "label8";
             // 
-            // buttonHistoryTransaction
+            // labelLastName
             // 
-            this.buttonHistoryTransaction.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(30)))), ((int)(((byte)(35)))), ((int)(((byte)(35)))));
-            this.buttonHistoryTransaction.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.buttonHistoryTransaction.Font = new System.Drawing.Font("MS Reference Sans Serif", 10.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.buttonHistoryTransaction.ForeColor = System.Drawing.SystemColors.ControlLightLight;
-            this.buttonHistoryTransaction.Location = new System.Drawing.Point(28, 631);
-            this.buttonHistoryTransaction.Name = "buttonHistoryTransaction";
-            this.buttonHistoryTransaction.Size = new System.Drawing.Size(150, 42);
-            this.buttonHistoryTransaction.TabIndex = 3;
-            this.buttonHistoryTransaction.Text = "See history transaction";
-            this.buttonHistoryTransaction.UseVisualStyleBackColor = false;
-            this.buttonHistoryTransaction.Click += new System.EventHandler(this.buttonHistoryTransaction_Click);
+            this.labelLastName.AutoSize = true;
+            this.labelLastName.Font = new System.Drawing.Font("Palatino Linotype", 10.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.labelLastName.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(125)))), ((int)(((byte)(0)))));
+            this.labelLastName.Location = new System.Drawing.Point(99, 70);
+            this.labelLastName.Name = "labelLastName";
+            this.labelLastName.Size = new System.Drawing.Size(60, 26);
+            this.labelLastName.TabIndex = 27;
+            this.labelLastName.Text = "Guest";
+            // 
+            // label2
+            // 
+            this.label2.AutoSize = true;
+            this.label2.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label2.ForeColor = System.Drawing.Color.Snow;
+            this.label2.Location = new System.Drawing.Point(44, 591);
+            this.label2.Name = "label2";
+            this.label2.Size = new System.Drawing.Size(115, 25);
+            this.label2.TabIndex = 16;
+            this.label2.Text = "Last LOGIN";
+            // 
+            // labelLastLogin
+            // 
+            this.labelLastLogin.AutoSize = true;
+            this.labelLastLogin.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.labelLastLogin.ForeColor = System.Drawing.Color.Snow;
+            this.labelLastLogin.Location = new System.Drawing.Point(12, 639);
+            this.labelLastLogin.Name = "labelLastLogin";
+            this.labelLastLogin.Size = new System.Drawing.Size(0, 20);
+            this.labelLastLogin.TabIndex = 28;
             // 
             // Form2
             // 
@@ -788,6 +812,9 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(30)))), ((int)(((byte)(28)))), ((int)(((byte)(38)))));
             this.ClientSize = new System.Drawing.Size(1200, 786);
+            this.Controls.Add(this.labelLastLogin);
+            this.Controls.Add(this.label2);
+            this.Controls.Add(this.labelLastName);
             this.Controls.Add(this.logoutButton);
             this.Controls.Add(this.label3);
             this.Controls.Add(this.label4LastName);
@@ -811,8 +838,6 @@
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox4)).EndInit();
             this.header.ResumeLayout(false);
             this.header.PerformLayout();
-            this.panelMainDashboard.ResumeLayout(false);
-            this.panelMainDashboard.PerformLayout();
             this.panelMainPaySomething.ResumeLayout(false);
             this.panelMainPaySomething.PerformLayout();
             this.panelMainTransfer.ResumeLayout(false);
@@ -847,13 +872,11 @@
         private System.Windows.Forms.Label label3;
         private Bunifu.Framework.UI.BunifuFlatButton logoutButton;
         private System.Windows.Forms.Panel panelMainDashboard;
-        private System.Windows.Forms.Label label2;
         private System.Windows.Forms.Label label4_Click;
         private System.Windows.Forms.Panel panelMainPaySomething;
         private System.Windows.Forms.Label label4;
         private System.Windows.Forms.Panel panelMainTransfer;
         private System.Windows.Forms.Panel panelMainSendMail;
-        private System.Windows.Forms.Label label7;
         private System.Windows.Forms.Panel panelMainSettings;
         private System.Windows.Forms.Label label8;
         private System.Windows.Forms.ComboBox comboBoxIBAN;
@@ -878,6 +901,10 @@
         private Bunifu.Framework.UI.BunifuCustomLabel labelshowToCurrency;
         private Bunifu.Framework.UI.BunifuCustomLabel labelshowFromCurrency;
         private System.Windows.Forms.Button buttonSubmitTransfer;
-        private System.Windows.Forms.Button buttonHistoryTransaction;
+        private System.Windows.Forms.Button button1;
+        private System.Windows.Forms.Label labelLastName;
+        private System.Windows.Forms.Label label7;
+        private System.Windows.Forms.Label label2;
+        private System.Windows.Forms.Label labelLastLogin;
     }
 }

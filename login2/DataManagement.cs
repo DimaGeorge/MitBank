@@ -20,6 +20,7 @@ namespace login2
                 if(context.getUandPProcedure(username, password).FirstOrDefault().HasValue)
                 {
                     IDSession = context.getUandPProcedure(username, password).FirstOrDefault().Value;
+
                     return true;
                 }
                 else
@@ -161,24 +162,24 @@ namespace login2
         }
 
 
-        public static Page getLastName()
+        public static string getLastName()
         {
+            string lastName="Guest";
 
-            Page ret = new Page();
-            ret.DataLastName = "Guest";
-            /*
-            using (var context = new MitBankDBEntities())
+
+            using (var context = new MitBankDBEntities2())
             {
-                var rez = from c in context.IndividualsViews
-                          select c;
 
-                foreach (var c in rez)
+                var result = context.selectOnIndividuals(IDSession);
+
+                foreach ( var item in result)
                 {
-
-                    ret.DataLastName = c.LastName;
+                    lastName = item.LastName.ToString();
                 }
-            }*/
-            return ret;
+
+            }
+            return lastName;
+            
         }
 
         public static double getCurrencyValueBuy(string curr)
@@ -229,6 +230,34 @@ namespace login2
 
         }
 
+        public static List<string> getAllInfoAccunts()
+        {
+            List<string> lc = new List<string>();
+
+            using (var context = new MitBankDBEntities2())
+            {
+                var result = context.showAllMyAccounts(IDSession);
+
+                foreach (var item in result)
+                {
+                    
+                    var result2 = context.showIBANInformations(item.ToString()).ToArray();
+                    
+                    foreach(var item2 in result2)
+                    {
+                        string info = item.ToString();
+
+                        info = item2.ID + "       "+info + "       " + "       " + item2.BankPacket + "       " + item2.ValabilityUntil +
+                            "       " + item2.Sold + "       " + item2.Currency;
+                        lc.Add(info);
+
+                    }
+                }
+            }
+
+
+            return lc;
+        }
 
     }
 }
