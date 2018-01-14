@@ -466,6 +466,9 @@ namespace login2
 
         private void buttonHistoryTransaction_Click(object sender, EventArgs e)
         {
+<<<<<<< HEAD
+            this.Width = 1200;
+=======
 
 
 
@@ -555,6 +558,7 @@ namespace login2
             document.Save(filename);
             // ...and start a viewer.
             Process.Start(filename);
+>>>>>>> scriban-branch-1
 
 
         }
