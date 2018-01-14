@@ -105,6 +105,11 @@ namespace login2
             return currency;
         }
 
+        private static void frameClick(object sender, EventArgs e)
+        {
+            MessageBox.Show("mumu");
+        }
+
         public static Label createFrame(string iban, int pos)
         {
             Label lb = new Label();
@@ -127,6 +132,10 @@ namespace login2
             Label date = getDateLabel(iban);
             lb.Controls.Add(date);
             date.BringToFront();
+
+            //events
+            lb.Click += new EventHandler(frameClick);
+
             return lb;
         }
 

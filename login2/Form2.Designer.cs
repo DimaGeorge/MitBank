@@ -75,7 +75,6 @@
             this.label7 = new System.Windows.Forms.Label();
             this.panelMainSettings = new System.Windows.Forms.Panel();
             this.label8 = new System.Windows.Forms.Label();
-            this.buttonHistoryTransaction = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox4)).BeginInit();
             this.header.SuspendLayout();
             this.panelMainDashboard.SuspendLayout();
@@ -91,9 +90,9 @@
             // 
             this.pictureBox4.Image = ((System.Drawing.Image)(resources.GetObject("pictureBox4.Image")));
             this.pictureBox4.Location = new System.Drawing.Point(0, 0);
-            this.pictureBox4.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.pictureBox4.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.pictureBox4.Name = "pictureBox4";
-            this.pictureBox4.Size = new System.Drawing.Size(65, 66);
+            this.pictureBox4.Size = new System.Drawing.Size(49, 54);
             this.pictureBox4.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
             this.pictureBox4.TabIndex = 11;
             this.pictureBox4.TabStop = false;
@@ -104,9 +103,10 @@
             this.label11.AutoSize = true;
             this.label11.Font = new System.Drawing.Font("Elephant", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label11.ForeColor = System.Drawing.Color.White;
-            this.label11.Location = new System.Drawing.Point(1161, 7);
+            this.label11.Location = new System.Drawing.Point(871, 6);
+            this.label11.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.label11.Name = "label11";
-            this.label11.Size = new System.Drawing.Size(27, 26);
+            this.label11.Size = new System.Drawing.Size(22, 21);
             this.label11.TabIndex = 10;
             this.label11.Text = "X";
             this.label11.Click += new System.EventHandler(this.label11_Click);
@@ -121,9 +121,9 @@
             this.header.Controls.Add(this.pictureBox4);
             this.header.Dock = System.Windows.Forms.DockStyle.Top;
             this.header.Location = new System.Drawing.Point(0, 0);
-            this.header.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.header.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.header.Name = "header";
-            this.header.Size = new System.Drawing.Size(1200, 68);
+            this.header.Size = new System.Drawing.Size(900, 56);
             this.header.TabIndex = 18;
             // 
             // label5
@@ -131,9 +131,10 @@
             this.label5.AutoSize = true;
             this.label5.Font = new System.Drawing.Font("Elephant", 18F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label5.ForeColor = System.Drawing.Color.White;
-            this.label5.Location = new System.Drawing.Point(71, 11);
+            this.label5.Location = new System.Drawing.Point(53, 9);
+            this.label5.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.label5.Name = "label5";
-            this.label5.Size = new System.Drawing.Size(224, 38);
+            this.label5.Size = new System.Drawing.Size(181, 31);
             this.label5.TabIndex = 19;
             this.label5.Text = "MIT Banking";
             // 
@@ -142,9 +143,10 @@
             this.label1.AutoSize = true;
             this.label1.Font = new System.Drawing.Font("Elephant", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label1.ForeColor = System.Drawing.Color.White;
-            this.label1.Location = new System.Drawing.Point(1124, 7);
+            this.label1.Location = new System.Drawing.Point(843, 6);
+            this.label1.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(22, 26);
+            this.label1.Size = new System.Drawing.Size(18, 21);
             this.label1.TabIndex = 12;
             this.label1.Text = "_";
             this.label1.Click += new System.EventHandler(this.label1_Click);
@@ -177,14 +179,14 @@
             this.Dashboard.IconVisible = true;
             this.Dashboard.IconZoom = 90D;
             this.Dashboard.IsTab = true;
-            this.Dashboard.Location = new System.Drawing.Point(0, 135);
-            this.Dashboard.Margin = new System.Windows.Forms.Padding(5);
+            this.Dashboard.Location = new System.Drawing.Point(0, 110);
+            this.Dashboard.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.Dashboard.Name = "Dashboard";
             this.Dashboard.Normalcolor = System.Drawing.Color.FromArgb(((int)(((byte)(30)))), ((int)(((byte)(28)))), ((int)(((byte)(38)))));
             this.Dashboard.OnHovercolor = System.Drawing.Color.FromArgb(((int)(((byte)(30)))), ((int)(((byte)(32)))), ((int)(((byte)(32)))));
             this.Dashboard.OnHoverTextColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(125)))), ((int)(((byte)(0)))));
             this.Dashboard.selected = true;
-            this.Dashboard.Size = new System.Drawing.Size(221, 59);
+            this.Dashboard.Size = new System.Drawing.Size(166, 48);
             this.Dashboard.TabIndex = 0;
             this.Dashboard.Text = " Dashboard";
             this.Dashboard.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
@@ -213,14 +215,14 @@
             this.bunifuFlatButton2.IconVisible = true;
             this.bunifuFlatButton2.IconZoom = 90D;
             this.bunifuFlatButton2.IsTab = true;
-            this.bunifuFlatButton2.Location = new System.Drawing.Point(0, 229);
-            this.bunifuFlatButton2.Margin = new System.Windows.Forms.Padding(5);
+            this.bunifuFlatButton2.Location = new System.Drawing.Point(0, 186);
+            this.bunifuFlatButton2.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.bunifuFlatButton2.Name = "bunifuFlatButton2";
             this.bunifuFlatButton2.Normalcolor = System.Drawing.Color.FromArgb(((int)(((byte)(30)))), ((int)(((byte)(28)))), ((int)(((byte)(38)))));
             this.bunifuFlatButton2.OnHovercolor = System.Drawing.Color.FromArgb(((int)(((byte)(30)))), ((int)(((byte)(32)))), ((int)(((byte)(32)))));
             this.bunifuFlatButton2.OnHoverTextColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(125)))), ((int)(((byte)(0)))));
             this.bunifuFlatButton2.selected = false;
-            this.bunifuFlatButton2.Size = new System.Drawing.Size(221, 59);
+            this.bunifuFlatButton2.Size = new System.Drawing.Size(166, 48);
             this.bunifuFlatButton2.TabIndex = 1;
             this.bunifuFlatButton2.Text = "      Pay something";
             this.bunifuFlatButton2.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
@@ -249,14 +251,14 @@
             this.bunifuFlatButton3.IconVisible = true;
             this.bunifuFlatButton3.IconZoom = 90D;
             this.bunifuFlatButton3.IsTab = true;
-            this.bunifuFlatButton3.Location = new System.Drawing.Point(0, 320);
-            this.bunifuFlatButton3.Margin = new System.Windows.Forms.Padding(5);
+            this.bunifuFlatButton3.Location = new System.Drawing.Point(0, 260);
+            this.bunifuFlatButton3.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.bunifuFlatButton3.Name = "bunifuFlatButton3";
             this.bunifuFlatButton3.Normalcolor = System.Drawing.Color.FromArgb(((int)(((byte)(30)))), ((int)(((byte)(28)))), ((int)(((byte)(38)))));
             this.bunifuFlatButton3.OnHovercolor = System.Drawing.Color.FromArgb(((int)(((byte)(30)))), ((int)(((byte)(32)))), ((int)(((byte)(32)))));
             this.bunifuFlatButton3.OnHoverTextColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(125)))), ((int)(((byte)(0)))));
             this.bunifuFlatButton3.selected = false;
-            this.bunifuFlatButton3.Size = new System.Drawing.Size(221, 59);
+            this.bunifuFlatButton3.Size = new System.Drawing.Size(166, 48);
             this.bunifuFlatButton3.TabIndex = 2;
             this.bunifuFlatButton3.Text = "Transfer";
             this.bunifuFlatButton3.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
@@ -285,14 +287,14 @@
             this.bunifuFlatButton4.IconVisible = true;
             this.bunifuFlatButton4.IconZoom = 90D;
             this.bunifuFlatButton4.IsTab = true;
-            this.bunifuFlatButton4.Location = new System.Drawing.Point(0, 409);
-            this.bunifuFlatButton4.Margin = new System.Windows.Forms.Padding(5);
+            this.bunifuFlatButton4.Location = new System.Drawing.Point(0, 332);
+            this.bunifuFlatButton4.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.bunifuFlatButton4.Name = "bunifuFlatButton4";
             this.bunifuFlatButton4.Normalcolor = System.Drawing.Color.FromArgb(((int)(((byte)(30)))), ((int)(((byte)(28)))), ((int)(((byte)(38)))));
             this.bunifuFlatButton4.OnHovercolor = System.Drawing.Color.FromArgb(((int)(((byte)(30)))), ((int)(((byte)(32)))), ((int)(((byte)(32)))));
             this.bunifuFlatButton4.OnHoverTextColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(125)))), ((int)(((byte)(0)))));
             this.bunifuFlatButton4.selected = false;
-            this.bunifuFlatButton4.Size = new System.Drawing.Size(221, 59);
+            this.bunifuFlatButton4.Size = new System.Drawing.Size(166, 48);
             this.bunifuFlatButton4.TabIndex = 3;
             this.bunifuFlatButton4.Text = "  Send mail";
             this.bunifuFlatButton4.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
@@ -321,14 +323,14 @@
             this.bunifuFlatButton5.IconVisible = true;
             this.bunifuFlatButton5.IconZoom = 90D;
             this.bunifuFlatButton5.IsTab = true;
-            this.bunifuFlatButton5.Location = new System.Drawing.Point(0, 507);
-            this.bunifuFlatButton5.Margin = new System.Windows.Forms.Padding(5);
+            this.bunifuFlatButton5.Location = new System.Drawing.Point(0, 412);
+            this.bunifuFlatButton5.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.bunifuFlatButton5.Name = "bunifuFlatButton5";
             this.bunifuFlatButton5.Normalcolor = System.Drawing.Color.FromArgb(((int)(((byte)(30)))), ((int)(((byte)(28)))), ((int)(((byte)(38)))));
             this.bunifuFlatButton5.OnHovercolor = System.Drawing.Color.FromArgb(((int)(((byte)(30)))), ((int)(((byte)(32)))), ((int)(((byte)(32)))));
             this.bunifuFlatButton5.OnHoverTextColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(125)))), ((int)(((byte)(0)))));
             this.bunifuFlatButton5.selected = false;
-            this.bunifuFlatButton5.Size = new System.Drawing.Size(221, 59);
+            this.bunifuFlatButton5.Size = new System.Drawing.Size(166, 48);
             this.bunifuFlatButton5.TabIndex = 4;
             this.bunifuFlatButton5.Text = "  Settings";
             this.bunifuFlatButton5.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
@@ -341,9 +343,10 @@
             this.label3.AutoSize = true;
             this.label3.Font = new System.Drawing.Font("Palatino Linotype", 10.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label3.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(125)))), ((int)(((byte)(0)))));
-            this.label3.Location = new System.Drawing.Point(1, 69);
+            this.label3.Location = new System.Drawing.Point(1, 56);
+            this.label3.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(98, 26);
+            this.label3.Size = new System.Drawing.Size(78, 20);
             this.label3.TabIndex = 1;
             this.label3.Text = "Welcome, ";
             // 
@@ -352,9 +355,10 @@
             this.label4LastName.AutoSize = true;
             this.label4LastName.Font = new System.Drawing.Font("Palatino Linotype", 10.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label4LastName.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(125)))), ((int)(((byte)(0)))));
-            this.label4LastName.Location = new System.Drawing.Point(99, 69);
+            this.label4LastName.Location = new System.Drawing.Point(74, 56);
+            this.label4LastName.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.label4LastName.Name = "label4LastName";
-            this.label4LastName.Size = new System.Drawing.Size(0, 26);
+            this.label4LastName.Size = new System.Drawing.Size(0, 20);
             this.label4LastName.TabIndex = 20;
             // 
             // logoutButton
@@ -378,14 +382,14 @@
             this.logoutButton.IconVisible = true;
             this.logoutButton.IconZoom = 90D;
             this.logoutButton.IsTab = true;
-            this.logoutButton.Location = new System.Drawing.Point(0, 686);
-            this.logoutButton.Margin = new System.Windows.Forms.Padding(5);
+            this.logoutButton.Location = new System.Drawing.Point(0, 557);
+            this.logoutButton.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.logoutButton.Name = "logoutButton";
             this.logoutButton.Normalcolor = System.Drawing.Color.FromArgb(((int)(((byte)(30)))), ((int)(((byte)(28)))), ((int)(((byte)(38)))));
             this.logoutButton.OnHovercolor = System.Drawing.Color.FromArgb(((int)(((byte)(30)))), ((int)(((byte)(32)))), ((int)(((byte)(32)))));
             this.logoutButton.OnHoverTextColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(125)))), ((int)(((byte)(0)))));
             this.logoutButton.selected = true;
-            this.logoutButton.Size = new System.Drawing.Size(221, 59);
+            this.logoutButton.Size = new System.Drawing.Size(166, 48);
             this.logoutButton.TabIndex = 21;
             this.logoutButton.Text = "Logout";
             this.logoutButton.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
@@ -395,39 +399,37 @@
             // 
             // panelMainDashboard
             // 
-            this.panelMainDashboard.Controls.Add(this.buttonHistoryTransaction);
             this.panelMainDashboard.Controls.Add(this.label2);
-            this.panelMainDashboard.Location = new System.Drawing.Point(222, 72);
-            this.panelMainDashboard.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.panelMainDashboard.Location = new System.Drawing.Point(166, 58);
+            this.panelMainDashboard.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.panelMainDashboard.Name = "panelMainDashboard";
-            this.panelMainDashboard.Size = new System.Drawing.Size(1378, 881);
+            this.panelMainDashboard.Size = new System.Drawing.Size(1034, 716);
             this.panelMainDashboard.TabIndex = 22;
             // 
             // label2
             // 
             this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(37, 50);
+            this.label2.Location = new System.Drawing.Point(28, 41);
+            this.label2.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(46, 17);
+            this.label2.Size = new System.Drawing.Size(35, 13);
             this.label2.TabIndex = 0;
             this.label2.Text = "label2";
             // 
             // panelMainPaySomething
             // 
             this.panelMainPaySomething.Controls.Add(this.label4);
-            this.panelMainPaySomething.Location = new System.Drawing.Point(222, 85);
-            this.panelMainPaySomething.Margin = new System.Windows.Forms.Padding(4);
+            this.panelMainPaySomething.Location = new System.Drawing.Point(166, 69);
             this.panelMainPaySomething.Name = "panelMainPaySomething";
-            this.panelMainPaySomething.Size = new System.Drawing.Size(1378, 868);
+            this.panelMainPaySomething.Size = new System.Drawing.Size(1034, 705);
             this.panelMainPaySomething.TabIndex = 23;
             // 
             // label4
             // 
             this.label4.AutoSize = true;
-            this.label4.Location = new System.Drawing.Point(37, 50);
-            this.label4.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.label4.Location = new System.Drawing.Point(28, 41);
             this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(46, 17);
+            this.label4.Size = new System.Drawing.Size(35, 13);
             this.label4.TabIndex = 0;
             this.label4.Text = "label4";
             // 
@@ -455,10 +457,9 @@
             this.panelMainTransfer.Controls.Add(this.comboBoxIBAN);
             this.panelMainTransfer.Controls.Add(this.textBoxWriteIBAN);
             this.panelMainTransfer.Controls.Add(this.comboBoxToTransferMyIBAN);
-            this.panelMainTransfer.Location = new System.Drawing.Point(222, 85);
-            this.panelMainTransfer.Margin = new System.Windows.Forms.Padding(4);
+            this.panelMainTransfer.Location = new System.Drawing.Point(166, 69);
             this.panelMainTransfer.Name = "panelMainTransfer";
-            this.panelMainTransfer.Size = new System.Drawing.Size(1378, 868);
+            this.panelMainTransfer.Size = new System.Drawing.Size(1034, 705);
             this.panelMainTransfer.TabIndex = 24;
             // 
             // buttonSubmitTransfer
@@ -468,9 +469,10 @@
             this.buttonSubmitTransfer.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.buttonSubmitTransfer.Font = new System.Drawing.Font("MS Reference Sans Serif", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.buttonSubmitTransfer.ForeColor = System.Drawing.SystemColors.ControlLightLight;
-            this.buttonSubmitTransfer.Location = new System.Drawing.Point(314, 501);
+            this.buttonSubmitTransfer.Location = new System.Drawing.Point(236, 407);
+            this.buttonSubmitTransfer.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.buttonSubmitTransfer.Name = "buttonSubmitTransfer";
-            this.buttonSubmitTransfer.Size = new System.Drawing.Size(242, 36);
+            this.buttonSubmitTransfer.Size = new System.Drawing.Size(182, 29);
             this.buttonSubmitTransfer.TabIndex = 26;
             this.buttonSubmitTransfer.Text = "Transfer money";
             this.buttonSubmitTransfer.UseVisualStyleBackColor = false;
@@ -481,9 +483,10 @@
             this.labelshowToCurrency.AutoSize = true;
             this.labelshowToCurrency.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.labelshowToCurrency.ForeColor = System.Drawing.Color.Snow;
-            this.labelshowToCurrency.Location = new System.Drawing.Point(335, 424);
+            this.labelshowToCurrency.Location = new System.Drawing.Point(251, 344);
+            this.labelshowToCurrency.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.labelshowToCurrency.Name = "labelshowToCurrency";
-            this.labelshowToCurrency.Size = new System.Drawing.Size(16, 24);
+            this.labelshowToCurrency.Size = new System.Drawing.Size(13, 18);
             this.labelshowToCurrency.TabIndex = 25;
             this.labelshowToCurrency.Text = "-";
             // 
@@ -492,9 +495,10 @@
             this.labelshowFromCurrency.AutoSize = true;
             this.labelshowFromCurrency.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.labelshowFromCurrency.ForeColor = System.Drawing.Color.Snow;
-            this.labelshowFromCurrency.Location = new System.Drawing.Point(335, 388);
+            this.labelshowFromCurrency.Location = new System.Drawing.Point(251, 315);
+            this.labelshowFromCurrency.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.labelshowFromCurrency.Name = "labelshowFromCurrency";
-            this.labelshowFromCurrency.Size = new System.Drawing.Size(16, 24);
+            this.labelshowFromCurrency.Size = new System.Drawing.Size(13, 18);
             this.labelshowFromCurrency.TabIndex = 24;
             this.labelshowFromCurrency.Text = "-";
             // 
@@ -503,9 +507,10 @@
             this.labelExchangeValue.AutoSize = true;
             this.labelExchangeValue.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.labelExchangeValue.ForeColor = System.Drawing.Color.Snow;
-            this.labelExchangeValue.Location = new System.Drawing.Point(153, 422);
+            this.labelExchangeValue.Location = new System.Drawing.Point(115, 343);
+            this.labelExchangeValue.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.labelExchangeValue.Name = "labelExchangeValue";
-            this.labelExchangeValue.Size = new System.Drawing.Size(19, 25);
+            this.labelExchangeValue.Size = new System.Drawing.Size(14, 20);
             this.labelExchangeValue.TabIndex = 23;
             this.labelExchangeValue.Text = "-";
             // 
@@ -514,9 +519,10 @@
             this.label15.AutoSize = true;
             this.label15.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label15.ForeColor = System.Drawing.Color.Snow;
-            this.label15.Location = new System.Drawing.Point(31, 422);
+            this.label15.Location = new System.Drawing.Point(23, 343);
+            this.label15.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.label15.Name = "label15";
-            this.label15.Size = new System.Drawing.Size(105, 25);
+            this.label15.Size = new System.Drawing.Size(84, 20);
             this.label15.TabIndex = 22;
             this.label15.Text = "Exchange ";
             // 
@@ -524,9 +530,10 @@
             // 
             this.pictureFailed.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("pictureFailed.BackgroundImage")));
             this.pictureFailed.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
-            this.pictureFailed.Location = new System.Drawing.Point(563, 262);
+            this.pictureFailed.Location = new System.Drawing.Point(422, 213);
+            this.pictureFailed.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.pictureFailed.Name = "pictureFailed";
-            this.pictureFailed.Size = new System.Drawing.Size(39, 36);
+            this.pictureFailed.Size = new System.Drawing.Size(29, 29);
             this.pictureFailed.TabIndex = 21;
             this.pictureFailed.TabStop = false;
             // 
@@ -534,9 +541,10 @@
             // 
             this.pictureValid.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("pictureValid.BackgroundImage")));
             this.pictureValid.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
-            this.pictureValid.Location = new System.Drawing.Point(563, 259);
+            this.pictureValid.Location = new System.Drawing.Point(422, 210);
+            this.pictureValid.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.pictureValid.Name = "pictureValid";
-            this.pictureValid.Size = new System.Drawing.Size(39, 43);
+            this.pictureValid.Size = new System.Drawing.Size(29, 35);
             this.pictureValid.TabIndex = 20;
             this.pictureValid.TabStop = false;
             // 
@@ -545,9 +553,10 @@
             this.labelcurrencyToIban.AutoSize = true;
             this.labelcurrencyToIban.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.labelcurrencyToIban.ForeColor = System.Drawing.Color.Snow;
-            this.labelcurrencyToIban.Location = new System.Drawing.Point(35, 298);
+            this.labelcurrencyToIban.Location = new System.Drawing.Point(26, 242);
+            this.labelcurrencyToIban.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.labelcurrencyToIban.Name = "labelcurrencyToIban";
-            this.labelcurrencyToIban.Size = new System.Drawing.Size(19, 25);
+            this.labelcurrencyToIban.Size = new System.Drawing.Size(14, 20);
             this.labelcurrencyToIban.TabIndex = 17;
             this.labelcurrencyToIban.Text = "-";
             // 
@@ -562,10 +571,9 @@
             this.textoxValueToTransfer.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.textoxValueToTransfer.ForeColor = System.Drawing.Color.White;
             this.textoxValueToTransfer.isPassword = false;
-            this.textoxValueToTransfer.Location = new System.Drawing.Point(101, 337);
-            this.textoxValueToTransfer.Margin = new System.Windows.Forms.Padding(4);
+            this.textoxValueToTransfer.Location = new System.Drawing.Point(76, 274);
             this.textoxValueToTransfer.Name = "textoxValueToTransfer";
-            this.textoxValueToTransfer.Size = new System.Drawing.Size(167, 30);
+            this.textoxValueToTransfer.Size = new System.Drawing.Size(125, 24);
             this.textoxValueToTransfer.TabIndex = 15;
             this.textoxValueToTransfer.TextAlign = System.Windows.Forms.HorizontalAlignment.Left;
             this.textoxValueToTransfer.OnValueChanged += new System.EventHandler(this.textoxValueToTransfer_OnValueChanged);
@@ -575,9 +583,10 @@
             this.label14.AutoSize = true;
             this.label14.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label14.ForeColor = System.Drawing.Color.Snow;
-            this.label14.Location = new System.Drawing.Point(31, 337);
+            this.label14.Location = new System.Drawing.Point(23, 274);
+            this.label14.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.label14.Name = "label14";
-            this.label14.Size = new System.Drawing.Size(63, 25);
+            this.label14.Size = new System.Drawing.Size(50, 20);
             this.label14.TabIndex = 14;
             this.label14.Text = "Value";
             // 
@@ -586,9 +595,10 @@
             this.labelComisionValue.AutoSize = true;
             this.labelComisionValue.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.labelComisionValue.ForeColor = System.Drawing.Color.Snow;
-            this.labelComisionValue.Location = new System.Drawing.Point(153, 386);
+            this.labelComisionValue.Location = new System.Drawing.Point(115, 314);
+            this.labelComisionValue.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.labelComisionValue.Name = "labelComisionValue";
-            this.labelComisionValue.Size = new System.Drawing.Size(19, 25);
+            this.labelComisionValue.Size = new System.Drawing.Size(14, 20);
             this.labelComisionValue.TabIndex = 13;
             this.labelComisionValue.Text = "-";
             // 
@@ -597,9 +607,10 @@
             this.label13.AutoSize = true;
             this.label13.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label13.ForeColor = System.Drawing.Color.Snow;
-            this.label13.Location = new System.Drawing.Point(31, 386);
+            this.label13.Location = new System.Drawing.Point(23, 314);
+            this.label13.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.label13.Name = "label13";
-            this.label13.Size = new System.Drawing.Size(94, 25);
+            this.label13.Size = new System.Drawing.Size(74, 20);
             this.label13.TabIndex = 12;
             this.label13.Text = "Comision";
             // 
@@ -608,9 +619,10 @@
             this.label12.AutoSize = true;
             this.label12.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label12.ForeColor = System.Drawing.Color.Snow;
-            this.label12.Location = new System.Drawing.Point(35, 235);
+            this.label12.Location = new System.Drawing.Point(26, 191);
+            this.label12.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.label12.Name = "label12";
-            this.label12.Size = new System.Drawing.Size(109, 25);
+            this.label12.Size = new System.Drawing.Size(88, 20);
             this.label12.TabIndex = 11;
             this.label12.Text = "Write IBAN";
             // 
@@ -623,10 +635,9 @@
             this.comboBoxSelectTransfer.Items.AddRange(new object[] {
             "My another account",
             "Anyone else account"});
-            this.comboBoxSelectTransfer.Location = new System.Drawing.Point(28, 188);
-            this.comboBoxSelectTransfer.Margin = new System.Windows.Forms.Padding(4);
+            this.comboBoxSelectTransfer.Location = new System.Drawing.Point(21, 153);
             this.comboBoxSelectTransfer.Name = "comboBoxSelectTransfer";
-            this.comboBoxSelectTransfer.Size = new System.Drawing.Size(528, 26);
+            this.comboBoxSelectTransfer.Size = new System.Drawing.Size(397, 23);
             this.comboBoxSelectTransfer.TabIndex = 7;
             this.comboBoxSelectTransfer.SelectedIndexChanged += new System.EventHandler(this.comboBoxSelectTransfer_SelectedIndexChanged);
             // 
@@ -635,9 +646,10 @@
             this.label10.AutoSize = true;
             this.label10.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label10.ForeColor = System.Drawing.Color.Snow;
-            this.label10.Location = new System.Drawing.Point(31, 144);
+            this.label10.Location = new System.Drawing.Point(23, 117);
+            this.label10.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.label10.Name = "label10";
-            this.label10.Size = new System.Drawing.Size(36, 25);
+            this.label10.Size = new System.Drawing.Size(27, 20);
             this.label10.TabIndex = 6;
             this.label10.Text = "To";
             // 
@@ -646,9 +658,10 @@
             this.label9.AutoSize = true;
             this.label9.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label9.ForeColor = System.Drawing.Color.Snow;
-            this.label9.Location = new System.Drawing.Point(31, 25);
+            this.label9.Location = new System.Drawing.Point(23, 20);
+            this.label9.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.label9.Name = "label9";
-            this.label9.Size = new System.Drawing.Size(174, 25);
+            this.label9.Size = new System.Drawing.Size(141, 20);
             this.label9.TabIndex = 5;
             this.label9.Text = "From your account";
             // 
@@ -657,9 +670,10 @@
             this.labelshowcurrency.AutoSize = true;
             this.labelshowcurrency.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.labelshowcurrency.ForeColor = System.Drawing.SystemColors.HighlightText;
-            this.labelshowcurrency.Location = new System.Drawing.Point(231, 107);
+            this.labelshowcurrency.Location = new System.Drawing.Point(173, 87);
+            this.labelshowcurrency.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.labelshowcurrency.Name = "labelshowcurrency";
-            this.labelshowcurrency.Size = new System.Drawing.Size(16, 24);
+            this.labelshowcurrency.Size = new System.Drawing.Size(13, 18);
             this.labelshowcurrency.TabIndex = 4;
             this.labelshowcurrency.Text = "-";
             // 
@@ -668,9 +682,10 @@
             this.labelshowsold.AutoSize = true;
             this.labelshowsold.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.labelshowsold.ForeColor = System.Drawing.Color.Snow;
-            this.labelshowsold.Location = new System.Drawing.Point(127, 107);
+            this.labelshowsold.Location = new System.Drawing.Point(95, 87);
+            this.labelshowsold.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.labelshowsold.Name = "labelshowsold";
-            this.labelshowsold.Size = new System.Drawing.Size(16, 24);
+            this.labelshowsold.Size = new System.Drawing.Size(13, 18);
             this.labelshowsold.TabIndex = 3;
             this.labelshowsold.Text = "-";
             // 
@@ -679,9 +694,10 @@
             this.label6.AutoSize = true;
             this.label6.Font = new System.Drawing.Font("Modern No. 20", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label6.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
-            this.label6.Location = new System.Drawing.Point(32, 107);
+            this.label6.Location = new System.Drawing.Point(24, 87);
+            this.label6.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.label6.Name = "label6";
-            this.label6.Size = new System.Drawing.Size(85, 22);
+            this.label6.Size = new System.Drawing.Size(70, 18);
             this.label6.TabIndex = 2;
             this.label6.Text = "SOLD:  ";
             // 
@@ -691,10 +707,9 @@
             this.comboBoxIBAN.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.comboBoxIBAN.ForeColor = System.Drawing.Color.White;
             this.comboBoxIBAN.FormattingEnabled = true;
-            this.comboBoxIBAN.Location = new System.Drawing.Point(28, 64);
-            this.comboBoxIBAN.Margin = new System.Windows.Forms.Padding(4);
+            this.comboBoxIBAN.Location = new System.Drawing.Point(21, 52);
             this.comboBoxIBAN.Name = "comboBoxIBAN";
-            this.comboBoxIBAN.Size = new System.Drawing.Size(528, 26);
+            this.comboBoxIBAN.Size = new System.Drawing.Size(397, 23);
             this.comboBoxIBAN.TabIndex = 1;
             this.comboBoxIBAN.SelectedIndexChanged += new System.EventHandler(this.comboBoxIBAN_SelectedIndexChanged);
             // 
@@ -709,10 +724,9 @@
             this.textBoxWriteIBAN.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.textBoxWriteIBAN.ForeColor = System.Drawing.Color.White;
             this.textBoxWriteIBAN.isPassword = false;
-            this.textBoxWriteIBAN.Location = new System.Drawing.Point(28, 264);
-            this.textBoxWriteIBAN.Margin = new System.Windows.Forms.Padding(4);
+            this.textBoxWriteIBAN.Location = new System.Drawing.Point(21, 214);
             this.textBoxWriteIBAN.Name = "textBoxWriteIBAN";
-            this.textBoxWriteIBAN.Size = new System.Drawing.Size(528, 30);
+            this.textBoxWriteIBAN.Size = new System.Drawing.Size(396, 24);
             this.textBoxWriteIBAN.TabIndex = 10;
             this.textBoxWriteIBAN.TextAlign = System.Windows.Forms.HorizontalAlignment.Left;
             this.textBoxWriteIBAN.OnValueChanged += new System.EventHandler(this.textBoxWriteIBAN_OnValueChanged);
@@ -723,71 +737,52 @@
             this.comboBoxToTransferMyIBAN.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.comboBoxToTransferMyIBAN.ForeColor = System.Drawing.Color.White;
             this.comboBoxToTransferMyIBAN.FormattingEnabled = true;
-            this.comboBoxToTransferMyIBAN.Location = new System.Drawing.Point(28, 268);
-            this.comboBoxToTransferMyIBAN.Margin = new System.Windows.Forms.Padding(4);
+            this.comboBoxToTransferMyIBAN.Location = new System.Drawing.Point(21, 218);
             this.comboBoxToTransferMyIBAN.Name = "comboBoxToTransferMyIBAN";
-            this.comboBoxToTransferMyIBAN.Size = new System.Drawing.Size(528, 26);
+            this.comboBoxToTransferMyIBAN.Size = new System.Drawing.Size(397, 23);
             this.comboBoxToTransferMyIBAN.TabIndex = 8;
             this.comboBoxToTransferMyIBAN.SelectedIndexChanged += new System.EventHandler(this.comboBoxToTransferMyIBAN_SelectedIndexChanged);
             // 
             // panelMainSendMail
             // 
             this.panelMainSendMail.Controls.Add(this.label7);
-            this.panelMainSendMail.Location = new System.Drawing.Point(222, 85);
-            this.panelMainSendMail.Margin = new System.Windows.Forms.Padding(4);
+            this.panelMainSendMail.Location = new System.Drawing.Point(166, 69);
             this.panelMainSendMail.Name = "panelMainSendMail";
-            this.panelMainSendMail.Size = new System.Drawing.Size(1378, 868);
+            this.panelMainSendMail.Size = new System.Drawing.Size(1034, 705);
             this.panelMainSendMail.TabIndex = 25;
             // 
             // label7
             // 
             this.label7.AutoSize = true;
-            this.label7.Location = new System.Drawing.Point(37, 50);
-            this.label7.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.label7.Location = new System.Drawing.Point(28, 41);
             this.label7.Name = "label7";
-            this.label7.Size = new System.Drawing.Size(46, 17);
+            this.label7.Size = new System.Drawing.Size(35, 13);
             this.label7.TabIndex = 0;
             this.label7.Text = "label7";
             // 
             // panelMainSettings
             // 
             this.panelMainSettings.Controls.Add(this.label8);
-            this.panelMainSettings.Location = new System.Drawing.Point(222, 85);
-            this.panelMainSettings.Margin = new System.Windows.Forms.Padding(4);
+            this.panelMainSettings.Location = new System.Drawing.Point(166, 69);
             this.panelMainSettings.Name = "panelMainSettings";
-            this.panelMainSettings.Size = new System.Drawing.Size(1378, 868);
+            this.panelMainSettings.Size = new System.Drawing.Size(1034, 705);
             this.panelMainSettings.TabIndex = 26;
             // 
             // label8
             // 
             this.label8.AutoSize = true;
-            this.label8.Location = new System.Drawing.Point(37, 50);
-            this.label8.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.label8.Location = new System.Drawing.Point(28, 41);
             this.label8.Name = "label8";
-            this.label8.Size = new System.Drawing.Size(46, 17);
+            this.label8.Size = new System.Drawing.Size(35, 13);
             this.label8.TabIndex = 0;
             this.label8.Text = "label8";
             // 
-            // buttonHistoryTransaction
-            // 
-            this.buttonHistoryTransaction.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(30)))), ((int)(((byte)(35)))), ((int)(((byte)(35)))));
-            this.buttonHistoryTransaction.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.buttonHistoryTransaction.Font = new System.Drawing.Font("MS Reference Sans Serif", 10.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.buttonHistoryTransaction.ForeColor = System.Drawing.SystemColors.ControlLightLight;
-            this.buttonHistoryTransaction.Location = new System.Drawing.Point(28, 631);
-            this.buttonHistoryTransaction.Name = "buttonHistoryTransaction";
-            this.buttonHistoryTransaction.Size = new System.Drawing.Size(150, 42);
-            this.buttonHistoryTransaction.TabIndex = 3;
-            this.buttonHistoryTransaction.Text = "See history transaction";
-            this.buttonHistoryTransaction.UseVisualStyleBackColor = false;
-            this.buttonHistoryTransaction.Click += new System.EventHandler(this.buttonHistoryTransaction_Click);
-            // 
             // Form2
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(30)))), ((int)(((byte)(28)))), ((int)(((byte)(38)))));
-            this.ClientSize = new System.Drawing.Size(1200, 786);
+            this.ClientSize = new System.Drawing.Size(900, 639);
             this.Controls.Add(this.logoutButton);
             this.Controls.Add(this.label3);
             this.Controls.Add(this.label4LastName);
@@ -804,7 +799,7 @@
             this.Controls.Add(this.panelMainPaySomething);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
             this.KeyPreview = true;
-            this.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.Name = "Form2";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Form2";
@@ -878,6 +873,5 @@
         private Bunifu.Framework.UI.BunifuCustomLabel labelshowToCurrency;
         private Bunifu.Framework.UI.BunifuCustomLabel labelshowFromCurrency;
         private System.Windows.Forms.Button buttonSubmitTransfer;
-        private System.Windows.Forms.Button buttonHistoryTransaction;
     }
 }

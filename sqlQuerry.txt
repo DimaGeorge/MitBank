@@ -265,7 +265,21 @@ FROM
 		ON tt.ID = cs.IDTypeTransaction
 	INNER JOIN TypeBankingPackets as tp
 		ON tp.ID = cs.IDBankPacket
+GO
 
+CREATE VIEW TransactionHistoryView
+AS
+SELECT 
+	ht.CustomerID
+	,ht.fromAccount
+	,ht.toWichAccount
+	,tt.TypeTransaction
+	,ht.Value
+	,ht.DateTransaction
+FROM HistoryTransaction as ht
+	LEFT JOIN TypesTransaction as tt
+		ON ht.TypeTransaction = tt.ID
+GO
 
 --- Stored Procedures ---------------------------------------------------------------------------------
 
@@ -618,7 +632,8 @@ GRANT EXEC ON addHistoryTransaction	TO ApplicationRole
 GRANT SELECT ON CurrentCurrency		TO ApplicationRole
 GRANT SELECT ON ComisionStatus		TO ApplicationRole
 GRANT SELECT ON TypeBankingPackets	TO ApplicationRole
- 
+GRANT SELECT ON ComisionOffert		TO ApplicationRole
+GRANT SELECT ON TransactionHistoryView TO ApplicationRole
 GO
 
 CREATE LOGIN MitBankApp WITH PASSWORD='pass'
@@ -797,6 +812,6 @@ select * from ComisionStatus
 select * from TypesTransaction
 select * from TypeBankingPackets
 select * from HistoryTransaction
-exec transferMoney 'RO93MITB0410120579132422','RO93MITB0410120579132411',200
+
 
 
