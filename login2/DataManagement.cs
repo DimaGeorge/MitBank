@@ -6,6 +6,7 @@ using System.Threading.Tasks;
 using System.Configuration;
 using System.Data.SqlClient;
 using System.Windows.Forms;
+using System.Data.Entity.Core.Objects;
 
 namespace login2
 {
@@ -20,7 +21,17 @@ namespace login2
                 if(context.getUandPProcedure(username, password).FirstOrDefault().HasValue)
                 {
                     IDSession = context.getUandPProcedure(username, password).FirstOrDefault().Value;
-
+                    
+                    // exemplu de intoarcere parametru din procedura stocata
+                    //
+                    ObjectParameter output = new ObjectParameter("result", typeof(bool));
+                    context.IsAdmin(IDSession, output);
+                    if (Convert.ToBoolean(output.Value))
+                    {
+                        Form1.isAdmin = true;
+                    }
+                    //
+                    
                     return true;
                 }
                 else

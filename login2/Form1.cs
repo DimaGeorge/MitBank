@@ -17,6 +17,8 @@ namespace login2
 
     public partial class Form1 : Form
     {
+        public static bool isAdmin = false;
+        
         public Form1()
         {
             InitializeComponent();
@@ -68,8 +70,18 @@ namespace login2
             {
                 this.Visible = false;
                 this.Hide();
-                Form2 frm = new Form2();
-                frm.Show();
+
+                if (isAdmin)
+                {
+                    AdminMainForm frm = new AdminMainForm();
+                    frm.Show();
+                }
+                else
+                {
+                    Form2 frm = new Form2();
+                    frm.Show();
+                }
+
             }
             else
             {

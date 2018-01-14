@@ -12,8 +12,8 @@ namespace login2
     using System;
     using System.Data.Entity;
     using System.Data.Entity.Infrastructure;
-    using System.Data.Objects;
-    using System.Data.Objects.DataClasses;
+    using System.Data.Entity.Core.Objects;
+    using System.Data.Entity.Core.Objects.DataClasses;
     using System.Linq;
     
     public partial class MitBankDBEntities2 : DbContext
@@ -31,6 +31,8 @@ namespace login2
         public DbSet<ComisionStatu> ComisionStatus { get; set; }
         public DbSet<CurrentCurrency> CurrentCurrencies { get; set; }
         public DbSet<TypeBankingPacket> TypeBankingPackets { get; set; }
+        public DbSet<UserAccount> UserAccounts { get; set; }
+        public DbSet<Individual> Individuals { get; set; }
     
         public virtual ObjectResult<AddNormalUser_Result> AddNormalUser(Nullable<int> iDcustomer, string username, string password)
         {

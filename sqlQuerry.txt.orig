@@ -263,11 +263,22 @@ GO
 
 -- +++++++++++++++++++++++++++++++++++++++ CREATING VIEWS ++++++++++++++++++++++++++++++++++++++++
 
+<<<<<<< HEAD
 CREATE VIEW ComisionOffert
+=======
+CREATE VIEW UsernamesView
 AS
+SELECT *
+FROM Usernames
+WHERE Username = CURRENT_USER
+GO
 
 
 
+
+CREATE VIEW CustomersView
+>>>>>>> master
+AS
 SELECT 
 	tp.NameTypePacket
 	,tt.TypeTransaction
@@ -278,7 +289,7 @@ FROM
 		ON tt.ID = cs.IDTypeTransaction
 	INNER JOIN TypeBankingPackets as tp
 		ON tp.ID = cs.IDBankPacket
-GO
+
 
 --- Stored Procedures ---------------------------------------------------------------------------------
 
@@ -672,10 +683,7 @@ GRANT EXEC ON getLastLogin			TO ApplicationRole
 GRANT SELECT ON CurrentCurrency		TO ApplicationRole
 GRANT SELECT ON ComisionStatus		TO ApplicationRole
 GRANT SELECT ON TypeBankingPackets	TO ApplicationRole
-
-GRANT CONTROL ON UserAccounts		TO ApplicationRole
-GRANT CONTROL ON Individuals		TO ApplicationRole
-
+ 
 GO
 
 CREATE LOGIN MitBankApp WITH PASSWORD='pass'
