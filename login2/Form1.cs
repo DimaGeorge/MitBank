@@ -70,17 +70,21 @@ namespace login2
             {
                 this.Visible = false;
                 this.Hide();
-
+                
                 if (isAdmin)
                 {
-                    AdminMainForm frm = new AdminMainForm();
+                    this.Visible = true;
+                    FormAdmin frm = new FormAdmin();
                     frm.Show();
+                    isAdmin = false;
                 }
                 else
                 {
+                    this.Visible = true;
                     Form2 frm = new Form2();
                     frm.Show();
                 }
+                
 
             }
             else
