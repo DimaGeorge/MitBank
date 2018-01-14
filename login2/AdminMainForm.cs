@@ -26,6 +26,7 @@ namespace login2
         private void ButonDepunereNumerar_Click(object sender, EventArgs e)
         {
             DataManagement.cashDeposit();
+            DataManagement.addNewIndividual();
         }
 
 

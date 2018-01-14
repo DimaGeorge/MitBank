@@ -62,7 +62,7 @@ namespace login2
                 LastName = "Alexandru",
                 Email = "aalexandru@mail.com",
                 Birthday = new DateTime(2000, 5, 25),
-                CNP = "1234567890128",
+                CNP = "1234567890129",
                 
             };
 
@@ -70,9 +70,19 @@ namespace login2
             {
                 try
                 {
-
-
-
+                    var verificat = from entry in context.Individuals
+                                    where entry.CNP == individ.CNP
+                                    select entry;
+                    
+                    if (!verificat.Any())
+                    {
+                        context.Individuals.Add(individ);
+                        context.SaveChanges();
+                    }
+                    else
+                    {
+                        throw new MitException("CNP deja existent in baza de date");
+                    }
                 }
                 catch (MitException e)
                 {
@@ -81,7 +91,7 @@ namespace login2
 
                 catch (Exception e)
                 {
-                    MessageBox.Show("Eroare necunoscuta la adaugare individ");
+                    MessageBox.Show("Eroare netratata:" + e.Message);
                 }
             }
         }
