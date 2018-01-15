@@ -10,16 +10,11 @@
 namespace login2
 {
     using System;
+    using System.Collections.Generic;
     
-    public partial class addHistoryTransaction1_Result
+    public partial class viewEmail
     {
         public int ID { get; set; }
-        public Nullable<int> CustomerID { get; set; }
-        public Nullable<int> UserAccountID { get; set; }
-        public string fromAccount { get; set; }
-        public string toWichAccount { get; set; }
-        public Nullable<int> TypeTransaction { get; set; }
-        public Nullable<double> Value { get; set; }
-        public Nullable<System.DateTime> DateTransaction { get; set; }
+        public string email { get; set; }
     }
 }

@@ -78,6 +78,8 @@ CREATE TABLE Individuals(
 );
 GO
 
+
+
 CREATE TABLE Companies(
 	ID					int				IDENTITY(1,1)	NOT NULL
 	,CustomerID			int								NOT NULL
@@ -649,7 +651,26 @@ BEGIN
 
 END
 GO
+CREATE PROCEDURE HistoryTransactionProc
+	@idUser int
+AS
+BEGIN
+	SELECT *,TypesTransaction.TypeTransaction FROM HistoryTransaction
+		INNER JOIN TypesTransaction
+			ON 
+		WHERE HistoryTransaction.UserAccountID = @idUser;
 
+END
+
+select * from Individuals
+
+GO
+CREATE VIEW viewEmails
+AS
+	select ID, email from Individuals
+;
+
+GO
 
 --- Roles --------------------------------------------------------------------------------------------
 CREATE ROLE ApplicationRole
@@ -667,15 +688,16 @@ GRANT EXEC ON getAnyoneCurrency		TO ApplicationRole
 GRANT EXEC ON addHistoryTransaction	TO ApplicationRole
 GRANT EXEC ON insertLastLogin		TO ApplicationRole
 GRANT EXEC ON getLastLogin			TO ApplicationRole
-
+GRANT EXEC ON HistoryTransactionProc	TO ApplicationRole
 
 GRANT SELECT ON CurrentCurrency		TO ApplicationRole
 GRANT SELECT ON ComisionStatus		TO ApplicationRole
 GRANT SELECT ON TypeBankingPackets	TO ApplicationRole
+GRANT UPDATE ON viewEmails			TO ApplicationRole
 
 GRANT CONTROL ON UserAccounts		TO ApplicationRole
 GRANT CONTROL ON Individuals		TO ApplicationRole
-
+select * from Individuals
 GO
 
 CREATE LOGIN MitBankApp WITH PASSWORD='pass'
@@ -854,6 +876,8 @@ select * from ComisionStatus
 select * from TypesTransaction
 select * from TypeBankingPackets
 select * from HistoryTransaction
-exec transferMoney 'RO93MITB0410120579132422','RO93MITB0410120579132411',200
+exec transferMoney 'RO93MITB0410120579132422','RO93MITB0410120579132411',200 , 200
 
 
+select * from IndividualCustomers
+select * from Individuals

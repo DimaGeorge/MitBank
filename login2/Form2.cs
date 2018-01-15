@@ -13,6 +13,10 @@ using PdfSharp.Drawing;
 using PdfSharp.Pdf;
 using MigraDoc.DocumentObjectModel;
 using System.Diagnostics;
+using System.IO;
+using excel = Microsoft.Office.Interop.Excel;
+using System.Runtime.InteropServices;
+
 
 namespace login2
 {
@@ -45,12 +49,34 @@ namespace login2
             using (var context = new MitBankDBEntities2())
             {
                 var result2 = context.getLastLogin(DataManagement.getIdUsername());
-                foreach ( var item in result2)
+                foreach (var item in result2)
                 {
                     labelLastLogin.Text = item.ToString();
                 }
             }
 
+            labelChangeEmail.Visible = false;
+            textBoxChangeEmail.Visible = false;
+
+            using (var context = new MitBankDBEntities2())
+            {
+                var result = context.selectOnIndividuals(DataManagement.getIdUsername()).ToArray();
+
+                foreach (var items in result)
+                {
+                    labelLastNameSettings.Text = items.LastName;
+                    labelFirstNameSettings.Text = items.FirstName;
+                    labelEmailSettings.Text = items.Email;
+                    labelBirthdateSettings.Text = items.Birthday.ToShortDateString();
+
+                    int idInd = items.ID;
+
+
+
+                }
+
+
+            }
         }
 
         private void label11_Click(object sender, EventArgs e)
@@ -145,6 +171,8 @@ namespace login2
             lastMenupanel.SendToBack();
             lastMenupanel = panelMainSettings;
 
+
+
         }
 
         private void label7_Click(object sender, EventArgs e)
@@ -182,7 +210,7 @@ namespace login2
                 frm.Refresh();
                 frm.Invalidate();
                 frm.Show();
-                
+
             }
         }
 
@@ -405,7 +433,7 @@ namespace login2
                     {
                         valToTransfer = double.Parse(labelExchangeValue.Text);
                     }
-                    
+
                     double getsold = 0;
                     if (labelComisionValue.Text != "-")
                     {
@@ -422,7 +450,7 @@ namespace login2
                             {
                                 if (comboBoxSelectTransfer.SelectedItem.ToString() == "My another account")
                                 {
-                                    
+
                                     var result = context.transferMoney(comboBoxIBAN.SelectedItem.ToString(),
                                         comboBoxToTransferMyIBAN.SelectedItem.ToString(), ((ValWithouComiss + comiss)),
                                         valToTransfer);
@@ -453,16 +481,17 @@ namespace login2
                         }
                     }
                 }
-            }catch (Exception )
+            }
+            catch (Exception)
             {
                 MessageBox.Show("Put all informations or something wrong!");
             }
-            
-                
-                
 
 
-            }
+
+
+
+        }
 
         private void buttonHistoryTransaction_Click(object sender, EventArgs e)
         {
@@ -488,7 +517,7 @@ namespace login2
             // Draw the text
             string infoBank = "MITBank Society, Military Technical Academy";
             string infoBank2 = "Sucursala Bucuresti, Sector 4";
-            string text1 = "Extras de cont din "+ DateTime.Now.ToString() ;
+            string text1 = "Extras de cont din " + DateTime.Now.ToString();
             string text2 = "      Conform dispozitiilor in vigoare, va instiintăm ca, in evidenţele";
             string text3 = "noastre contabile, la data de ............., unitatea dvs. figurează";
             string text4 = "cu următoarele conturi................................................";
@@ -523,10 +552,10 @@ namespace login2
 
 
 
-            List<string> lc= new List<string>();
+            List<string> lc = new List<string>();
             lc = DataManagement.getAllInfoAccunts();
-            
-            
+
+
             string text11 = "ID" + "       " + "IBAN" + "                                       "
                 + "Bank Packet" + "              " + "VALABILITY" + "              " + "SOLD" + "       " + "CURRENCY";
             gfx.DrawString(text11, font, XBrushes.Black,
@@ -537,7 +566,7 @@ namespace login2
             foreach (string c in lc)
             {
                 string text0 = c.ToString();
-                
+
                 gfx.DrawString(text0, font, XBrushes.Black,
                 new XRect(30, x, page.Width, page.Height),
                 XStringFormats.TopLeft);
@@ -551,12 +580,153 @@ namespace login2
                 XStringFormats.TopLeft);
 
             // Save the document...
-            string filename = "Account request " + DataManagement.getLastName() ;
+            string filename = "Account request " + DataManagement.getLastName();
             document.Save(filename);
             // ...and start a viewer.
             Process.Start(filename);
 
 
+        }
+        private void WriteToExcel(System.Data.DataTable dt, string location)
+        {
+            //instantiate excel objects (application, workbook, worksheets)
+            excel.Application XlObj = new excel.Application();
+            XlObj.Visible = false;
+            excel._Workbook WbObj = (excel.Workbook)(XlObj.Workbooks.Add(""));
+            excel._Worksheet WsObj = (excel.Worksheet)WbObj.ActiveSheet;
+
+            //run through datatable and assign cells to values of datatable
+            try
+            {
+                int row = 1; int col = 1;
+                foreach (DataColumn column in dt.Columns)
+                {
+                    //adding columns
+                    WsObj.Cells[row, col] = column.ColumnName;
+                    col++;
+                }
+                //reset column and row variables
+                col = 1;
+                row++;
+                for (int i = 0; i < dt.Rows.Count; i++)
+                {
+                    //adding data
+                    foreach (var cell in dt.Rows[i].ItemArray)
+                    {
+                        WsObj.Cells[row, col] = cell;
+                        col++;
+                    }
+                    col = 1;
+                    row++;
+                }
+                WbObj.SaveAs(location);
+            }
+            catch (Exception x)
+            {
+                MessageBox.Show("Error");
+            }
+
+            finally
+            {
+                WbObj.Close();
+            }
+        }
+        private void buttonGenerateHistoryTranz_Click(object sender, EventArgs e)
+        {
+            char delim = ';';
+
+            DataTable tb = new DataTable();
+            DataColumn ordId = new DataColumn("IdTranzaction");
+            ordId.DataType = typeof(int);
+            tb.Columns.Add(ordId);
+
+            DataColumn usAccount = new DataColumn("UserId");
+            usAccount.DataType = typeof(string);
+            usAccount.MaxLength = 100;
+            tb.Columns.Add(usAccount);
+
+            DataColumn fAccount = new DataColumn("From Account");
+            fAccount.DataType = typeof(string);
+            fAccount.MaxLength = 100;
+            tb.Columns.Add(fAccount);
+
+            DataColumn tAccount = new DataColumn("To Account");
+            tAccount.DataType = typeof(string);
+            tAccount.MaxLength = 100;
+            tb.Columns.Add(tAccount);
+
+
+            DataColumn typeTranz = new DataColumn("Type Transaction");
+            typeTranz.DataType = typeof(string);
+            typeTranz.MaxLength = 100;
+            tb.Columns.Add(typeTranz);
+
+            DataColumn val = new DataColumn("Value");
+            val.DataType = typeof(float);
+            tb.Columns.Add(val);
+
+            DataColumn dateTrans = new DataColumn("Date");
+            dateTrans.DataType = typeof(DateTime);
+            tb.Columns.Add(dateTrans);
+
+            DataColumn tipTranz = new DataColumn("Type Trnsaction");
+            tipTranz.DataType = typeof(string);
+            tb.Columns.Add(tipTranz);
+
+            using (var context = new MitBankDBEntities2())
+            {
+                var result = context.HistoryTransactionProc(DataManagement.getIdUsername()).ToArray();
+                foreach (var items in result)
+                {
+                    if (items.TypeTransaction.Value == 4)
+                    {
+                        tb.Rows.Add(items.ID, items.UserAccountID, items.fromAccount, items.toWichAccount, items.TypeTransaction
+                        , items.Value, items.DateTransaction, "transfer");
+                    }
+                    else
+                    {
+                        if (items.TypeTransaction.Value == 3)
+                        {
+                            tb.Rows.Add(items.ID, items.UserAccountID, items.fromAccount, items.toWichAccount, items.TypeTransaction
+                        , items.Value, items.DateTransaction, "pay bill");
+                        }
+                    }
+
+                }
+                StringBuilder sb = new StringBuilder();
+                foreach (DataRow row in tb.Rows)
+                {
+                    string[] fields = row.ItemArray.Select(field => field.ToString()).
+                                                    ToArray();
+                    sb.AppendLine(string.Join(",", fields));
+                }
+                if (comboBoxTakeFormat.SelectedItem == "Excel Format")
+                {
+                    WriteToExcel(tb, "C:\\Users\\" + Environment.UserName + "\\Desktop\\History Transaction " + DataManagement.getLastName() + ".xlsx");
+                    MessageBox.Show("It`s saved. Please see file on desktop!");
+                }
+                else
+                       if (comboBoxTakeFormat.SelectedItem == "CSV Format")
+                {
+                    File.WriteAllText("C:\\Users\\" + Environment.UserName + "\\Desktop\\History Transaction " + DataManagement.getLastName() + ".csv", sb.ToString());
+                    MessageBox.Show("It`s saved. Please see file on desktop!");
+                }
+
+
+
+            }
+
+            //order.Rows.Add("O9876", 10, 2001);
+
+        }
+
+        private void buttonChangeEmail_Click(object sender, EventArgs e)
+        {
+            labelChangeEmail.Visible = true;
+            textBoxChangeEmail.Visible = true;
+            buttonChangeEmail.Text = "Submit";
+
+            
         }
     }
 }

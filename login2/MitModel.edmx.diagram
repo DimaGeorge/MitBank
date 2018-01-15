@@ -5,11 +5,12 @@
     <!-- Diagram content (shape and connector positions) -->
     <edmx:Diagrams>
       <Diagram DiagramId="fdd1dfb05b484edda9143a9575826485" Name="Diagram1" ZoomLevel="82">
-        <EntityTypeShape EntityType="MitBankDBModel.ComisionStatu" Width="1.5" PointX="0.75" PointY="0.75" IsExpanded="true" />
-        <EntityTypeShape EntityType="MitBankDBModel.CurrentCurrency" Width="1.5" PointX="2.75" PointY="0.75" IsExpanded="true" />
-        <EntityTypeShape EntityType="MitBankDBModel.TypeBankingPacket" Width="1.5" PointX="4.5" PointY="0.75" IsExpanded="true" />
-        <EntityTypeShape EntityType="MitBankDBModel.UserAccount" Width="1.5" PointX="0.75" PointY="3" />
-        <EntityTypeShape EntityType="MitBankDBModel.Individual" Width="1.5" PointX="2.625" PointY="3.125" />
+        <EntityTypeShape EntityType="MitBankDBModel.ComisionStatu" Width="1.5" PointX="0.75" PointY="0.75" />
+        <EntityTypeShape EntityType="MitBankDBModel.CurrentCurrency" Width="1.5" PointX="2.75" PointY="0.75" />
+        <EntityTypeShape EntityType="MitBankDBModel.Individual" Width="1.5" PointX="0.75" PointY="3.75" />
+        <EntityTypeShape EntityType="MitBankDBModel.TypeBankingPacket" Width="1.5" PointX="2.75" PointY="3.75" />
+        <EntityTypeShape EntityType="MitBankDBModel.UserAccount" Width="1.5" PointX="4.75" PointY="0.75" />
+        <EntityTypeShape EntityType="MitBankDBModel.viewEmail" Width="1.5" PointX="4.75" PointY="4.75" />
       </Diagram>
     </edmx:Diagrams>
   </edmx:Designer>

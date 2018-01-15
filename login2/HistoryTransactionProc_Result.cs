@@ -11,7 +11,7 @@ namespace login2
 {
     using System;
     
-    public partial class addHistoryTransaction1_Result1
+    public partial class HistoryTransactionProc_Result
     {
         public int ID { get; set; }
         public Nullable<int> CustomerID { get; set; }
@@ -20,6 +20,6 @@ namespace login2
         public string toWichAccount { get; set; }
         public Nullable<int> TypeTransaction { get; set; }
         public Nullable<double> Value { get; set; }
-        public Nullable<System.DateTime> DateTransaction { get; set; }
+        public string DateTransaction { get; set; }
     }
 }

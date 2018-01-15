@@ -18,7 +18,7 @@ namespace login2
         {
             using (var context = new MitBankDBEntities2())
             {
-                if(context.getUandPProcedure(username, password).FirstOrDefault().HasValue)
+                if (context.getUandPProcedure(username, password).FirstOrDefault().HasValue)
                 {
                     IDSession = context.getUandPProcedure(username, password).FirstOrDefault().Value;
                     

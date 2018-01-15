@@ -11,11 +11,10 @@ namespace login2
 {
     using System;
     using System.Data.Entity;
-    using System.Data.Entity.Infrastructure;
     using System.Data.Entity.Core.Objects;
-    using System.Data.Entity.Core.Objects.DataClasses;
+    using System.Data.Entity.Infrastructure;
     using System.Linq;
-    
+
     public partial class MitBankDBEntities2 : DbContext
     {
         public MitBankDBEntities2()
@@ -30,9 +29,39 @@ namespace login2
     
         public DbSet<ComisionStatu> ComisionStatus { get; set; }
         public DbSet<CurrentCurrency> CurrentCurrencies { get; set; }
+        public DbSet<Individual> Individuals { get; set; }
         public DbSet<TypeBankingPacket> TypeBankingPackets { get; set; }
         public DbSet<UserAccount> UserAccounts { get; set; }
-        public DbSet<Individual> Individuals { get; set; }
+        public DbSet<viewEmail> viewEmails { get; set; }
+    
+        public virtual ObjectResult<addHistoryTransaction_Result> addHistoryTransaction(Nullable<int> userId, string userAccountIban, string toWichAccount, Nullable<int> typeTransaction, Nullable<double> value, string date)
+        {
+            var userIdParameter = userId.HasValue ?
+                new ObjectParameter("userId", userId) :
+                new ObjectParameter("userId", typeof(int));
+    
+            var userAccountIbanParameter = userAccountIban != null ?
+                new ObjectParameter("UserAccountIban", userAccountIban) :
+                new ObjectParameter("UserAccountIban", typeof(string));
+    
+            var toWichAccountParameter = toWichAccount != null ?
+                new ObjectParameter("toWichAccount", toWichAccount) :
+                new ObjectParameter("toWichAccount", typeof(string));
+    
+            var typeTransactionParameter = typeTransaction.HasValue ?
+                new ObjectParameter("typeTransaction", typeTransaction) :
+                new ObjectParameter("typeTransaction", typeof(int));
+    
+            var valueParameter = value.HasValue ?
+                new ObjectParameter("value", value) :
+                new ObjectParameter("value", typeof(double));
+    
+            var dateParameter = date != null ?
+                new ObjectParameter("date", date) :
+                new ObjectParameter("date", typeof(string));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<addHistoryTransaction_Result>("addHistoryTransaction", userIdParameter, userAccountIbanParameter, toWichAccountParameter, typeTransactionParameter, valueParameter, dateParameter);
+        }
     
         public virtual ObjectResult<AddNormalUser_Result> AddNormalUser(Nullable<int> iDcustomer, string username, string password)
         {
@@ -51,6 +80,15 @@ namespace login2
             return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<AddNormalUser_Result>("AddNormalUser", iDcustomerParameter, usernameParameter, passwordParameter);
         }
     
+        public virtual ObjectResult<string> getAnyoneCurrency(string ibanNR)
+        {
+            var ibanNRParameter = ibanNR != null ?
+                new ObjectParameter("ibanNR", ibanNR) :
+                new ObjectParameter("ibanNR", typeof(string));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<string>("getAnyoneCurrency", ibanNRParameter);
+        }
+    
         public virtual int getIdCustomer(Nullable<int> userID, ObjectParameter idClient)
         {
             var userIDParameter = userID.HasValue ?
@@ -58,6 +96,15 @@ namespace login2
                 new ObjectParameter("userID", typeof(int));
     
             return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("getIdCustomer", userIDParameter, idClient);
+        }
+    
+        public virtual ObjectResult<string> getLastLogin(Nullable<int> idusername)
+        {
+            var idusernameParameter = idusername.HasValue ?
+                new ObjectParameter("idusername", idusername) :
+                new ObjectParameter("idusername", typeof(int));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<string>("getLastLogin", idusernameParameter);
         }
     
         public virtual ObjectResult<Nullable<int>> getUandPProcedure(string username, string password)
@@ -71,6 +118,28 @@ namespace login2
                 new ObjectParameter("Password", typeof(string));
     
             return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<Nullable<int>>("getUandPProcedure", usernameParameter, passwordParameter);
+        }
+    
+        public virtual ObjectResult<HistoryTransactionProc_Result> HistoryTransactionProc(Nullable<int> idUser)
+        {
+            var idUserParameter = idUser.HasValue ?
+                new ObjectParameter("idUser", idUser) :
+                new ObjectParameter("idUser", typeof(int));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<HistoryTransactionProc_Result>("HistoryTransactionProc", idUserParameter);
+        }
+    
+        public virtual int insertLastLogin(Nullable<int> idusername, string date)
+        {
+            var idusernameParameter = idusername.HasValue ?
+                new ObjectParameter("idusername", idusername) :
+                new ObjectParameter("idusername", typeof(int));
+    
+            var dateParameter = date != null ?
+                new ObjectParameter("date", date) :
+                new ObjectParameter("date", typeof(string));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("insertLastLogin", idusernameParameter, dateParameter);
         }
     
         public virtual int IsAdmin(Nullable<int> userID, ObjectParameter result)
@@ -139,15 +208,6 @@ namespace login2
             return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<Nullable<double>>("takeComision", tiptranzactionParameter, accountNRParameter);
         }
     
-        public virtual ObjectResult<string> getAnyoneCurrency(string ibanNR)
-        {
-            var ibanNRParameter = ibanNR != null ?
-                new ObjectParameter("ibanNR", ibanNR) :
-                new ObjectParameter("ibanNR", typeof(string));
-    
-            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<string>("getAnyoneCurrency", ibanNRParameter);
-        }
-    
         public virtual int transferMoney(string fromIBAN, string toIBAN, Nullable<double> valueToTransfer, Nullable<double> valueToRecieve)
         {
             var fromIBANParameter = fromIBAN != null ?
@@ -167,57 +227,6 @@ namespace login2
                 new ObjectParameter("valueToRecieve", typeof(double));
     
             return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("transferMoney", fromIBANParameter, toIBANParameter, valueToTransferParameter, valueToRecieveParameter);
-        }
-    
-        public virtual int addHistoryTransaction(Nullable<int> userId, string userAccountIban, string toWichAccount, Nullable<int> typeTransaction, Nullable<double> value, string date)
-        {
-            var userIdParameter = userId.HasValue ?
-                new ObjectParameter("userId", userId) :
-                new ObjectParameter("userId", typeof(int));
-    
-            var userAccountIbanParameter = userAccountIban != null ?
-                new ObjectParameter("UserAccountIban", userAccountIban) :
-                new ObjectParameter("UserAccountIban", typeof(string));
-    
-            var toWichAccountParameter = toWichAccount != null ?
-                new ObjectParameter("toWichAccount", toWichAccount) :
-                new ObjectParameter("toWichAccount", typeof(string));
-    
-            var typeTransactionParameter = typeTransaction.HasValue ?
-                new ObjectParameter("typeTransaction", typeTransaction) :
-                new ObjectParameter("typeTransaction", typeof(int));
-    
-            var valueParameter = value.HasValue ?
-                new ObjectParameter("value", value) :
-                new ObjectParameter("value", typeof(double));
-    
-            var dateParameter = date != null ?
-                new ObjectParameter("date", date) :
-                new ObjectParameter("date", typeof(string));
-    
-            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("addHistoryTransaction", userIdParameter, userAccountIbanParameter, toWichAccountParameter, typeTransactionParameter, valueParameter, dateParameter);
-        }
-    
-        public virtual int insertLastLogin(Nullable<int> idusername, string date)
-        {
-            var idusernameParameter = idusername.HasValue ?
-                new ObjectParameter("idusername", idusername) :
-                new ObjectParameter("idusername", typeof(int));
-    
-            var dateParameter = date != null ?
-                new ObjectParameter("date", date) :
-                new ObjectParameter("date", typeof(string));
-    
-            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("insertLastLogin", idusernameParameter, dateParameter);
-        }
-    
-        public virtual ObjectResult<string> getLastLogin(Nullable<int> idusername)
-        {
-            var idusernameParameter = idusername.HasValue ?
-                new ObjectParameter("idusername", idusername) :
-                new ObjectParameter("idusername", typeof(int));
-    
-            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<string>("getLastLogin", idusernameParameter);
         }
     }
 }

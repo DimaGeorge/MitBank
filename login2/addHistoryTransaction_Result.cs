@@ -20,6 +20,6 @@ namespace login2
         public string toWichAccount { get; set; }
         public Nullable<int> TypeTransaction { get; set; }
         public Nullable<double> Value { get; set; }
-        public Nullable<System.DateTime> DateTransaction { get; set; }
+        public string DateTransaction { get; set; }
     }
 }

@@ -4,19 +4,12 @@
   <edmx:Runtime>
     <!-- SSDL content -->
     <edmx:StorageModels>
-    <Schema Namespace="MitBankDBModel.Store" Alias="Self" Provider="System.Data.SqlClient" ProviderManifestToken="2008" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
-        <EntityContainer Name="MitBankDBModelStoreContainer">
-          <EntitySet Name="ComisionStatus" EntityType="MitBankDBModel.Store.ComisionStatus" store:Type="Tables" Schema="dbo" />
-          <EntitySet Name="CurrentCurrency" EntityType="MitBankDBModel.Store.CurrentCurrency" store:Type="Tables" Schema="dbo" />
-          <EntitySet Name="Individuals" EntityType="MitBankDBModel.Store.Individuals" store:Type="Tables" Schema="dbo" />
-          <EntitySet Name="TypeBankingPackets" EntityType="MitBankDBModel.Store.TypeBankingPackets" store:Type="Tables" Schema="dbo" />
-          <EntitySet Name="UserAccounts" EntityType="MitBankDBModel.Store.UserAccounts" store:Type="Tables" Schema="dbo" />
-        </EntityContainer>
+    <Schema Namespace="MitBankDBModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2008" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
         <EntityType Name="ComisionStatus">
           <Key>
             <PropertyRef Name="ID" />
           </Key>
-          <Property Name="ID" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+          <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
           <Property Name="IDTypeTransaction" Type="int" />
           <Property Name="IDBankPacket" Type="int" />
           <Property Name="Comision" Type="float" />
@@ -25,8 +18,8 @@
           <Key>
             <PropertyRef Name="CurrencyName" />
           </Key>
-          <Property Name="ID" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
-          <Property Name="CurrencyName" Type="nvarchar" Nullable="false" MaxLength="10" />
+          <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="CurrencyName" Type="nvarchar" MaxLength="10" Nullable="false" />
           <Property Name="ValueBuy" Type="float" Nullable="false" />
           <Property Name="ValueSel" Type="float" Nullable="false" />
         </EntityType>
@@ -34,31 +27,41 @@
           <Key>
             <PropertyRef Name="ID" />
           </Key>
-          <Property Name="ID" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
-          <Property Name="FirstName" Type="nvarchar" Nullable="false" MaxLength="100" />
-          <Property Name="LastName" Type="nvarchar" Nullable="false" MaxLength="100" />
-          <Property Name="Email" Type="nvarchar" Nullable="false" MaxLength="200" />
-          <Property Name="CNP" Type="nvarchar" Nullable="false" MaxLength="13" />
+          <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="FirstName" Type="nvarchar" MaxLength="100" Nullable="false" />
+          <Property Name="LastName" Type="nvarchar" MaxLength="100" Nullable="false" />
+          <Property Name="Email" Type="nvarchar" MaxLength="200" Nullable="false" />
+          <Property Name="CNP" Type="nvarchar" MaxLength="13" Nullable="false" />
           <Property Name="Birthday" Type="date" Nullable="false" />
         </EntityType>
         <EntityType Name="TypeBankingPackets">
           <Key>
             <PropertyRef Name="ID" />
           </Key>
-          <Property Name="ID" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+          <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
           <Property Name="NameTypePacket" Type="nchar" MaxLength="100" />
         </EntityType>
         <EntityType Name="UserAccounts">
           <Key>
             <PropertyRef Name="ID" />
           </Key>
-          <Property Name="ID" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+          <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
           <Property Name="BankPacket" Type="int" />
-          <Property Name="AccountNumber" Type="nchar" Nullable="false" MaxLength="30" />
+          <Property Name="AccountNumber" Type="nchar" MaxLength="30" Nullable="false" />
           <Property Name="ValabilityUntil" Type="date" Nullable="false" />
-          <Property Name="Currency" Type="nvarchar" Nullable="false" MaxLength="10" />
+          <Property Name="Currency" Type="nvarchar" MaxLength="10" Nullable="false" />
           <Property Name="Sold" Type="float" Nullable="false" />
           <Property Name="AccountCustomerID" Type="int" />
+        </EntityType>
+        <!--Errors Found During Generation:
+warning 6002: The table/view 'MitBankDB.dbo.viewEmails' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
+        <EntityType Name="viewEmails">
+          <Key>
+            <PropertyRef Name="ID" />
+            <PropertyRef Name="email" />
+          </Key>
+          <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="email" Type="nvarchar" MaxLength="200" Nullable="false" />
         </EntityType>
         <Function Name="addHistoryTransaction" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
           <Parameter Name="userId" Type="int" Mode="In" />
@@ -86,6 +89,9 @@
         <Function Name="getUandPProcedure" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
           <Parameter Name="Username" Type="nvarchar" Mode="In" />
           <Parameter Name="Password" Type="nvarchar" Mode="In" />
+        </Function>
+        <Function Name="HistoryTransactionProc" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="idUser" Type="int" Mode="In" />
         </Function>
         <Function Name="insertLastLogin" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
           <Parameter Name="idusername" Type="int" Mode="In" />
@@ -119,6 +125,19 @@
           <Parameter Name="valueToTransfer" Type="float" Mode="In" />
           <Parameter Name="valueToRecieve" Type="float" Mode="In" />
         </Function>
+        <EntityContainer Name="MitBankDBModelStoreContainer">
+          <EntitySet Name="ComisionStatus" EntityType="Self.ComisionStatus" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="CurrentCurrency" EntityType="Self.CurrentCurrency" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Individuals" EntityType="Self.Individuals" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="TypeBankingPackets" EntityType="Self.TypeBankingPackets" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="UserAccounts" EntityType="Self.UserAccounts" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="viewEmails" EntityType="Self.viewEmails" store:Type="Views" store:Schema="dbo">
+            <DefiningQuery>SELECT 
+[viewEmails].[ID] AS [ID], 
+[viewEmails].[email] AS [email]
+FROM [dbo].[viewEmails] AS [viewEmails]</DefiningQuery>
+          </EntitySet>
+        </EntityContainer>
       </Schema></edmx:StorageModels>
     <!-- CSDL content -->
     <edmx:ConceptualModels>
@@ -126,19 +145,43 @@
         <EntityContainer Name="MitBankDBEntities2" p1:LazyLoadingEnabled="true">
           <EntitySet Name="ComisionStatus" EntityType="MitBankDBModel.ComisionStatu" />
           <EntitySet Name="CurrentCurrencies" EntityType="MitBankDBModel.CurrentCurrency" />
+          <EntitySet Name="Individuals" EntityType="MitBankDBModel.Individual" />
           <EntitySet Name="TypeBankingPackets" EntityType="MitBankDBModel.TypeBankingPacket" />
+          <EntitySet Name="UserAccounts" EntityType="MitBankDBModel.UserAccount" />
+          <EntitySet Name="viewEmails" EntityType="MitBankDBModel.viewEmail" />
+          <FunctionImport Name="addHistoryTransaction" ReturnType="Collection(MitBankDBModel.addHistoryTransaction_Result)">
+            <Parameter Name="userId" Mode="In" Type="Int32" />
+            <Parameter Name="UserAccountIban" Mode="In" Type="String" />
+            <Parameter Name="toWichAccount" Mode="In" Type="String" />
+            <Parameter Name="typeTransaction" Mode="In" Type="Int32" />
+            <Parameter Name="value" Mode="In" Type="Double" />
+            <Parameter Name="date" Mode="In" Type="String" />
+          </FunctionImport>
           <FunctionImport Name="AddNormalUser" ReturnType="Collection(MitBankDBModel.AddNormalUser_Result)">
             <Parameter Name="IDcustomer" Mode="In" Type="Int32" />
             <Parameter Name="Username" Mode="In" Type="String" />
             <Parameter Name="Password" Mode="In" Type="String" />
           </FunctionImport>
+          <FunctionImport Name="getAnyoneCurrency" ReturnType="Collection(String)">
+            <Parameter Name="ibanNR" Mode="In" Type="String" />
+          </FunctionImport>
           <FunctionImport Name="getIdCustomer">
             <Parameter Name="userID" Mode="In" Type="Int32" />
             <Parameter Name="idClient" Mode="InOut" Type="Int32" />
           </FunctionImport>
+          <FunctionImport Name="getLastLogin" ReturnType="Collection(String)">
+            <Parameter Name="idusername" Mode="In" Type="Int32" />
+          </FunctionImport>
           <FunctionImport Name="getUandPProcedure" ReturnType="Collection(Int32)">
             <Parameter Name="Username" Mode="In" Type="String" />
             <Parameter Name="Password" Mode="In" Type="String" />
+          </FunctionImport>
+          <FunctionImport Name="HistoryTransactionProc" ReturnType="Collection(MitBankDBModel.HistoryTransactionProc_Result)">
+            <Parameter Name="idUser" Mode="In" Type="Int32" />
+          </FunctionImport>
+          <FunctionImport Name="insertLastLogin">
+            <Parameter Name="idusername" Mode="In" Type="Int32" />
+            <Parameter Name="date" Mode="In" Type="String" />
           </FunctionImport>
           <FunctionImport Name="IsAdmin">
             <Parameter Name="UserID" Mode="In" Type="Int32" />
@@ -150,20 +193,17 @@
             <Parameter Name="valueMoney" Mode="In" Type="Double" />
           </FunctionImport>
           <FunctionImport Name="selectOnIndividuals" ReturnType="Collection(MitBankDBModel.selectOnIndividuals_Result)">
-          <Parameter Name="id" Mode="In" Type="Int32" />
+            <Parameter Name="id" Mode="In" Type="Int32" />
           </FunctionImport>
           <FunctionImport Name="showAllMyAccounts" ReturnType="Collection(String)">
-          <Parameter Name="idUsername" Mode="In" Type="Int32" />
+            <Parameter Name="idUsername" Mode="In" Type="Int32" />
           </FunctionImport>
           <FunctionImport Name="showIBANInformations" ReturnType="Collection(MitBankDBModel.showIBANInformations_Result)">
-          <Parameter Name="iban" Mode="In" Type="String" />
+            <Parameter Name="iban" Mode="In" Type="String" />
           </FunctionImport>
           <FunctionImport Name="takeComision" ReturnType="Collection(Double)">
             <Parameter Name="tiptranzaction" Mode="In" Type="Int32" />
             <Parameter Name="accountNR" Mode="In" Type="String" />
-          </FunctionImport>
-          <FunctionImport Name="getAnyoneCurrency" ReturnType="Collection(String)">
-          <Parameter Name="ibanNR" Mode="In" Type="String" />
           </FunctionImport>
           <FunctionImport Name="transferMoney">
             <Parameter Name="fromIBAN" Mode="In" Type="String" />
@@ -171,29 +211,12 @@
             <Parameter Name="valueToTransfer" Mode="In" Type="Double" />
             <Parameter Name="valueToRecieve" Mode="In" Type="Double" />
           </FunctionImport>
-          <FunctionImport Name="addHistoryTransaction">
-            <Parameter Name="userId" Mode="In" Type="Int32" />
-            <Parameter Name="UserAccountIban" Mode="In" Type="String" />
-            <Parameter Name="toWichAccount" Mode="In" Type="String" />
-            <Parameter Name="typeTransaction" Mode="In" Type="Int32" />
-            <Parameter Name="value" Mode="In" Type="Double" />
-            <Parameter Name="date" Mode="In" Type="String" />
-          </FunctionImport>
-          <FunctionImport Name="insertLastLogin">
-            <Parameter Name="idusername" Mode="In" Type="Int32" />
-            <Parameter Name="date" Mode="In" Type="String" />
-          </FunctionImport>
-          <FunctionImport Name="getLastLogin" ReturnType="Collection(String)">
-          <Parameter Name="idusername" Mode="In" Type="Int32" />
-          </FunctionImport>
-          <EntitySet Name="UserAccounts" EntityType="MitBankDBModel.UserAccount" />
-          <EntitySet Name="Individuals" EntityType="MitBankDBModel.Individual" />
         </EntityContainer>
         <EntityType Name="ComisionStatu">
           <Key>
             <PropertyRef Name="ID" />
           </Key>
-          <Property Name="ID" Type="Int32" Nullable="false" p1:StoreGeneratedPattern="Identity" />
+          <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
           <Property Name="IDTypeTransaction" Type="Int32" />
           <Property Name="IDBankPacket" Type="Int32" />
           <Property Name="Comision" Type="Double" />
@@ -202,21 +225,72 @@
           <Key>
             <PropertyRef Name="CurrencyName" />
           </Key>
-          <Property Name="ID" Type="Int32" Nullable="false" p1:StoreGeneratedPattern="Identity" />
-          <Property Name="CurrencyName" Type="String" Nullable="false" MaxLength="10" Unicode="true" FixedLength="false" />
+          <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="CurrencyName" Type="String" Nullable="false" MaxLength="10" FixedLength="false" Unicode="true" />
           <Property Name="ValueBuy" Type="Double" Nullable="false" />
           <Property Name="ValueSel" Type="Double" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Individual">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="FirstName" Type="String" Nullable="false" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="LastName" Type="String" Nullable="false" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="Email" Type="String" Nullable="false" MaxLength="200" FixedLength="false" Unicode="true" />
+          <Property Name="CNP" Type="String" Nullable="false" MaxLength="13" FixedLength="false" Unicode="true" />
+          <Property Name="Birthday" Type="DateTime" Nullable="false" Precision="0" />
         </EntityType>
         <EntityType Name="TypeBankingPacket">
           <Key>
             <PropertyRef Name="ID" />
           </Key>
-          <Property Name="ID" Type="Int32" Nullable="false" p1:StoreGeneratedPattern="Identity" />
-          <Property Name="NameTypePacket" Type="String" MaxLength="100" Unicode="true" FixedLength="true" />
+          <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="NameTypePacket" Type="String" MaxLength="100" FixedLength="true" Unicode="true" />
         </EntityType>
+        <EntityType Name="UserAccount">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="BankPacket" Type="Int32" />
+          <Property Name="AccountNumber" Type="String" Nullable="false" MaxLength="30" FixedLength="true" Unicode="true" />
+          <Property Name="ValabilityUntil" Type="DateTime" Nullable="false" Precision="0" />
+          <Property Name="Currency" Type="String" Nullable="false" MaxLength="10" FixedLength="false" Unicode="true" />
+          <Property Name="Sold" Type="Double" Nullable="false" />
+          <Property Name="AccountCustomerID" Type="Int32" />
+        </EntityType>
+        <EntityType Name="viewEmail">
+          <Key>
+            <PropertyRef Name="ID" />
+            <PropertyRef Name="email" />
+          </Key>
+          <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="email" Type="String" Nullable="false" MaxLength="200" FixedLength="false" Unicode="true" />
+        </EntityType>
+        <ComplexType Name="addHistoryTransaction_Result">
+          <Property Type="Int32" Name="ID" Nullable="false" />
+          <Property Type="Int32" Name="CustomerID" Nullable="true" />
+          <Property Type="Int32" Name="UserAccountID" Nullable="true" />
+          <Property Type="String" Name="fromAccount" Nullable="true" MaxLength="100" />
+          <Property Type="String" Name="toWichAccount" Nullable="true" MaxLength="100" />
+          <Property Type="Int32" Name="TypeTransaction" Nullable="true" />
+          <Property Type="Double" Name="Value" Nullable="true" />
+          <Property Type="String" Name="DateTransaction" Nullable="true" MaxLength="100" />
+        </ComplexType>
         <ComplexType Name="AddNormalUser_Result">
           <Property Type="Int32" Name="ErrorNumber" Nullable="true" />
           <Property Type="String" Name="ErrorMessage" Nullable="true" MaxLength="4000" />
+        </ComplexType>
+        <ComplexType Name="HistoryTransactionProc_Result">
+          <Property Type="Int32" Name="ID" Nullable="false" />
+          <Property Type="Int32" Name="CustomerID" Nullable="true" />
+          <Property Type="Int32" Name="UserAccountID" Nullable="true" />
+          <Property Type="String" Name="fromAccount" Nullable="true" MaxLength="100" />
+          <Property Type="String" Name="toWichAccount" Nullable="true" MaxLength="100" />
+          <Property Type="Int32" Name="TypeTransaction" Nullable="true" />
+          <Property Type="Double" Name="Value" Nullable="true" />
+          <Property Type="String" Name="DateTransaction" Nullable="true" MaxLength="100" />
         </ComplexType>
         <ComplexType Name="selectOnIndividuals_Result">
           <Property Type="Int32" Name="ID" Nullable="false" />
@@ -235,59 +309,6 @@
           <Property Type="Double" Name="Sold" Nullable="false" />
           <Property Type="Int32" Name="AccountCustomerID" Nullable="true" />
         </ComplexType>
-        <ComplexType Name="addHistoryTransaction1_Result">
-          <Property Type="Int32" Name="ID" Nullable="false" />
-          <Property Type="Int32" Name="CustomerID" Nullable="true" />
-          <Property Type="Int32" Name="UserAccountID" Nullable="true" />
-          <Property Type="String" Name="fromAccount" Nullable="true" MaxLength="100" />
-          <Property Type="String" Name="toWichAccount" Nullable="true" MaxLength="100" />
-          <Property Type="Int32" Name="TypeTransaction" Nullable="true" />
-          <Property Type="Double" Name="Value" Nullable="true" />
-          <Property Type="DateTime" Name="DateTransaction" Nullable="true" Precision="23" />
-        </ComplexType>
-        <ComplexType Name="addHistoryTransaction1_Result1">
-          <Property Type="Int32" Name="ID" Nullable="false" />
-          <Property Type="Int32" Name="CustomerID" Nullable="true" />
-          <Property Type="Int32" Name="UserAccountID" Nullable="true" />
-          <Property Type="String" Name="fromAccount" Nullable="true" MaxLength="100" />
-          <Property Type="String" Name="toWichAccount" Nullable="true" MaxLength="100" />
-          <Property Type="Int32" Name="TypeTransaction" Nullable="true" />
-          <Property Type="Double" Name="Value" Nullable="true" />
-          <Property Type="DateTime" Name="DateTransaction" Nullable="true" Precision="23" />
-        </ComplexType>
-        <ComplexType Name="addHistoryTransaction_Result">
-          <Property Type="Int32" Name="ID" Nullable="false" />
-          <Property Type="Int32" Name="CustomerID" Nullable="true" />
-          <Property Type="Int32" Name="UserAccountID" Nullable="true" />
-          <Property Type="String" Name="fromAccount" Nullable="true" MaxLength="100" />
-          <Property Type="String" Name="toWichAccount" Nullable="true" MaxLength="100" />
-          <Property Type="Int32" Name="TypeTransaction" Nullable="true" />
-          <Property Type="Double" Name="Value" Nullable="true" />
-          <Property Type="DateTime" Name="DateTransaction" Nullable="true" Precision="23" />
-        </ComplexType>
-        <EntityType Name="UserAccount">
-          <Key>
-            <PropertyRef Name="ID" />
-          </Key>
-          <Property Type="Int32" Name="ID" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Type="Int32" Name="BankPacket" />
-          <Property Type="String" Name="AccountNumber" Nullable="false" MaxLength="30" FixedLength="true" Unicode="true" />
-          <Property Type="DateTime" Name="ValabilityUntil" Nullable="false" Precision="0" />
-          <Property Type="String" Name="Currency" Nullable="false" MaxLength="10" FixedLength="false" Unicode="true" />
-          <Property Type="Double" Name="Sold" Nullable="false" />
-          <Property Type="Int32" Name="AccountCustomerID" />
-        </EntityType>
-        <EntityType Name="Individual">
-          <Key>
-            <PropertyRef Name="ID" />
-          </Key>
-          <Property Type="Int32" Name="ID" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Type="String" Name="FirstName" Nullable="false" MaxLength="100" FixedLength="false" Unicode="true" />
-          <Property Type="String" Name="LastName" Nullable="false" MaxLength="100" FixedLength="false" Unicode="true" />
-          <Property Type="String" Name="Email" Nullable="false" MaxLength="200" FixedLength="false" Unicode="true" />
-          <Property Type="String" Name="CNP" Nullable="false" MaxLength="13" FixedLength="false" Unicode="true" />
-          <Property Type="DateTime" Name="Birthday" Nullable="false" Precision="0" />
-        </EntityType>
       </Schema>
     </edmx:ConceptualModels>
     <!-- C-S mapping content -->
@@ -297,31 +318,78 @@
           <EntitySetMapping Name="ComisionStatus">
             <EntityTypeMapping TypeName="MitBankDBModel.ComisionStatu">
               <MappingFragment StoreEntitySet="ComisionStatus">
-                <ScalarProperty Name="ID" ColumnName="ID" />
-                <ScalarProperty Name="IDTypeTransaction" ColumnName="IDTypeTransaction" />
-                <ScalarProperty Name="IDBankPacket" ColumnName="IDBankPacket" />
                 <ScalarProperty Name="Comision" ColumnName="Comision" />
+                <ScalarProperty Name="IDBankPacket" ColumnName="IDBankPacket" />
+                <ScalarProperty Name="IDTypeTransaction" ColumnName="IDTypeTransaction" />
+                <ScalarProperty Name="ID" ColumnName="ID" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="CurrentCurrencies">
             <EntityTypeMapping TypeName="MitBankDBModel.CurrentCurrency">
               <MappingFragment StoreEntitySet="CurrentCurrency">
-                <ScalarProperty Name="ID" ColumnName="ID" />
-                <ScalarProperty Name="CurrencyName" ColumnName="CurrencyName" />
-                <ScalarProperty Name="ValueBuy" ColumnName="ValueBuy" />
                 <ScalarProperty Name="ValueSel" ColumnName="ValueSel" />
+                <ScalarProperty Name="ValueBuy" ColumnName="ValueBuy" />
+                <ScalarProperty Name="CurrencyName" ColumnName="CurrencyName" />
+                <ScalarProperty Name="ID" ColumnName="ID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Individuals">
+            <EntityTypeMapping TypeName="MitBankDBModel.Individual">
+              <MappingFragment StoreEntitySet="Individuals">
+                <ScalarProperty Name="Birthday" ColumnName="Birthday" />
+                <ScalarProperty Name="CNP" ColumnName="CNP" />
+                <ScalarProperty Name="Email" ColumnName="Email" />
+                <ScalarProperty Name="LastName" ColumnName="LastName" />
+                <ScalarProperty Name="FirstName" ColumnName="FirstName" />
+                <ScalarProperty Name="ID" ColumnName="ID" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="TypeBankingPackets">
             <EntityTypeMapping TypeName="MitBankDBModel.TypeBankingPacket">
               <MappingFragment StoreEntitySet="TypeBankingPackets">
-                <ScalarProperty Name="ID" ColumnName="ID" />
                 <ScalarProperty Name="NameTypePacket" ColumnName="NameTypePacket" />
+                <ScalarProperty Name="ID" ColumnName="ID" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
+          <EntitySetMapping Name="UserAccounts">
+            <EntityTypeMapping TypeName="MitBankDBModel.UserAccount">
+              <MappingFragment StoreEntitySet="UserAccounts">
+                <ScalarProperty Name="AccountCustomerID" ColumnName="AccountCustomerID" />
+                <ScalarProperty Name="Sold" ColumnName="Sold" />
+                <ScalarProperty Name="Currency" ColumnName="Currency" />
+                <ScalarProperty Name="ValabilityUntil" ColumnName="ValabilityUntil" />
+                <ScalarProperty Name="AccountNumber" ColumnName="AccountNumber" />
+                <ScalarProperty Name="BankPacket" ColumnName="BankPacket" />
+                <ScalarProperty Name="ID" ColumnName="ID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="viewEmails">
+            <EntityTypeMapping TypeName="MitBankDBModel.viewEmail">
+              <MappingFragment StoreEntitySet="viewEmails">
+                <ScalarProperty Name="email" ColumnName="email" />
+                <ScalarProperty Name="ID" ColumnName="ID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <FunctionImportMapping FunctionImportName="addHistoryTransaction" FunctionName="MitBankDBModel.Store.addHistoryTransaction">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="MitBankDBModel.addHistoryTransaction_Result">
+                <ScalarProperty Name="ID" ColumnName="ID" />
+                <ScalarProperty Name="CustomerID" ColumnName="CustomerID" />
+                <ScalarProperty Name="UserAccountID" ColumnName="UserAccountID" />
+                <ScalarProperty Name="fromAccount" ColumnName="fromAccount" />
+                <ScalarProperty Name="toWichAccount" ColumnName="toWichAccount" />
+                <ScalarProperty Name="TypeTransaction" ColumnName="TypeTransaction" />
+                <ScalarProperty Name="Value" ColumnName="Value" />
+                <ScalarProperty Name="DateTransaction" ColumnName="DateTransaction" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
           <FunctionImportMapping FunctionImportName="AddNormalUser" FunctionName="MitBankDBModel.Store.AddNormalUser">
             <ResultMapping>
               <ComplexTypeMapping TypeName="MitBankDBModel.AddNormalUser_Result">
@@ -330,8 +398,25 @@
               </ComplexTypeMapping>
             </ResultMapping>
           </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="getAnyoneCurrency" FunctionName="MitBankDBModel.Store.getAnyoneCurrency" />
           <FunctionImportMapping FunctionImportName="getIdCustomer" FunctionName="MitBankDBModel.Store.getIdCustomer" />
+          <FunctionImportMapping FunctionImportName="getLastLogin" FunctionName="MitBankDBModel.Store.getLastLogin" />
           <FunctionImportMapping FunctionImportName="getUandPProcedure" FunctionName="MitBankDBModel.Store.getUandPProcedure" />
+          <FunctionImportMapping FunctionImportName="HistoryTransactionProc" FunctionName="MitBankDBModel.Store.HistoryTransactionProc">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="MitBankDBModel.HistoryTransactionProc_Result">
+                <ScalarProperty Name="ID" ColumnName="ID" />
+                <ScalarProperty Name="CustomerID" ColumnName="CustomerID" />
+                <ScalarProperty Name="UserAccountID" ColumnName="UserAccountID" />
+                <ScalarProperty Name="fromAccount" ColumnName="fromAccount" />
+                <ScalarProperty Name="toWichAccount" ColumnName="toWichAccount" />
+                <ScalarProperty Name="TypeTransaction" ColumnName="TypeTransaction" />
+                <ScalarProperty Name="Value" ColumnName="Value" />
+                <ScalarProperty Name="DateTransaction" ColumnName="DateTransaction" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="insertLastLogin" FunctionName="MitBankDBModel.Store.insertLastLogin" />
           <FunctionImportMapping FunctionImportName="IsAdmin" FunctionName="MitBankDBModel.Store.IsAdmin" />
           <FunctionImportMapping FunctionImportName="putMoneyOnAccount" FunctionName="MitBankDBModel.Store.putMoneyOnAccount" />
           <FunctionImportMapping FunctionImportName="selectOnIndividuals" FunctionName="MitBankDBModel.Store.selectOnIndividuals">
@@ -361,36 +446,7 @@
             </ResultMapping>
           </FunctionImportMapping>
           <FunctionImportMapping FunctionImportName="takeComision" FunctionName="MitBankDBModel.Store.takeComision" />
-          <FunctionImportMapping FunctionImportName="getAnyoneCurrency" FunctionName="MitBankDBModel.Store.getAnyoneCurrency" />
           <FunctionImportMapping FunctionImportName="transferMoney" FunctionName="MitBankDBModel.Store.transferMoney" />
-          <FunctionImportMapping FunctionImportName="addHistoryTransaction" FunctionName="MitBankDBModel.Store.addHistoryTransaction" />
-          <FunctionImportMapping FunctionImportName="insertLastLogin" FunctionName="MitBankDBModel.Store.insertLastLogin" />
-          <FunctionImportMapping FunctionImportName="getLastLogin" FunctionName="MitBankDBModel.Store.getLastLogin" />
-          <EntitySetMapping Name="UserAccounts">
-            <EntityTypeMapping TypeName="MitBankDBModel.UserAccount">
-              <MappingFragment StoreEntitySet="UserAccounts">
-                <ScalarProperty Name="AccountCustomerID" ColumnName="AccountCustomerID" />
-                <ScalarProperty Name="Sold" ColumnName="Sold" />
-                <ScalarProperty Name="Currency" ColumnName="Currency" />
-                <ScalarProperty Name="ValabilityUntil" ColumnName="ValabilityUntil" />
-                <ScalarProperty Name="AccountNumber" ColumnName="AccountNumber" />
-                <ScalarProperty Name="BankPacket" ColumnName="BankPacket" />
-                <ScalarProperty Name="ID" ColumnName="ID" />
-              </MappingFragment>
-            </EntityTypeMapping>
-          </EntitySetMapping>
-          <EntitySetMapping Name="Individuals">
-            <EntityTypeMapping TypeName="MitBankDBModel.Individual">
-              <MappingFragment StoreEntitySet="Individuals">
-                <ScalarProperty Name="Birthday" ColumnName="Birthday" />
-                <ScalarProperty Name="CNP" ColumnName="CNP" />
-                <ScalarProperty Name="Email" ColumnName="Email" />
-                <ScalarProperty Name="LastName" ColumnName="LastName" />
-                <ScalarProperty Name="FirstName" ColumnName="FirstName" />
-                <ScalarProperty Name="ID" ColumnName="ID" />
-              </MappingFragment>
-            </EntityTypeMapping>
-          </EntitySetMapping>
         </EntityContainerMapping>
       </Mapping>
     </edmx:Mappings>

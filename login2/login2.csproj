@@ -45,6 +45,10 @@
     <Reference Include="EntityFramework.SqlServer">
       <HintPath>..\packages\EntityFramework.6.2.0\lib\net45\EntityFramework.SqlServer.dll</HintPath>
     </Reference>
+    <Reference Include="Microsoft.Office.Interop.Excel, Version=15.0.0.0, Culture=neutral, PublicKeyToken=71e9bce111e9429c, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.Office.Interop.Excel.15.0.4795.1000\lib\net20\Microsoft.Office.Interop.Excel.dll</HintPath>
+      <EmbedInteropTypes>True</EmbedInteropTypes>
+    </Reference>
     <Reference Include="Microsoft.VisualBasic" />
     <Reference Include="MigraDoc.DocumentObjectModel-WPF">
       <HintPath>..\packages\PDFsharp-MigraDoc-WPF.1.32.2608.0\lib\net20\MigraDoc.DocumentObjectModel-WPF.dll</HintPath>
@@ -82,12 +86,6 @@
     <Reference Include="WindowsBase" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="addHistoryTransaction1_Result.cs">
-      <DependentUpon>MitModel.tt</DependentUpon>
-    </Compile>
-    <Compile Include="addHistoryTransaction1_Result1.cs">
-      <DependentUpon>MitModel.tt</DependentUpon>
-    </Compile>
     <Compile Include="addHistoryTransaction_Result.cs">
       <DependentUpon>MitModel.tt</DependentUpon>
     </Compile>
@@ -127,6 +125,9 @@
     <Compile Include="FormAdmin.Designer.cs">
       <DependentUpon>FormAdmin.cs</DependentUpon>
     </Compile>
+    <Compile Include="HistoryTransactionProc_Result.cs">
+      <DependentUpon>MitModel.tt</DependentUpon>
+    </Compile>
     <Compile Include="Individual.cs">
       <DependentUpon>MitModel.tt</DependentUpon>
     </Compile>
@@ -160,6 +161,9 @@
     </Compile>
     <Compile Include="UIDashboardAccountFrame.cs" />
     <Compile Include="UserAccount.cs">
+      <DependentUpon>MitModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="viewEmail.cs">
       <DependentUpon>MitModel.tt</DependentUpon>
     </Compile>
     <EmbeddedResource Include="AdminMainForm.resx">

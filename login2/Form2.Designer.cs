@@ -46,7 +46,8 @@
             this.logoutButton = new Bunifu.Framework.UI.BunifuFlatButton();
             this.panelMainDashboard = new System.Windows.Forms.Panel();
             this.panelMainPaySomething = new System.Windows.Forms.Panel();
-            this.label4 = new System.Windows.Forms.Label();
+            this.label18 = new System.Windows.Forms.Label();
+            this.pictureBox1 = new System.Windows.Forms.PictureBox();
             this.panelMainTransfer = new System.Windows.Forms.Panel();
             this.buttonSubmitTransfer = new System.Windows.Forms.Button();
             this.labelshowToCurrency = new Bunifu.Framework.UI.BunifuCustomLabel();
@@ -71,16 +72,33 @@
             this.textBoxWriteIBAN = new Bunifu.Framework.UI.BunifuMetroTextbox();
             this.comboBoxToTransferMyIBAN = new System.Windows.Forms.ComboBox();
             this.panelMainSendMail = new System.Windows.Forms.Panel();
+            this.comboBoxTakeFormat = new System.Windows.Forms.ComboBox();
+            this.label17 = new System.Windows.Forms.Label();
+            this.label16 = new System.Windows.Forms.Label();
+            this.buttonGenerateHistoryTranz = new System.Windows.Forms.Button();
             this.label7 = new System.Windows.Forms.Label();
             this.button1 = new System.Windows.Forms.Button();
             this.panelMainSettings = new System.Windows.Forms.Panel();
+            this.labelChangeEmail = new System.Windows.Forms.Label();
+            this.textBoxChangeEmail = new Bunifu.Framework.UI.BunifuMetroTextbox();
+            this.buttonChangeEmail = new System.Windows.Forms.Button();
+            this.label21 = new System.Windows.Forms.Label();
+            this.labelBirthSettings = new System.Windows.Forms.Label();
+            this.labelBirthdateSettings = new System.Windows.Forms.Label();
+            this.labelEmailSettings = new System.Windows.Forms.Label();
+            this.labelLastNameSettings = new System.Windows.Forms.Label();
+            this.labelFirstNameSettings = new System.Windows.Forms.Label();
+            this.label20 = new System.Windows.Forms.Label();
+            this.label19 = new System.Windows.Forms.Label();
             this.label8 = new System.Windows.Forms.Label();
+            this.label4 = new System.Windows.Forms.Label();
             this.labelLastName = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
             this.labelLastLogin = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox4)).BeginInit();
             this.header.SuspendLayout();
             this.panelMainPaySomething.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.panelMainTransfer.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureFailed)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureValid)).BeginInit();
@@ -404,22 +422,34 @@
             // 
             // panelMainPaySomething
             // 
-            this.panelMainPaySomething.Controls.Add(this.label4);
+            this.panelMainPaySomething.Controls.Add(this.label18);
+            this.panelMainPaySomething.Controls.Add(this.pictureBox1);
             this.panelMainPaySomething.Location = new System.Drawing.Point(222, 85);
             this.panelMainPaySomething.Margin = new System.Windows.Forms.Padding(4);
             this.panelMainPaySomething.Name = "panelMainPaySomething";
             this.panelMainPaySomething.Size = new System.Drawing.Size(1378, 868);
             this.panelMainPaySomething.TabIndex = 23;
             // 
-            // label4
+            // label18
             // 
-            this.label4.AutoSize = true;
-            this.label4.Location = new System.Drawing.Point(37, 50);
-            this.label4.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
-            this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(46, 17);
-            this.label4.TabIndex = 0;
-            this.label4.Text = "label4";
+            this.label18.AutoSize = true;
+            this.label18.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label18.ForeColor = System.Drawing.Color.Snow;
+            this.label18.Location = new System.Drawing.Point(230, 82);
+            this.label18.Name = "label18";
+            this.label18.Size = new System.Drawing.Size(421, 25);
+            this.label18.TabIndex = 18;
+            this.label18.Text = "Our engineers (Mudrag) are still working on this";
+            // 
+            // pictureBox1
+            // 
+            this.pictureBox1.Image = ((System.Drawing.Image)(resources.GetObject("pictureBox1.Image")));
+            this.pictureBox1.Location = new System.Drawing.Point(211, 144);
+            this.pictureBox1.Name = "pictureBox1";
+            this.pictureBox1.Size = new System.Drawing.Size(494, 472);
+            this.pictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
+            this.pictureBox1.TabIndex = 1;
+            this.pictureBox1.TabStop = false;
             // 
             // panelMainTransfer
             // 
@@ -443,8 +473,8 @@
             this.panelMainTransfer.Controls.Add(this.labelshowsold);
             this.panelMainTransfer.Controls.Add(this.label6);
             this.panelMainTransfer.Controls.Add(this.comboBoxIBAN);
-            this.panelMainTransfer.Controls.Add(this.textBoxWriteIBAN);
             this.panelMainTransfer.Controls.Add(this.comboBoxToTransferMyIBAN);
+            this.panelMainTransfer.Controls.Add(this.textBoxWriteIBAN);
             this.panelMainTransfer.Location = new System.Drawing.Point(222, 85);
             this.panelMainTransfer.Margin = new System.Windows.Forms.Padding(4);
             this.panelMainTransfer.Name = "panelMainTransfer";
@@ -722,6 +752,10 @@
             // 
             // panelMainSendMail
             // 
+            this.panelMainSendMail.Controls.Add(this.comboBoxTakeFormat);
+            this.panelMainSendMail.Controls.Add(this.label17);
+            this.panelMainSendMail.Controls.Add(this.label16);
+            this.panelMainSendMail.Controls.Add(this.buttonGenerateHistoryTranz);
             this.panelMainSendMail.Controls.Add(this.label7);
             this.panelMainSendMail.Controls.Add(this.button1);
             this.panelMainSendMail.Location = new System.Drawing.Point(222, 74);
@@ -729,6 +763,58 @@
             this.panelMainSendMail.Name = "panelMainSendMail";
             this.panelMainSendMail.Size = new System.Drawing.Size(1378, 868);
             this.panelMainSendMail.TabIndex = 25;
+            // 
+            // comboBoxTakeFormat
+            // 
+            this.comboBoxTakeFormat.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(30)))), ((int)(((byte)(35)))), ((int)(((byte)(35)))));
+            this.comboBoxTakeFormat.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.comboBoxTakeFormat.ForeColor = System.Drawing.Color.White;
+            this.comboBoxTakeFormat.FormattingEnabled = true;
+            this.comboBoxTakeFormat.Items.AddRange(new object[] {
+            "",
+            "Excel Format",
+            "CSV Format"});
+            this.comboBoxTakeFormat.Location = new System.Drawing.Point(51, 436);
+            this.comboBoxTakeFormat.Margin = new System.Windows.Forms.Padding(4);
+            this.comboBoxTakeFormat.Name = "comboBoxTakeFormat";
+            this.comboBoxTakeFormat.Size = new System.Drawing.Size(153, 26);
+            this.comboBoxTakeFormat.TabIndex = 19;
+            // 
+            // label17
+            // 
+            this.label17.AutoSize = true;
+            this.label17.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label17.ForeColor = System.Drawing.Color.Snow;
+            this.label17.Location = new System.Drawing.Point(54, 399);
+            this.label17.Name = "label17";
+            this.label17.Size = new System.Drawing.Size(99, 25);
+            this.label17.TabIndex = 18;
+            this.label17.Text = "Export in: ";
+            // 
+            // label16
+            // 
+            this.label16.AutoSize = true;
+            this.label16.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label16.ForeColor = System.Drawing.Color.Snow;
+            this.label16.Location = new System.Drawing.Point(54, 373);
+            this.label16.Name = "label16";
+            this.label16.Size = new System.Drawing.Size(255, 25);
+            this.label16.TabIndex = 17;
+            this.label16.Text = "Generate history transaction";
+            // 
+            // buttonGenerateHistoryTranz
+            // 
+            this.buttonGenerateHistoryTranz.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(30)))), ((int)(((byte)(35)))), ((int)(((byte)(35)))));
+            this.buttonGenerateHistoryTranz.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.buttonGenerateHistoryTranz.Font = new System.Drawing.Font("MS Reference Sans Serif", 10.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.buttonGenerateHistoryTranz.ForeColor = System.Drawing.SystemColors.ControlLightLight;
+            this.buttonGenerateHistoryTranz.Location = new System.Drawing.Point(52, 489);
+            this.buttonGenerateHistoryTranz.Name = "buttonGenerateHistoryTranz";
+            this.buttonGenerateHistoryTranz.Size = new System.Drawing.Size(386, 42);
+            this.buttonGenerateHistoryTranz.TabIndex = 16;
+            this.buttonGenerateHistoryTranz.Text = "Generate";
+            this.buttonGenerateHistoryTranz.UseVisualStyleBackColor = false;
+            this.buttonGenerateHistoryTranz.Click += new System.EventHandler(this.buttonGenerateHistoryTranz_Click);
             // 
             // label7
             // 
@@ -757,22 +843,177 @@
             // 
             // panelMainSettings
             // 
+            this.panelMainSettings.Controls.Add(this.labelChangeEmail);
+            this.panelMainSettings.Controls.Add(this.textBoxChangeEmail);
+            this.panelMainSettings.Controls.Add(this.buttonChangeEmail);
+            this.panelMainSettings.Controls.Add(this.label21);
+            this.panelMainSettings.Controls.Add(this.labelBirthSettings);
+            this.panelMainSettings.Controls.Add(this.labelBirthdateSettings);
+            this.panelMainSettings.Controls.Add(this.labelEmailSettings);
+            this.panelMainSettings.Controls.Add(this.labelLastNameSettings);
+            this.panelMainSettings.Controls.Add(this.labelFirstNameSettings);
+            this.panelMainSettings.Controls.Add(this.label20);
+            this.panelMainSettings.Controls.Add(this.label19);
             this.panelMainSettings.Controls.Add(this.label8);
+            this.panelMainSettings.Controls.Add(this.label4);
             this.panelMainSettings.Location = new System.Drawing.Point(222, 75);
             this.panelMainSettings.Margin = new System.Windows.Forms.Padding(4);
             this.panelMainSettings.Name = "panelMainSettings";
             this.panelMainSettings.Size = new System.Drawing.Size(1378, 868);
             this.panelMainSettings.TabIndex = 26;
             // 
+            // labelChangeEmail
+            // 
+            this.labelChangeEmail.AutoSize = true;
+            this.labelChangeEmail.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.labelChangeEmail.ForeColor = System.Drawing.Color.Snow;
+            this.labelChangeEmail.Location = new System.Drawing.Point(25, 490);
+            this.labelChangeEmail.Name = "labelChangeEmail";
+            this.labelChangeEmail.Size = new System.Drawing.Size(135, 25);
+            this.labelChangeEmail.TabIndex = 30;
+            this.labelChangeEmail.Text = "Change Email";
+            // 
+            // textBoxChangeEmail
+            // 
+            this.textBoxChangeEmail.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(30)))), ((int)(((byte)(35)))), ((int)(((byte)(35)))));
+            this.textBoxChangeEmail.BorderColorFocused = System.Drawing.Color.FromArgb(((int)(((byte)(30)))), ((int)(((byte)(35)))), ((int)(((byte)(35)))));
+            this.textBoxChangeEmail.BorderColorIdle = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
+            this.textBoxChangeEmail.BorderColorMouseHover = System.Drawing.Color.FromArgb(((int)(((byte)(100)))), ((int)(((byte)(100)))), ((int)(((byte)(40)))));
+            this.textBoxChangeEmail.BorderThickness = 3;
+            this.textBoxChangeEmail.Cursor = System.Windows.Forms.Cursors.IBeam;
+            this.textBoxChangeEmail.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.textBoxChangeEmail.ForeColor = System.Drawing.Color.White;
+            this.textBoxChangeEmail.isPassword = false;
+            this.textBoxChangeEmail.Location = new System.Drawing.Point(28, 530);
+            this.textBoxChangeEmail.Margin = new System.Windows.Forms.Padding(4);
+            this.textBoxChangeEmail.Name = "textBoxChangeEmail";
+            this.textBoxChangeEmail.Size = new System.Drawing.Size(345, 30);
+            this.textBoxChangeEmail.TabIndex = 29;
+            this.textBoxChangeEmail.TextAlign = System.Windows.Forms.HorizontalAlignment.Left;
+            // 
+            // buttonChangeEmail
+            // 
+            this.buttonChangeEmail.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(30)))), ((int)(((byte)(35)))), ((int)(((byte)(35)))));
+            this.buttonChangeEmail.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.buttonChangeEmail.Font = new System.Drawing.Font("MS Reference Sans Serif", 10.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.buttonChangeEmail.ForeColor = System.Drawing.SystemColors.ControlLightLight;
+            this.buttonChangeEmail.Location = new System.Drawing.Point(28, 410);
+            this.buttonChangeEmail.Name = "buttonChangeEmail";
+            this.buttonChangeEmail.Size = new System.Drawing.Size(163, 33);
+            this.buttonChangeEmail.TabIndex = 28;
+            this.buttonChangeEmail.Text = "Change Email";
+            this.buttonChangeEmail.UseVisualStyleBackColor = false;
+            this.buttonChangeEmail.Click += new System.EventHandler(this.buttonChangeEmail_Click);
+            // 
+            // label21
+            // 
+            this.label21.AutoSize = true;
+            this.label21.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label21.ForeColor = System.Drawing.Color.Snow;
+            this.label21.Location = new System.Drawing.Point(23, 287);
+            this.label21.Name = "label21";
+            this.label21.Size = new System.Drawing.Size(80, 25);
+            this.label21.TabIndex = 27;
+            this.label21.Text = "Adress:";
+            // 
+            // labelBirthSettings
+            // 
+            this.labelBirthSettings.AutoSize = true;
+            this.labelBirthSettings.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.labelBirthSettings.ForeColor = System.Drawing.Color.Snow;
+            this.labelBirthSettings.Location = new System.Drawing.Point(236, 249);
+            this.labelBirthSettings.Name = "labelBirthSettings";
+            this.labelBirthSettings.Size = new System.Drawing.Size(19, 25);
+            this.labelBirthSettings.TabIndex = 26;
+            this.labelBirthSettings.Text = "-";
+            // 
+            // labelBirthdateSettings
+            // 
+            this.labelBirthdateSettings.AutoSize = true;
+            this.labelBirthdateSettings.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.labelBirthdateSettings.ForeColor = System.Drawing.Color.Snow;
+            this.labelBirthdateSettings.Location = new System.Drawing.Point(23, 249);
+            this.labelBirthdateSettings.Name = "labelBirthdateSettings";
+            this.labelBirthdateSettings.Size = new System.Drawing.Size(89, 25);
+            this.labelBirthdateSettings.TabIndex = 25;
+            this.labelBirthdateSettings.Text = "Birthdate";
+            // 
+            // labelEmailSettings
+            // 
+            this.labelEmailSettings.AutoSize = true;
+            this.labelEmailSettings.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.labelEmailSettings.ForeColor = System.Drawing.Color.Snow;
+            this.labelEmailSettings.Location = new System.Drawing.Point(153, 208);
+            this.labelEmailSettings.Name = "labelEmailSettings";
+            this.labelEmailSettings.Size = new System.Drawing.Size(19, 25);
+            this.labelEmailSettings.TabIndex = 24;
+            this.labelEmailSettings.Text = "-";
+            // 
+            // labelLastNameSettings
+            // 
+            this.labelLastNameSettings.AutoSize = true;
+            this.labelLastNameSettings.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.labelLastNameSettings.ForeColor = System.Drawing.Color.Snow;
+            this.labelLastNameSettings.Location = new System.Drawing.Point(153, 169);
+            this.labelLastNameSettings.Name = "labelLastNameSettings";
+            this.labelLastNameSettings.Size = new System.Drawing.Size(19, 25);
+            this.labelLastNameSettings.TabIndex = 23;
+            this.labelLastNameSettings.Text = "-";
+            // 
+            // labelFirstNameSettings
+            // 
+            this.labelFirstNameSettings.AutoSize = true;
+            this.labelFirstNameSettings.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.labelFirstNameSettings.ForeColor = System.Drawing.Color.Snow;
+            this.labelFirstNameSettings.Location = new System.Drawing.Point(153, 129);
+            this.labelFirstNameSettings.Name = "labelFirstNameSettings";
+            this.labelFirstNameSettings.Size = new System.Drawing.Size(19, 25);
+            this.labelFirstNameSettings.TabIndex = 22;
+            this.labelFirstNameSettings.Text = "-";
+            // 
+            // label20
+            // 
+            this.label20.AutoSize = true;
+            this.label20.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label20.ForeColor = System.Drawing.Color.Snow;
+            this.label20.Location = new System.Drawing.Point(23, 208);
+            this.label20.Name = "label20";
+            this.label20.Size = new System.Drawing.Size(66, 25);
+            this.label20.TabIndex = 21;
+            this.label20.Text = "Email:";
+            // 
+            // label19
+            // 
+            this.label19.AutoSize = true;
+            this.label19.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label19.ForeColor = System.Drawing.Color.Snow;
+            this.label19.Location = new System.Drawing.Point(23, 169);
+            this.label19.Name = "label19";
+            this.label19.Size = new System.Drawing.Size(109, 25);
+            this.label19.TabIndex = 20;
+            this.label19.Text = "Last name:";
+            // 
             // label8
             // 
             this.label8.AutoSize = true;
-            this.label8.Location = new System.Drawing.Point(37, 50);
-            this.label8.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.label8.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label8.ForeColor = System.Drawing.Color.Snow;
+            this.label8.Location = new System.Drawing.Point(23, 129);
             this.label8.Name = "label8";
-            this.label8.Size = new System.Drawing.Size(46, 17);
-            this.label8.TabIndex = 0;
-            this.label8.Text = "label8";
+            this.label8.Size = new System.Drawing.Size(114, 25);
+            this.label8.TabIndex = 19;
+            this.label8.Text = "First name: ";
+            // 
+            // label4
+            // 
+            this.label4.AutoSize = true;
+            this.label4.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label4.ForeColor = System.Drawing.Color.Snow;
+            this.label4.Location = new System.Drawing.Point(334, 45);
+            this.label4.Name = "label4";
+            this.label4.Size = new System.Drawing.Size(289, 25);
+            this.label4.TabIndex = 18;
+            this.label4.Text = "Informations about your account";
             // 
             // labelLastName
             // 
@@ -824,11 +1065,11 @@
             this.Controls.Add(this.bunifuFlatButton3);
             this.Controls.Add(this.Dashboard);
             this.Controls.Add(this.bunifuFlatButton2);
+            this.Controls.Add(this.panelMainTransfer);
+            this.Controls.Add(this.panelMainPaySomething);
             this.Controls.Add(this.panelMainDashboard);
             this.Controls.Add(this.panelMainSettings);
             this.Controls.Add(this.panelMainSendMail);
-            this.Controls.Add(this.panelMainTransfer);
-            this.Controls.Add(this.panelMainPaySomething);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
             this.KeyPreview = true;
             this.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
@@ -840,6 +1081,7 @@
             this.header.PerformLayout();
             this.panelMainPaySomething.ResumeLayout(false);
             this.panelMainPaySomething.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
             this.panelMainTransfer.ResumeLayout(false);
             this.panelMainTransfer.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureFailed)).EndInit();
@@ -874,11 +1116,9 @@
         private System.Windows.Forms.Panel panelMainDashboard;
         private System.Windows.Forms.Label label4_Click;
         private System.Windows.Forms.Panel panelMainPaySomething;
-        private System.Windows.Forms.Label label4;
         private System.Windows.Forms.Panel panelMainTransfer;
         private System.Windows.Forms.Panel panelMainSendMail;
         private System.Windows.Forms.Panel panelMainSettings;
-        private System.Windows.Forms.Label label8;
         private System.Windows.Forms.ComboBox comboBoxIBAN;
         private System.Windows.Forms.Label label6;
         private Bunifu.Framework.UI.BunifuCustomLabel labelshowcurrency;
@@ -906,5 +1146,24 @@
         private System.Windows.Forms.Label label7;
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.Label labelLastLogin;
+        private System.Windows.Forms.Label label16;
+        private System.Windows.Forms.Button buttonGenerateHistoryTranz;
+        private System.Windows.Forms.ComboBox comboBoxTakeFormat;
+        private System.Windows.Forms.Label label17;
+        private System.Windows.Forms.Label label18;
+        private System.Windows.Forms.PictureBox pictureBox1;
+        private System.Windows.Forms.Label labelEmailSettings;
+        private System.Windows.Forms.Label labelLastNameSettings;
+        private System.Windows.Forms.Label labelFirstNameSettings;
+        private System.Windows.Forms.Label label20;
+        private System.Windows.Forms.Label label19;
+        private System.Windows.Forms.Label label8;
+        private System.Windows.Forms.Label label4;
+        private System.Windows.Forms.Label label21;
+        private System.Windows.Forms.Label labelBirthSettings;
+        private System.Windows.Forms.Label labelBirthdateSettings;
+        private System.Windows.Forms.Button buttonChangeEmail;
+        private System.Windows.Forms.Label labelChangeEmail;
+        private Bunifu.Framework.UI.BunifuMetroTextbox textBoxChangeEmail;
     }
 }
