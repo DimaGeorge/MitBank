@@ -131,7 +131,7 @@ namespace login2
             }
             
             string username = this.textUsername.Text;
-            string password = this.textPassword.Text;     
+            string password =DataManagement.getPass(this.textPassword.Text);     
 
             if (radioIndivid.Checked)
             {

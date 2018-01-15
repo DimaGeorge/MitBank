@@ -53,6 +53,15 @@ namespace login2
             }
         }
 
+        public static string getPass(string pass)
+        {
+            byte[] data = System.Text.Encoding.ASCII.GetBytes(pass);
+            data = new System.Security.Cryptography.SHA256Managed().ComputeHash(data);
+            MessageBox.Show(System.Text.Encoding.GetEncoding("windows-1252").GetString(data));
+            string g = System.Text.Encoding.GetEncoding("windows-1252").GetString(data);
+
+            return g;
+        }
 
         public static void addIndividualCustomer(Individual individ, string username, string password)
         {
