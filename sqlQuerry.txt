@@ -97,12 +97,13 @@ GO
 CREATE TABLE IndividualCustomers(
 	IndividualID		int								NOT NULL
 	,CustomerID			int								NOT NULL
+	,Data				int	
 	,CONSTRAINT PK_IndividualCustomers
 		PRIMARY KEY CLUSTERED (IndividualID, CustomerID)
 	,CONSTRAINT FK_IndividualCustomers_Individuals
 		FOREIGN KEY (IndividualID) REFERENCES Individuals(ID)
 	,CONSTRAINT FK_IndividualCustomers_Customers
-		FOREIGN KEY (IndividualID) REFERENCES Customers(ID)
+		FOREIGN KEY (CustomerID) REFERENCES Customers(ID)
 );
 GO
 
@@ -563,7 +564,7 @@ CREATE PROCEDURE AddNormalUser(
 AS
 BEGIN
 	BEGIN TRY
-		BEGIN TRANSACTION AddingNormalUser
+			BEGIN TRANSACTION AddingNormalUser
 	
 			INSERT INTO Usernames(UserType, Username, Pass)
 			VALUES(1, @Username, @Password)
@@ -675,7 +676,11 @@ GRANT SELECT ON TypeBankingPackets	TO ApplicationRole
 
 GRANT CONTROL ON UserAccounts		TO ApplicationRole
 GRANT CONTROL ON Individuals		TO ApplicationRole
-
+GRANT CONTROL ON Customers			TO ApplicationRole
+GRANT CONTROL ON Companies			TO ApplicationRole
+GRANT CONTROL ON IndividualCustomers TO ApplicationRole
+GRANT CONTROL ON Usernames				TO ApplicationRole
+GRANT CONTROL ON NormalUsers			TO ApplicationRole
 GO
 
 CREATE LOGIN MitBankApp WITH PASSWORD='pass'
@@ -855,5 +860,4 @@ select * from TypesTransaction
 select * from TypeBankingPackets
 select * from HistoryTransaction
 exec transferMoney 'RO93MITB0410120579132422','RO93MITB0410120579132411',200
-
 
