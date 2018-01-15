@@ -16,6 +16,7 @@ namespace login2
         static int IDSession;   
         public static bool tryConnection(string username,string password)
         {
+
             using (var context = new MitBankDBEntities2())
             {
                 if (context.getUandPProcedure(username, password).FirstOrDefault().HasValue)

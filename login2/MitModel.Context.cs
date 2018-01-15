@@ -35,6 +35,9 @@ namespace login2
         public DbSet<viewEmail> viewEmails { get; set; }
     
         public virtual ObjectResult<addHistoryTransaction_Result> addHistoryTransaction(Nullable<int> userId, string userAccountIban, string toWichAccount, Nullable<int> typeTransaction, Nullable<double> value, string date)
+        public DbSet<Customer> Customers { get; set; }
+        public DbSet<Company> Companies { get; set; }
+        public DbSet<IndividualCustomer> IndividualCustomers { get; set; }
         {
             var userIdParameter = userId.HasValue ?
                 new ObjectParameter("userId", userId) :

@@ -78,6 +78,8 @@ CREATE TABLE Individuals(
 );
 GO
 
+
+
 CREATE TABLE Companies(
 	ID					int				IDENTITY(1,1)	NOT NULL
 	,CustomerID			int								NOT NULL
@@ -97,12 +99,13 @@ GO
 CREATE TABLE IndividualCustomers(
 	IndividualID		int								NOT NULL
 	,CustomerID			int								NOT NULL
+	,Data				int	
 	,CONSTRAINT PK_IndividualCustomers
 		PRIMARY KEY CLUSTERED (IndividualID, CustomerID)
 	,CONSTRAINT FK_IndividualCustomers_Individuals
 		FOREIGN KEY (IndividualID) REFERENCES Individuals(ID)
 	,CONSTRAINT FK_IndividualCustomers_Customers
-		FOREIGN KEY (IndividualID) REFERENCES Customers(ID)
+		FOREIGN KEY (CustomerID) REFERENCES Customers(ID)
 );
 GO
 
@@ -263,22 +266,11 @@ GO
 
 -- +++++++++++++++++++++++++++++++++++++++ CREATING VIEWS ++++++++++++++++++++++++++++++++++++++++
 
-<<<<<<< HEAD
 CREATE VIEW ComisionOffert
-=======
-CREATE VIEW UsernamesView
 AS
-SELECT *
-FROM Usernames
-WHERE Username = CURRENT_USER
-GO
 
 
 
-
-CREATE VIEW CustomersView
->>>>>>> master
-AS
 SELECT 
 	tp.NameTypePacket
 	,tt.TypeTransaction
@@ -289,7 +281,7 @@ FROM
 		ON tt.ID = cs.IDTypeTransaction
 	INNER JOIN TypeBankingPackets as tp
 		ON tp.ID = cs.IDBankPacket
-
+GO
 
 --- Stored Procedures ---------------------------------------------------------------------------------
 
@@ -574,7 +566,7 @@ CREATE PROCEDURE AddNormalUser(
 AS
 BEGIN
 	BEGIN TRY
-		BEGIN TRANSACTION AddingNormalUser
+			BEGIN TRANSACTION AddingNormalUser
 	
 			INSERT INTO Usernames(UserType, Username, Pass)
 			VALUES(1, @Username, @Password)
@@ -660,7 +652,26 @@ BEGIN
 
 END
 GO
+CREATE PROCEDURE HistoryTransactionProc
+	@idUser int
+AS
+BEGIN
+	SELECT *,TypesTransaction.TypeTransaction FROM HistoryTransaction
+		INNER JOIN TypesTransaction
+			ON 
+		WHERE HistoryTransaction.UserAccountID = @idUser;
 
+END
+
+select * from Individuals
+
+GO
+CREATE VIEW viewEmails
+AS
+	select ID, email from Individuals
+;
+
+GO
 
 --- Roles --------------------------------------------------------------------------------------------
 CREATE ROLE ApplicationRole
@@ -678,12 +689,24 @@ GRANT EXEC ON getAnyoneCurrency		TO ApplicationRole
 GRANT EXEC ON addHistoryTransaction	TO ApplicationRole
 GRANT EXEC ON insertLastLogin		TO ApplicationRole
 GRANT EXEC ON getLastLogin			TO ApplicationRole
-
+GRANT EXEC ON HistoryTransactionProc	TO ApplicationRole
 
 GRANT SELECT ON CurrentCurrency		TO ApplicationRole
 GRANT SELECT ON ComisionStatus		TO ApplicationRole
 GRANT SELECT ON TypeBankingPackets	TO ApplicationRole
- 
+GRANT UPDATE ON viewEmails			TO ApplicationRole
+
+GRANT CONTROL ON UserAccounts		TO ApplicationRole
+GRANT CONTROL ON Individuals		TO ApplicationRole
+<<<<<<< HEAD
+select * from Individuals
+=======
+GRANT CONTROL ON Customers			TO ApplicationRole
+GRANT CONTROL ON Companies			TO ApplicationRole
+GRANT CONTROL ON IndividualCustomers TO ApplicationRole
+GRANT CONTROL ON Usernames				TO ApplicationRole
+GRANT CONTROL ON NormalUsers			TO ApplicationRole
+>>>>>>> detachedFromDimi
 GO
 
 CREATE LOGIN MitBankApp WITH PASSWORD='pass'
@@ -862,6 +885,11 @@ select * from ComisionStatus
 select * from TypesTransaction
 select * from TypeBankingPackets
 select * from HistoryTransaction
-exec transferMoney 'RO93MITB0410120579132422','RO93MITB0410120579132411',200
+exec transferMoney 'RO93MITB0410120579132422','RO93MITB0410120579132411',200 , 200
 
+<<<<<<< HEAD
 
+select * from IndividualCustomers
+select * from Individuals
+=======
+>>>>>>> detachedFromDimi

@@ -92,16 +92,16 @@
     <Compile Include="AddNormalUser_Result.cs">
       <DependentUpon>MitModel.tt</DependentUpon>
     </Compile>
-    <Compile Include="AdminMainForm.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="AdminMainForm.Designer.cs">
-      <DependentUpon>AdminMainForm.cs</DependentUpon>
-    </Compile>
     <Compile Include="ComisionStatu.cs">
       <DependentUpon>MitModel.tt</DependentUpon>
     </Compile>
+    <Compile Include="Company.cs">
+      <DependentUpon>MitModel.tt</DependentUpon>
+    </Compile>
     <Compile Include="CurrentCurrency.cs">
+      <DependentUpon>MitModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Customer.cs">
       <DependentUpon>MitModel.tt</DependentUpon>
     </Compile>
     <Compile Include="DataManagement - adminOperations.cs" />
@@ -131,6 +131,9 @@
     <Compile Include="Individual.cs">
       <DependentUpon>MitModel.tt</DependentUpon>
     </Compile>
+    <Compile Include="IndividualCustomer.cs">
+      <DependentUpon>MitModel.tt</DependentUpon>
+    </Compile>
     <Compile Include="MitException.cs" />
     <Compile Include="MitModel.Context.cs">
       <AutoGen>True</AutoGen>
@@ -146,6 +149,9 @@
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
       <DependentUpon>MitModel.edmx</DependentUpon>
+    </Compile>
+    <Compile Include="NormalUser.cs">
+      <DependentUpon>MitModel.tt</DependentUpon>
     </Compile>
     <Compile Include="Page.cs" />
     <Compile Include="Program.cs" />
@@ -166,9 +172,9 @@
     <Compile Include="viewEmail.cs">
       <DependentUpon>MitModel.tt</DependentUpon>
     </Compile>
-    <EmbeddedResource Include="AdminMainForm.resx">
-      <DependentUpon>AdminMainForm.cs</DependentUpon>
-    </EmbeddedResource>
+    <Compile Include="Username.cs">
+      <DependentUpon>MitModel.tt</DependentUpon>
+    </Compile>
     <EmbeddedResource Include="Form1.resx">
       <DependentUpon>Form1.cs</DependentUpon>
     </EmbeddedResource>

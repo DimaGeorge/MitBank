@@ -12,16 +12,13 @@ namespace login2
     using System;
     using System.Collections.Generic;
     
-    public partial class UserAccount
+    public partial class IndividualCustomer
     {
-        public int ID { get; set; }
-        public Nullable<int> BankPacket { get; set; }
-        public string AccountNumber { get; set; }
-        public System.DateTime ValabilityUntil { get; set; }
-        public string Currency { get; set; }
-        public double Sold { get; set; }
-        public Nullable<int> AccountCustomerID { get; set; }
+        public int IndividualID { get; set; }
+        public int CustomerID { get; set; }
+        public Nullable<int> Data { get; set; }
     
         public virtual Customer Customer { get; set; }
+        public virtual Individual Individual { get; set; }
     }
 }

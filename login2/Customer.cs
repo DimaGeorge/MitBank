@@ -12,22 +12,22 @@ namespace login2
     using System;
     using System.Collections.Generic;
     
-    public partial class Individual
+    public partial class Customer
     {
-        public Individual()
+        public Customer()
         {
+            this.UserAccounts = new HashSet<UserAccount>();
             this.Companies = new HashSet<Company>();
             this.IndividualCustomers = new HashSet<IndividualCustomer>();
+            this.NormalUsers = new HashSet<NormalUser>();
         }
     
         public int ID { get; set; }
-        public string FirstName { get; set; }
-        public string LastName { get; set; }
-        public string Email { get; set; }
-        public string CNP { get; set; }
-        public System.DateTime Birthday { get; set; }
+        public int CustomerType { get; set; }
     
+        public virtual ICollection<UserAccount> UserAccounts { get; set; }
         public virtual ICollection<Company> Companies { get; set; }
         public virtual ICollection<IndividualCustomer> IndividualCustomers { get; set; }
+        public virtual ICollection<NormalUser> NormalUsers { get; set; }
     }
 }

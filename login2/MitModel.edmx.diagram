@@ -4,14 +4,28 @@
   <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
     <!-- Diagram content (shape and connector positions) -->
     <edmx:Diagrams>
-      <Diagram DiagramId="fdd1dfb05b484edda9143a9575826485" Name="Diagram1" ZoomLevel="82">
+      <Diagram DiagramId="fdd1dfb05b484edda9143a9575826485" Name="Diagram1" ZoomLevel="59">
         <EntityTypeShape EntityType="MitBankDBModel.ComisionStatu" Width="1.5" PointX="0.75" PointY="0.75" />
         <EntityTypeShape EntityType="MitBankDBModel.CurrentCurrency" Width="1.5" PointX="2.75" PointY="0.75" />
         <EntityTypeShape EntityType="MitBankDBModel.Individual" Width="1.5" PointX="0.75" PointY="3.75" />
         <EntityTypeShape EntityType="MitBankDBModel.TypeBankingPacket" Width="1.5" PointX="2.75" PointY="3.75" />
         <EntityTypeShape EntityType="MitBankDBModel.UserAccount" Width="1.5" PointX="4.75" PointY="0.75" />
         <EntityTypeShape EntityType="MitBankDBModel.viewEmail" Width="1.5" PointX="4.75" PointY="4.75" />
-      </Diagram>
+        <EntityTypeShape EntityType="MitBankDBModel.UserAccount" PointX="2.875" PointY="2.875" Width="1.5" />
+        <EntityTypeShape EntityType="MitBankDBModel.Customer" PointX="3" PointY="6.375" Width="1.5" />
+        <AssociationConnector Association="MitBankDBModel.FK_UserAccounts_Customers" />
+        <EntityTypeShape EntityType="MitBankDBModel.Company" PointX="6.25" PointY="7.5" Width="1.5" />
+        <AssociationConnector Association="MitBankDBModel.FK_Companies_Customers" />
+        <EntityTypeShape EntityType="MitBankDBModel.IndividualCustomer" Width="1.5" PointX="5.375" PointY="10.625" />
+        <EntityTypeShape EntityType="MitBankDBModel.Individual" Width="1.5" PointX="8.375" PointY="12.125" />
+        <AssociationConnector Association="MitBankDBModel.FK_Companies_Individuals" />
+        <AssociationConnector Association="MitBankDBModel.FK_IndividualCustomers_Customers" />
+        <AssociationConnector Association="MitBankDBModel.FK_IndividualCustomers_Individuals" />
+        <EntityTypeShape EntityType="MitBankDBModel.NormalUser" Width="1.5" PointX="6.75" PointY="3.5" />
+        <EntityTypeShape EntityType="MitBankDBModel.Username" Width="1.5" PointX="4.875" PointY="3.375" />
+        <AssociationConnector Association="MitBankDBModel.FK_NormalUsers_Customers" />
+        <AssociationConnector Association="MitBankDBModel.FK_NormalUsers_Usernames" />
+        </Diagram>
     </edmx:Diagrams>
   </edmx:Designer>
 </edmx:Edmx>

@@ -64,16 +64,17 @@ namespace login2
         private void loginButon_Click(object sender, EventArgs e)
         {
             Properties.Settings.Default.Reload();
-            
-            
-            if (DataManagement.tryConnection(usernameLoginTxtbox.Text, passwordLoginTxtbox.Text))
+
+            string pass = DataManagement.getPass(passwordLoginTxtbox.Text);
+
+            if (DataManagement.tryConnection(usernameLoginTxtbox.Text, pass))
             {
                 this.Visible = false;
                 this.Hide();
                 
                 if (isAdmin)
                 {
-                    
+               
                     FormAdmin frm = new FormAdmin();
                     frm.Show();
                     isAdmin = false;

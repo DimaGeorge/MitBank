@@ -31,7 +31,20 @@ namespace login2
             //panelSettings.Visible = false;
 
             lastMenupanel = panelDashboard;
+            for(int i = 1; i < 32; i++)
+            {
+                this.comboDay.Items.Add(i.ToString());
+            }
 
+            for (int i = 1; i < 13; i++)
+            {
+                this.comboMonth.Items.Add(i.ToString());
+            }
+
+            for (int i = 1900; i < 2019; i++)
+            {
+                this.comboYear.Items.Add(i.ToString());
+            }
         }
 
         private void label11_Click(object sender, EventArgs e)
@@ -97,6 +110,112 @@ namespace login2
             panelChangeCurrency.Visible = true;
             lastMenupanel.SendToBack();
             lastMenupanel = panelChangeCurrency;
+        }
+
+        private void label3_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void label7_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void buttonAddInd_Click(object sender, EventArgs e)
+        {
+            if (textPassword.Text != textPassword2.Text)
+            {
+                MessageBox.Show("parolele nu coincid!");
+                return;
+            }
+            
+            string username = this.textUsername.Text;
+            string password =DataManagement.getPass(this.textPassword.Text);     
+
+            if (radioIndivid.Checked)
+            {
+                var individ = new Individual
+                {
+                    FirstName = this.textFirstName.Text,
+                    LastName = this.textLastName.Text,
+                    Email = this.textEmail.Text,
+                    Birthday = new DateTime(
+                                Int32.Parse(this.comboYear.Text),
+                                Int32.Parse(this.comboMonth.Text),
+                                Int32.Parse(this.comboDay.Text)
+                                ),
+                    CNP = this.textCNP.Text,
+                };
+
+
+                DataManagement.addIndividualCustomer(individ, username, password);
+            }
+            else
+            {
+                var individ = new Individual
+                {
+                    FirstName = this.textFirstName.Text,
+                    LastName = this.textLastName.Text,
+                    Email = this.textEmail.Text,
+                    Birthday = new DateTime(
+                                Int32.Parse(this.comboYear.Text),
+                                Int32.Parse(this.comboMonth.Text),
+                                Int32.Parse(this.comboDay.Text)
+                                ),
+                    CNP = this.textCNP.Text,
+                };
+
+                var company = new Company
+                {
+                    CIF = Int32.Parse(this.textCif.Text),
+                    Name = this.textCompany.Text,
+                    Address = this.textAddress.Text
+                };
+                DataManagement.addCompany(individ, company, username, password);
+
+            }
+        }
+
+        private void panelAddUser_Paint(object sender, PaintEventArgs e)
+        {
+
+        }
+
+        private void label10_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void textBox1_TextChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void radioIndivid_CheckedChanged(object sender, EventArgs e)
+        {
+            if (radioIndivid.Checked)
+            {
+                this.labelCompanyName.Hide();
+                this.labelCif.Hide();
+                this.labelAddress.Hide();
+                this.textAddress.Hide();
+                this.textCif.Hide();
+                this.textCompany.Hide();
+            }
+        }
+
+        private void radioComp_CheckedChanged(object sender, EventArgs e)
+        {
+            if (radioComp.Checked)
+            {
+                this.labelCompanyName.Show();
+                this.labelCif.Show();
+                this.labelAddress.Show();
+                this.textAddress.Show();
+                this.textCif.Show();
+                this.textCompany.Show();
+            }
         }
     }
 }
