@@ -73,14 +73,14 @@ namespace login2
                 
                 if (isAdmin)
                 {
-                    this.Visible = true;
+               
                     FormAdmin frm = new FormAdmin();
                     frm.Show();
                     isAdmin = false;
                 }
                 else
                 {
-                    this.Visible = true;
+                    
                     Form2 frm = new Form2();
                     frm.Show();
                 }

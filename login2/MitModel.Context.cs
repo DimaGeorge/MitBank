@@ -32,7 +32,12 @@ namespace login2
         public DbSet<CurrentCurrency> CurrentCurrencies { get; set; }
         public DbSet<TypeBankingPacket> TypeBankingPackets { get; set; }
         public DbSet<UserAccount> UserAccounts { get; set; }
+        public DbSet<Customer> Customers { get; set; }
+        public DbSet<Company> Companies { get; set; }
+        public DbSet<IndividualCustomer> IndividualCustomers { get; set; }
         public DbSet<Individual> Individuals { get; set; }
+        public DbSet<NormalUser> NormalUsers { get; set; }
+        public DbSet<Username> Usernames { get; set; }
     
         public virtual ObjectResult<AddNormalUser_Result> AddNormalUser(Nullable<int> iDcustomer, string username, string password)
         {

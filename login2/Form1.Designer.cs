@@ -512,7 +512,7 @@
             this.passwordLoginTxtbox.Name = "passwordLoginTxtbox";
             this.passwordLoginTxtbox.Size = new System.Drawing.Size(273, 27);
             this.passwordLoginTxtbox.TabIndex = 12;
-            this.passwordLoginTxtbox.Text = "sscriban";
+            this.passwordLoginTxtbox.Text = "adima";
             this.passwordLoginTxtbox.TextAlign = System.Windows.Forms.HorizontalAlignment.Left;
             // 
             // pictureBox2
@@ -542,7 +542,7 @@
             this.usernameLoginTxtbox.Name = "usernameLoginTxtbox";
             this.usernameLoginTxtbox.Size = new System.Drawing.Size(273, 27);
             this.usernameLoginTxtbox.TabIndex = 10;
-            this.usernameLoginTxtbox.Text = "sscriban";
+            this.usernameLoginTxtbox.Text = "adima";
             this.usernameLoginTxtbox.TextAlign = System.Windows.Forms.HorizontalAlignment.Left;
             // 
             // Form1
