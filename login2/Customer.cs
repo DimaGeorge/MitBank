@@ -16,18 +16,18 @@ namespace login2
     {
         public Customer()
         {
-            this.UserAccounts = new HashSet<UserAccount>();
             this.Companies = new HashSet<Company>();
             this.IndividualCustomers = new HashSet<IndividualCustomer>();
             this.NormalUsers = new HashSet<NormalUser>();
+            this.UserAccounts = new HashSet<UserAccount>();
         }
     
         public int ID { get; set; }
         public int CustomerType { get; set; }
     
-        public virtual ICollection<UserAccount> UserAccounts { get; set; }
         public virtual ICollection<Company> Companies { get; set; }
         public virtual ICollection<IndividualCustomer> IndividualCustomers { get; set; }
         public virtual ICollection<NormalUser> NormalUsers { get; set; }
+        public virtual ICollection<UserAccount> UserAccounts { get; set; }
     }
 }

@@ -207,7 +207,7 @@ namespace login2
             List<string> list = DataManagement.getDashboardInfo();
             foreach (string iban in list)
             {
-                var context = new MitBankDBEntities2();
+                var context = new MitBankDBEntities();
 
                 Label lb = UIDashboardAccountFrame.createFrame(iban, i);
                 i++;

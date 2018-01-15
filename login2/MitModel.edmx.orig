@@ -4,7 +4,10 @@
   <edmx:Runtime>
     <!-- SSDL content -->
     <edmx:StorageModels>
-      <Schema Namespace="MitBankDBModel.Store" Alias="Self" Provider="System.Data.SqlClient" ProviderManifestToken="2008" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+<<<<<<< HEAD
+    <Schema Namespace="MitBankDBModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2008" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+=======
+    <Schema Namespace="MitBankDBModel.Store" Alias="Self" Provider="System.Data.SqlClient" ProviderManifestToken="2008" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
         <EntityContainer Name="MitBankDBModelStoreContainer">
           <EntitySet Name="ComisionStatus" EntityType="MitBankDBModel.Store.ComisionStatus" store:Type="Tables" Schema="dbo" />
           <EntitySet Name="Companies" EntityType="MitBankDBModel.Store.Companies" store:Type="Tables" Schema="dbo" />
@@ -16,12 +19,6 @@
           <EntitySet Name="TypeBankingPackets" EntityType="MitBankDBModel.Store.TypeBankingPackets" store:Type="Tables" Schema="dbo" />
           <EntitySet Name="UserAccounts" EntityType="MitBankDBModel.Store.UserAccounts" store:Type="Tables" Schema="dbo" />
           <EntitySet Name="Usernames" EntityType="MitBankDBModel.Store.Usernames" store:Type="Tables" Schema="dbo" />
-          <EntitySet Name="viewEmails" EntityType="MitBankDBModel.Store.viewEmails" store:Type="Views" store:Schema="dbo" store:Name="viewEmails">
-            <DefiningQuery>SELECT 
-      [viewEmails].[ID] AS [ID], 
-      [viewEmails].[email] AS [email]
-      FROM [dbo].[viewEmails] AS [viewEmails]</DefiningQuery>
-          </EntitySet>
           <AssociationSet Name="FK_Companies_Customers" Association="MitBankDBModel.Store.FK_Companies_Customers">
             <End Role="Customers" EntitySet="Customers" />
             <End Role="Companies" EntitySet="Companies" />
@@ -51,11 +48,12 @@
             <End Role="UserAccounts" EntitySet="UserAccounts" />
           </AssociationSet>
         </EntityContainer>
+>>>>>>> detachedFromDimi
         <EntityType Name="ComisionStatus">
           <Key>
             <PropertyRef Name="ID" />
           </Key>
-          <Property Name="ID" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+          <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
           <Property Name="IDTypeTransaction" Type="int" />
           <Property Name="IDBankPacket" Type="int" />
           <Property Name="Comision" Type="float" />
@@ -75,8 +73,8 @@
           <Key>
             <PropertyRef Name="CurrencyName" />
           </Key>
-          <Property Name="ID" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
-          <Property Name="CurrencyName" Type="nvarchar" Nullable="false" MaxLength="10" />
+          <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="CurrencyName" Type="nvarchar" MaxLength="10" Nullable="false" />
           <Property Name="ValueBuy" Type="float" Nullable="false" />
           <Property Name="ValueSel" Type="float" Nullable="false" />
         </EntityType>
@@ -100,11 +98,11 @@
           <Key>
             <PropertyRef Name="ID" />
           </Key>
-          <Property Name="ID" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
-          <Property Name="FirstName" Type="nvarchar" Nullable="false" MaxLength="100" />
-          <Property Name="LastName" Type="nvarchar" Nullable="false" MaxLength="100" />
-          <Property Name="Email" Type="nvarchar" Nullable="false" MaxLength="200" />
-          <Property Name="CNP" Type="nvarchar" Nullable="false" MaxLength="13" />
+          <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="FirstName" Type="nvarchar" MaxLength="100" Nullable="false" />
+          <Property Name="LastName" Type="nvarchar" MaxLength="100" Nullable="false" />
+          <Property Name="Email" Type="nvarchar" MaxLength="200" Nullable="false" />
+          <Property Name="CNP" Type="nvarchar" MaxLength="13" Nullable="false" />
           <Property Name="Birthday" Type="date" Nullable="false" />
         </EntityType>
         <EntityType Name="NormalUsers">
@@ -118,21 +116,33 @@
           <Key>
             <PropertyRef Name="ID" />
           </Key>
-          <Property Name="ID" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+          <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
           <Property Name="NameTypePacket" Type="nchar" MaxLength="100" />
         </EntityType>
         <EntityType Name="UserAccounts">
           <Key>
             <PropertyRef Name="ID" />
           </Key>
-          <Property Name="ID" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+          <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
           <Property Name="BankPacket" Type="int" />
-          <Property Name="AccountNumber" Type="nchar" Nullable="false" MaxLength="30" />
+          <Property Name="AccountNumber" Type="nchar" MaxLength="30" Nullable="false" />
           <Property Name="ValabilityUntil" Type="date" Nullable="false" />
-          <Property Name="Currency" Type="nvarchar" Nullable="false" MaxLength="10" />
+          <Property Name="Currency" Type="nvarchar" MaxLength="10" Nullable="false" />
           <Property Name="Sold" Type="float" Nullable="false" />
           <Property Name="AccountCustomerID" Type="int" />
         </EntityType>
+<<<<<<< HEAD
+        <!--Errors Found During Generation:
+warning 6002: The table/view 'MitBankDB.dbo.viewEmails' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
+        <EntityType Name="viewEmails">
+          <Key>
+            <PropertyRef Name="ID" />
+            <PropertyRef Name="email" />
+          </Key>
+          <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="email" Type="nvarchar" MaxLength="200" Nullable="false" />
+        </EntityType>
+=======
         <EntityType Name="Usernames">
           <Key>
             <PropertyRef Name="ID" />
@@ -141,17 +151,6 @@
           <Property Name="UserType" Type="int" Nullable="false" />
           <Property Name="Username" Type="nvarchar" Nullable="false" MaxLength="101" />
           <Property Name="Pass" Type="nvarchar" Nullable="false" MaxLength="200" />
-        </EntityType>
-        <!--Errors Found During Generation:
-      warning 6002: The table/view 'MitBankDB.dbo.viewEmails' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.
-      -->
-        <EntityType Name="viewEmails">
-          <Key>
-            <PropertyRef Name="ID" />
-            <PropertyRef Name="email" />
-          </Key>
-          <Property Name="ID" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
-          <Property Name="email" Type="nvarchar" Nullable="false" MaxLength="200" />
         </EntityType>
         <Association Name="FK_Companies_Customers">
           <End Role="Customers" Type="MitBankDBModel.Store.Customers" Multiplicity="1" />
@@ -237,6 +236,7 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
+>>>>>>> detachedFromDimi
         <Function Name="addHistoryTransaction" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
           <Parameter Name="userId" Type="int" Mode="In" />
           <Parameter Name="UserAccountIban" Type="nvarchar" Mode="In" />
@@ -299,51 +299,30 @@
           <Parameter Name="valueToTransfer" Type="float" Mode="In" />
           <Parameter Name="valueToRecieve" Type="float" Mode="In" />
         </Function>
-      </Schema>
-    </edmx:StorageModels>
+        <EntityContainer Name="MitBankDBModelStoreContainer">
+          <EntitySet Name="ComisionStatus" EntityType="Self.ComisionStatus" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="CurrentCurrency" EntityType="Self.CurrentCurrency" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Individuals" EntityType="Self.Individuals" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="TypeBankingPackets" EntityType="Self.TypeBankingPackets" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="UserAccounts" EntityType="Self.UserAccounts" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="viewEmails" EntityType="Self.viewEmails" store:Type="Views" store:Schema="dbo">
+            <DefiningQuery>SELECT 
+[viewEmails].[ID] AS [ID], 
+[viewEmails].[email] AS [email]
+FROM [dbo].[viewEmails] AS [viewEmails]</DefiningQuery>
+          </EntitySet>
+        </EntityContainer>
+      </Schema></edmx:StorageModels>
     <!-- CSDL content -->
     <edmx:ConceptualModels>
       <Schema Namespace="MitBankDBModel" Alias="Self" p1:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:p1="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
-        <EntityContainer Name="MitBankDBEntities" p1:LazyLoadingEnabled="true">
+        <EntityContainer Name="MitBankDBEntities2" p1:LazyLoadingEnabled="true">
           <EntitySet Name="ComisionStatus" EntityType="MitBankDBModel.ComisionStatu" />
-          <EntitySet Name="Companies" EntityType="MitBankDBModel.Company" />
           <EntitySet Name="CurrentCurrencies" EntityType="MitBankDBModel.CurrentCurrency" />
-          <EntitySet Name="Customers" EntityType="MitBankDBModel.Customer" />
-          <EntitySet Name="IndividualCustomers" EntityType="MitBankDBModel.IndividualCustomer" />
           <EntitySet Name="Individuals" EntityType="MitBankDBModel.Individual" />
-          <EntitySet Name="NormalUsers" EntityType="MitBankDBModel.NormalUser" />
           <EntitySet Name="TypeBankingPackets" EntityType="MitBankDBModel.TypeBankingPacket" />
           <EntitySet Name="UserAccounts" EntityType="MitBankDBModel.UserAccount" />
-          <EntitySet Name="Usernames" EntityType="MitBankDBModel.Username" />
           <EntitySet Name="viewEmails" EntityType="MitBankDBModel.viewEmail" />
-          <AssociationSet Name="FK_Companies_Customers" Association="MitBankDBModel.FK_Companies_Customers">
-            <End Role="Customers" EntitySet="Customers" />
-            <End Role="Companies" EntitySet="Companies" />
-          </AssociationSet>
-          <AssociationSet Name="FK_Companies_Individuals" Association="MitBankDBModel.FK_Companies_Individuals">
-            <End Role="Individuals" EntitySet="Individuals" />
-            <End Role="Companies" EntitySet="Companies" />
-          </AssociationSet>
-          <AssociationSet Name="FK_IndividualCustomers_Customers" Association="MitBankDBModel.FK_IndividualCustomers_Customers">
-            <End Role="Customers" EntitySet="Customers" />
-            <End Role="IndividualCustomers" EntitySet="IndividualCustomers" />
-          </AssociationSet>
-          <AssociationSet Name="FK_NormalUsers_Customers" Association="MitBankDBModel.FK_NormalUsers_Customers">
-            <End Role="Customers" EntitySet="Customers" />
-            <End Role="NormalUsers" EntitySet="NormalUsers" />
-          </AssociationSet>
-          <AssociationSet Name="FK_UserAccounts_Customers" Association="MitBankDBModel.FK_UserAccounts_Customers">
-            <End Role="Customers" EntitySet="Customers" />
-            <End Role="UserAccounts" EntitySet="UserAccounts" />
-          </AssociationSet>
-          <AssociationSet Name="FK_IndividualCustomers_Individuals" Association="MitBankDBModel.FK_IndividualCustomers_Individuals">
-            <End Role="Individuals" EntitySet="Individuals" />
-            <End Role="IndividualCustomers" EntitySet="IndividualCustomers" />
-          </AssociationSet>
-          <AssociationSet Name="FK_NormalUsers_Usernames" Association="MitBankDBModel.FK_NormalUsers_Usernames">
-            <End Role="Usernames" EntitySet="Usernames" />
-            <End Role="NormalUsers" EntitySet="NormalUsers" />
-          </AssociationSet>
           <FunctionImport Name="addHistoryTransaction" ReturnType="Collection(MitBankDBModel.addHistoryTransaction_Result)">
             <Parameter Name="userId" Mode="In" Type="Int32" />
             <Parameter Name="UserAccountIban" Mode="In" Type="String" />
@@ -406,204 +385,117 @@
             <Parameter Name="valueToTransfer" Mode="In" Type="Double" />
             <Parameter Name="valueToRecieve" Mode="In" Type="Double" />
           </FunctionImport>
+<<<<<<< HEAD
         </EntityContainer>
+=======
+          <FunctionImport Name="addHistoryTransaction">
+            <Parameter Name="userId" Mode="In" Type="Int32" />
+            <Parameter Name="UserAccountIban" Mode="In" Type="String" />
+            <Parameter Name="toWichAccount" Mode="In" Type="String" />
+            <Parameter Name="typeTransaction" Mode="In" Type="Int32" />
+            <Parameter Name="value" Mode="In" Type="Double" />
+            <Parameter Name="date" Mode="In" Type="String" />
+          </FunctionImport>
+          <FunctionImport Name="insertLastLogin">
+            <Parameter Name="idusername" Mode="In" Type="Int32" />
+            <Parameter Name="date" Mode="In" Type="String" />
+          </FunctionImport>
+          <FunctionImport Name="getLastLogin" ReturnType="Collection(String)">
+          <Parameter Name="idusername" Mode="In" Type="Int32" />
+          </FunctionImport>
+          <EntitySet Name="UserAccounts" EntityType="MitBankDBModel.UserAccount" />
+          <EntitySet Name="Customers" EntityType="MitBankDBModel.Customer" />
+          <AssociationSet Name="FK_UserAccounts_Customers" Association="MitBankDBModel.FK_UserAccounts_Customers">
+            <End EntitySet="Customers" Role="Customer" />
+            <End EntitySet="UserAccounts" Role="UserAccount" />
+          </AssociationSet>
+          <EntitySet Name="Companies" EntityType="MitBankDBModel.Company" />
+          <AssociationSet Name="FK_Companies_Customers" Association="MitBankDBModel.FK_Companies_Customers">
+            <End EntitySet="Customers" Role="Customer" />
+            <End EntitySet="Companies" Role="Company" />
+          </AssociationSet>
+          <EntitySet Name="IndividualCustomers" EntityType="MitBankDBModel.IndividualCustomer" />
+          <EntitySet Name="Individuals" EntityType="MitBankDBModel.Individual" />
+          <AssociationSet Name="FK_Companies_Individuals" Association="MitBankDBModel.FK_Companies_Individuals">
+            <End Role="Individual" EntitySet="Individuals" />
+            <End Role="Company" EntitySet="Companies" />
+          </AssociationSet>
+          <AssociationSet Name="FK_IndividualCustomers_Customers" Association="MitBankDBModel.FK_IndividualCustomers_Customers">
+            <End Role="Customer" EntitySet="Customers" />
+            <End Role="IndividualCustomer" EntitySet="IndividualCustomers" />
+          </AssociationSet>
+          <AssociationSet Name="FK_IndividualCustomers_Individuals" Association="MitBankDBModel.FK_IndividualCustomers_Individuals">
+            <End Role="Individual" EntitySet="Individuals" />
+            <End Role="IndividualCustomer" EntitySet="IndividualCustomers" />
+          </AssociationSet>
+          <EntitySet Name="NormalUsers" EntityType="MitBankDBModel.NormalUser" />
+          <EntitySet Name="Usernames" EntityType="MitBankDBModel.Username" />
+          <AssociationSet Name="FK_NormalUsers_Customers" Association="MitBankDBModel.FK_NormalUsers_Customers">
+            <End Role="Customer" EntitySet="Customers" />
+            <End Role="NormalUser" EntitySet="NormalUsers" />
+          </AssociationSet>
+          <AssociationSet Name="FK_NormalUsers_Usernames" Association="MitBankDBModel.FK_NormalUsers_Usernames">
+            <End Role="Username" EntitySet="Usernames" />
+            <End Role="NormalUser" EntitySet="NormalUsers" />
+          </AssociationSet>
+          </EntityContainer>
+>>>>>>> detachedFromDimi
         <EntityType Name="ComisionStatu">
           <Key>
             <PropertyRef Name="ID" />
           </Key>
-          <Property Name="ID" Type="Int32" Nullable="false" p1:StoreGeneratedPattern="Identity" />
+          <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
           <Property Name="IDTypeTransaction" Type="Int32" />
           <Property Name="IDBankPacket" Type="Int32" />
           <Property Name="Comision" Type="Double" />
-        </EntityType>
-        <EntityType Name="Company">
-          <Key>
-            <PropertyRef Name="ID" />
-          </Key>
-          <Property Name="ID" Type="Int32" Nullable="false" p1:StoreGeneratedPattern="Identity" />
-          <Property Name="CustomerID" Type="Int32" Nullable="false" />
-          <Property Name="IndividualID" Type="Int32" Nullable="false" />
-          <Property Name="CIF" Type="Int32" Nullable="false" />
-          <Property Name="Name" Type="String" Nullable="false" MaxLength="100" Unicode="true" FixedLength="false" />
-          <Property Name="Address" Type="String" Nullable="false" MaxLength="500" Unicode="true" FixedLength="false" />
-          <NavigationProperty Name="Customer" Relationship="MitBankDBModel.FK_Companies_Customers" FromRole="Companies" ToRole="Customers" />
-          <NavigationProperty Name="Individual" Relationship="MitBankDBModel.FK_Companies_Individuals" FromRole="Companies" ToRole="Individuals" />
         </EntityType>
         <EntityType Name="CurrentCurrency">
           <Key>
             <PropertyRef Name="CurrencyName" />
           </Key>
-          <Property Name="ID" Type="Int32" Nullable="false" p1:StoreGeneratedPattern="Identity" />
-          <Property Name="CurrencyName" Type="String" Nullable="false" MaxLength="10" Unicode="true" FixedLength="false" />
+          <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="CurrencyName" Type="String" Nullable="false" MaxLength="10" FixedLength="false" Unicode="true" />
           <Property Name="ValueBuy" Type="Double" Nullable="false" />
           <Property Name="ValueSel" Type="Double" Nullable="false" />
-        </EntityType>
-        <EntityType Name="Customer">
-          <Key>
-            <PropertyRef Name="ID" />
-          </Key>
-          <Property Name="ID" Type="Int32" Nullable="false" p1:StoreGeneratedPattern="Identity" />
-          <Property Name="CustomerType" Type="Int32" Nullable="false" />
-          <NavigationProperty Name="Companies" Relationship="MitBankDBModel.FK_Companies_Customers" FromRole="Customers" ToRole="Companies" />
-          <NavigationProperty Name="IndividualCustomers" Relationship="MitBankDBModel.FK_IndividualCustomers_Customers" FromRole="Customers" ToRole="IndividualCustomers" />
-          <NavigationProperty Name="NormalUsers" Relationship="MitBankDBModel.FK_NormalUsers_Customers" FromRole="Customers" ToRole="NormalUsers" />
-          <NavigationProperty Name="UserAccounts" Relationship="MitBankDBModel.FK_UserAccounts_Customers" FromRole="Customers" ToRole="UserAccounts" />
-        </EntityType>
-        <EntityType Name="IndividualCustomer">
-          <Key>
-            <PropertyRef Name="IndividualID" />
-            <PropertyRef Name="CustomerID" />
-          </Key>
-          <Property Name="IndividualID" Type="Int32" Nullable="false" />
-          <Property Name="CustomerID" Type="Int32" Nullable="false" />
-          <Property Name="Data" Type="Int32" />
-          <NavigationProperty Name="Customer" Relationship="MitBankDBModel.FK_IndividualCustomers_Customers" FromRole="IndividualCustomers" ToRole="Customers" />
-          <NavigationProperty Name="Individual" Relationship="MitBankDBModel.FK_IndividualCustomers_Individuals" FromRole="IndividualCustomers" ToRole="Individuals" />
         </EntityType>
         <EntityType Name="Individual">
           <Key>
             <PropertyRef Name="ID" />
           </Key>
-          <Property Name="ID" Type="Int32" Nullable="false" p1:StoreGeneratedPattern="Identity" />
-          <Property Name="FirstName" Type="String" Nullable="false" MaxLength="100" Unicode="true" FixedLength="false" />
-          <Property Name="LastName" Type="String" Nullable="false" MaxLength="100" Unicode="true" FixedLength="false" />
-          <Property Name="Email" Type="String" Nullable="false" MaxLength="200" Unicode="true" FixedLength="false" />
-          <Property Name="CNP" Type="String" Nullable="false" MaxLength="13" Unicode="true" FixedLength="false" />
+          <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="FirstName" Type="String" Nullable="false" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="LastName" Type="String" Nullable="false" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="Email" Type="String" Nullable="false" MaxLength="200" FixedLength="false" Unicode="true" />
+          <Property Name="CNP" Type="String" Nullable="false" MaxLength="13" FixedLength="false" Unicode="true" />
           <Property Name="Birthday" Type="DateTime" Nullable="false" Precision="0" />
-          <NavigationProperty Name="Companies" Relationship="MitBankDBModel.FK_Companies_Individuals" FromRole="Individuals" ToRole="Companies" />
-          <NavigationProperty Name="IndividualCustomers" Relationship="MitBankDBModel.FK_IndividualCustomers_Individuals" FromRole="Individuals" ToRole="IndividualCustomers" />
-        </EntityType>
-        <EntityType Name="NormalUser">
-          <Key>
-            <PropertyRef Name="ID" />
-          </Key>
-          <Property Name="ID" Type="Int32" Nullable="false" />
-          <Property Name="CustomerID" Type="Int32" />
-          <NavigationProperty Name="Customer" Relationship="MitBankDBModel.FK_NormalUsers_Customers" FromRole="NormalUsers" ToRole="Customers" />
-          <NavigationProperty Name="Username" Relationship="MitBankDBModel.FK_NormalUsers_Usernames" FromRole="NormalUsers" ToRole="Usernames" />
         </EntityType>
         <EntityType Name="TypeBankingPacket">
           <Key>
             <PropertyRef Name="ID" />
           </Key>
-          <Property Name="ID" Type="Int32" Nullable="false" p1:StoreGeneratedPattern="Identity" />
-          <Property Name="NameTypePacket" Type="String" MaxLength="100" Unicode="true" FixedLength="true" />
+          <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="NameTypePacket" Type="String" MaxLength="100" FixedLength="true" Unicode="true" />
         </EntityType>
         <EntityType Name="UserAccount">
           <Key>
             <PropertyRef Name="ID" />
           </Key>
-          <Property Name="ID" Type="Int32" Nullable="false" p1:StoreGeneratedPattern="Identity" />
+          <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
           <Property Name="BankPacket" Type="Int32" />
-          <Property Name="AccountNumber" Type="String" Nullable="false" MaxLength="30" Unicode="true" FixedLength="true" />
+          <Property Name="AccountNumber" Type="String" Nullable="false" MaxLength="30" FixedLength="true" Unicode="true" />
           <Property Name="ValabilityUntil" Type="DateTime" Nullable="false" Precision="0" />
-          <Property Name="Currency" Type="String" Nullable="false" MaxLength="10" Unicode="true" FixedLength="false" />
+          <Property Name="Currency" Type="String" Nullable="false" MaxLength="10" FixedLength="false" Unicode="true" />
           <Property Name="Sold" Type="Double" Nullable="false" />
           <Property Name="AccountCustomerID" Type="Int32" />
-          <NavigationProperty Name="Customer" Relationship="MitBankDBModel.FK_UserAccounts_Customers" FromRole="UserAccounts" ToRole="Customers" />
-        </EntityType>
-        <EntityType Name="Username">
-          <Key>
-            <PropertyRef Name="ID" />
-          </Key>
-          <Property Name="ID" Type="Int32" Nullable="false" p1:StoreGeneratedPattern="Identity" />
-          <Property Name="UserType" Type="Int32" Nullable="false" />
-          <Property Name="Username1" Type="String" Nullable="false" MaxLength="101" Unicode="true" FixedLength="false" />
-          <Property Name="Pass" Type="String" Nullable="false" MaxLength="200" Unicode="true" FixedLength="false" />
-          <NavigationProperty Name="NormalUser" Relationship="MitBankDBModel.FK_NormalUsers_Usernames" FromRole="Usernames" ToRole="NormalUsers" />
         </EntityType>
         <EntityType Name="viewEmail">
           <Key>
             <PropertyRef Name="ID" />
             <PropertyRef Name="email" />
           </Key>
-          <Property Name="ID" Type="Int32" Nullable="false" p1:StoreGeneratedPattern="Identity" />
-          <Property Name="email" Type="String" Nullable="false" MaxLength="200" Unicode="true" FixedLength="false" />
+          <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="email" Type="String" Nullable="false" MaxLength="200" FixedLength="false" Unicode="true" />
         </EntityType>
-        <Association Name="FK_Companies_Customers">
-          <End Role="Customers" Type="MitBankDBModel.Customer" Multiplicity="1" />
-          <End Role="Companies" Type="MitBankDBModel.Company" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="Customers">
-              <PropertyRef Name="ID" />
-            </Principal>
-            <Dependent Role="Companies">
-              <PropertyRef Name="CustomerID" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
-        <Association Name="FK_Companies_Individuals">
-          <End Role="Individuals" Type="MitBankDBModel.Individual" Multiplicity="1" />
-          <End Role="Companies" Type="MitBankDBModel.Company" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="Individuals">
-              <PropertyRef Name="ID" />
-            </Principal>
-            <Dependent Role="Companies">
-              <PropertyRef Name="IndividualID" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
-        <Association Name="FK_IndividualCustomers_Customers">
-          <End Role="Customers" Type="MitBankDBModel.Customer" Multiplicity="1" />
-          <End Role="IndividualCustomers" Type="MitBankDBModel.IndividualCustomer" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="Customers">
-              <PropertyRef Name="ID" />
-            </Principal>
-            <Dependent Role="IndividualCustomers">
-              <PropertyRef Name="CustomerID" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
-        <Association Name="FK_NormalUsers_Customers">
-          <End Role="Customers" Type="MitBankDBModel.Customer" Multiplicity="0..1" />
-          <End Role="NormalUsers" Type="MitBankDBModel.NormalUser" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="Customers">
-              <PropertyRef Name="ID" />
-            </Principal>
-            <Dependent Role="NormalUsers">
-              <PropertyRef Name="CustomerID" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
-        <Association Name="FK_UserAccounts_Customers">
-          <End Role="Customers" Type="MitBankDBModel.Customer" Multiplicity="0..1" />
-          <End Role="UserAccounts" Type="MitBankDBModel.UserAccount" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="Customers">
-              <PropertyRef Name="ID" />
-            </Principal>
-            <Dependent Role="UserAccounts">
-              <PropertyRef Name="AccountCustomerID" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
-        <Association Name="FK_IndividualCustomers_Individuals">
-          <End Role="Individuals" Type="MitBankDBModel.Individual" Multiplicity="1" />
-          <End Role="IndividualCustomers" Type="MitBankDBModel.IndividualCustomer" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="Individuals">
-              <PropertyRef Name="ID" />
-            </Principal>
-            <Dependent Role="IndividualCustomers">
-              <PropertyRef Name="IndividualID" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
-        <Association Name="FK_NormalUsers_Usernames">
-          <End Role="Usernames" Type="MitBankDBModel.Username" Multiplicity="1" />
-          <End Role="NormalUsers" Type="MitBankDBModel.NormalUser" Multiplicity="0..1" />
-          <ReferentialConstraint>
-            <Principal Role="Usernames">
-              <PropertyRef Name="ID" />
-            </Principal>
-            <Dependent Role="NormalUsers">
-              <PropertyRef Name="ID" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
         <ComplexType Name="addHistoryTransaction_Result">
           <Property Type="Int32" Name="ID" Nullable="false" />
           <Property Type="Int32" Name="CustomerID" Nullable="true" />
@@ -645,117 +537,268 @@
           <Property Type="Double" Name="Sold" Nullable="false" />
           <Property Type="Int32" Name="AccountCustomerID" Nullable="true" />
         </ComplexType>
+<<<<<<< HEAD
       </Schema>
+=======
+        <ComplexType Name="addHistoryTransaction1_Result">
+          <Property Type="Int32" Name="ID" Nullable="false" />
+          <Property Type="Int32" Name="CustomerID" Nullable="true" />
+          <Property Type="Int32" Name="UserAccountID" Nullable="true" />
+          <Property Type="String" Name="fromAccount" Nullable="true" MaxLength="100" />
+          <Property Type="String" Name="toWichAccount" Nullable="true" MaxLength="100" />
+          <Property Type="Int32" Name="TypeTransaction" Nullable="true" />
+          <Property Type="Double" Name="Value" Nullable="true" />
+          <Property Type="DateTime" Name="DateTransaction" Nullable="true" Precision="23" />
+        </ComplexType>
+        <ComplexType Name="addHistoryTransaction1_Result1">
+          <Property Type="Int32" Name="ID" Nullable="false" />
+          <Property Type="Int32" Name="CustomerID" Nullable="true" />
+          <Property Type="Int32" Name="UserAccountID" Nullable="true" />
+          <Property Type="String" Name="fromAccount" Nullable="true" MaxLength="100" />
+          <Property Type="String" Name="toWichAccount" Nullable="true" MaxLength="100" />
+          <Property Type="Int32" Name="TypeTransaction" Nullable="true" />
+          <Property Type="Double" Name="Value" Nullable="true" />
+          <Property Type="DateTime" Name="DateTransaction" Nullable="true" Precision="23" />
+        </ComplexType>
+        <ComplexType Name="addHistoryTransaction_Result">
+          <Property Type="Int32" Name="ID" Nullable="false" />
+          <Property Type="Int32" Name="CustomerID" Nullable="true" />
+          <Property Type="Int32" Name="UserAccountID" Nullable="true" />
+          <Property Type="String" Name="fromAccount" Nullable="true" MaxLength="100" />
+          <Property Type="String" Name="toWichAccount" Nullable="true" MaxLength="100" />
+          <Property Type="Int32" Name="TypeTransaction" Nullable="true" />
+          <Property Type="Double" Name="Value" Nullable="true" />
+          <Property Type="DateTime" Name="DateTransaction" Nullable="true" Precision="23" />
+        </ComplexType>
+        <EntityType Name="UserAccount">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Nullable="false" annotation:StoreGeneratedPattern="Identity" Type="Int32" />
+          <Property Name="BankPacket" Type="Int32" />
+          <Property Name="AccountNumber" Nullable="false" MaxLength="30" FixedLength="true" Unicode="true" Type="String" />
+          <Property Name="ValabilityUntil" Nullable="false" Precision="0" Type="DateTime" />
+          <Property Name="Currency" Nullable="false" MaxLength="10" FixedLength="false" Unicode="true" Type="String" />
+          <Property Name="Sold" Nullable="false" Type="Double" />
+          <Property Name="AccountCustomerID" Type="Int32" />
+          <NavigationProperty Name="Customer" Relationship="MitBankDBModel.FK_UserAccounts_Customers" FromRole="UserAccount" ToRole="Customer" />
+        </EntityType>
+        <EntityType Name="Customer">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Nullable="false" annotation:StoreGeneratedPattern="Identity" Type="Int32" />
+          <Property Name="CustomerType" Nullable="false" Type="Int32" />
+          <NavigationProperty Name="UserAccounts" Relationship="MitBankDBModel.FK_UserAccounts_Customers" FromRole="Customer" ToRole="UserAccount" />
+          <NavigationProperty Name="Companies" Relationship="MitBankDBModel.FK_Companies_Customers" FromRole="Customer" ToRole="Company" />
+          <NavigationProperty Name="IndividualCustomers" Relationship="MitBankDBModel.FK_IndividualCustomers_Customers" FromRole="Customer" ToRole="IndividualCustomer" />
+          <NavigationProperty Name="NormalUsers" Relationship="MitBankDBModel.FK_NormalUsers_Customers" FromRole="Customer" ToRole="NormalUser" />
+        </EntityType>
+        <Association Name="FK_UserAccounts_Customers">
+          <End Type="MitBankDBModel.Customer" Multiplicity="0..1" Role="Customer" />
+          <End Type="MitBankDBModel.UserAccount" Multiplicity="*" Role="UserAccount" />
+          <ReferentialConstraint>
+            <Principal Role="Customer">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="UserAccount">
+              <PropertyRef Name="AccountCustomerID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityType Name="Company">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Nullable="false" annotation:StoreGeneratedPattern="Identity" Type="Int32" />
+          <Property Name="CustomerID" Nullable="false" Type="Int32" />
+          <Property Name="IndividualID" Nullable="false" Type="Int32" />
+          <Property Name="CIF" Nullable="false" Type="Int32" />
+          <Property Name="Name" Nullable="false" MaxLength="100" FixedLength="false" Unicode="true" Type="String" />
+          <Property Name="Address" Nullable="false" MaxLength="500" FixedLength="false" Unicode="true" Type="String" />
+          <NavigationProperty Name="Customer" Relationship="MitBankDBModel.FK_Companies_Customers" FromRole="Company" ToRole="Customer" />
+          <NavigationProperty Name="Individual" Relationship="MitBankDBModel.FK_Companies_Individuals" FromRole="Company" ToRole="Individual" />
+        </EntityType>
+        <Association Name="FK_Companies_Customers">
+          <End Type="MitBankDBModel.Customer" Multiplicity="1" Role="Customer" />
+          <End Type="MitBankDBModel.Company" Multiplicity="*" Role="Company" />
+          <ReferentialConstraint>
+            <Principal Role="Customer">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="Company">
+              <PropertyRef Name="CustomerID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityType Name="IndividualCustomer">
+          <Key>
+            <PropertyRef Name="IndividualID" />
+            <PropertyRef Name="CustomerID" />
+          </Key>
+          <Property Type="Int32" Name="IndividualID" Nullable="false" />
+          <Property Type="Int32" Name="CustomerID" Nullable="false" />
+          <Property Type="Int32" Name="Data" />
+          <NavigationProperty Name="Customer" Relationship="MitBankDBModel.FK_IndividualCustomers_Customers" FromRole="IndividualCustomer" ToRole="Customer" />
+          <NavigationProperty Name="Individual" Relationship="MitBankDBModel.FK_IndividualCustomers_Individuals" FromRole="IndividualCustomer" ToRole="Individual" />
+        </EntityType>
+        <EntityType Name="Individual">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Type="Int32" Name="ID" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Type="String" Name="FirstName" Nullable="false" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Type="String" Name="LastName" Nullable="false" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Type="String" Name="Email" Nullable="false" MaxLength="200" FixedLength="false" Unicode="true" />
+          <Property Type="String" Name="CNP" Nullable="false" MaxLength="13" FixedLength="false" Unicode="true" />
+          <Property Type="DateTime" Name="Birthday" Nullable="false" Precision="0" />
+          <NavigationProperty Name="Companies" Relationship="MitBankDBModel.FK_Companies_Individuals" FromRole="Individual" ToRole="Company" />
+          <NavigationProperty Name="IndividualCustomers" Relationship="MitBankDBModel.FK_IndividualCustomers_Individuals" FromRole="Individual" ToRole="IndividualCustomer" />
+        </EntityType>
+        <Association Name="FK_Companies_Individuals">
+          <End Type="MitBankDBModel.Individual" Role="Individual" Multiplicity="1" />
+          <End Type="MitBankDBModel.Company" Role="Company" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Individual">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="Company">
+              <PropertyRef Name="IndividualID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_IndividualCustomers_Customers">
+          <End Type="MitBankDBModel.Customer" Role="Customer" Multiplicity="1" />
+          <End Type="MitBankDBModel.IndividualCustomer" Role="IndividualCustomer" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Customer">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="IndividualCustomer">
+              <PropertyRef Name="CustomerID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_IndividualCustomers_Individuals">
+          <End Type="MitBankDBModel.Individual" Role="Individual" Multiplicity="1" />
+          <End Type="MitBankDBModel.IndividualCustomer" Role="IndividualCustomer" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Individual">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="IndividualCustomer">
+              <PropertyRef Name="IndividualID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityType Name="NormalUser">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Type="Int32" Name="ID" Nullable="false" />
+          <Property Type="Int32" Name="CustomerID" />
+          <NavigationProperty Name="Customer" Relationship="MitBankDBModel.FK_NormalUsers_Customers" FromRole="NormalUser" ToRole="Customer" />
+          <NavigationProperty Name="Username" Relationship="MitBankDBModel.FK_NormalUsers_Usernames" FromRole="NormalUser" ToRole="Username" />
+        </EntityType>
+        <EntityType Name="Username">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Type="Int32" Name="ID" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Type="Int32" Name="UserType" Nullable="false" />
+          <Property Type="String" Name="Username1" Nullable="false" MaxLength="101" FixedLength="false" Unicode="true" />
+          <Property Type="String" Name="Pass" Nullable="false" MaxLength="200" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="NormalUser" Relationship="MitBankDBModel.FK_NormalUsers_Usernames" FromRole="Username" ToRole="NormalUser" />
+        </EntityType>
+        <Association Name="FK_NormalUsers_Customers">
+          <End Type="MitBankDBModel.Customer" Role="Customer" Multiplicity="0..1" />
+          <End Type="MitBankDBModel.NormalUser" Role="NormalUser" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Customer">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="NormalUser">
+              <PropertyRef Name="CustomerID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_NormalUsers_Usernames">
+          <End Type="MitBankDBModel.Username" Role="Username" Multiplicity="1" />
+          <End Type="MitBankDBModel.NormalUser" Role="NormalUser" Multiplicity="0..1" />
+          <ReferentialConstraint>
+            <Principal Role="Username">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="NormalUser">
+              <PropertyRef Name="ID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        </Schema>
+>>>>>>> detachedFromDimi
     </edmx:ConceptualModels>
     <!-- C-S mapping content -->
     <edmx:Mappings>
       <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
-        <EntityContainerMapping StorageEntityContainer="MitBankDBModelStoreContainer" CdmEntityContainer="MitBankDBEntities">
+        <EntityContainerMapping StorageEntityContainer="MitBankDBModelStoreContainer" CdmEntityContainer="MitBankDBEntities2">
           <EntitySetMapping Name="ComisionStatus">
             <EntityTypeMapping TypeName="MitBankDBModel.ComisionStatu">
               <MappingFragment StoreEntitySet="ComisionStatus">
-                <ScalarProperty Name="ID" ColumnName="ID" />
-                <ScalarProperty Name="IDTypeTransaction" ColumnName="IDTypeTransaction" />
-                <ScalarProperty Name="IDBankPacket" ColumnName="IDBankPacket" />
                 <ScalarProperty Name="Comision" ColumnName="Comision" />
-              </MappingFragment>
-            </EntityTypeMapping>
-          </EntitySetMapping>
-          <EntitySetMapping Name="Companies">
-            <EntityTypeMapping TypeName="MitBankDBModel.Company">
-              <MappingFragment StoreEntitySet="Companies">
+                <ScalarProperty Name="IDBankPacket" ColumnName="IDBankPacket" />
+                <ScalarProperty Name="IDTypeTransaction" ColumnName="IDTypeTransaction" />
                 <ScalarProperty Name="ID" ColumnName="ID" />
-                <ScalarProperty Name="CustomerID" ColumnName="CustomerID" />
-                <ScalarProperty Name="IndividualID" ColumnName="IndividualID" />
-                <ScalarProperty Name="CIF" ColumnName="CIF" />
-                <ScalarProperty Name="Name" ColumnName="Name" />
-                <ScalarProperty Name="Address" ColumnName="Address" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="CurrentCurrencies">
             <EntityTypeMapping TypeName="MitBankDBModel.CurrentCurrency">
               <MappingFragment StoreEntitySet="CurrentCurrency">
-                <ScalarProperty Name="ID" ColumnName="ID" />
-                <ScalarProperty Name="CurrencyName" ColumnName="CurrencyName" />
-                <ScalarProperty Name="ValueBuy" ColumnName="ValueBuy" />
                 <ScalarProperty Name="ValueSel" ColumnName="ValueSel" />
-              </MappingFragment>
-            </EntityTypeMapping>
-          </EntitySetMapping>
-          <EntitySetMapping Name="Customers">
-            <EntityTypeMapping TypeName="MitBankDBModel.Customer">
-              <MappingFragment StoreEntitySet="Customers">
+                <ScalarProperty Name="ValueBuy" ColumnName="ValueBuy" />
+                <ScalarProperty Name="CurrencyName" ColumnName="CurrencyName" />
                 <ScalarProperty Name="ID" ColumnName="ID" />
-                <ScalarProperty Name="CustomerType" ColumnName="CustomerType" />
-              </MappingFragment>
-            </EntityTypeMapping>
-          </EntitySetMapping>
-          <EntitySetMapping Name="IndividualCustomers">
-            <EntityTypeMapping TypeName="MitBankDBModel.IndividualCustomer">
-              <MappingFragment StoreEntitySet="IndividualCustomers">
-                <ScalarProperty Name="IndividualID" ColumnName="IndividualID" />
-                <ScalarProperty Name="CustomerID" ColumnName="CustomerID" />
-                <ScalarProperty Name="Data" ColumnName="Data" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="Individuals">
             <EntityTypeMapping TypeName="MitBankDBModel.Individual">
               <MappingFragment StoreEntitySet="Individuals">
-                <ScalarProperty Name="ID" ColumnName="ID" />
-                <ScalarProperty Name="FirstName" ColumnName="FirstName" />
-                <ScalarProperty Name="LastName" ColumnName="LastName" />
-                <ScalarProperty Name="Email" ColumnName="Email" />
-                <ScalarProperty Name="CNP" ColumnName="CNP" />
                 <ScalarProperty Name="Birthday" ColumnName="Birthday" />
-              </MappingFragment>
-            </EntityTypeMapping>
-          </EntitySetMapping>
-          <EntitySetMapping Name="NormalUsers">
-            <EntityTypeMapping TypeName="MitBankDBModel.NormalUser">
-              <MappingFragment StoreEntitySet="NormalUsers">
+                <ScalarProperty Name="CNP" ColumnName="CNP" />
+                <ScalarProperty Name="Email" ColumnName="Email" />
+                <ScalarProperty Name="LastName" ColumnName="LastName" />
+                <ScalarProperty Name="FirstName" ColumnName="FirstName" />
                 <ScalarProperty Name="ID" ColumnName="ID" />
-                <ScalarProperty Name="CustomerID" ColumnName="CustomerID" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="TypeBankingPackets">
             <EntityTypeMapping TypeName="MitBankDBModel.TypeBankingPacket">
               <MappingFragment StoreEntitySet="TypeBankingPackets">
-                <ScalarProperty Name="ID" ColumnName="ID" />
                 <ScalarProperty Name="NameTypePacket" ColumnName="NameTypePacket" />
+                <ScalarProperty Name="ID" ColumnName="ID" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="UserAccounts">
             <EntityTypeMapping TypeName="MitBankDBModel.UserAccount">
               <MappingFragment StoreEntitySet="UserAccounts">
-                <ScalarProperty Name="ID" ColumnName="ID" />
-                <ScalarProperty Name="BankPacket" ColumnName="BankPacket" />
-                <ScalarProperty Name="AccountNumber" ColumnName="AccountNumber" />
-                <ScalarProperty Name="ValabilityUntil" ColumnName="ValabilityUntil" />
-                <ScalarProperty Name="Currency" ColumnName="Currency" />
-                <ScalarProperty Name="Sold" ColumnName="Sold" />
                 <ScalarProperty Name="AccountCustomerID" ColumnName="AccountCustomerID" />
-              </MappingFragment>
-            </EntityTypeMapping>
-          </EntitySetMapping>
-          <EntitySetMapping Name="Usernames">
-            <EntityTypeMapping TypeName="MitBankDBModel.Username">
-              <MappingFragment StoreEntitySet="Usernames">
+                <ScalarProperty Name="Sold" ColumnName="Sold" />
+                <ScalarProperty Name="Currency" ColumnName="Currency" />
+                <ScalarProperty Name="ValabilityUntil" ColumnName="ValabilityUntil" />
+                <ScalarProperty Name="AccountNumber" ColumnName="AccountNumber" />
+                <ScalarProperty Name="BankPacket" ColumnName="BankPacket" />
                 <ScalarProperty Name="ID" ColumnName="ID" />
-                <ScalarProperty Name="UserType" ColumnName="UserType" />
-                <ScalarProperty Name="Username1" ColumnName="Username" />
-                <ScalarProperty Name="Pass" ColumnName="Pass" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="viewEmails">
             <EntityTypeMapping TypeName="MitBankDBModel.viewEmail">
               <MappingFragment StoreEntitySet="viewEmails">
-                <ScalarProperty Name="ID" ColumnName="ID" />
                 <ScalarProperty Name="email" ColumnName="email" />
+                <ScalarProperty Name="ID" ColumnName="ID" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
@@ -830,7 +873,86 @@
           </FunctionImportMapping>
           <FunctionImportMapping FunctionImportName="takeComision" FunctionName="MitBankDBModel.Store.takeComision" />
           <FunctionImportMapping FunctionImportName="transferMoney" FunctionName="MitBankDBModel.Store.transferMoney" />
+<<<<<<< HEAD
         </EntityContainerMapping>
+=======
+          <FunctionImportMapping FunctionImportName="addHistoryTransaction" FunctionName="MitBankDBModel.Store.addHistoryTransaction" />
+          <FunctionImportMapping FunctionImportName="insertLastLogin" FunctionName="MitBankDBModel.Store.insertLastLogin" />
+          <FunctionImportMapping FunctionImportName="getLastLogin" FunctionName="MitBankDBModel.Store.getLastLogin" />
+          <EntitySetMapping Name="UserAccounts">
+            <EntityTypeMapping TypeName="MitBankDBModel.UserAccount">
+              <MappingFragment StoreEntitySet="UserAccounts">
+                <ScalarProperty Name="AccountCustomerID" ColumnName="AccountCustomerID" />
+                <ScalarProperty Name="Sold" ColumnName="Sold" />
+                <ScalarProperty Name="Currency" ColumnName="Currency" />
+                <ScalarProperty Name="ValabilityUntil" ColumnName="ValabilityUntil" />
+                <ScalarProperty Name="AccountNumber" ColumnName="AccountNumber" />
+                <ScalarProperty Name="BankPacket" ColumnName="BankPacket" />
+                <ScalarProperty Name="ID" ColumnName="ID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Customers">
+            <EntityTypeMapping TypeName="MitBankDBModel.Customer">
+              <MappingFragment StoreEntitySet="Customers">
+                <ScalarProperty Name="CustomerType" ColumnName="CustomerType" />
+                <ScalarProperty Name="ID" ColumnName="ID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Companies">
+            <EntityTypeMapping TypeName="MitBankDBModel.Company">
+              <MappingFragment StoreEntitySet="Companies">
+                <ScalarProperty Name="Address" ColumnName="Address" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="CIF" ColumnName="CIF" />
+                <ScalarProperty Name="IndividualID" ColumnName="IndividualID" />
+                <ScalarProperty Name="CustomerID" ColumnName="CustomerID" />
+                <ScalarProperty Name="ID" ColumnName="ID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="IndividualCustomers">
+            <EntityTypeMapping TypeName="MitBankDBModel.IndividualCustomer">
+              <MappingFragment StoreEntitySet="IndividualCustomers">
+                <ScalarProperty Name="Data" ColumnName="Data" />
+                <ScalarProperty Name="CustomerID" ColumnName="CustomerID" />
+                <ScalarProperty Name="IndividualID" ColumnName="IndividualID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Individuals">
+            <EntityTypeMapping TypeName="MitBankDBModel.Individual">
+              <MappingFragment StoreEntitySet="Individuals">
+                <ScalarProperty Name="Birthday" ColumnName="Birthday" />
+                <ScalarProperty Name="CNP" ColumnName="CNP" />
+                <ScalarProperty Name="Email" ColumnName="Email" />
+                <ScalarProperty Name="LastName" ColumnName="LastName" />
+                <ScalarProperty Name="FirstName" ColumnName="FirstName" />
+                <ScalarProperty Name="ID" ColumnName="ID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="NormalUsers">
+            <EntityTypeMapping TypeName="MitBankDBModel.NormalUser">
+              <MappingFragment StoreEntitySet="NormalUsers">
+                <ScalarProperty Name="CustomerID" ColumnName="CustomerID" />
+                <ScalarProperty Name="ID" ColumnName="ID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Usernames">
+            <EntityTypeMapping TypeName="MitBankDBModel.Username">
+              <MappingFragment StoreEntitySet="Usernames">
+                <ScalarProperty Name="Pass" ColumnName="Pass" />
+                <ScalarProperty Name="Username1" ColumnName="Username" />
+                <ScalarProperty Name="UserType" ColumnName="UserType" />
+                <ScalarProperty Name="ID" ColumnName="ID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          </EntityContainerMapping>
+>>>>>>> detachedFromDimi
       </Mapping>
     </edmx:Mappings>
   </edmx:Runtime>
@@ -847,6 +969,7 @@
         <DesignerProperty Name="EnablePluralization" Value="True" />
         <DesignerProperty Name="IncludeForeignKeysInModel" Value="True" />
         <DesignerProperty Name="CodeGenerationStrategy" Value="None" />
+        <DesignerProperty Name="UseLegacyProvider" Value="True" />
       </DesignerInfoPropertySet>
     </Options>
     <!-- Diagram content (shape and connector positions) -->

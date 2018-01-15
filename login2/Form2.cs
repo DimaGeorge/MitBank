@@ -46,7 +46,7 @@ namespace login2
 
             UIDashboardAccountFrame.generateDashboard(ibanList, panelMainDashboard, exchangeTbl);
             labelLastName.Text = DataManagement.getLastName();
-            using (var context = new MitBankDBEntities2())
+            using (var context = new MitBankDBEntities())
             {
                 var result2 = context.getLastLogin(DataManagement.getIdUsername());
                 foreach (var item in result2)
@@ -58,7 +58,7 @@ namespace login2
             labelChangeEmail.Visible = false;
             textBoxChangeEmail.Visible = false;
 
-            using (var context = new MitBankDBEntities2())
+            using (var context = new MitBankDBEntities())
             {
                 var result = context.selectOnIndividuals(DataManagement.getIdUsername()).ToArray();
 
@@ -81,7 +81,7 @@ namespace login2
 
         private void label11_Click(object sender, EventArgs e)
         {
-            using (var context = new MitBankDBEntities2())
+            using (var context = new MitBankDBEntities())
             {
                 var result = context.insertLastLogin(DataManagement.getIdUsername(), DateTime.Now.ToString());
 
@@ -123,7 +123,7 @@ namespace login2
             lastMenupanel = panelMainTransfer;
 
 
-            using (var context = new MitBankDBEntities2())
+            using (var context = new MitBankDBEntities())
             {
 
 
@@ -198,7 +198,7 @@ namespace login2
                                  MessageBoxIcon.Question);
             if (result == DialogResult.Yes)
             {
-                using (var context = new MitBankDBEntities2())
+                using (var context = new MitBankDBEntities())
                 {
                     var result2 = context.insertLastLogin(DataManagement.getIdUsername(), DateTime.Now.ToString());
 
@@ -362,7 +362,7 @@ namespace login2
             string currencyFromIBAN = "-";
             string currencyToIBAN = "-";
 
-            using (var context = new MitBankDBEntities2())
+            using (var context = new MitBankDBEntities())
             {
 
                 if (comboBoxToTransferMyIBAN.SelectedIndex != -1)
@@ -386,7 +386,7 @@ namespace login2
         {
             string getIBANfromTextBox = textBoxWriteIBAN.Text;
             Page pg = new Page();
-            using (var context = new MitBankDBEntities2())
+            using (var context = new MitBankDBEntities())
             {
 
                 var result = context.getAnyoneCurrency(getIBANfromTextBox).ToArray();
@@ -437,7 +437,7 @@ namespace login2
                     double getsold = 0;
                     if (labelComisionValue.Text != "-")
                     {
-                        using (var context = new MitBankDBEntities2())
+                        using (var context = new MitBankDBEntities())
                         {
                             var result = DataManagement.getSold(comboBoxIBAN.SelectedItem.ToString());
 
@@ -446,7 +446,7 @@ namespace login2
                         }
                         if (getsold > (ValWithouComiss + comiss))
                         {
-                            using (var context = new MitBankDBEntities2())
+                            using (var context = new MitBankDBEntities())
                             {
                                 if (comboBoxSelectTransfer.SelectedItem.ToString() == "My another account")
                                 {
@@ -673,7 +673,7 @@ namespace login2
             tipTranz.DataType = typeof(string);
             tb.Columns.Add(tipTranz);
 
-            using (var context = new MitBankDBEntities2())
+            using (var context = new MitBankDBEntities())
             {
                 var result = context.HistoryTransactionProc(DataManagement.getIdUsername()).ToArray();
                 foreach (var items in result)

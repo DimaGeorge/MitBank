@@ -14,7 +14,7 @@ namespace login2
     {
         public static string getIbanCurrency(string iban)
         {
-            using (var context = new MitBankDBEntities2())
+            using (var context = new MitBankDBEntities())
             {
                 var result = context.showIBANInformations(iban).FirstOrDefault();
                 return result.Currency.ToString();
@@ -23,7 +23,7 @@ namespace login2
 
         public static string getIbanSold(string iban)
         {
-            using (var context = new MitBankDBEntities2())
+            using (var context = new MitBankDBEntities())
             {
                 var result = context.showIBANInformations(iban).FirstOrDefault();
                 return result.Sold.ToString();
@@ -32,7 +32,7 @@ namespace login2
 
         public static string getIbanDate(string iban)
         {
-            using (var context = new MitBankDBEntities2())
+            using (var context = new MitBankDBEntities())
             {
                 var result = context.showIBANInformations(iban).FirstOrDefault();
                 return result.ValabilityUntil.ToString();
@@ -41,7 +41,7 @@ namespace login2
 
         public static string getIbanPacket(string iban)
         {
-            using (var context = new MitBankDBEntities2())
+            using (var context = new MitBankDBEntities())
             {
                 var ibanInfo = context.showIBANInformations(iban).FirstOrDefault();
                 TypeBankingPacket packet = (from c in context.TypeBankingPackets
@@ -54,7 +54,7 @@ namespace login2
         public static string getExchange()
         {
             string data = "";
-            using (var context = new MitBankDBEntities2())
+            using (var context = new MitBankDBEntities())
             {
                 var exchInfo = from c in context.CurrentCurrencies
                                 select c;

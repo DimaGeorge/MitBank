@@ -14,7 +14,7 @@ namespace login2
     {
         public static void cashDeposit()
         {
-            using (var context = new MitBankDBEntities2())
+            using (var context = new MitBankDBEntities())
             {
                 // exemplu de utilizare tranzactie din Entity Framework
                 //
@@ -57,7 +57,7 @@ namespace login2
         {
             byte[] data = System.Text.Encoding.ASCII.GetBytes(pass);
             data = new System.Security.Cryptography.SHA256Managed().ComputeHash(data);
-            MessageBox.Show(System.Text.Encoding.GetEncoding("windows-1252").GetString(data));
+        
             string g = System.Text.Encoding.GetEncoding("windows-1252").GetString(data);
 
             return g;
@@ -68,7 +68,7 @@ namespace login2
             // Detached Entities
             //
 
-            using (var context = new MitBankDBEntities2())
+            using (var context = new MitBankDBEntities())
             {
 
                using (var transaction = context.Database.BeginTransaction())
@@ -144,7 +144,7 @@ namespace login2
             // Detached Entities
             //
 
-            using (var context = new MitBankDBEntities2())
+            using (var context = new MitBankDBEntities())
             {
                 using (var transaction = context.Database.BeginTransaction())
                 {

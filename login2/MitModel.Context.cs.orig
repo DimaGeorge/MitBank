@@ -11,15 +11,14 @@ namespace login2
 {
     using System;
     using System.Data.Entity;
-    using System.Data.Entity.Infrastructure;
     using System.Data.Entity.Core.Objects;
-    using System.Data.Entity.Core.Objects.DataClasses;
+    using System.Data.Entity.Infrastructure;
     using System.Linq;
-    
-    public partial class MitBankDBEntities : DbContext
+
+    public partial class MitBankDBEntities2 : DbContext
     {
-        public MitBankDBEntities()
-            : base("name=MitBankDBEntities")
+        public MitBankDBEntities2()
+            : base("name=MitBankDBEntities2")
         {
         }
     
@@ -29,15 +28,11 @@ namespace login2
         }
     
         public DbSet<ComisionStatu> ComisionStatus { get; set; }
-        public DbSet<Company> Companies { get; set; }
         public DbSet<CurrentCurrency> CurrentCurrencies { get; set; }
-        public DbSet<Customer> Customers { get; set; }
-        public DbSet<IndividualCustomer> IndividualCustomers { get; set; }
         public DbSet<Individual> Individuals { get; set; }
-        public DbSet<NormalUser> NormalUsers { get; set; }
         public DbSet<TypeBankingPacket> TypeBankingPackets { get; set; }
         public DbSet<UserAccount> UserAccounts { get; set; }
-        public DbSet<Username> Usernames { get; set; }
+<<<<<<< HEAD
         public DbSet<viewEmail> viewEmails { get; set; }
     
         public virtual ObjectResult<addHistoryTransaction_Result> addHistoryTransaction(Nullable<int> userId, string userAccountIban, string toWichAccount, Nullable<int> typeTransaction, Nullable<double> value, string date)
@@ -68,6 +63,14 @@ namespace login2
     
             return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<addHistoryTransaction_Result>("addHistoryTransaction", userIdParameter, userAccountIbanParameter, toWichAccountParameter, typeTransactionParameter, valueParameter, dateParameter);
         }
+=======
+        public DbSet<Customer> Customers { get; set; }
+        public DbSet<Company> Companies { get; set; }
+        public DbSet<IndividualCustomer> IndividualCustomers { get; set; }
+        public DbSet<Individual> Individuals { get; set; }
+        public DbSet<NormalUser> NormalUsers { get; set; }
+        public DbSet<Username> Usernames { get; set; }
+>>>>>>> detachedFromDimi
     
         public virtual ObjectResult<AddNormalUser_Result> AddNormalUser(Nullable<int> iDcustomer, string username, string password)
         {

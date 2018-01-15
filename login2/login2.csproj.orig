@@ -69,7 +69,6 @@
     <Reference Include="System.ComponentModel.DataAnnotations" />
     <Reference Include="System.Configuration" />
     <Reference Include="System.Core" />
-    <Reference Include="System.Data.Entity" />
     <Reference Include="System.Data.Linq" />
     <Reference Include="System.Management" />
     <Reference Include="System.Runtime.Serialization" />
@@ -170,12 +169,18 @@
     <Compile Include="UserAccount.cs">
       <DependentUpon>MitModel.tt</DependentUpon>
     </Compile>
-    <Compile Include="Username.cs">
-      <DependentUpon>MitModel.tt</DependentUpon>
-    </Compile>
+<<<<<<< HEAD
     <Compile Include="viewEmail.cs">
       <DependentUpon>MitModel.tt</DependentUpon>
     </Compile>
+    <EmbeddedResource Include="AdminMainForm.resx">
+      <DependentUpon>AdminMainForm.cs</DependentUpon>
+    </EmbeddedResource>
+=======
+    <Compile Include="Username.cs">
+      <DependentUpon>MitModel.tt</DependentUpon>
+    </Compile>
+>>>>>>> detachedFromDimi
     <EmbeddedResource Include="Form1.resx">
       <DependentUpon>Form1.cs</DependentUpon>
     </EmbeddedResource>

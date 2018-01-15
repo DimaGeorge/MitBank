@@ -17,7 +17,7 @@ namespace login2
         public static bool tryConnection(string username,string password)
         {
 
-            using (var context = new MitBankDBEntities2())
+            using (var context = new MitBankDBEntities())
             {
                 if (context.getUandPProcedure(username, password).FirstOrDefault().HasValue)
                 {
@@ -49,7 +49,7 @@ namespace login2
         public static List<string> getDashboardInfo()
         {
             List<string> list = new List<string>();
-            using (var context = new MitBankDBEntities2())
+            using (var context = new MitBankDBEntities())
             {
                 var conturi = context.showAllMyAccounts(IDSession).ToArray();
                 foreach (var item in conturi)
@@ -63,7 +63,7 @@ namespace login2
         {
 
             Page pg = new Page();
-            using (var context = new MitBankDBEntities2())
+            using (var context = new MitBankDBEntities())
             {
                 if (IDSession != 0&&accNr!="")
                 {
@@ -89,7 +89,7 @@ namespace login2
         {
             List<Page> listIban = new List<Page>();
 
-            using (var context = new MitBankDBEntities2())
+            using (var context = new MitBankDBEntities())
             {
                 if (IDSession != 0)
                 {
@@ -111,7 +111,7 @@ namespace login2
         public static Page getSold(string iban)
         {
 
-            using (var context = new MitBankDBEntities2())
+            using (var context = new MitBankDBEntities())
             {
                 Page pg = new Page();
                 if (IDSession != 0)
@@ -133,7 +133,7 @@ namespace login2
         public static Page getCurrency(string iban)
         {
 
-            using (var context = new MitBankDBEntities2())
+            using (var context = new MitBankDBEntities())
             {
                 Page pg = new Page();
                 if (IDSession != 0)
@@ -155,7 +155,7 @@ namespace login2
         public static Page getCurrencyAnyone(string iban)
         {
 
-            using (var context = new MitBankDBEntities2())
+            using (var context = new MitBankDBEntities())
             {
                 Page pg = new Page();
                 if (IDSession != 0)
@@ -179,7 +179,7 @@ namespace login2
             string lastName="Guest";
 
 
-            using (var context = new MitBankDBEntities2())
+            using (var context = new MitBankDBEntities())
             {
 
                 var result = context.selectOnIndividuals(IDSession);
@@ -197,7 +197,7 @@ namespace login2
         public static double getCurrencyValueBuy(string curr)
         {
             
-            using (var context = new MitBankDBEntities2())
+            using (var context = new MitBankDBEntities())
             {
                 var exchInfo = from c in context.CurrentCurrencies
                                select c;
@@ -214,7 +214,7 @@ namespace login2
         public static double getCurrencyValueSell(string curr)
         {
          
-            using (var context = new MitBankDBEntities2())
+            using (var context = new MitBankDBEntities())
             {
                 var exchInfo = from c in context.CurrentCurrencies
                                select c;
@@ -231,7 +231,7 @@ namespace login2
         public static void addOnHistory(string userAccountIban,
                     string toWichAccount,int TypeTransaction,double val)
         {
-            using (var context= new MitBankDBEntities2())
+            using (var context= new MitBankDBEntities())
             {
                 var result = context.addHistoryTransaction(IDSession, userAccountIban
                     , toWichAccount, TypeTransaction, -val, DateTime.Now.ToString());
@@ -246,7 +246,7 @@ namespace login2
         {
             List<string> lc = new List<string>();
 
-            using (var context = new MitBankDBEntities2())
+            using (var context = new MitBankDBEntities())
             {
                 var result = context.showAllMyAccounts(IDSession);
 
